@@ -87,13 +87,12 @@ function atualizaGraficoEstado(padding,w,h){
 
 function refrescaGraficoEstado(data, padding,w,h){
   dataset = data;
-  opcao = "Estado";
 
   var rScale =defineEscalaRaioEstados(data);
   var xScale =defineEscalaXEstados(data,padding,w);
   var yScale =defineEscalaY(data,padding,h);
 
-  constroiEixos(opcao,xScale,yScale,padding,h,w);
+  constroiEixosEstado(xScale,yScale,padding,h,w);
 
   constroiCirculosEstados(xScale,yScale,rScale);
 }
@@ -120,13 +119,12 @@ function atualizaGraficoCorPele(padding,w,h){
 
 function refrescaGraficoCorPele(data, padding,w,h){
   dataset = data;
-  opcao = "CorPele";
 
   var rScale =defineEscalaRaioCorPele(data);
   var xScale =defineEscalaXCorPele(data,padding,w);
   var yScale =defineEscalaY(data,padding,h);
 
-  constroiEixos(opcao,xScale,yScale,padding,h,w);
+  constroiEixosCorPele(xScale,yScale,padding,h,w);
 
   constroiCirculosCorPele(xScale,yScale,rScale);
 }
