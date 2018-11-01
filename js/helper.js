@@ -246,30 +246,6 @@ function constroiEixoY(yScale,padding,h){
 
   rotulaEixoY(padding,h);
 }
-//----------------------------------------------------------------------------
-//funcoes contrucao circulos - comum aos dois tipos de grafico
-
-
-//adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
-function rotulaCirculos(xScale,yScale){
-  d3.select(".chart").selectAll("text")
-    .data(dataset)
-    .transition()
-    .duration(2000)
-    .text(function(d) {
-      return d.nome;
-    })
-    .attr("x", function(d) {
-      return xScale((d.fem)/(d.total))
-    })
-    .attr("y", function(d) {
-      return yScale((d.csup)/(d.total));
-    })
-    .attr("text-anchor", "middle")
-    .attr("font-family", "sans-serif")
-    .attr("font-size", "11px")
-    .attr("fill", "white");
-}
 
 
 
@@ -280,7 +256,7 @@ function rotulaCirculos(xScale,yScale){
 //constroi circulos - estados
 function constroiCirculosEstados(xScale,yScale,rScale){
   desenhaCirculosEstado(xScale,yScale,rScale);
-  rotulaCirculos(xScale,yScale);
+  rotulaCirculosEstado(xScale,yScale);
   dicaCirculosPorEstado();
 }
 
@@ -306,6 +282,29 @@ function desenhaCirculosEstado(xScale,yScale,rScale){
     });
 }
 
+//adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
+function rotulaCirculosEstado(xScale,yScale){
+  d3.select(".chart").selectAll("#textoEstado")
+    .data(dataset)
+    .transition()
+    .duration(2000)
+    .text(function(d) {
+      return d.nome;
+    })
+    .attr("x", function(d) {
+      return xScale((d.fem)/(d.total))
+    })
+    .attr("y", function(d) {
+      return yScale((d.csup)/(d.total));
+    })
+    .attr("text-anchor", "middle")
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "11px")
+    .attr("fill", "white");
+}
+
+
+
 //adiciona uma dica "tooltip" para cada circulo, visivel ao sobrepor o mouse
 //a ser usado para grafico Estados
 function dicaCirculosPorEstado(){
@@ -328,7 +327,7 @@ function dicaCirculosPorEstado(){
 //constroi circulos - cor de pele
 function constroiCirculosCorPele(xScale,yScale,rScale){
   desenhaCirculosCorPele(xScale,yScale,rScale);
-  rotulaCirculos(xScale,yScale);
+  rotulaCirculosCorPele(xScale,yScale);
   dicaCirculosPorCorPele();
 }
 
@@ -353,6 +352,26 @@ d3.select(".chart").selectAll("#circuloCorPele")
   });
 }
 
+//adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
+function rotulaCirculosCorPele(xScale,yScale){
+  d3.select(".chart").selectAll("#textoCorPele")
+    .data(dataset)
+    .transition()
+    .duration(2000)
+    .text(function(d) {
+      return d.nome;
+    })
+    .attr("x", function(d) {
+      return xScale((d.fem)/(d.total))
+    })
+    .attr("y", function(d) {
+      return yScale((d.csup)/(d.total));
+    })
+    .attr("text-anchor", "middle")
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "11px")
+    .attr("fill", "white");
+}
 
 //adiciona uma dica "tooltip" para cada circulo, visivel ao sobrepor o mouse
 //a ser usado para grafico CorPele
