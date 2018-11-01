@@ -210,6 +210,7 @@ function desenhaEixoXEstado(xAxis,padding,h){
 
   d3.select(".chartEstado").append("g")
   .attr("class", "axis") //Assign "axis" class
+  .attr("class", "axisX") //Assign "axis" class
   .attr("transform", "translate(0," + (h - padding) + ")")
   .call(xAxis);
 }
