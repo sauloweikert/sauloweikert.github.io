@@ -75,7 +75,7 @@ function atualizaGraficoEstado(padding,w,h){
 			}
 			else { //If no error, the file loaded correctly. Yay!
 				//console.log(data); //Log the data.
-        d3.select(".chartEstado").select(".axis").remove();
+        d3.select(".chartEstado").selectAll(".axis").remove();
 	       refrescaGraficoEstado(data, padding,w,h);
 
 					}//fecha else
