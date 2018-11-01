@@ -49,8 +49,8 @@
 			</nav>
 		<h2>Visualização 1: Distribuição do Perfil Social - por Estado</h2>
 		<h3>Clique sobre um dos anos abaixo:</h3>
-		<p id="year">2014</p>
-		<p id="year">2016</p>
+		<p id="yearEstado">2014</p>
+		<p id="yearEstado">2016</p>
 
 		<svg class="chart">
 			<circle id= "circuloEstado" cx="50" cy="50" r="40" fill="#009999" />
@@ -117,6 +117,33 @@
 			<div class="square"id="norte"></div>Norte
 		</div>
 
+		<h2>Visualização 2: Distribuição do Perfil Social - por Cor de Pele</h2>
+		<h3>Clique sobre um dos anos abaixo:</h3>
+		<p id="yearCorPele">2014_</p>
+		<p id="yearCorPele">2018_</p>
+
+		<svg class="chartCorPele">
+			<circle id = "circuloCorPele" cx="50" cy="50" r="20" fill="#003366" />
+			<circle id = "circuloCorPele" cx="50" cy="50" r="20" fill="#003366" />
+			<circle id = "circuloCorPele" cx="50" cy="50" r="20" fill="#003366" />
+			<circle id = "circuloCorPele" cx="50" cy="50" r="20" fill="#003366" />
+			<circle id = "circuloCorPele" cx="50" cy="50" r="20" fill="#003366" />
+
+			<text id="textoCorPele"  x="50" y="50" fill="white"></text>
+			<text id="textoCorPele"  x="50" y="50" fill="white"></text>
+			<text id="textoCorPele"  x="50" y="50" fill="white"></text>
+			<text id="textoCorPele"  x="50" y="50" fill="white"></text>
+			<text id="textoCorPele"  x="50" y="50" fill="white"></text>
+
+    </svg>
+      <div class="legend">
+			Legenda:
+  			<div class="square" id="amarela"></div>Amarela
+  			<div class="square"id="branca"></div>Branca
+  			<div class="square"id="indigena"></div>Indígena
+  			<div class="square"id="parda"></div>Parda
+  			<div class="square"id="negra"></div>Negra
+  		</div>
 
 		<script type="text/javascript">
 

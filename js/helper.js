@@ -47,7 +47,7 @@ function configuraGrafico(w,h){
 
 function atualizaGraficoEstado(padding,w,h){
 	//seleciona o ano e gera os circulos
-	d3.selectAll("#year")
+	d3.selectAll("#yearEstado")
 	.on("click", function() {
 		d3.select(".chart").selectAll(".axis").remove();
 		d3.json("dados/" + $(this).html() + ".json", function(error,data) {
