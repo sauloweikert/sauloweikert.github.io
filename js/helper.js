@@ -287,7 +287,7 @@ function constroiCirculosEstados(xScale,yScale,rScale){
 
 //desenha os circulos - grafico estados
 function desenhaCirculosEstado(xScale,yScale,rScale){
-  d3.select(".chart").selectAll("circle")
+  d3.select(".chart").selectAll("#circuloEstado")
     .data(dataset)
     .transition()
     .duration(2000)
@@ -309,7 +309,7 @@ function desenhaCirculosEstado(xScale,yScale,rScale){
 //adiciona uma dica "tooltip" para cada circulo, visivel ao sobrepor o mouse
 //a ser usado para grafico Estados
 function dicaCirculosPorEstado(){
-  d3.select(".chart").selectAll("circle")
+  d3.select(".chart").selectAll("#circuloEstado")
     .data(dataset)
     .append("title")
       .text(function(d) {
@@ -334,7 +334,7 @@ function constroiCirculosCorPele(xScale,yScale,rScale){
 
 //desenha os circulos - grafico cor pele
 function desenhaCirculosCorPele(xScale,yScale,rScale){
-d3.select(".chart").selectAll("circle")
+d3.select(".chart").selectAll("#circuloCorPele")
   .data(dataset)
   .transition()
   .duration(2000)
@@ -357,7 +357,7 @@ d3.select(".chart").selectAll("circle")
 //adiciona uma dica "tooltip" para cada circulo, visivel ao sobrepor o mouse
 //a ser usado para grafico CorPele
 function dicaCirculosPorCorPele(){
-  d3.select(".chart").selectAll("circle")
+  d3.select(".chart").selectAll("#circuloCorPele")
     .data(dataset)
     .append("title")
       .text(function(d) {
