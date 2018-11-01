@@ -9,7 +9,9 @@ function montaGraficoEstados(){
   //padding
   var padding = 90;
 
-  configuraGraficoEstado(w,h);
+  opcao=Estado;
+
+  configuraGrafico(opcao,w,h);
 
   //reage ao clique em algum ano
   atualizaGraficoEstado(padding,w,h);
@@ -17,10 +19,10 @@ function montaGraficoEstados(){
 }
 
 //funcao construcao inicial grafico
-function configuraGraficoEstado(w,h){
+function configuraGrafico(opcao,w,h){
 
 	//criando o elemento svg
-	d3.select(".chartEstado")
+	d3.select(".chart"+opcao)
 		.attr("width", w)
 		.attr("height", h)
 		.attr("font-family", "sans-serif")
@@ -39,23 +41,13 @@ function montaGraficoCorPele(){
   //padding
   var padding = 90;
 
-  configuraGraficoCorPele(w,h);
+  opcao=CorPele;
+
+  configuraGrafico(opcao,w,h);
 
   //reage ao clique em algum ano
   atualizaGraficoCorPele(padding,w,h);
 
-}
-
-//funcao construcao inicial grafico
-function configuraGraficoCorPele(w,h){
-
-	//criando o elemento svg
-	d3.select(".chartCorPele")
-		.attr("width", w)
-		.attr("height", h)
-		.attr("font-family", "sans-serif")
-		.attr("font-size", "11px");
-  return;
 }
 
 
