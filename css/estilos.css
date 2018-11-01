@@ -1,0 +1,39 @@
+.legend{
+  display: inline-grid;
+  border-style: double;
+}
+.square {
+  position: relative;
+  height: 10px;
+  width: 10px;
+}
+#sul{
+  background-color: #990033;
+}
+#sudeste{
+  background-color: #003366;
+}
+#centroeste{
+  background-color: #cc00ff;
+}
+#nordeste{
+  background-color: #ff6600;
+}
+#norte{
+  background-color: #009966;
+}
+#negra{
+  background-color: #330000;
+}
+#parda{
+  background-color: #cc9966;
+}
+#branca{
+  background-color: #ffcccc;
+}
+#amarela{
+  background-color: #ffff99;
+}
+#indigena{
+  background-color: #cc0000;
+}

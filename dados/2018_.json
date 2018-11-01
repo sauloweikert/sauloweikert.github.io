@@ -1,0 +1,42 @@
+[
+  {
+   "nome": "Negra",
+   "fem": 1237,
+   "csup": 1203,
+   "total": 29145,
+   "totalGrupo": 3161,
+   "corCirculo":"#330000"
+  },
+  {
+   "nome": "Parda",
+   "fem": 3165,
+   "csup":4120,
+   "total": 29145,
+   "totalGrupo": 10396,
+   "corCirculo": "#cc9966"
+  },
+  {
+   "nome": "Branca",
+   "fem": 4698,
+   "csup": 8770,
+   "total": 29145,
+   "totalGrupo": 15286,
+   "corCirculo":"#ffcccc"
+  },
+  {
+   "nome": "Amarela",
+   "fem": 62,
+   "csup": 79,
+   "total": 29145,
+   "totalGrupo": 168,
+   "corCirculo":"#ffff99"
+  },
+  {
+   "nome": "Indígena",
+   "fem": 49,
+   "csup": 60,
+   "total": 29145,
+   "totalGrupo": 134,
+   "corCirculo":"#cc0000"
+  }
+]

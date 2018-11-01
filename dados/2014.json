@@ -1,0 +1,210 @@
+[
+  {
+    "nome": "São Paulo",
+    "estado": "SP",
+    "total": 3664,
+    "fem": 1124,
+    "csup":1879,
+    "regiao": "#003366"
+  },
+  {
+    "nome": "Minas Gerais",
+    "estado": "MG",
+    "total": 1943,
+    "fem": 612,
+    "csup":836,
+    "regiao": "#003366"
+  },
+  {
+    "nome": "Bahia",
+    "estado": "BA",
+    "total": 1093,
+    "fem": 342,
+    "csup":477,
+    "regiao": "#ff6600"
+  },
+  {
+    "nome": "Paraná",
+    "estado": "PR",
+    "total": 1237,
+    "fem": 382,
+    "csup":607,
+    "regiao": "#990033"
+  },
+  {
+    "nome": "Rio Grande do Sul",
+    "estado": "RS",
+    "total": 1092,
+    "fem": 339,
+    "csup":480,
+    "regiao": "#990033"
+  },
+  {
+    "nome": "Rio de Janeiro",
+    "estado": "RJ",
+    "total": 3162,
+    "fem": 957,
+    "csup":1193,
+    "regiao": "#003366"
+  },
+  {
+    "nome": "Goiás",
+    "estado": "GO",
+    "total": 1064,
+    "fem": 319,
+    "csup":464,
+    "regiao": "#cc00ff"
+  },
+  {
+    "nome": "Pará",
+    "estado": "PA",
+    "total": 1050,
+    "fem": 320,
+    "csup":453,
+    "regiao": "#009966"
+  },
+  {
+    "nome": "Pernambuco",
+    "estado": "PE",
+    "total": 756,
+    "fem": 239,
+    "csup":301,
+    "regiao": "#ff6600"
+  },
+  {
+    "nome": "Maranhão",
+    "estado": "MA",
+    "total": 895,
+    "fem": 286,
+    "csup":398,
+    "regiao": "#ff6600"
+  },
+  {
+    "nome": "Santa Catarina",
+    "estado": "SC",
+    "total": 676,
+    "fem": 219,
+    "csup":364,
+    "regiao": "#990033"
+  },
+  {
+    "nome": "Ceará",
+    "estado": "CE",
+    "total": 879,
+    "fem": 271,
+    "csup":408,
+    "regiao": "#ff6600"
+  },
+  {
+    "nome": "Paraíba",
+    "estado": "PB",
+    "total": 587,
+    "fem": 187,
+    "csup":294,
+    "regiao": "#ff6600"
+  },
+  {
+    "nome": "Mato Grosso",
+    "estado": "MT",
+    "total": 485,
+    "fem": 149,
+    "csup":199,
+    "regiao": "#cc00ff"
+  },
+  {
+    "nome": "Espírito Santo",
+    "estado": "ES",
+    "total": 792,
+    "fem": 247,
+    "csup":354,
+    "regiao": "#003366"
+  },
+  {
+    "nome": "Piauí",
+    "estado": "PI",
+    "total": 403,
+    "fem": 127,
+    "csup":212,
+    "regiao": "#ff6600"
+  },
+  {
+    "nome": "Amazonas",
+    "estado": "AM",
+    "total": 786,
+    "fem": 240,
+    "csup":364,
+    "regiao": "#009966"
+  },
+  {
+    "nome": "Rio Grande do Norte",
+    "estado": "RN",
+    "total": 406,
+    "fem": 131,
+    "csup":197,
+    "regiao": "#ff6600"
+  },
+  {
+    "nome": "Tocantins",
+    "estado": "TO",
+    "total": 395,
+    "fem": 115,
+    "csup":198,
+    "regiao": "#cc00ff"
+  },
+  {
+    "nome": "Mato Grosso do Sul",
+    "estado": "MS",
+    "total": 601,
+    "fem": 198,
+    "csup":281,
+    "regiao": "#cc00ff"
+  },
+  {
+    "nome": "Alagoas",
+    "estado": "AL",
+    "total": 479,
+    "fem": 142,
+    "csup":206,
+    "regiao": "#ff6600"
+  },
+  {
+    "nome": "Sergipe",
+    "estado": "SE",
+    "total": 303,
+    "fem": 95,
+    "csup":122,
+    "regiao": "#ff6600"
+  },
+  {
+    "nome": "Roraima",
+    "estado": "RO",
+    "total": 571,
+    "fem": 180,
+    "csup":197,
+    "regiao": "#009966"
+  },
+  {
+    "nome": "Acre",
+    "estado": "AC",
+    "total": 621,
+    "fem": 196,
+    "csup":264,
+    "regiao": "#009966"
+  },
+  {
+    "nome": "Amapá",
+    "estado": "AP",
+    "total": 550,
+    "fem": 171,
+    "csup":297,
+    "regiao": "#009966"
+  },
+  {
+    "nome": "Roraima",
+    "estado": "RR",
+    "total": 541,
+    "fem": 172,
+    "csup":191,
+    "regiao": "#009966"
+  }
+]
