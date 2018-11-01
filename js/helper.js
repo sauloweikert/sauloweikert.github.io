@@ -103,6 +103,7 @@ function refrescaGraficoEstado(data, padding,w,h){
 //----------------------------------------------funcoes atualiza grafico corpele
 
 function atualizaGraficoCorPele(padding,w,h){
+  opcao="CorPele";
 	//seleciona o ano e gera os circulos
 	d3.selectAll("#yearCorPele")
 	.on("click", function() {
@@ -113,7 +114,7 @@ function atualizaGraficoCorPele(padding,w,h){
 			}
 			else { //If no error, the file loaded correctly. Yay!
 				//console.log(data); //Log the data.
-	       refrescaGraficoCorPele(data, padding,w,h);
+	       refrescaGrafico(opcao,data, padding,w,h);
 				}//fecha else
 			});
 		});
