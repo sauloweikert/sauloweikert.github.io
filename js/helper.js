@@ -74,7 +74,7 @@ function atualizaGraficoEstado(padding,w,h){
 		});
 }
 
-function refrescaGrafico(data, padding,w,h){
+function refrescaGraficoEstado(data, padding,w,h){
   dataset = data;
   opcao = "Estado";
 
