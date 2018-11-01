@@ -182,11 +182,17 @@ function defineEscalaY(data,padding,h){
 //funcoes eixos
 
 //constroi ambos os eixos
-function constroiEixos(opcao,xScale,yScale,padding,h,w){
-  constroiEixoX(opcao,xScale,padding,h,w);
-  constroiEixoY(opcao,yScale,padding,h);
+function constroiEixosEstado(xScale,yScale,padding,h,w){
+  constroiEixoXEstado(xScale,padding,h,w);
+  constroiEixoYEstado(yScale,padding,h);
 }
 
+//constroi ambos os eixos
+function constroiEixosCorPele(xScale,yScale,padding,h,w){
+  constroiEixoXCorPele(xScale,padding,h,w);
+  constroiEixoYCorPele(yScale,padding,h);
+}
+//----------------------------------------------------------------------------
 
 //define eixo x
 function defineEixoX(xScale){
@@ -201,30 +207,56 @@ function defineEixoX(xScale){
   return xAxis;
 }
 
-function desenhaEixoX(opcao,xAxis,padding,h){
+function desenhaEixoXEstado(xAxis,padding,h){
 
-  d3.select(".chart" + opcao).append("g")
+  d3.select(".chartEstado").append("g")
+  .attr("class", "axis") //Assign "axis" class
+  .attr("transform", "translate(0," + (h - padding) + ")")
+  .call(xAxis);
+}
+
+function desenhaEixoXCorPele(xAxis,padding,h){
+
+  d3.select(".chartCorPele").append("g")
   .attr("class", "axis") //Assign "axis" class
   .attr("transform", "translate(0," + (h - padding) + ")")
   .call(xAxis);
 }
 
 // adiciona o rotulo do eixo
-function rotulaEixoX(opcao,padding,h,w){
-d3.select(".chart"+ opcao).append("text")
+function rotulaEixoXEstado(padding,h,w){
+d3.select(".chartEstado").append("text")
+    .attr("transform", "translate(" + (w/ 2) + "," + (h) + ")")
+    .style("text-anchor", "middle")
+    .text("candidatos do Gênero Feminino/Total candidatos (%)");
+}
+
+// adiciona o rotulo do eixo
+function rotulaEixoXCorPele(padding,h,w){
+d3.select(".chartCorPele").append("text")
     .attr("transform", "translate(" + (w/ 2) + "," + (h) + ")")
     .style("text-anchor", "middle")
     .text("candidatos do Gênero Feminino/Total candidatos (%)");
 }
 
 //constroi o eixo X
-function constroiEixoX(opcao,xScale,padding,h,w){
+function constroiEixoXEstado(xScale,padding,h,w){
 
   var xAxis = defineEixoX(xScale);
 
-  desenhaEixoX(opcao,xAxis,padding,h);
+  desenhaEixoXEstado(xAxis,padding,h);
 
-  rotulaEixoX(opcao,padding,h,w);
+  rotulaEixoXEstado(padding,h,w);
+}
+
+//constroi o eixo X
+function constroiEixoXCorPele(xScale,padding,h,w){
+
+  var xAxis = defineEixoX(xScale);
+
+  desenhaEixoXCorPele(xAxis,padding,h);
+
+  rotulaEixoXCorPele(padding,h,w);
 }
 //-----------------------------------------------------------------------------
 
@@ -241,19 +273,37 @@ function defineEixoY(yScale){
   return yAxis;
 }
 
-function desenhaEixoY(opcao,yAxis,padding){
+function desenhaEixoYEstado(yAxis,padding){
 
   //Create Y axis
-  d3.select(".chart"+ opcao).append("g")
+  d3.select(".chartEstado").append("g")
   .attr("class", "axis")
   .attr("transform", "translate(" + padding + ",0)")
   .call(yAxis);
 }
 
+function desenhaEixoYCorPele(yAxis,padding){
+
+  //Create Y axis
+  d3.select(".chartCorPele").append("g")
+  .attr("class", "axis")
+  .attr("transform", "translate(" + padding + ",0)")
+  .call(yAxis);
+}
 
 //desenha rotulo eixo y
-function rotulaEixoY(opcao,padding,h){
-  d3.select(".chart"+ opcao).append("text")
+function rotulaEixoYEstado(padding,h){
+  d3.select(".chartEstado").append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 120 - padding)
+      .attr("x",0 - (h / 2))
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .text("candidatos com curso superior completo/Total de candidatos (%)");
+}
+//desenha rotulo eixo y
+function rotulaEixoYCorPele(padding,h){
+  d3.select(".chartCorPele").append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 120 - padding)
       .attr("x",0 - (h / 2))
@@ -262,14 +312,25 @@ function rotulaEixoY(opcao,padding,h){
       .text("candidatos com curso superior completo/Total de candidatos (%)");
 }
 
+
 //constroi o eixo y
-function constroiEixoY(opcao,yScale,padding,h){
+function constroiEixoYEstado(yScale,padding,h){
 
   var yAxis = defineEixoY(yScale);
 
-  desenhaEixoY(opcao,yAxis,padding);
+  desenhaEixoYEstado(yAxis,padding);
 
-  rotulaEixoY(opcao,padding,h);
+  rotulaEixoYEstado(padding,h);
+}
+
+//constroi o eixo y
+function constroiEixoYCorPele(yScale,padding,h){
+
+  var yAxis = defineEixoY(yScale);
+
+  desenhaEixoYCorPele(yAxis,padding);
+
+  rotulaEixoYCorPele(padding,h);
 }
 
 
