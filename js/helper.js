@@ -289,7 +289,7 @@ function rotulaCirculosEstado(xScale,yScale){
     .transition()
     .duration(2000)
     .text(function(d) {
-      return d.nome;
+      return d.estado;
     })
     .attr("x", function(d) {
       return xScale((d.fem)/(d.total))
