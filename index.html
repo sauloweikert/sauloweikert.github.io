@@ -1,22 +1,134 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>TP2</title>
-    <meta charset="utf-8">
+	<head>
+		<meta charset="utf-8">
+		<title>Visualização 1</title>
+		<link rel="stylesheet" type="text/css" href="css/estilos.css">
+		<script type = "text/javascript" src="d3/d3.v3.min.js"></script>
+		<script src="js/helper.js" charset="utf-8"></script>
+		<script src="dados" charset="utf-8"></script>
 
-  </head>
-  <body>
-    <main>
-      <h1 class="titulo-principal">Trabalho Prático de Visualização de Dados</h1>
-      <p>Este trabalho está dividido em duas Visualizações diferentes. Por favor escolha uma das visualizações possíveis clicando sobre a mesma, abaixo: </p>
+		<style>
+		.axis path,
+		.axis line {
+		fill: none;
+		stroke: grey;
+		shape-rendering: crispEdges;
+		}
+		.axis text {
+		font-family: sans-serif;
+		font-size: 11px;
+		fill: olive;
+		}
 
-      <nav>
-        <ul>
-          <li><a href="index.html">Apresentação</a></li>
-          <li><a href="visualization1.html">Distribuição de Candidatos por Estado</a></li>
-          <li><a href="visualization2.html">Distribuição de Candidatos por Cor da Pele</a></li>
-        </ul>
-      </nav>
+		circle {
+			-moz-transition: all 0.3s;
+			-o-transition: all 0.3s;
+			-webkit-transition: all 0.3s;
+			transition: all 0.3s;
+		}
+		circle:hover{
+			fill:orange;
+			stroke: orange;
+			stroke-width: 5;
+		}
 
-  </body>
+		</style>
+
+	</head>
+	<body>
+		<main>
+			<h1 class="titulo-principal">Trabalho Prático de Visualização de Dados</h1>
+			<p>Este trabalho está dividido em duas Visualizações diferentes. Por favor escolha uma das visualizações possíveis clicando sobre a mesma, abaixo: </p>
+
+			<nav>
+				<ul>
+					<li><a href="index.html">Apresentação</a></li>
+					<li><a href="visualization1.html">Distribuição de Candidatos por Estado</a></li>
+					<li><a href="visualization2.html">Distribuição de Candidatos por Cor da Pele</a></li>
+				</ul>
+			</nav>
+		<h2>Visualização 1: Distribuição do Perfil Social - por Estado</h2>
+		<h3>Clique sobre um dos anos abaixo:</h3>
+		<p id="year">2014</p>
+		<p id="year">2016</p>
+
+		<svg class="chart">
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+			<circle cx="50" cy="50" r="40" fill="#009999" />
+
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+			 <text x="50" y="50" fill="white">BRASIL</text>
+		</svg>
+		<div class="legend">
+			Legenda:
+			<div class="square" id="sul"></div>Sul
+			<div class="square"id="sudeste"></div>Sudeste
+			<div class="square"id="centroeste"></div>Centro-Oeste
+			<div class="square"id="nordeste"></div>Nordeste
+			<div class="square"id="norte"></div>Norte
+		</div>
+
+
+		<script type="text/javascript">
+
+		//definindo os dados
+		var dataset;
+		montaGraficoEstados();
+
+		</script>
+
+	</body>
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+
+
 </html>
