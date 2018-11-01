@@ -1,23 +1,3 @@
-//funcoes montagem grafico Estado
-
-function montaGraficoEstados(){
-
-  //largura e altura
-  var w = 1500;
-  var h = 400;
-
-  //padding
-  var padding = 90;
-
-  opcao=Estado;
-
-  configuraGrafico(opcao,w,h);
-
-  //reage ao clique em algum ano
-  atualizaGraficoEstado(padding,w,h);
-
-}
-
 //funcao construcao inicial grafico
 function configuraGrafico(opcao,w,h){
 
@@ -29,6 +9,28 @@ function configuraGrafico(opcao,w,h){
 		.attr("font-size", "11px");
   return;
 }
+//------------------------------------------------------------------------------
+
+//funcoes montagem grafico Estado
+
+function montaGraficoEstados(){
+
+  //largura e altura
+  var w = 1500;
+  var h = 400;
+
+  //padding
+  var padding = 90;
+
+  opcao="Estado";
+
+  configuraGrafico(opcao,w,h);
+
+  //reage ao clique em algum ano
+  atualizaGraficoEstado(padding,w,h);
+
+}
+
 
 //-----------------------------------------------------------------------------
 
@@ -41,7 +43,7 @@ function montaGraficoCorPele(){
   //padding
   var padding = 90;
 
-  opcao=CorPele;
+  opcao="CorPele";
 
   configuraGrafico(opcao,w,h);
 
