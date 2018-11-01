@@ -307,7 +307,7 @@ function desenhaCirculosEstado(xScale,yScale,rScale){
     .attr("fill", function(d) {
       return d.regiao;
     });
-
+}
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
 function rotulaCirculosEstado(xScale,yScale){
