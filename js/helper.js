@@ -1,3 +1,5 @@
+//funcoes montagem grafico Estado
+
 function montaGraficoEstados(){
 
   //largura e altura
@@ -7,12 +9,26 @@ function montaGraficoEstados(){
   //padding
   var padding = 90;
 
-  configuraGrafico(w,h);
+  configuraGraficoEstado(w,h);
 
   //reage ao clique em algum ano
   atualizaGraficoEstado(padding,w,h);
 
 }
+
+//funcao construcao inicial grafico
+function configuraGraficoEstado(w,h){
+
+	//criando o elemento svg
+	d3.select(".chartEstado")
+		.attr("width", w)
+		.attr("height", h)
+		.attr("font-family", "sans-serif")
+		.attr("font-size", "11px");
+  return;
+}
+
+//-----------------------------------------------------------------------------
 
 function montaGraficoCorPele(){
 
@@ -23,19 +39,18 @@ function montaGraficoCorPele(){
   //padding
   var padding = 90;
 
-  configuraGrafico(w,h);
+  configuraGraficoCorPele(w,h);
 
   //reage ao clique em algum ano
   atualizaGraficoCorPele(padding,w,h);
 
 }
 
-
 //funcao construcao inicial grafico
-function configuraGrafico(w,h){
+function configuraGraficoCorPele(w,h){
 
 	//criando o elemento svg
-	d3.select(".chart")
+	d3.select(".chartCorPele")
 		.attr("width", w)
 		.attr("height", h)
 		.attr("font-family", "sans-serif")
@@ -43,13 +58,15 @@ function configuraGrafico(w,h){
   return;
 }
 
+
+
 //-----------------------------------------funcoes atualizacao grafico estado
 
 function atualizaGraficoEstado(padding,w,h){
 	//seleciona o ano e gera os circulos
 	d3.selectAll("#yearEstado")
 	.on("click", function() {
-		d3.select(".chart").selectAll(".axis").remove();
+		d3.select(".chartEstado").selectAll(".axis").remove();
 		d3.json("dados/" + $(this).html() + ".json", function(error,data) {
 			if (error) { //If error is not null, something went wrong.
 				console.log(error); //Log the error.
@@ -81,7 +98,7 @@ function atualizaGraficoCorPele(padding,w,h){
 	//seleciona o ano e gera os circulos
 	d3.selectAll("#yearCorPele")
 	.on("click", function() {
-		d3.select(".chart").selectAll(".axis").remove();
+		d3.select(".chartCorPele").selectAll(".axis").remove();
 		d3.json("dados/" + $(this).html() + ".json", function(error,data) {
 			if (error) { //If error is not null, something went wrong.
 				console.log(error); //Log the error.
@@ -263,7 +280,7 @@ function constroiCirculosEstados(xScale,yScale,rScale){
 
 //desenha os circulos - grafico estados
 function desenhaCirculosEstado(xScale,yScale,rScale){
-  d3.select(".chart").selectAll("#circuloEstado")
+  d3.select(".chartEstado").selectAll("#circuloEstado")
     .data(dataset)
     .transition()
     .duration(2000)
@@ -285,7 +302,7 @@ function desenhaCirculosEstado(xScale,yScale,rScale){
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
 function rotulaCirculosEstado(xScale,yScale){
-  d3.select(".chart").selectAll("#textoEstado")
+  d3.select(".chartEstado").selectAll("#textoEstado")
     .data(dataset)
     .transition()
     .duration(2000)
@@ -309,7 +326,7 @@ function rotulaCirculosEstado(xScale,yScale){
 //adiciona uma dica "tooltip" para cada circulo, visivel ao sobrepor o mouse
 //a ser usado para grafico Estados
 function dicaCirculosPorEstado(){
-  d3.select(".chart").selectAll("#circuloEstado")
+  d3.select(".chartEstado").selectAll("#circuloEstado")
     .data(dataset)
     .append("title")
       .text(function(d) {
@@ -334,7 +351,7 @@ function constroiCirculosCorPele(xScale,yScale,rScale){
 
 //desenha os circulos - grafico cor pele
 function desenhaCirculosCorPele(xScale,yScale,rScale){
-d3.select(".chart").selectAll("#circuloCorPele")
+d3.select(".chartCorPele").selectAll("#circuloCorPele")
   .data(dataset)
   .transition()
   .duration(2000)
@@ -355,7 +372,7 @@ d3.select(".chart").selectAll("#circuloCorPele")
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
 function rotulaCirculosCorPele(xScale,yScale){
-  d3.select(".chart").selectAll("#textoCorPele")
+  d3.select(".chartCorPele").selectAll("#textoCorPele")
     .data(dataset)
     .transition()
     .duration(2000)
@@ -377,7 +394,7 @@ function rotulaCirculosCorPele(xScale,yScale){
 //adiciona uma dica "tooltip" para cada circulo, visivel ao sobrepor o mouse
 //a ser usado para grafico CorPele
 function dicaCirculosPorCorPele(){
-  d3.select(".chart").selectAll("#circuloCorPele")
+  d3.select(".chartCorPele").selectAll("#circuloCorPele")
     .data(dataset)
     .append("title")
       .text(function(d) {
