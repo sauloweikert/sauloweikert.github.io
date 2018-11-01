@@ -179,6 +179,7 @@ function defineEscalaY(data,padding,h){
 
 //constroi ambos os eixos
 function constroiEixosEstado(xScale,yScale,padding,h,w){
+  d3.select(".chartEstado").select(".axis").remove();
   constroiEixoXEstado(xScale,padding,h,w);
   constroiEixoYEstado(yScale,padding,h);
 }
@@ -206,7 +207,6 @@ function defineEixoX(xScale){
 
 function desenhaEixoXEstado(xAxis,padding,h){
 
-  d3.select(".chartEstado").select(".axis").remove();
   d3.select(".chartEstado").append("g")
   .attr("class", "axis") //Assign "axis" class
   .attr("transform", "translate(0," + (h - padding) + ")")
