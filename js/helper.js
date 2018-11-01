@@ -1,8 +1,20 @@
 //funcao construcao inicial grafico
-function configuraGrafico(opcao,w,h){
+function configuraGraficoEstado(w,h){
 
 	//criando o elemento svg
-	d3.select(".chart"+opcao)
+	d3.select(".chartEstado")
+		.attr("width", w)
+		.attr("height", h)
+		.attr("font-family", "sans-serif")
+		.attr("font-size", "11px");
+  return;
+}
+
+//funcao construcao inicial grafico
+function configuraGraficoCorPele(w,h){
+
+	//criando o elemento svg
+	d3.select(".chartCorPele")
 		.attr("width", w)
 		.attr("height", h)
 		.attr("font-family", "sans-serif")
@@ -22,9 +34,7 @@ function montaGraficoEstados(){
   //padding
   var padding = 90;
 
-  opcao="Estado";
-
-  configuraGrafico(opcao,w,h);
+  configuraGraficoEstado(w,h);
 
   //reage ao clique em algum ano
   atualizaGraficoEstado(padding,w,h);
@@ -43,9 +53,8 @@ function montaGraficoCorPele(){
   //padding
   var padding = 90;
 
-  opcao="CorPele";
 
-  configuraGrafico(opcao,w,h);
+  configuraGraficoCorPele(w,h);
 
   //reage ao clique em algum ano
   atualizaGraficoCorPele(padding,w,h);
@@ -57,7 +66,7 @@ function montaGraficoCorPele(){
 //-----------------------------------------funcoes atualizacao grafico estado
 
 function atualizaGraficoEstado(padding,w,h){
-  opcao="Estado";
+
 	//seleciona o ano e gera os circulos
 	d3.selectAll("#yearEstado")
 	.on("click", function() {
@@ -68,22 +77,11 @@ function atualizaGraficoEstado(padding,w,h){
 			}
 			else { //If no error, the file loaded correctly. Yay!
 				//console.log(data); //Log the data.
-	       refrescaGrafico(opcao,data, padding,w,h);
+	       refrescaGraficoEstado(data, padding,w,h);
 
 					}//fecha else
 			});
 		});
-}
-
-function refrescaGrafico(opcao,data, padding,w,h){
-
-  if(opcao=="Estado"){
-    refrescaGraficoEstado(data, padding,w,h);
-
-  }else if(opcao=="CorPele"){
-    refrescaGraficoCorPele(data, padding,w,h);
-  }
-
 }
 
 
@@ -103,7 +101,7 @@ function refrescaGraficoEstado(data, padding,w,h){
 //----------------------------------------------funcoes atualiza grafico corpele
 
 function atualizaGraficoCorPele(padding,w,h){
-  opcao="CorPele";
+
 	//seleciona o ano e gera os circulos
 	d3.selectAll("#yearCorPele")
 	.on("click", function() {
@@ -114,7 +112,7 @@ function atualizaGraficoCorPele(padding,w,h){
 			}
 			else { //If no error, the file loaded correctly. Yay!
 				//console.log(data); //Log the data.
-	       refrescaGrafico(opcao,data, padding,w,h);
+	       refrescaGraficoCorPele(data, padding,w,h);
 				}//fecha else
 			});
 		});
