@@ -75,6 +75,7 @@ function atualizaGraficoEstado(padding,w,h){
 			}
 			else { //If no error, the file loaded correctly. Yay!
 				//console.log(data); //Log the data.
+        d3.select(".chartEstado").select(".axis").remove();
 	       refrescaGraficoEstado(data, padding,w,h);
 
 					}//fecha else
@@ -179,7 +180,7 @@ function defineEscalaY(data,padding,h){
 
 //constroi ambos os eixos
 function constroiEixosEstado(xScale,yScale,padding,h,w){
-  d3.select(".chartEstado").select(".axis").remove();
+
   constroiEixoXEstado(xScale,padding,h,w);
   constroiEixoYEstado(yScale,padding,h);
 }
