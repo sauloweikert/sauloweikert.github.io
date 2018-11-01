@@ -57,6 +57,7 @@ function montaGraficoCorPele(){
 //-----------------------------------------funcoes atualizacao grafico estado
 
 function atualizaGraficoEstado(padding,w,h){
+  opcao="Estado";
 	//seleciona o ano e gera os circulos
 	d3.selectAll("#yearEstado")
 	.on("click", function() {
@@ -67,12 +68,24 @@ function atualizaGraficoEstado(padding,w,h){
 			}
 			else { //If no error, the file loaded correctly. Yay!
 				//console.log(data); //Log the data.
-	       refrescaGraficoEstado(data, padding,w,h);
+	       refrescaGrafico(opcao,data, padding,w,h);
 
 					}//fecha else
 			});
 		});
 }
+
+function refrescaGrafico(opcao,data, padding,w,h){
+
+  if(opcao=="Estado"){
+    refrescaGraficoEstado(data, padding,w,h);
+
+  }else if(opcao=="CorPele"){
+    refrescaGraficoCorPele(data, padding,w,h);
+  }
+
+}
+
 
 function refrescaGraficoEstado(data, padding,w,h){
   dataset = data;
@@ -274,10 +287,6 @@ function constroiCirculosEstados(xScale,yScale,rScale){
 }
 
 
-function preencheCirculoEstado(d){
-  return d.regiao;
-}
-
 
 //desenha os circulos - grafico estados
 function desenhaCirculosEstado(xScale,yScale,rScale){
@@ -295,8 +304,9 @@ function desenhaCirculosEstado(xScale,yScale,rScale){
     .attr("r", function(d) {
       return rScale(d.total);
     })
-    .attr("fill", preencheCirculoEstado(d));
-}
+    .attr("fill", function(d) {
+      return d.regiao);
+    })
 
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
