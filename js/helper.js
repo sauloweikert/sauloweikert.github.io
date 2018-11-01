@@ -74,7 +74,7 @@ function atualizaGraficoEstado(padding,w,h){
 		});
 }
 
-function refrescaGraficoEstado(data, padding,w,h){
+function refrescaGrafico(data, padding,w,h){
   dataset = data;
   opcao = "Estado";
 
@@ -274,6 +274,11 @@ function constroiCirculosEstados(xScale,yScale,rScale){
 }
 
 
+function preencheCirculoEstado(d){
+  return d.regiao;
+}
+
+
 //desenha os circulos - grafico estados
 function desenhaCirculosEstado(xScale,yScale,rScale){
   d3.select(".chartEstado").selectAll("#circuloEstado")
@@ -290,9 +295,7 @@ function desenhaCirculosEstado(xScale,yScale,rScale){
     .attr("r", function(d) {
       return rScale(d.total);
     })
-    .attr("fill", function(d){
-      return d.regiao;
-    });
+    .attr("fill", preencheCirculoEstado(d));
 }
 
 
