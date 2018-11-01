@@ -282,6 +282,7 @@ function desenhaCirculosEstado(xScale,yScale,rScale){
     });
 }
 
+
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
 function rotulaCirculosEstado(xScale,yScale){
   d3.select(".chart").selectAll("#textoEstado")
