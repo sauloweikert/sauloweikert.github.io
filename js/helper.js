@@ -206,8 +206,8 @@ function defineEixoX(xScale){
 
 function desenhaEixoXEstado(xAxis,padding,h){
 
-  d3.select(".chartEstado").select(".axisX").remove()
-  .append("g")
+  d3.select(".chartEstado").select(".axisX").remove();
+  d3.select(".chartEstado").append("g")
   .attr("class", "axisX") //Assign "axis" class
   .attr("transform", "translate(0," + (h - padding) + ")")
   .call(xAxis);
