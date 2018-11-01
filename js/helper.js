@@ -53,7 +53,6 @@ function montaGraficoCorPele(){
   //padding
   var padding = 90;
 
-
   configuraGraficoCorPele(w,h);
 
   //reage ao clique em algum ano
