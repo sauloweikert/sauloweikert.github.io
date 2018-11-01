@@ -202,10 +202,11 @@ function defineEixoX(xScale){
   .orient("bottom");
   return xAxis;
 }
+//		d3.select(".chartEstado").selectAll(".axis").remove();
 
 function desenhaEixoXEstado(xAxis,padding,h){
 
-  d3.select(".chartEstado").append("g")
+  d3.select(".chartEstado")
   .attr("class", "axis") //Assign "axis" class
   .attr("transform", "translate(0," + (h - padding) + ")")
   .call(xAxis);
