@@ -7,6 +7,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type = "text/javascript" src="d3/d3.v3.min.js"></script>
     <script src="assets/js/helper.js" charset="utf-8"></script>
+
+    <!--manipula o estilo dos elementos dos graficos - SVG -->
+  	<style>
+    		.axis path,
+    		.axis line {
+    		fill: none;
+    		stroke: grey;
+    		shape-rendering: crispEdges;
+    		}
+    		.axis text {
+    		font-family: sans-serif;
+    		font-size: 11px;
+    		fill: olive;
+    		}
+
+    		circle {
+    			-moz-transition: all 0.3s;
+    			-o-transition: all 0.3s;
+    			-webkit-transition: all 0.3s;
+    			transition: all 0.3s;
+    		}
+    		circle:hover{
+    			fill:blue;
+    			stroke: blue;
+    			stroke-width: 5;
+    		}
+  	</style>
+
   </head>
   <body>
 
