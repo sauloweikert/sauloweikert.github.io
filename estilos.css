@@ -2,6 +2,10 @@ p{
   text-align: justify;
 }
 
+.painel-grafico{
+  overflow: scroll;
+}
+
 #paineis-sobre{
   margin-top:  20px;
 }
