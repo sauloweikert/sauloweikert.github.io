@@ -10,18 +10,22 @@
 
     <!--manipula o estilo dos elementos dos graficos - SVG -->
   	<style>
+        .svg-content-responsive {
+          display: inline-block;
+          top: 10px;
+          left: 0;
+        }
     		.axis path,
     		.axis line {
-    		fill: none;
-    		stroke: grey;
-    		shape-rendering: crispEdges;
+      		fill: none;
+      		stroke: grey;
+      		shape-rendering: crispEdges;
     		}
     		.axis text {
-    		font-family: sans-serif;
-    		font-size: 11px;
-    		fill: olive;
+      		font-family: sans-serif;
+      		font-size: 11px;
+      		fill: olive;
     		}
-
     		circle {
     			-moz-transition: all 0.3s;
     			-o-transition: all 0.3s;
@@ -150,7 +154,7 @@ Dessa forma, este trabalho tem como principal desafio o aprendizado das novas te
                   	<h3>Clique sobre um dos anos abaixo:</h3>
                   	<p id="yearEstado">2014</p>
                   	<p id="yearEstado">2016</p>
-                  	<svg class="chart chartEstado">
+                  	<svg class="chart chartEstado svg-content-responsive">
                   		<circle id= "circuloEstado" cx="50" cy="50" r="40" fill="#009999" />
                   		<circle id= "circuloEstado" cx="50" cy="50" r="40" fill="#009999" />
                   		<circle id= "circuloEstado" cx="50" cy="50" r="40" fill="#009999" />
