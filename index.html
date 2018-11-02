@@ -161,7 +161,7 @@ Dessa forma, este trabalho tem como principal desafio o aprendizado das novas te
                   	<h3>Clique sobre um dos anos abaixo:</h3>
                   	<p id="yearEstado">2014</p>
                   	<p id="yearEstado">2016</p>
-                  	<svg class="chartEstado svg-container svg-content-responsive">
+                  	<svg class="chartEstado">
                   		<circle id= "circuloEstado" cx="50" cy="50" r="40" fill="#009999" />
                   		<circle id= "circuloEstado" cx="50" cy="50" r="40" fill="#009999" />
                   		<circle id= "circuloEstado" cx="50" cy="50" r="40" fill="#009999" />
@@ -242,9 +242,40 @@ Dessa forma, este trabalho tem como principal desafio o aprendizado das novas te
               </div>
                 <div id="segundo-grafico" class="collapse">
                   <div class="panel-body">
-                    <p>
+                    <h2>Visualização 2: Distribuição do Perfil Social - por Cor de Pele</h2>
+                  	<h3>Clique sobre um dos anos abaixo:</h3>
+                  	<p id="yearCorPele">2014_</p>
+                  	<p id="yearCorPele">2018_</p>
 
-  </p>
+                  	<svg class="chart chartCorPele painel-grafico">
+                  		<circle id = "circuloCorPele" cx="50" cy="50" r="20" fill="#003366" />
+                  		<circle id = "circuloCorPele" cx="50" cy="50" r="20" fill="#003366" />
+                  		<circle id = "circuloCorPele" cx="50" cy="50" r="20" fill="#003366" />
+                  		<circle id = "circuloCorPele" cx="50" cy="50" r="20" fill="#003366" />
+                  		<circle id = "circuloCorPele" cx="50" cy="50" r="20" fill="#003366" />
+
+                  		<text id="textoCorPele"  x="50" y="50" fill="white"></text>
+                  		<text id="textoCorPele"  x="50" y="50" fill="white"></text>
+                  		<text id="textoCorPele"  x="50" y="50" fill="white"></text>
+                  		<text id="textoCorPele"  x="50" y="50" fill="white"></text>
+                  		<text id="textoCorPele"  x="50" y="50" fill="white"></text>
+
+                  	</svg>
+                  		<div class="legend">
+                  		Legenda:
+                  			<div class="square" id="amarela"></div>Amarela
+                  			<div class="square"id="branca"></div>Branca
+                  			<div class="square"id="indigena"></div>Indígena
+                  			<div class="square"id="parda"></div>Parda
+                  			<div class="square"id="negra"></div>Negra
+                  		</div>
+
+                  		<script type="text/javascript">
+                  		//definindo os dados
+                  		var dataset;
+                  		montaGraficoCorPele();
+
+                  		</script>
                   </div>
                 </div>
               </div>
