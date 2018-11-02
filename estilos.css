@@ -46,7 +46,7 @@ header {
     position: relative;
 
 }
-.topCasaFina-banner {
+.observatorioSocial-banner {
     color: #FFF;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 20 px;
@@ -74,12 +74,12 @@ header h1 {
     }
 }
 @media(min-width:992px) {
-    .topCasaFina-banner {
+    .observatorioSocial-banner {
     left: 0;
     transform: translate(0, -80%);
     width: 50%;
     }
-    .topCasaFina-bannerWrapper{
+    .observatorioSocial-bannerWrapper{
       position: relative;
       height: 100%;
     }
