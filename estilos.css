@@ -52,6 +52,7 @@ header {
     background-position:top center;
     height: 100%;
     position: relative;
+    background-repeat: no-repeat;
 
 }
 .observatorioSocial-banner {
