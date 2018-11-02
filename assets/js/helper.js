@@ -4,7 +4,7 @@ function configuraGraficoEstado(w,h){
 	//criando o elemento svg
 	d3.select(".chartEstado")
 		.attr("preserveAspectRatio", "xMinYMin meet")
-  	.attr("viewBox", "0 0 400 400")
+  	.attr("viewBox", "0 0 100 100")
 		.attr("font-family", "sans-serif")
 		.attr("font-size", "11px");
   return;
