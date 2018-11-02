@@ -3,7 +3,7 @@ function configuraGraficoEstado(w,h){
 
 	//criando o elemento svg
 	d3.select(".chartEstado")
-		.attr("width", "100%")
+		.attr("width", w)
 		.attr("height", h)
 		.attr("font-family", "sans-serif")
 		.attr("font-size", "11px");
