@@ -3,7 +3,7 @@ p{
 }
 
 .painel-grafico{
-  overflow: scroll;
+  overflow-x: auto;
 }
 
 #paineis-sobre{
