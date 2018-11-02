@@ -47,7 +47,7 @@ body {
 }
 
 header {
-  /*  background-image: url(img/tarsila.jpg);*/
+    background-image: url(img/tarsila.jpg);*/
     background-size: cover;
     background-position:top center;
     height: 100%;
