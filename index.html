@@ -10,6 +10,14 @@
 
     <!--manipula o estilo dos elementos dos graficos - SVG -->
   	<style>
+        .svg-container {
+          display: inline-block;
+          position: relative;
+          width: 100%;
+          padding-bottom: 100%; /* aspect ratio */
+          vertical-align: top;
+          overflow: hidden;
+        }
         .svg-content-responsive {
           display: inline-block;
           top: 10px;
@@ -154,7 +162,7 @@ Dessa forma, este trabalho tem como principal desafio o aprendizado das novas te
                   	<h3>Clique sobre um dos anos abaixo:</h3>
                   	<p id="yearEstado">2014</p>
                   	<p id="yearEstado">2016</p>
-                  	<svg class="chart chartEstado svg-content-responsive">
+                  	<svg class="chartEstado svg-container svg-content-responsive">
                   		<circle id= "circuloEstado" cx="50" cy="50" r="40" fill="#009999" />
                   		<circle id= "circuloEstado" cx="50" cy="50" r="40" fill="#009999" />
                   		<circle id= "circuloEstado" cx="50" cy="50" r="40" fill="#009999" />
