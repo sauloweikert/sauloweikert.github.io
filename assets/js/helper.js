@@ -29,6 +29,10 @@ function montaGraficoEstados(){
 
 	console.log("chamei montaGrficoEstados");
 
+	//cria o grafico dinamicamente
+	var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+	svg.setAttribute("class", "chartEstado");
+
   //largura e altura
   var w = 1500;
   var h = 400;
