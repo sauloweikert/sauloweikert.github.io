@@ -27,6 +27,8 @@ function configuraGraficoCorPele(w,h){
 
 function montaGraficoEstados(){
 
+	console.log("chamei montaGrficoEstados");
+
   //largura e altura
   var w = 1500;
   var h = 400;
@@ -45,6 +47,8 @@ function montaGraficoEstados(){
 //-----------------------------------------------------------------------------
 
 function montaGraficoCorPele(){
+
+	console.log("chamei monta...Pele");
 
   //largura e altura
   var w = 1500;
