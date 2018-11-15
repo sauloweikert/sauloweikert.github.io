@@ -24,25 +24,25 @@ function montaLegendaEstados(){
 
 	var innerDiv2 = document.createElement('div');
 	innerDiv2.className = 'square';
-	innerDiv2.id = 'sul';
+	innerDiv2.id = 'sudeste';
 	innerDiv2.innerHTML = "\t Sudeste";
 	divLegenda.appendChild(innerDiv2);
 
 	var innerDiv3 = document.createElement('div');
 	innerDiv3.className = 'square';
-	innerDiv3.id = 'sul';
+	innerDiv3.id = 'centroeste';
 	innerDiv3.innerHTML = "\t Centro-Oeste";
 	divLegenda.appendChild(innerDiv3);
 
 	var innerDiv4 = document.createElement('div');
 	innerDiv4.className = 'square';
-	innerDiv4.id = 'sul';
+	innerDiv4.id = 'nordeste';
 	innerDiv4.innerHTML = "\t Nordeste";
 	divLegenda.appendChild(innerDiv4);
 
 	var innerDiv5 = document.createElement('div');
 	innerDiv5.className = 'square';
-	innerDiv5.id = 'sul';
+	innerDiv5.id = 'norte';
 	innerDiv5.innerHTML = "\t Norte";
 	divLegenda.appendChild(innerDiv5);
 }
