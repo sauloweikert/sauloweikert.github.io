@@ -152,7 +152,7 @@ function rotulaCirculosEstadoOriginal(xScale,yScale){
     .attr("text-anchor", "middle")
     .attr("font-family", "sans-serif")
     .attr("font-size", "11px")
-    .attr("fill", "white");
+    .attr("fill", "white")
 		.attr("id", function(d) {
 			return "textoEstado";
 		});
