@@ -42,7 +42,7 @@ function montaGraficoEstados(){
 
 		//cria circulos dinamicamente
 		//var xmlns = d3.select(".chartEstado");
-		for (i = 0; i < 26; i++) {
+/*		for (i = 0; i < 26; i++) {
 			var elem = document.createElementNS(d3.select(".chartEstado"), "circle");
 				elem.setAttributeNS(null,"cx",50);
 				elem.setAttributeNS(null,"cy",50);
@@ -52,7 +52,7 @@ function montaGraficoEstados(){
 
 				document.documentElement.appendChild(elem);
 		}
-
+*/
 
 
   //reage ao clique em algum ano
@@ -371,8 +371,11 @@ function constroiCirculosEstados(xScale,yScale,rScale){
 
 //desenha os circulos - grafico estados
 function desenhaCirculosEstado(xScale,yScale,rScale){
-  d3.select(".chartEstado").selectAll("#circuloEstado")
+//  d3.select(".chartEstado").selectAll("#circuloEstado")
+	d3.select(".chartEstado").selectAll("#circle")
     .data(dataset)
+		.enter()
+		.append("circle")
     .transition()
     .duration(2000)
     //definindo propriedades dos circulos
