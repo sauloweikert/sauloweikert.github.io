@@ -2,6 +2,7 @@
 //funcao saida montaGraficoEstado
 function sairGraficoEstado(){
 	d3.select("svg").remove();
+	document.getElementById('legend').remove;
 	return;
 }
 
