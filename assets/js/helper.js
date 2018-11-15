@@ -372,7 +372,7 @@ function constroiCirculosEstados(xScale,yScale,rScale){
 //desenha os circulos - grafico estados
 function desenhaCirculosEstado(xScale,yScale,rScale){
 //  d3.select(".chartEstado").selectAll("#circuloEstado")
-	d3.select(".chartEstado").selectAll("#circle")
+	d3.select(".chartEstado").selectAll("circle")
     .data(dataset)
 		.enter()
 		.append("circle")
