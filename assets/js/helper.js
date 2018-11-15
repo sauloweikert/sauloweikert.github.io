@@ -48,6 +48,7 @@ function montaGraficoEstados(){
 				elem.setAttributeNS(null,"cy",50);
 				elem.setAttributeNS(null,"r",40);
 				elem.setAttributeNS(null,"fill", "#009999");
+				elem.setAttributeNS(null,"id","circuloEstado");
 
 				document.documentElement.appendChild(elem);
 		}
