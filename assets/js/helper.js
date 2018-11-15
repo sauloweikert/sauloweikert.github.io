@@ -12,6 +12,7 @@ function montaLegendaEstados(){
 	var divLegenda = document.createElement('div');
 	divLegenda.id = 'legend';
 //	iDiv.className = 'block';
+	divLegenda.innerHTML = "Legenda";
 	document.getElementsByClassName("painel-grafico")[0].appendChild(divLegenda);
 
 	// Now create and append to iDiv
