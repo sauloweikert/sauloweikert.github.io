@@ -465,14 +465,14 @@ function constroiEixoYCorPele(yScale,padding,h){
 function constroiCirculosEstados(xScale,yScale,rScale){
   desenhaCirculosEstado(xScale,yScale,rScale);
   rotulaCirculosEstado(xScale,yScale);
-//  dicaCirculosPorEstado();
+  dicaCirculosPorEstado();
 }
 
 
 //desenha os circulos - grafico estados
 function desenhaCirculosEstado(xScale,yScale,rScale){
 //  d3.select(".chartEstado").selectAll("#circuloEstado")
-	d3.select(".chartEstado").selectAll("circle")
+	d3.select(".chartEstado").selectAll("#circuloEstado")
     .data(dataset)
     .transition()
     .duration(2000)
@@ -488,13 +488,7 @@ function desenhaCirculosEstado(xScale,yScale,rScale){
     })
     .attr("fill", function(d) {
       return d.regiao;
-    })
-		.text(function(d) {
-			return "Estado:" +"\t"+"\t"+"\t" + d.nome + "\n"
-			+ "Total:" +"\t"+"\t"+"\t" + d.total + "\n"
-			+ "Feminino:" +"\t"+"\t"+d.fem + "\n"
-			+ "Curso sup.completo:" +"\t"+ d.csup;
-		});
+    });
 
 }
 
