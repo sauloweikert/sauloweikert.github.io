@@ -111,6 +111,8 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
     .data(dataset)
 		.enter()
 		.append("circle")
+		.append("title")
+
 		//define propiedades dos circulos
     .transition()
     .duration(2000)
@@ -165,8 +167,8 @@ function rotulaCirculosEstadoOriginal(xScale,yScale){
 function dicaCirculosPorEstadoOriginal(){
   d3.select(".chartEstado").selectAll("#circuloEstado")
     .data(dataset)
-		.enter()
-    .append("title")
+	//	.enter()
+//    .append("title")
       .text(function(d) {
         return "Estado:" +"\t"+"\t"+"\t" + d.nome + "\n"
         + "Total:" +"\t"+"\t"+"\t" + d.total + "\n"
