@@ -129,7 +129,7 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 		.attr("id", function(d) {
 			return "circuloEstado";
 		})
-		.append("title")
+		.append("svg:title")
 			.text(function(d) {
 				return "Estado:" +"\t"+"\t"+"\t" + d.nome + "\n"
 				+ "Total:" +"\t"+"\t"+"\t" + d.total + "\n"
