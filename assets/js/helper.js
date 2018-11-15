@@ -82,6 +82,37 @@ function montaGraficoCorPele(){
 }
 
 
+//-------------------------------------funcoes grafico estados original
+
+function montaGraficoEstadoOriginal(padding,w,h){
+
+		d3.json("dados/2014"+ ".json", function(error,data) {
+			if (error) { //If error is not null, something went wrong.
+				console.log(error); //Log the error.
+			}
+			else { //If no error, the file loaded correctly. Yay!
+				//console.log(data); //Log the data.
+
+	       refrescaGraficoEstado(data, padding,w,h);
+
+					}//fecha else
+			});
+		});
+}
+
+//funcao refreca grafico estados original
+function refrescaGraficoEstadoOriginal(data, padding,w,h){
+  dataset = data;
+
+  var rScale =defineEscalaRaioEstados(data);
+  var xScale =defineEscalaXEstados(data,padding,w);
+  var yScale =defineEscalaY(data,padding,h);
+
+  constroiEixosEstado(xScale,yScale,padding,h,w);
+
+  constroiCirculosEstadosOriginal(xScale,yScale,rScale);
+}
+
 
 //-----------------------------------------funcoes atualizacao grafico estado
 
@@ -369,7 +400,7 @@ function constroiCirculosEstadosOriginal(xScale,yScale,rScale){
 
 //constroi circulos - estados
 function constroiCirculosEstados(xScale,yScale,rScale){
-  desenhaCirculosEstadoOriginal(xScale,yScale,rScale);
+  desenhaCirculosEstado(xScale,yScale,rScale);
   rotulaCirculosEstado(xScale,yScale);
   dicaCirculosPorEstado();
 }
