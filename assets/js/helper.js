@@ -17,8 +17,9 @@ function montaLegendaEstados(){
 
 	// Now create and append to iDiv
 	var innerDiv = document.createElement('div');
+
 	innerDiv.id = 'square';
-	innerDiv.className = 'sul';
+	innerDiv.id = 'sul';
 	innerDiv.innerHTML = "Sul";
 
 	// The variable iDiv is still good... Just append to it.
