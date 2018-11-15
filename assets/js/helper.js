@@ -101,7 +101,7 @@ function refrescaGraficoEstadoOriginal(data, padding,w,h){
 function constroiCirculosEstadosOriginal(xScale,yScale,rScale){
   desenhaCirculosEstadoOriginal(xScale,yScale,rScale);
   rotulaCirculosEstadoOriginal(xScale,yScale);
-  dicaCirculosPorEstadoOriginal();
+//  dicaCirculosPorEstadoOriginal();
 }
 
 //desenha os circulos - grafico estados
@@ -128,7 +128,14 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
     })
 		.attr("id", function(d) {
 			return "circuloEstado";
-		});
+		})
+		.append("title")
+			.text(function(d) {
+				return "Estado:" +"\t"+"\t"+"\t" + d.nome + "\n"
+				+ "Total:" +"\t"+"\t"+"\t" + d.total + "\n"
+				+ "Feminino:" +"\t"+"\t"+d.fem + "\n"
+				+ "Curso sup.completo:" +"\t"+ d.csup;
+			});
 }
 
 
