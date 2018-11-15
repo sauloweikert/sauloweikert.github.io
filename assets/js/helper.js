@@ -111,6 +111,13 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
     .data(dataset)
 		.enter()
 		.append("circle")
+		.append("title")
+			.text(function(d) {
+				return "Estado:" +"\t"+"\t"+"\t" + d.nome + "\n"
+				+ "Total:" +"\t"+"\t"+"\t" + d.total + "\n"
+				+ "Feminino:" +"\t"+"\t"+d.fem + "\n"
+				+ "Curso sup.completo:" +"\t"+ d.csup;
+			})
     .transition()
     .duration(2000)
     //definindo propriedades dos circulos
@@ -128,14 +135,7 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
     })
 		.attr("id", function(d) {
 			return "circuloEstado";
-		})
-		.append("svg:title")
-			.text(function(d) {
-				return "Estado:" +"\t"+"\t"+"\t" + d.nome + "\n"
-				+ "Total:" +"\t"+"\t"+"\t" + d.total + "\n"
-				+ "Feminino:" +"\t"+"\t"+d.fem + "\n"
-				+ "Curso sup.completo:" +"\t"+ d.csup;
-			});
+		});
 }
 
 
