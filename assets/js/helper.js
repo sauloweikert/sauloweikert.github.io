@@ -20,7 +20,7 @@ function montaLegendaEstados(){
 
 	innerDiv.className = 'square';
 	innerDiv.id = 'sul';
-	innerDiv.innerHTML = "/t Sul";
+	innerDiv.innerHTML = "\t Sul";
 
 	// The variable iDiv is still good... Just append to it.
 	divLegenda.appendChild(innerDiv);
