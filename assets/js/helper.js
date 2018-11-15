@@ -165,7 +165,7 @@ function rotulaCirculosEstadoOriginal(xScale,yScale){
 function dicaCirculosPorEstadoOriginal(){
   d3.select(".chartEstado").selectAll("#circuloEstado")
     .data(dataset)
-	//	.enter()
+		.enter()
     .append("title")
       .text(function(d) {
         return "Estado:" +"\t"+"\t"+"\t" + d.nome + "\n"
