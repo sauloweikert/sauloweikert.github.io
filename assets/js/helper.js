@@ -1,9 +1,28 @@
+//------------------------------------------------------saida grafico estados
 //funcao saida montaGraficoEstado
 function sairGraficoEstado(){
 	d3.select("svg").remove();
 	return;
 }
 
+//---------------------------------------------------construcao grafico estados
+
+//funcao montagem legenda grafico estados
+function montaLegendaEstados(){
+	var divLegenda = document.createElement('div');
+	divLegenda.id = 'legend';
+//	iDiv.className = 'block';
+	document.getElementById('painel-grafico')[0].appendChild(divLegenda);
+
+	// Now create and append to iDiv
+	var innerDiv = document.createElement('div');
+	innerDiv.id = 'square';
+	innerDiv.className = 'sul';
+
+	// The variable iDiv is still good... Just append to it.
+	divLegenda.appendChild(innerDiv);
+}
+//--------------------------------------------------------------------------
 
 //funcao construcao inicial grafico
 function configuraGraficoEstado(w,h){
@@ -46,6 +65,8 @@ function montaGraficoEstados(){
 
   configuraGraficoEstado(w,h);
 	montaGraficoEstadoOriginal(padding,w,h);
+
+	montaLegendaEstados();
 
   //reage ao clique em algum ano
   atualizaGraficoEstado(padding,w,h);
