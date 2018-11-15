@@ -21,8 +21,26 @@ function montaLegendaEstados(){
 	innerDiv.className = 'square';
 	innerDiv.id = 'sul';
 	innerDiv.innerHTML = "\t Sul";
+	divLegenda.appendChild(innerDiv);
 
-	// The variable iDiv is still good... Just append to it.
+	innerDiv.className = 'square';
+	innerDiv.id = 'sul';
+	innerDiv.innerHTML = "\t Sudeste";
+	divLegenda.appendChild(innerDiv);
+
+	innerDiv.className = 'square';
+	innerDiv.id = 'sul';
+	innerDiv.innerHTML = "\t Centro-Oeste";
+	divLegenda.appendChild(innerDiv);
+
+	innerDiv.className = 'square';
+	innerDiv.id = 'sul';
+	innerDiv.innerHTML = "\t Nordeste";
+	divLegenda.appendChild(innerDiv);
+
+	innerDiv.className = 'square';
+	innerDiv.id = 'sul';
+	innerDiv.innerHTML = "\t Norte";
 	divLegenda.appendChild(innerDiv);
 }
 //--------------------------------------------------------------------------
