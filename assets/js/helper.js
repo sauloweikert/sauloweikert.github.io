@@ -113,7 +113,7 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 		.append("text")
 		.text(function(d) {
       return d.estado;
-    })
+    })/*
 		//adiciona label aos circulos
 		.append("title")
 			.text(function(d) {
@@ -122,7 +122,7 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 				+ "Feminino:" +"\t"+"\t"+d.fem + "\n"
 				+ "Curso sup.completo:" +"\t"+ d.csup;
 			})
-
+*/
 		//define propiedades dos circulos
     .transition()
     .duration(2000)
