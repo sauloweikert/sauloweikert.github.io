@@ -357,8 +357,15 @@ function constroiEixoYCorPele(yScale,padding,h){
 
 
 //----------------------------------------------------------------------------
-//funcoes contrucao circulos - grafico estados
+//funcoes contrucao circulos - grafico estados - construcao original
 
+
+//constroi circulos - estados
+function constroiCirculosEstadosOriginal(xScale,yScale,rScale){
+  desenhaCirculosEstadoOriginal(xScale,yScale,rScale);
+  rotulaCirculosEstado(xScale,yScale);
+  dicaCirculosPorEstado();
+}
 
 //constroi circulos - estados
 function constroiCirculosEstados(xScale,yScale,rScale){
@@ -392,7 +399,7 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
       return d.regiao;
     })
 		.attr("id", function(d) {
-			return "#circuloEstado";
+			return "circuloEstado";
 		});
 }
 
@@ -401,8 +408,6 @@ function desenhaCirculosEstado(xScale,yScale,rScale){
 //  d3.select(".chartEstado").selectAll("#circuloEstado")
 	d3.select(".chartEstado").selectAll("circle")
     .data(dataset)
-		.enter()
-		.append("circle")
     .transition()
     .duration(2000)
     //definindo propriedades dos circulos
