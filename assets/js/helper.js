@@ -42,16 +42,16 @@ function montaGraficoEstados(){
 
 		//cria circulos dinamicamente
 		//var xmlns = d3.select(".chartEstado");
-/*		for (i = 0; i < 26; i++) {
-			var elem = document.createElementNS(d3.select(".chartEstado"), "circle");
-				elem.setAttributeNS(null,"cx",50);
-				elem.setAttributeNS(null,"cy",50);
-				elem.setAttributeNS(null,"r",40);
-				elem.setAttributeNS(null,"fill", "#009999");
-				elem.setAttributeNS(null,"id","circuloEstado");
+/*//		for (i = 0; i < 26; i++) {
+	//		var elem = document.createElementNS(d3.select(".chartEstado"), "circle");
+	//			elem.setAttributeNS(null,"cx",50);
+	//			elem.setAttributeNS(null,"cy",50);
+	//			elem.setAttributeNS(null,"r",40);
+	//			elem.setAttributeNS(null,"fill", "#009999");
+	//			elem.setAttributeNS(null,"id","circuloEstado");
 
-				document.documentElement.appendChild(elem);
-		}
+//				document.documentElement.appendChild(elem);
+//		}
 */
 
 
