@@ -1,3 +1,4 @@
+
 //------------------------------------------------------saida grafico estados
 //funcao saida montaGraficoEstado
 function sairGraficoEstado(){
@@ -8,6 +9,17 @@ function sairGraficoEstado(){
 	var element = document.getElementById("legend");
 	element.parentNode.removeChild(element);
 	return;
+}
+
+//botao saida grafico Estados
+function criaBotaoSairGraficoEstados(){
+	var element = document.createElement("input");
+	//Assign different attributes to the element.
+	element.type = "button";
+	element.value = "botao sair grafico estados"; // Really? You want the default value to be the type string?
+	element.onclick = function() { // Note this is a function
+		sairGraficoEstado();
+	};
 }
 
 //---------------------------------------------------construcao grafico estados
@@ -96,6 +108,8 @@ function montaGraficoEstados(){
 	montaGraficoEstadoOriginal(padding,w,h);
 
 	montaLegendaEstados();
+
+	criaBotaoSairGraficoEstados();
 
   //reage ao clique em algum ano
   atualizaGraficoEstado(padding,w,h);
