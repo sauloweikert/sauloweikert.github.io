@@ -362,12 +362,39 @@ function constroiEixoYCorPele(yScale,padding,h){
 
 //constroi circulos - estados
 function constroiCirculosEstados(xScale,yScale,rScale){
-  desenhaCirculosEstado(xScale,yScale,rScale);
+  desenhaCirculosEstadoOriginal(xScale,yScale,rScale);
   rotulaCirculosEstado(xScale,yScale);
   dicaCirculosPorEstado();
 }
 
 
+
+//desenha os circulos - grafico estados
+function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
+//  d3.select(".chartEstado").selectAll("#circuloEstado")
+	d3.select(".chartEstado").selectAll("#circuloEstado")
+    .data(dataset)
+		.enter()
+		.append("circle")
+    .transition()
+    .duration(2000)
+    //definindo propriedades dos circulos
+    .attr("cx", function(d) {
+      return xScale((d.fem)/(d.total));
+    })
+    .attr("cy", function(d) {
+      return yScale((d.csup)/(d.total));
+    })
+    .attr("r", function(d) {
+      return rScale(d.total);
+    })
+    .attr("fill", function(d) {
+      return d.regiao;
+    })
+		.attr("id", function(d) {
+			return "#circuloEstado";
+		});
+}
 
 //desenha os circulos - grafico estados
 function desenhaCirculosEstado(xScale,yScale,rScale){
