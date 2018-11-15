@@ -40,21 +40,6 @@ function montaGraficoEstados(){
   configuraGraficoEstado(w,h);
 	montaGraficoEstadoOriginal(padding,w,h);
 
-		//cria circulos dinamicamente
-		//var xmlns = d3.select(".chartEstado");
-/*//		for (i = 0; i < 26; i++) {
-	//		var elem = document.createElementNS(d3.select(".chartEstado"), "circle");
-	//			elem.setAttributeNS(null,"cx",50);
-	//			elem.setAttributeNS(null,"cy",50);
-	//			elem.setAttributeNS(null,"r",40);
-	//			elem.setAttributeNS(null,"fill", "#009999");
-	//			elem.setAttributeNS(null,"id","circuloEstado");
-
-//				document.documentElement.appendChild(elem);
-//		}
-*/
-
-
   //reage ao clique em algum ano
   atualizaGraficoEstado(padding,w,h);
 
@@ -110,6 +95,67 @@ function refrescaGraficoEstadoOriginal(data, padding,w,h){
   constroiEixosEstado(xScale,yScale,padding,h,w);
 
   constroiCirculosEstadosOriginal(xScale,yScale,rScale);
+}
+
+//constroi circulos - estados
+function constroiCirculosEstadosOriginal(xScale,yScale,rScale){
+  desenhaCirculosEstadoOriginal(xScale,yScale,rScale);
+  rotulaCirculosEstado(xScale,yScale);
+  dicaCirculosPorEstado();
+}
+
+//desenha os circulos - grafico estados
+function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
+//  d3.select(".chartEstado").selectAll("#circuloEstado")
+	d3.select(".chartEstado").selectAll("#circuloEstado")
+    .data(dataset)
+		.enter()
+		.append("circle")
+    .transition()
+    .duration(2000)
+    //definindo propriedades dos circulos
+    .attr("cx", function(d) {
+      return xScale((d.fem)/(d.total));
+    })
+    .attr("cy", function(d) {
+      return yScale((d.csup)/(d.total));
+    })
+    .attr("r", function(d) {
+      return rScale(d.total);
+    })
+    .attr("fill", function(d) {
+      return d.regiao;
+    })
+		.attr("id", function(d) {
+			return "circuloEstado";
+		});
+}
+
+
+//adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
+function rotulaCirculosEstadoOriginal(xScale,yScale){
+  d3.select(".chartEstado").selectAll("#textoEstado")
+    .data(dataset)
+		.enter()
+		.append("text")
+    .transition()
+    .duration(2000)
+    .text(function(d) {
+      return d.estado;
+    })
+    .attr("x", function(d) {
+      return xScale((d.fem)/(d.total))
+    })
+    .attr("y", function(d) {
+      return yScale((d.csup)/(d.total));
+    })
+    .attr("text-anchor", "middle")
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "11px")
+    .attr("fill", "white");
+		.attr("id", function(d) {
+			return "textoEstado";
+		});
 }
 
 
@@ -387,15 +433,7 @@ function constroiEixoYCorPele(yScale,padding,h){
 
 
 //----------------------------------------------------------------------------
-//funcoes contrucao circulos - grafico estados - construcao original
-
-
-//constroi circulos - estados
-function constroiCirculosEstadosOriginal(xScale,yScale,rScale){
-  desenhaCirculosEstadoOriginal(xScale,yScale,rScale);
-  rotulaCirculosEstado(xScale,yScale);
-  dicaCirculosPorEstado();
-}
+//funcoes contrucao circulos - grafico estados -
 
 //constroi circulos - estados
 function constroiCirculosEstados(xScale,yScale,rScale){
@@ -404,34 +442,6 @@ function constroiCirculosEstados(xScale,yScale,rScale){
   dicaCirculosPorEstado();
 }
 
-
-
-//desenha os circulos - grafico estados
-function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
-//  d3.select(".chartEstado").selectAll("#circuloEstado")
-	d3.select(".chartEstado").selectAll("#circuloEstado")
-    .data(dataset)
-		.enter()
-		.append("circle")
-    .transition()
-    .duration(2000)
-    //definindo propriedades dos circulos
-    .attr("cx", function(d) {
-      return xScale((d.fem)/(d.total));
-    })
-    .attr("cy", function(d) {
-      return yScale((d.csup)/(d.total));
-    })
-    .attr("r", function(d) {
-      return rScale(d.total);
-    })
-    .attr("fill", function(d) {
-      return d.regiao;
-    })
-		.attr("id", function(d) {
-			return "circuloEstado";
-		});
-}
 
 //desenha os circulos - grafico estados
 function desenhaCirculosEstado(xScale,yScale,rScale){
@@ -475,8 +485,6 @@ function rotulaCirculosEstado(xScale,yScale){
     .attr("font-size", "11px")
     .attr("fill", "white");
 }
-
-
 
 //adiciona uma dica "tooltip" para cada circulo, visivel ao sobrepor o mouse
 //a ser usado para grafico Estados
