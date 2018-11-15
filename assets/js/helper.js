@@ -8,7 +8,6 @@ function sairGraficoEstado(){
 	//remove legenda
 	var element = document.getElementById("legend");
 	element.parentNode.removeChild(element);
-	return;
 
 	//remove botao Sair
 	var element = document.getElementById("botao-sair");
