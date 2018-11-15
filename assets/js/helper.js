@@ -9,6 +9,13 @@ function sairGraficoEstado(){
 	var element = document.getElementById("legend");
 	element.parentNode.removeChild(element);
 	return;
+
+	//remove botao Sair
+	var element = document.getElementById("botao-sair");
+	element.parentNode.removeChild(element);
+	return;
+
+
 }
 
 //botao saida grafico Estados
@@ -16,7 +23,8 @@ function criaBotaoSairGraficoEstados(){
 	var element = document.createElement("input");
 	//Assign different attributes to the element.
 	element.type = "button";
-	element.value = "botao sair grafico estados"; // Really? You want the default value to be the type string?
+	element.value = "Sair";
+	element.id='botao-sair';
 	element.onclick = function() { // Note this is a function
 		sairGraficoEstado();
 	};
