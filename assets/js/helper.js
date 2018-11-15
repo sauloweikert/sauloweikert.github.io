@@ -1,3 +1,10 @@
+//funcao saida montaGraficoEstado
+function sairGraficoEstado(){
+	d3.select("svg").remove();
+	return;
+}
+
+
 //funcao construcao inicial grafico
 function configuraGraficoEstado(w,h){
 
