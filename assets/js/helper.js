@@ -1,11 +1,11 @@
 //------------------------------------------------------saida grafico estados
 //funcao saida montaGraficoEstado
 function sairGraficoEstado(){
-	
+
 	d3.select("svg").remove();
 
 	//remove legenda
-	var element = document.getElementById(legend);
+	var element = document.getElementById("legend");
 	element.parentNode.removeChild(element);
 	return;
 }
