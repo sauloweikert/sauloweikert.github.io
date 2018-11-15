@@ -29,10 +29,6 @@ function montaGraficoEstados(){
 
 	console.log("chamei montaGrficoEstados");
 
-	//cria o grafico dinamicamente
-	var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-	svg.setAttribute("class", "chartEstado");
-
   //largura e altura
   var w = 1500;
   var h = 400;
@@ -40,7 +36,23 @@ function montaGraficoEstados(){
   //padding
   var padding = 90;
 
+
   configuraGraficoEstado(w,h);
+
+
+		//cria circulos dinamicamente
+		var xmlns = d3.select(".chartEstado");
+		for (i = 0; i < 26; i++) {
+			var elem = document.createElementNS(xmlns, "circle");
+				elem.setAttributeNS(null,"cx",50);
+				elem.setAttributeNS(null,"cy",50);
+				elem.setAttributeNS(null,"r",40);
+				elem.setAttributeNS(null,"fill", "#009999");
+
+				document.documentElement.appendChild(elem);
+		}
+
+
 
   //reage ao clique em algum ano
   atualizaGraficoEstado(padding,w,h);
