@@ -110,9 +110,9 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
     .data(dataset)
 		.enter()
 		.append("circle")
-
-		//adiciona label aos circulos
 		.append("title")
+		//adiciona uma dica "tooltip" para cada circulo, visivel ao sobrepor o mouse
+		//a ser usado para grafico Estados
 			.text(function(d) {
 				return "Estado:" +"\t"+"\t"+"\t" + d.nome + "\n"
 				+ "Total:" +"\t"+"\t"+"\t" + d.total + "\n"
@@ -170,6 +170,7 @@ function rotulaCirculosEstadoOriginal(xScale,yScale){
 
 //adiciona uma dica "tooltip" para cada circulo, visivel ao sobrepor o mouse
 //a ser usado para grafico Estados
+/*
 function dicaCirculosPorEstadoOriginal(){
   d3.select(".chartEstado").selectAll("#circuloEstado")
     .data(dataset)
@@ -183,7 +184,7 @@ function dicaCirculosPorEstadoOriginal(){
       });
     return;
 }
-
+*/
 //-----------------------------------------funcoes atualizacao grafico estado
 
 function atualizaGraficoEstado(padding,w,h){
@@ -464,7 +465,7 @@ function constroiEixoYCorPele(yScale,padding,h){
 function constroiCirculosEstados(xScale,yScale,rScale){
   desenhaCirculosEstado(xScale,yScale,rScale);
   rotulaCirculosEstado(xScale,yScale);
-  dicaCirculosPorEstado();
+//  dicaCirculosPorEstado();
 }
 
 
@@ -487,7 +488,14 @@ function desenhaCirculosEstado(xScale,yScale,rScale){
     })
     .attr("fill", function(d) {
       return d.regiao;
-    });
+    })
+		.text(function(d) {
+			return "Estado:" +"\t"+"\t"+"\t" + d.nome + "\n"
+			+ "Total:" +"\t"+"\t"+"\t" + d.total + "\n"
+			+ "Feminino:" +"\t"+"\t"+d.fem + "\n"
+			+ "Curso sup.completo:" +"\t"+ d.csup;
+		});
+
 }
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
