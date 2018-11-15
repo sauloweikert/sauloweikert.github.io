@@ -20,6 +20,7 @@ function criaBotaoSairGraficoEstados(){
 	element.onclick = function() { // Note this is a function
 		sairGraficoEstado();
 	};
+	document.getElementsByClassName("painel-grafico")[0].appendChild(element);
 }
 
 //---------------------------------------------------construcao grafico estados
