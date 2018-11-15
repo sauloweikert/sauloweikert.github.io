@@ -50,7 +50,7 @@ function montaGraficoEstados(){
 				elem.setAttributeNS(null,"fill", "#009999");
 				elem.setAttributeNS(null,"id","circuloEstado");
 
-				document.documentElement.appendChild(elem);
+				d3.select(".chartEstado").appendChild(elem);
 		}
 
 
