@@ -41,9 +41,9 @@ function montaGraficoEstados(){
 
 
 		//cria circulos dinamicamente
-		var xmlns = d3.select(".chartEstado");
+		//var xmlns = d3.select(".chartEstado");
 		for (i = 0; i < 26; i++) {
-			var elem = document.createElementNS(xmlns, "circle");
+			var elem = document.createElementNS(d3.select(".chartEstado"), "circle");
 				elem.setAttributeNS(null,"cx",50);
 				elem.setAttributeNS(null,"cy",50);
 				elem.setAttributeNS(null,"r",40);
