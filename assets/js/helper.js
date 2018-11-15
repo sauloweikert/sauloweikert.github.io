@@ -100,8 +100,7 @@ function refrescaGraficoEstadoOriginal(data, padding,w,h){
 //constroi circulos - estados
 function constroiCirculosEstadosOriginal(xScale,yScale,rScale){
   desenhaCirculosEstadoOriginal(xScale,yScale,rScale);
-  rotulaCirculosEstadoOriginal(xScale,yScale);
-//  dicaCirculosPorEstadoOriginal();
+//  rotulaCirculosEstadoOriginal(xScale,yScale);
 }
 
 //desenha os circulos - grafico estados
@@ -111,6 +110,11 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
     .data(dataset)
 		.enter()
 		.append("circle")
+		.append("text")
+		.text(function(d) {
+      return d.estado;
+    })
+		//adiciona label aos circulos
 		.append("title")
 			.text(function(d) {
 				return "Estado:" +"\t"+"\t"+"\t" + d.nome + "\n"
@@ -118,6 +122,8 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 				+ "Feminino:" +"\t"+"\t"+d.fem + "\n"
 				+ "Curso sup.completo:" +"\t"+ d.csup;
 			})
+
+		//define propiedades dos circulos
     .transition()
     .duration(2000)
     //definindo propriedades dos circulos
