@@ -99,9 +99,8 @@ function refrescaGraficoEstadoOriginal(data, padding,w,h){
 
 //constroi circulos - estados
 function constroiCirculosEstadosOriginal(xScale,yScale,rScale){
-//  desenhaCirculosEstadoOriginal(xScale,yScale,rScale);
-
-//  rotulaCirculosEstadoOriginal(xScale,yScale);
+  desenhaCirculosEstadoOriginal(xScale,yScale,rScale);
+  rotulaCirculosEstadoOriginal(xScale,yScale);
 }
 
 //desenha os circulos - grafico estados
