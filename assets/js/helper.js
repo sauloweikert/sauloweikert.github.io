@@ -95,8 +95,7 @@ function montaGraficoEstadoOriginal(padding,w,h){
 
 	       refrescaGraficoEstado(data, padding,w,h);
 
-					}//fecha else
-			});
+			}//fecha else
 		});
 }
 
