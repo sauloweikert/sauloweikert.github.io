@@ -100,7 +100,7 @@ function refrescaGraficoEstadoOriginal(data, padding,w,h){
 //constroi circulos - estados
 function constroiCirculosEstadosOriginal(xScale,yScale,rScale){
   desenhaCirculosEstadoOriginal(xScale,yScale,rScale);
-  rotulaCirculosEstado(xScale,yScale);
+  rotulaCirculosEstadoOriginal(xScale,yScale);
   dicaCirculosPorEstado();
 }
 
