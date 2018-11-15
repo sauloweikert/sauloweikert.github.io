@@ -110,8 +110,8 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 	d3.select(".chartEstado").selectAll("#circuloEstado")
     .data(dataset)
 		.enter()
-		.append("circle")
 		.append("title")
+		.append("circle")
 
 		//define propiedades dos circulos
     .transition()
