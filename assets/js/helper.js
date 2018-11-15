@@ -38,7 +38,7 @@ function montaGraficoEstados(){
 
 
   configuraGraficoEstado(w,h);
-	montaGraficoEstadoOriginal(padding,w,h)
+	montaGraficoEstadoOriginal(padding,w,h);
 
 		//cria circulos dinamicamente
 		//var xmlns = d3.select(".chartEstado");
