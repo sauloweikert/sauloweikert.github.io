@@ -15,9 +15,8 @@ function sairGraficoEstado(){
 
 	//reabilita o botao visualizar
 	document.getElementById("botao-visualizar").disabled = false;
+
 	return;
-
-
 }
 
 //botao saida grafico Estados
@@ -105,7 +104,7 @@ function configuraGraficoCorPele(w,h){
 
 function montaGraficoEstados(){
 
-	console.log("chamei montaGrficoEstados");
+	console.log("chamei montaGraficoEstados");
 
 	//desabilitar botao visualizar enquanto durante a visualização corrente
 	document.getElementById("botao-visualizar").disabled = true;
