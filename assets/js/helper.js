@@ -14,7 +14,7 @@ function sairGraficoEstado(){
 	element.parentNode.removeChild(element);
 
 	//reabilita o botao visualizar
-	document.getElementById("botao-visualizar").disabled = false;
+	document.getElementById("botao-visualizar-primeiro").disabled = false;
 
 	return;
 }
@@ -96,7 +96,7 @@ function montaGraficoEstados(){
 
 
 	//desabilitar botao visualizar enquanto durante a visualização corrente
-	document.getElementById("botao-visualizar").disabled = true;
+	document.getElementById("botao-visualizar-primeiro").disabled = true;
 
   //largura e altura
   var w = 1500;
@@ -498,7 +498,7 @@ function sairGraficoPele(){
 	element.parentNode.removeChild(element);
 
 	//reabilita o botao visualizar
-	document.getElementById("botao-visualizar").disabled = false;
+	document.getElementById("botao-visualizar-segundo").disabled = false;
 
 	return;
 }
@@ -578,7 +578,7 @@ function montaGraficoCorPele(){
 
 
 	//desabilitar botao visualizar enquanto durante a visualização corrente
-	document.getElementById("botao-visualizar").disabled = true;
+	document.getElementById("botao-visualizar-segundo").disabled = true;
 
   //largura e altura
   var w = 1500;
