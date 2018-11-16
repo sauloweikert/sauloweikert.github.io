@@ -104,6 +104,9 @@ function montaGraficoEstados(){
 
 	console.log("chamei montaGrficoEstados");
 
+	//desabilitar botao visualizar enquanto durante a visualização corrente
+	document.getElementById("botao-visualizar").disabled = true;
+
   //largura e altura
   var w = 1500;
   var h = 400;
@@ -112,7 +115,7 @@ function montaGraficoEstados(){
   var padding = 90;
 
 	var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-	
+
 	element.setAttribute("class", "chartEstado");
 	document.getElementsByClassName("painel-grafico")[0].appendChild(element);
 
