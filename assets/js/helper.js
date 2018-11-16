@@ -586,7 +586,6 @@ function configuraGraficoCorPele(w,h){
 
 function montaGraficoCorPele(){
 
-
 	//desabilitar botao visualizar enquanto durante a visualização corrente
 	document.getElementById("botao-visualizar-segundo").disabled = true;
 
@@ -604,6 +603,9 @@ function montaGraficoCorPele(){
 
   configuraGraficoCorPele(w,h);
   montaGraficoCorPeleOriginal(padding,w,h);
+
+	montaLegendaPele();
+	criaBotaoSairGraficoPele();
 
   //reage ao clique em algum ano
   atualizaGraficoCorPele(padding,w,h);
