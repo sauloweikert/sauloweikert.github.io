@@ -478,3 +478,440 @@ function dicaCirculosPorEstado(){
       });
     return;
 }
+
+//------------------------------------------------------------
+//---------------------------FUNCOES GRAFICO COR PELE---------
+
+
+//------------------------------------------------------saida grafico estados
+//funcao saida montaGraficoEstado
+function sairGraficoPele(){
+
+	d3.select("svg").remove();
+
+	//remove legenda
+	var element = document.getElementById("legend");
+	element.parentNode.removeChild(element);
+
+	//remove botao Sair
+	var element = document.getElementById("botao-sair");
+	element.parentNode.removeChild(element);
+
+	//reabilita o botao visualizar
+	document.getElementById("botao-visualizar").disabled = false;
+
+	return;
+}
+
+//botao saida grafico Estados
+function criaBotaoSairGraficoPele(){
+	var element = document.createElement("input");
+	//Assign different attributes to the element.
+	element.type = "button";
+	element.value = "Sair";
+	element.id='botao-sair';
+	element.onclick = function() { // Note this is a function
+		sairGraficoPele();
+	};
+	document.getElementsByClassName("painel-grafico-segundo")[0].appendChild(element);
+}
+
+//---------------------------------------------------construcao grafico estados
+
+//funcao montagem legenda grafico estados
+function montaLegendaPele(){
+	var divLegenda = document.createElement('div');
+	divLegenda.id = 'legend';
+//	iDiv.className = 'block';
+	divLegenda.innerHTML = "Legenda";
+	document.getElementsByClassName("painel-grafico-segundo")[0].appendChild(divLegenda);
+
+	// Now create and append to iDiv
+	var innerDiv = document.createElement('div');
+	innerDiv.className = 'square';
+	innerDiv.id = 'negra';
+	innerDiv.innerHTML = "\t Negra";
+	divLegenda.appendChild(innerDiv);
+
+	var innerDiv2 = document.createElement('div');
+	innerDiv2.className = 'square';
+	innerDiv2.id = 'parda';
+	innerDiv2.innerHTML = "\t Parda";
+	divLegenda.appendChild(innerDiv2);
+
+	var innerDiv3 = document.createElement('div');
+	innerDiv3.className = 'square';
+	innerDiv3.id = 'branca';
+	innerDiv3.innerHTML = "\t Branca";
+	divLegenda.appendChild(innerDiv3);
+
+	var innerDiv4 = document.createElement('div');
+	innerDiv4.className = 'square';
+	innerDiv4.id = 'amarela';
+	innerDiv4.innerHTML = "\t Amarela";
+	divLegenda.appendChild(innerDiv4);
+
+	var innerDiv5 = document.createElement('div');
+	innerDiv5.className = 'square';
+	innerDiv5.id = 'indigena';
+	innerDiv5.innerHTML = "\t Indígena";
+	divLegenda.appendChild(innerDiv5);
+}
+//--------------------------------------------------------------------------
+
+
+//funcao construcao inicial grafico
+function configuraGraficoCorPele(w,h){
+
+	//criando o elemento svg
+	d3.select(".chartCorPele")
+		.attr("width", w)
+		.attr("height", h)
+		.attr("font-family", "sans-serif")
+		.attr("font-size", "11px");
+  return;
+}
+//------------------------------------------------------------------------------
+
+
+function montaGraficoCorPele(){
+
+
+	//desabilitar botao visualizar enquanto durante a visualização corrente
+	document.getElementById("botao-visualizar").disabled = true;
+
+  //largura e altura
+  var w = 1500;
+  var h = 400;
+
+  //padding
+  var padding = 90;
+
+  var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+
+	element.setAttribute("class", "chartCorPele");
+	document.getElementsByClassName("painel-grafico-segundo")[0].appendChild(element);
+
+  configuraGraficoCorPele(w,h);
+  montaGraficoCorPeleOriginal(padding,w,h);
+
+  //reage ao clique em algum ano
+  atualizaGraficoCorPele(padding,w,h);
+
+}
+
+
+//-------------------------------------funcoes grafico estados original
+
+function montaGraficoCorPeleOriginal(padding,w,h){
+
+		d3.json("dados/2014_"+ ".json", function(error,data) {
+			if (error) { //If error is not null, something went wrong.
+				console.log(error); //Log the error.
+			}
+			else { //If no error, the file loaded correctly. Yay!
+				//console.log(data); //Log the data.
+
+	       refrescaGraficoCorPeleOriginal(data, padding,w,h);
+
+			}//fecha else
+		});
+}
+
+//funcao refreca grafico estados original
+function refrescaGraficoCorPeleOriginal(data, padding,w,h){
+  dataset = data;
+
+  var rScale =defineEscalaRaioCorPele(data);
+  var xScale =defineEscalaXCorPele(data,padding,w);
+  var yScale =defineEscalaY(data,padding,h);
+
+  constroiEixosCorPele(xScale,yScale,padding,h,w);
+
+  constroiCirculosCorPeleOriginal(xScale,yScale,rScale);
+}
+
+//constroi circulos - estados
+function constroiCirculosCorPeleOriginal(xScale,yScale,rScale){
+  desenhaCirculosCorPeleOriginal(xScale,yScale,rScale);
+  rotulaCirculosCorPeleOriginal(xScale,yScale);
+	dicaCirculosPorCorPeleOriginal();
+}
+
+
+//desenha os circulos - grafico estados
+function desenhaCirculosCorPeleOriginal(xScale,yScale,rScale){
+//  d3.select(".chartEstado").selectAll("#circuloEstado")
+	d3.select(".chartCorPele").selectAll("#circuloCorPele")
+    .data(dataset)
+		.enter()
+		.append("circle")
+
+		//define propiedades dos circulos
+    .transition()
+    .duration(2000)
+    //definindo propriedades dos circulos
+    .attr("cx", function(d) {
+      return xScale((d.fem)/(d.total));
+    })
+    .attr("cy", function(d) {
+      return yScale((d.csup)/(d.total));
+    })
+    .attr("r", function(d) {
+      return rScale(d.totalGrupo);
+    })
+    .attr("fill", function(d) {
+      return d.corCirculo;
+    })
+		.attr("id", function(d) {
+			return "circuloCorPele";
+		});
+}
+
+//adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
+function rotulaCirculosCorPeleOriginal(xScale,yScale){
+  d3.select(".chartCorPele").selectAll("#textoCorPele")
+    .data(dataset)
+		.enter()
+		.append("text")
+    .transition()
+    .duration(2000)
+    .text(function(d) {
+      return d.nome;
+    })
+    .attr("x", function(d) {
+      return xScale((d.fem)/(d.total))
+    })
+    .attr("y", function(d) {
+      return yScale((d.csup)/(d.total));
+    })
+    .attr("text-anchor", "middle")
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "11px")
+    .attr("fill", "white")
+		.attr("id", function(d) {
+			return "textoCorPele";
+		});
+}
+
+//adiciona uma dica "tooltip" para cada circulo, visivel ao sobrepor o mouse
+//a ser usado para grafico Pele
+
+function dicaCirculosPorCorPeleOriginal(){
+  d3.select(".chartCorPele").selectAll("#circuloCorPele")
+    .data(dataset)
+		.enter()
+    .append("title")
+      .text(function(d) {
+        return "Cor:" +"\t"+"\t"+"\t" + d.cor + "\n"
+        + "Total do grupo:" +"\t"+"\t"+"\t" + d.totalGrupo + "\n"
+        + "Feminino:" +"\t"+"\t"+d.fem + "\n"
+        + "Curso sup.completo:" +"\t"+ d.csup;
+      });
+    return;
+}
+
+//-----------------------------------------funcoes atualizacao grafico estado
+
+function atualizaGraficoCorPele(padding,w,h){
+
+	//seleciona o ano e gera os circulos
+	d3.selectAll("#yearCorPele")
+	.on("click", function() {
+    d3.select(".chartCorPele").selectAll(".axis").remove();
+		d3.json("dados/" + $(this).html() + ".json", function(error,data) {
+			if (error) { //If error is not null, something went wrong.
+				console.log(error); //Log the error.
+			}
+			else { //If no error, the file loaded correctly. Yay!
+				//console.log(data); //Log the data.
+
+	       refrescaGraficoCorPele(data, padding,w,h);
+
+					}//fecha else
+			});
+		});
+}
+
+
+function refrescaGraficoCorPele(data, padding,w,h){
+  dataset = data;
+
+  var rScale =defineEscalaRaioCorPele(data);
+  var xScale =defineEscalaXCorPele(data,padding,w);
+  var yScale =defineEscalaY(data,padding,h);
+
+  constroiEixosCorPele(xScale,yScale,padding,h,w);
+
+  constroiCirculosCorPele(xScale,yScale,rScale);
+}
+
+//----------------------------------------------funcoes atualiza grafico corpele
+
+//---------------------------------------------------------------------------
+//funcoes escalas
+
+
+//define escala do raio
+function defineEscalaRaioCorPele(data){
+
+	var rScale = d3.scale.linear()
+  .domain([d3.min(data, function(d) { return d.totalGrupo; }),
+            d3.max(data, function(d) { return d.totalGrupo; })])
+  .range([10, 60]);
+	return rScale;
+}
+
+
+function defineEscalaXCorPele(data,padding,w){
+	var xScale = d3.scale.log()
+		 .domain([d3.min(data, function(d) { return (d.fem)/(d.total); })-0.001,
+              d3.max(data, function(d) { return (d.fem)/(d.total); })])
+		 .range([padding, w-padding]);
+		return xScale;
+}
+
+
+//---------------------------------------------------------------------------
+//funcoes eixos
+
+//constroi ambos os eixos
+function constroiEixosCorPele(xScale,yScale,padding,h,w){
+  constroiEixoXCorPele(xScale,padding,h,w);
+  constroiEixoYCorPele(yScale,padding,h);
+}
+//----------------------------------------------------------------------------
+
+
+
+
+
+function desenhaEixoXCorPele(xAxis,padding,h){
+
+  d3.select(".chartCorPele").append("g")
+  .attr("class", "axis") //Assign "axis" class
+  .attr("transform", "translate(0," + (h - padding) + ")")
+  .call(xAxis);
+}
+
+
+// adiciona o rotulo do eixo
+function rotulaEixoXCorPele(padding,h,w){
+d3.select(".chartCorPele").append("text")
+    .attr("transform", "translate(" + (w/ 2) + "," + (h) + ")")
+    .style("text-anchor", "middle")
+    .text("candidatos do Gênero Feminino/Total candidatos (%)");
+}
+
+
+//constroi o eixo X
+function constroiEixoXCorPele(xScale,padding,h,w){
+
+  var xAxis = defineEixoX(xScale);
+
+  desenhaEixoXCorPele(xAxis,padding,h);
+
+  rotulaEixoXCorPele(padding,h,w);
+}
+//-----------------------------------------------------------------------------
+
+//define eixo y
+function desenhaEixoYCorPele(yAxis,padding){
+
+  //Create Y axis
+  d3.select(".chartCorPele").append("g")
+  .attr("class", "axis")
+  .attr("transform", "translate(" + padding + ",0)")
+  .call(yAxis);
+}
+
+
+//desenha rotulo eixo y
+function rotulaEixoYCorPele(padding,h){
+  d3.select(".chartCorPele").append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 120 - padding)
+      .attr("x",0 - (h / 2))
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .text("candidatos com curso superior completo/Total de candidatos (%)");
+}
+
+
+//constroi o eixo y
+function constroiEixoYCorPele(yScale,padding,h){
+
+  var yAxis = defineEixoY(yScale);
+
+  desenhaEixoYCorPele(yAxis,padding);
+
+  rotulaEixoYCorPele(padding,h);
+}
+
+//----------------------------------------------------------------------------
+//funcoes contrucao circulos - grafico cor pele
+
+//constroi circulos - cor de pele
+function constroiCirculosCorPele(xScale,yScale,rScale){
+  desenhaCirculosCorPele(xScale,yScale,rScale);
+  rotulaCirculosCorPele(xScale,yScale);
+  dicaCirculosPorCorPele();
+}
+
+//desenha os circulos - grafico cor pele
+function desenhaCirculosCorPele(xScale,yScale,rScale){
+d3.select(".chartCorPele").selectAll("#circuloCorPele")
+  .data(dataset)
+  .transition()
+  .duration(2000)
+  //definindo propriedades dos circulos
+  .attr("cx", function(d) {
+    return xScale((d.fem)/(d.total));
+  })
+  .attr("cy", function(d) {
+    return yScale((d.csup)/(d.total));
+  })
+  .attr("r", function(d) {
+    return rScale(d.totalGrupo);
+  })
+  .attr("fill", function(d){
+    return d.corCirculo;
+  });
+}
+
+//adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
+function rotulaCirculosCorPele(xScale,yScale){
+  d3.select(".chartCorPele").selectAll("#textoCorPele")
+    .data(dataset)
+    .transition()
+    .duration(2000)
+    .text(function(d) {
+      return d.nome;
+    })
+    .attr("x", function(d) {
+      return xScale((d.fem)/(d.total))
+    })
+    .attr("y", function(d) {
+      return yScale((d.csup)/(d.total));
+    })
+    .attr("text-anchor", "middle")
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "11px")
+    .attr("fill", "white");
+}
+
+//adiciona uma dica "tooltip" para cada circulo, visivel ao sobrepor o mouse
+//a ser usado para grafico CorPele
+function dicaCirculosPorCorPele(){
+  d3.select(".chartCorPele").selectAll("#circuloCorPele")
+    .data(dataset)
+    .append("title")
+      .text(function(d) {
+        return "Cor:" +"\t"+"\t"+"\t" + d.cor + "\n"
+        + "Total do grupo:" +"\t"+"\t" + d.totalGrupo + "\n"
+        + "Feminino:" +"\t"+"\t"+d.fem + "\n"
+        + "Curso sup.completo:" +"\t"+ d.csup;
+      });
+      return;
+}
+//----------------------------------------------------------------------------
