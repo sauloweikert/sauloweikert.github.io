@@ -2,7 +2,7 @@ p{
   text-align: justify;
 }
 
-.painel-grafico{
+.painel-grafico-primeiro, .painel-grafico-segundo {
   overflow-x: auto;
 }
 
