@@ -29,7 +29,7 @@ function criaBotaoSairGraficoEstados(){
 	element.onclick = function() { // Note this is a function
 		sairGraficoEstado();
 	};
-	document.getElementsByClassName("painel-grafico")[0].appendChild(element);
+	document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(element);
 }
 
 //---------------------------------------------------construcao grafico estados
@@ -40,7 +40,7 @@ function montaLegendaEstados(){
 	divLegenda.id = 'legend';
 //	iDiv.className = 'block';
 	divLegenda.innerHTML = "Legenda";
-	document.getElementsByClassName("painel-grafico")[0].appendChild(divLegenda);
+	document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(divLegenda);
 
 	// Now create and append to iDiv
 	var innerDiv = document.createElement('div');
@@ -119,7 +119,7 @@ function montaGraficoEstados(){
 	var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 
 	element.setAttribute("class", "chartEstado");
-	document.getElementsByClassName("painel-grafico")[0].appendChild(element);
+	document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(element);
 
   configuraGraficoEstado(w,h);
 	montaGraficoEstadoOriginal(padding,w,h);
