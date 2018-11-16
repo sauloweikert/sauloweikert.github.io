@@ -112,6 +112,7 @@ function montaGraficoEstados(){
   var padding = 90;
 
 	var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+	
 	element.setAttribute("class", "chartEstado");
 	document.getElementsByClassName("painel-grafico")[0].appendChild(element);
 
