@@ -94,6 +94,12 @@ function fechaVisualizacoesPrimeiro(){
 	else return;
 }
 
+//verifica e fecha outras visualizações abertas
+function fechaVisualizacoesSegundo(){
+	var open =document.getElementById("botao-visualizar-primeiro").disabled;
+	if(open == true) sairGraficoEstado();
+	else return;
+}
 
 
 //------------------------------------------------------------------------------
@@ -585,6 +591,9 @@ function configuraGraficoCorPele(w,h){
 
 
 function montaGraficoCorPele(){
+
+	//fecha outras visualizaceos abertas
+	fechaVisualizacoesSegundo();
 
 	//desabilitar botao visualizar enquanto durante a visualização corrente
 	document.getElementById("botao-visualizar-segundo").disabled = true;
