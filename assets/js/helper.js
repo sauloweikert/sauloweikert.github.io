@@ -87,13 +87,23 @@ function configuraGraficoEstado(w,h){
   return;
 }
 
+//verifica e fecha outras visualizações abertas
+function fechaVisualizacoesPrimeiro(){
+	var open =document.getElementById("botao-visualizar-segundo").disabled;
+	if(open == true) sairGraficoPele();
+	else return;
+}
+
+
 
 //------------------------------------------------------------------------------
-
 //funcoes montagem grafico Estado
+
 
 function montaGraficoEstados(){
 
+	//verifica e fecha outras visualizações abertas
+	fechaVisualizacoesPrimeiro();
 
 	//desabilitar botao visualizar enquanto durante a visualização corrente
 	document.getElementById("botao-visualizar-primeiro").disabled = true;
