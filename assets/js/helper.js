@@ -12,6 +12,9 @@ function sairGraficoEstado(){
 	//remove botao Sair
 	var element = document.getElementById("botao-sair");
 	element.parentNode.removeChild(element);
+
+	//reabilita o botao visualizar
+	document.getElementById("botao-visualizar").disabled = false;
 	return;
 
 
