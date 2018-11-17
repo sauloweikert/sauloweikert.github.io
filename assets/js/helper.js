@@ -60,6 +60,7 @@ function montaLegendaEstados(){
 	// Now create and append to iDiv
 	var textDiv = document.createElement('div');
 	textDiv.style.width = '40%';
+	textDiv.style.maergin = '0';
 	divLegenda.appendChild(textDiv);
 
 	// Now create and append to iDiv
