@@ -5,6 +5,9 @@ function sairGraficoEstado(){
 
 	d3.select("svg").remove();
 
+	//remove Suporte
+	$('.div-grafico').remove();
+
 	//remove legenda
 	var element = document.getElementById("legend");
 	element.parentNode.removeChild(element);
