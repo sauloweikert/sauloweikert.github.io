@@ -132,8 +132,16 @@ function montaGraficoEstados(){
 
 	var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 
+//
+	var divGrafico = document.createElement('div');
+	divGrafico.id = 'div-grafico';
+ 	divGrafico.style.overflowX ='auto';
+	divLegenda.innerHTML = "Teste";
+	document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(divGrafico);
+//
+
 	element.setAttribute("class", "chartEstado");
-	document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(element);
+	document.getElementsByClassName("div-grafico")[0].appendChild(element);
 
   configuraGraficoEstado(w,h);
 	montaGraficoEstadoOriginal(padding,w,h);
