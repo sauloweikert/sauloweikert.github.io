@@ -42,7 +42,7 @@ function montaLegendaEstados(){
 	divLegenda.style.borderStyle = 'double';
 	divLegenda.style.display = 'inline-block';
 	divLegenda.style.width = '15%';
-	divLegenda.style.position = 'absolute';
+	divLegenda.style.position = 'fixed';
 	divLegenda.style.right ='10px';
 	divLegenda.style.top ='10px';
 //	divLegenda.style.padding = '5px';
