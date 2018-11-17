@@ -61,8 +61,9 @@ function montaLegendaEstados(){
 	innerDiv.id = 'sul';
 	innerDiv.style.margin = '3px';
 	innerDiv.style.display ='inline-block';
+	innerDiv.style.fontSize ='small';
+	innerDiv.innerHTML = "\t\t\t Sul";
 	divLegenda.appendChild(innerDiv);
-	divLegenda.innerHTML = "\t Sul";
 
 	var innerDiv2 = document.createElement('div');
 	innerDiv2.className = 'square';
