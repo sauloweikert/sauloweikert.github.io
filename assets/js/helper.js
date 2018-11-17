@@ -45,6 +45,8 @@ function montaLegendaEstados(){
 	divLegenda.style.position = 'fixed';
 	divLegenda.style.right ='10px';
 	divLegenda.style.top ='10px';
+	divLegenda.style.backgroundColor = 'grey';
+	divLegenda.style.opacity = '50%';
 //	divLegenda.style.padding = '5px';
 	divLegenda.innerHTML = "Legenda";
 	document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(divLegenda);
