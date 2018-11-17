@@ -143,6 +143,7 @@ function montaGraficoEstados(){
 
 	var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 
+	criaBotaoSairGraficoEstados();
 
 	//cria suporte grafico
 	criaSuporteGraficoPrimeiro();
@@ -155,7 +156,7 @@ function montaGraficoEstados(){
 
 	montaLegendaEstados();
 
-	criaBotaoSairGraficoEstados();
+
 
   //reage ao clique em algum ano
   atualizaGraficoEstado(padding,w,h);
