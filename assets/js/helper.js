@@ -894,7 +894,7 @@ function refrescaGraficoCorPeleGrupo(data, padding,w,h){
   dataset = data;
 
 	//valor de raio se mantem inalterado para a alteracao de visualizacao
-  //var rScale =defineEscalaRaioCorPele(data);
+  var rScale =defineEscalaRaioCorPele(data);
   var xScale =defineEscalaXCorPeleGrupo(data,padding,w);
   var yScale =defineEscalaYCorPeleGrupo(data,padding,h);
 
