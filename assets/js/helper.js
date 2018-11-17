@@ -9,13 +9,19 @@ function sairGraficoEstado(){
 	$('.div-grafico').remove();
 
 	//remove legenda
+	$('#legend').remove();
+
+	//remove botao Sair
+	$('#botao-sair').remove();
+
+	/*
 	var element = document.getElementById("legend");
 	element.parentNode.removeChild(element);
 
 	//remove botao Sair
 	var element = document.getElementById("botao-sair");
 	element.parentNode.removeChild(element);
-
+*/
 	//reabilita o botao visualizar
 	document.getElementById("botao-visualizar-primeiro").disabled = false;
 
