@@ -730,6 +730,7 @@ function montaGraficoCorPele(){
 
   //reage ao clique em algum ano
   atualizaGraficoCorPele(padding,w,h);
+	atualizaGraficoCorPeleGrupo(padding,w,h);
 
 }
 
