@@ -134,6 +134,7 @@ function montaGraficoEstados(){
 
 //
 	var divGrafico = document.createElement('div');
+	
 	divGrafico.className = 'div-grafico';
  	divGrafico.style.overflowX ='auto';
 	divGrafico.innerHTML = "Teste";
