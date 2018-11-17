@@ -55,12 +55,7 @@ function montaLegendaEstados(){
 	divLegenda.innerHTML = "Legenda";
 	document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(divLegenda);
 
-	// Now create and append to iDiv
-	var innerDiv = document.createElement('div');
-	innerDiv.style.width = '10%';
-	innerDiv.className = 'square';
-	innerDiv.id = 'sul';
-	divLegenda.appendChild(innerDiv);
+
 
 	// Now create and append to iDiv
 	var textDiv = document.createElement('div');
@@ -68,6 +63,13 @@ function montaLegendaEstados(){
 	var p = "<p>Sul</p>";
 	$(textDiv).append(p);
 	divLegenda.appendChild(textDiv);
+
+	// Now create and append to iDiv
+	var innerDiv = document.createElement('div');
+	innerDiv.style.width = '10%';
+	innerDiv.className = 'square';
+	innerDiv.id = 'sul';
+	textDiv.appendChild(innerDiv);
 
 
 	var innerDiv2 = document.createElement('div');
