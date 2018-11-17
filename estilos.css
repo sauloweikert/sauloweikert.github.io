@@ -96,7 +96,7 @@ header h1 {
 }
 
 .legend{
-  display: inline-grid;
+/*  display: inline-grid;*/
   border-style: double;
 }
 .square {
