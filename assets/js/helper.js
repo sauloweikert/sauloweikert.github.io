@@ -40,6 +40,7 @@ function montaLegendaEstados(){
 	divLegenda.id = 'legend';
 
 	divLegenda.style.borderStyle = 'double';
+	divLegenda.style.display = 'inline-grid';
 	divLegenda.innerHTML = "Legenda";
 	document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(divLegenda);
 
