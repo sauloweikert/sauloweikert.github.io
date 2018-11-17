@@ -590,6 +590,87 @@ function criaBotaoSairGraficoPele(){
 }
 
 //---------------------------------------------------construcao grafico estados
+//funcao montagem legenda grafico pele
+function montaLegendaPele(){
+	var divLegenda = document.createElement('div');
+	divLegenda.id = 'legend';
+
+	divLegenda.style.borderStyle = 'double';
+	divLegenda.style.display = 'inline-block';
+	divLegenda.style.width = '15%';
+	divLegenda.style.position = 'absolute';
+	divLegenda.style.right ='10px';
+	divLegenda.style.top ='10px';
+	divLegenda.style.backgroundColor = 'white';
+	divLegenda.style.opacity = '50%';
+	divLegenda.style.padding = '5px';
+	divLegenda.innerHTML = "Legenda";
+	$(".painel-grafico-segundo").append(divLegenda);
+	//document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(divLegenda);
+
+	// Now create and append to iDiv
+	var textDiv = document.createElement('div');
+	$(divLegenda).append(textDiv);
+
+	var innerDiv = document.createElement('div');
+	innerDiv.className = 'square';
+	innerDiv.id = 'indigena';
+	$(textDiv).append(innerDiv);
+
+	var p = "<p>Indígena</p>";
+	$(textDiv).append(p);
+
+	// Now create and append to iDiv
+	var textDiv2 = document.createElement('div');
+	$(divLegenda).append(textDiv2);
+
+	var innerDiv2 = document.createElement('div');
+	innerDiv2.className = 'square';
+	innerDiv2.id = 'amarela';
+	$(textDiv2).append(innerDiv2);
+
+	var p2 = "<p>Amarela</p>";
+	$(textDiv2).append(p2);
+
+	// Now create and append to iDiv
+	var textDiv3 = document.createElement('div');
+	$(divLegenda).append(textDiv3);
+
+	var innerDiv3 = document.createElement('div');
+	innerDiv3.className = 'square';
+	innerDiv3.id = 'negra';
+	$(textDiv3).append(innerDiv3);
+
+	var p3 = "<p>Negra</p>";
+	$(textDiv3).append(p3);
+
+	// Now create and append to iDiv
+	var textDiv4 = document.createElement('div');
+	$(divLegenda).append(textDiv4);
+
+	var innerDiv4 = document.createElement('div');
+	innerDiv4.className = 'square';
+	innerDiv4.id = 'parda';
+	$(textDiv4).append(innerDiv4);
+
+	var p4 = "<p>Parda</p>";
+	$(textDiv4).append(p4);
+
+	// Now create and append to iDiv
+	var textDiv5 = document.createElement('div');
+	$(divLegenda).append(textDiv5);
+
+	var innerDiv5 = document.createElement('div');
+	innerDiv5.className = 'square';
+	innerDiv5.id = 'branca';
+	$(textDiv5).append(innerDiv5);
+
+	var p5 = "<p>Branca</p>";
+	$(textDiv5).append(p5);
+
+}
+
+/*
 
 //funcao montagem legenda grafico estados
 function montaLegendaPele(){
@@ -629,7 +710,7 @@ function montaLegendaPele(){
 	innerDiv5.id = 'indigena';
 	innerDiv5.innerHTML = "\t Indígena";
 	divLegenda.appendChild(innerDiv5);
-}
+}*/
 //--------------------------------------------------------------------------
 
 
@@ -670,6 +751,9 @@ function montaGraficoCorPele(){
   //padding
   var padding = 90;
 
+	//cria botao sair
+	criaBotaoSairGraficoPele();
+
 	//cria suporte grafico
 	criaSuporteGraficoSegundo();
 
@@ -682,7 +766,6 @@ function montaGraficoCorPele(){
   montaGraficoCorPeleOriginal(padding,w,h);
 
 	montaLegendaPele();
-	criaBotaoSairGraficoPele();
 
   //reage ao clique em algum ano
   atualizaGraficoCorPele(padding,w,h);
