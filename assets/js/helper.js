@@ -43,7 +43,8 @@ function montaLegendaEstados(){
 	divLegenda.style.display = 'inline-block';
 	divLegenda.style.width = '15%';
 	divLegenda.style.position = 'absolute';
-	divLegenda.style.left ='10px';
+	divLegenda.style.right ='10px';
+	divLegenda.style.top ='10px';
 //	divLegenda.style.padding = '5px';
 	divLegenda.innerHTML = "Legenda";
 	document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(divLegenda);
