@@ -64,7 +64,7 @@ function montaLegendaEstados(){
 
 	// Now create and append to iDiv
 	var innerDiv = document.createElement('div');
-	innerDiv.style.width = '10%';
+//	innerDiv.style.width = '10%';
 	innerDiv.className = 'square';
 	innerDiv.id = 'sul';
 	textDiv.appendChild(innerDiv);
