@@ -849,6 +849,7 @@ function dicaCirculosPorCorPeleOriginal(){
 
 function atualizaGraficoCorPeleGrupo(padding,w,h){
 
+	console.log("entrei aqui");
 	//seleciona o ano e gera os circulos
 	d3.selectAll("#yearCorPeleGrupo")
 	.on("click", function() {
