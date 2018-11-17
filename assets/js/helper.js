@@ -5,6 +5,10 @@ function sairGraficoEstado(){
 
 	d3.select("svg").remove();
 
+	//remove suporte
+	var element = document.getElementsByClassName("div-grafico");
+	element.parentNode.removeChild(element);
+
 	//remove legenda
 	var element = document.getElementById("legend");
 	element.parentNode.removeChild(element);
@@ -113,7 +117,15 @@ function fechaVisualizacoesSegundo(){
 
 //------------------------------------------------------------------------------
 //funcoes montagem grafico Estado
+function criaSuporteGraficoPrimeiro(){
+	var divGrafico = document.createElement('div');
 
+	divGrafico.className = 'div-grafico';
+ 	divGrafico.style.overflowX ='auto';
+	divGrafico.innerHTML = "Teste";
+	document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(divGrafico);
+	return;
+}
 
 function montaGraficoEstados(){
 
@@ -132,14 +144,9 @@ function montaGraficoEstados(){
 
 	var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 
-//
-	var divGrafico = document.createElement('div');
-	
-	divGrafico.className = 'div-grafico';
- 	divGrafico.style.overflowX ='auto';
-	divGrafico.innerHTML = "Teste";
-	document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(divGrafico);
-//
+
+	//cria suporte grafico
+	criaSuporteGraficoPrimeiro();
 
 	element.setAttribute("class", "chartEstado");
 	document.getElementsByClassName("div-grafico")[0].appendChild(element);
@@ -523,6 +530,10 @@ function sairGraficoPele(){
 
 	d3.select("svg").remove();
 
+	//remove suporte
+	var element = document.getElementsByClassName("div-grafico");
+	element.parentNode.removeChild(element);
+
 	//remove legenda
 	var element = document.getElementById("legend");
 	element.parentNode.removeChild(element);
@@ -607,6 +618,16 @@ function configuraGraficoCorPele(w,h){
 }
 //------------------------------------------------------------------------------
 
+function criaSuporteGraficoSegundo(){
+	var divGrafico = document.createElement('div');
+
+	divGrafico.className = 'div-grafico';
+ 	divGrafico.style.overflowX ='auto';
+	divGrafico.innerHTML = "Teste2";
+	document.getElementsByClassName("painel-grafico-segundo")[0].appendChild(divGrafico);
+	return;
+}
+
 
 function montaGraficoCorPele(){
 
@@ -623,10 +644,13 @@ function montaGraficoCorPele(){
   //padding
   var padding = 90;
 
+	//cria suporte grafico
+	criaSuporteGraficoSegundo();
+
   var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 
 	element.setAttribute("class", "chartCorPele");
-	document.getElementsByClassName("painel-grafico-segundo")[0].appendChild(element);
+	document.getElementsByClassName("div-grafico")[0].appendChild(element);
 
   configuraGraficoCorPele(w,h);
   montaGraficoCorPeleOriginal(padding,w,h);
@@ -820,9 +844,6 @@ function constroiEixosCorPele(xScale,yScale,padding,h,w){
   constroiEixoYCorPele(yScale,padding,h);
 }
 //----------------------------------------------------------------------------
-
-
-
 
 
 function desenhaEixoXCorPele(xAxis,padding,h){
