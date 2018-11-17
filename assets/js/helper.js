@@ -51,7 +51,7 @@ function montaLegendaEstados(){
 	divLegenda.style.top ='10px';
 	divLegenda.style.backgroundColor = 'white';
 	divLegenda.style.opacity = '50%';
-//	divLegenda.style.padding = '5px';
+	divLegenda.style.padding = '5px';
 	divLegenda.innerHTML = "Legenda";
 	document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(divLegenda);
 
