@@ -103,7 +103,7 @@ function montaLegendaEstados(){
 
 	var innerDiv4 = document.createElement('div');
 	innerDiv4.className = 'square';
-	innerDiv4.id = 'sul';
+	innerDiv4.id = 'nordeste';
 	$(textDiv4).append(innerDiv4);
 
 	var p4 = "<p>Nordeste</p>";
@@ -116,7 +116,7 @@ function montaLegendaEstados(){
 
 	var innerDiv5 = document.createElement('div');
 	innerDiv5.className = 'square';
-	innerDiv5.id = 'sul';
+	innerDiv5.id = 'norte';
 	$(textDiv5).append(innerDiv5);
 
 	var p5 = "<p>Nordeste</p>";
