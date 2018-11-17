@@ -63,9 +63,14 @@ function montaLegendaEstados(){
 	innerDiv.style.margin = '3px';
 	innerDiv.style.width = '10%';
 	divLegenda.appendChild(innerDiv);
+
+	// Now create and append to iDiv
+	var textDiv = document.createElement('div');
+	textDiv.style.width = '40%';
 	var p = "<p>Sul</p>";
-	p.style.width = '40%';
-	$(p).insertAfter(innerDiv);
+	$(textDiv).append(p);
+	divLegenda.appendChild(textDiv);
+
 
 	var innerDiv2 = document.createElement('div');
 	innerDiv2.className = 'square';
