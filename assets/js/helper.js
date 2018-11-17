@@ -134,14 +134,14 @@ function montaGraficoEstados(){
 
 //
 	var divGrafico = document.createElement('div');
-	divGrafico.id = 'div-grafico';
+	divGrafico.className = 'div-grafico';
  	divGrafico.style.overflowX ='auto';
 	divGrafico.innerHTML = "Teste";
 	document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(divGrafico);
 //
 
 	element.setAttribute("class", "chartEstado");
-	document.getElementsById("div-grafico")[0].appendChild(element);
+	document.getElementsByClassName("div-grafico")[0].appendChild(element);
 
   configuraGraficoEstado(w,h);
 	montaGraficoEstadoOriginal(padding,w,h);
