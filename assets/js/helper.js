@@ -39,7 +39,7 @@ function montaLegendaEstados(){
 	var divLegenda = document.createElement('div');
 	divLegenda.id = 'legend';
 
-	divLegenda.style.borderStyle = double;
+	divLegenda.style.borderStyle = 'double';
 	divLegenda.innerHTML = "Legenda";
 	document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(divLegenda);
 
