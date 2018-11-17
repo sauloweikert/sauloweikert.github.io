@@ -3,7 +3,7 @@
 //funcao saida montaGraficoEstado
 function sairGraficoEstado(){
 
-	d3.select("svg").remove();
+//	d3.select("svg").remove();
 
 	//remove Suporte
 	$('.div-grafico').remove();
