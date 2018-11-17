@@ -123,7 +123,7 @@ function criaSuporteGraficoPrimeiro(){
 	divGrafico.id = 'div-grafico';
  	divGrafico.style.overflowX ='auto';
 	divGrafico.innerHTML = "Teste";
-	document.getElementById("painel-grafico-primeiro")[0].appendChild(divGrafico);
+	document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(divGrafico);
 	return;
 }
 
