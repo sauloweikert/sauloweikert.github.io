@@ -73,14 +73,32 @@ function montaLegendaEstados(){
 	var p = "<p>Sul</p>";
 	$(textDiv).append(p);
 
+	// Now create and append to iDiv
+	var textDiv2 = document.createElement('div');
+	textDiv2.style.width = '40%';
+	textDiv2.style.margin = '0';
+	divLegenda.appendChild(textDiv2);
 
+	// Now create and append to iDiv
+	var innerDiv2 = document.createElement('div');
+//	innerDiv.style.width = '10%';
+	innerDiv2.className = 'square';
+	innerDiv2.id = 'sudeste';
+	textDiv2.appendChild(innerDiv2);
+
+	var p2 = "<p>Sudeste</p>";
+	$(textDiv2).append(p2);
+
+
+
+/*
 	var innerDiv2 = document.createElement('div');
 	innerDiv2.className = 'square';
 	innerDiv2.id = 'sudeste';
 	innerDiv2.innerHTML = "\t Sudeste";
 	innerDiv2.style.margin = '3px';
 	divLegenda.appendChild(innerDiv2);
-
+*/
 	var innerDiv3 = document.createElement('div');
 	innerDiv3.className = 'square';
 	innerDiv3.id = 'centroeste';
