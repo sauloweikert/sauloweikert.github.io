@@ -14,14 +14,6 @@ function sairGraficoEstado(){
 	//remove botao Sair
 	$('#botao-sair').remove();
 
-	/*
-	var element = document.getElementById("legend");
-	element.parentNode.removeChild(element);
-
-	//remove botao Sair
-	var element = document.getElementById("botao-sair");
-	element.parentNode.removeChild(element);
-*/
 	//reabilita o botao visualizar
 	document.getElementById("botao-visualizar-primeiro").disabled = false;
 
@@ -51,7 +43,7 @@ function montaLegendaEstados(){
 	divLegenda.style.borderStyle = 'double';
 	divLegenda.style.display = 'inline-block';
 	divLegenda.style.width = '15%';
-	divLegenda.style.position = 'fixed';
+	divLegenda.style.position = 'absolute';
 	divLegenda.style.right ='10px';
 	divLegenda.style.top ='10px';
 	divLegenda.style.backgroundColor = 'grey';
@@ -539,12 +531,10 @@ function sairGraficoPele(){
 	$('.div-grafico').remove();
 
 	//remove legenda
-	var element = document.getElementById("legend");
-	element.parentNode.removeChild(element);
+	$('#legend').remove();
 
 	//remove botao Sair
-	var element = document.getElementById("botao-sair");
-	element.parentNode.removeChild(element);
+	$('#botao-sair').remove();
 
 	//reabilita o botao visualizar
 	document.getElementById("botao-visualizar-segundo").disabled = false;
