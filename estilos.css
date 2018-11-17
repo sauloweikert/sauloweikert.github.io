@@ -4,6 +4,7 @@ p{
 
 .painel-grafico-primeiro, .painel-grafico-segundo {
   overflow-x: auto;
+  position: relative;
 }
 
 #paineis-sobre{
