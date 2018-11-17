@@ -44,7 +44,7 @@ function montaLegendaEstados(){
 	divLegenda.id = 'legend';
 
 	divLegenda.style.borderStyle = 'double';
-	divLegenda.style.display = 'inline-block';
+	divLegenda.style.display = 'inline-grid';
 	divLegenda.style.width = '15%';
 	divLegenda.style.position = 'absolute';
 	divLegenda.style.right ='10px';
