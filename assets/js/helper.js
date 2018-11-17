@@ -141,7 +141,7 @@ function montaGraficoEstados(){
 //
 
 	element.setAttribute("class", "chartEstado");
-	document.getElementsByClassName("div-grafico")[0].appendChild(element);
+	document.getElementsById("div-grafico")[0].appendChild(element);
 
   configuraGraficoEstado(w,h);
 	montaGraficoEstadoOriginal(padding,w,h);
