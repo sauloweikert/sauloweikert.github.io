@@ -53,13 +53,11 @@ function montaLegendaEstados(){
 	divLegenda.style.opacity = '50%';
 	divLegenda.style.padding = '5px';
 	divLegenda.innerHTML = "Legenda";
-	document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(divLegenda);
-
-
+	$(".painel-grafico-primeiro").append(divLegenda);
+	//document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(divLegenda);
 
 	// Now create and append to iDiv
 	var textDiv = document.createElement('div');
-	textDiv.style.width = '40%';
 	$(divLegenda).append(textDiv);
 
 	var innerDiv = document.createElement('div');
@@ -72,7 +70,6 @@ function montaLegendaEstados(){
 
 	// Now create and append to iDiv
 	var textDiv2 = document.createElement('div');
-	textDiv2.style.width = '40%';
 	$(divLegenda).append(textDiv2);
 
 	var innerDiv2 = document.createElement('div');
@@ -85,7 +82,6 @@ function montaLegendaEstados(){
 
 	// Now create and append to iDiv
 	var textDiv3 = document.createElement('div');
-	textDiv3.style.width = '40%';
 	$(divLegenda).append(textDiv3);
 
 	var innerDiv3 = document.createElement('div');
@@ -98,7 +94,6 @@ function montaLegendaEstados(){
 
 	// Now create and append to iDiv
 	var textDiv4 = document.createElement('div');
-	textDiv4.style.width = '40%';
 	$(divLegenda).append(textDiv4);
 
 	var innerDiv4 = document.createElement('div');
@@ -111,7 +106,6 @@ function montaLegendaEstados(){
 
 	// Now create and append to iDiv
 	var textDiv5 = document.createElement('div');
-	textDiv5.style.width = '40%';
 	$(divLegenda).append(textDiv5);
 
 	var innerDiv5 = document.createElement('div');
@@ -119,56 +113,9 @@ function montaLegendaEstados(){
 	innerDiv5.id = 'norte';
 	$(textDiv5).append(innerDiv5);
 
-	var p5 = "<p>Nordeste</p>";
+	var p5 = "<p>Norte</p>";
 	$(textDiv5).append(p5);
 
-/*
-	// Now create and append to iDiv
-	var textDiv2 = document.createElement('div');
-	textDiv2.style.width = '40%';
-	textDiv2.style.margin = '0';
-	divLegenda.appendChild(textDiv2);
-
-	// Now create and append to iDiv
-	var innerDiv2 = document.createElement('div');
-//	innerDiv.style.width = '10%';
-	innerDiv2.className = 'square';
-	innerDiv2.id = 'sudeste';
-	textDiv2.appendChild(innerDiv2);
-
-	var p2 = "<p>Sudeste</p>";
-	$(textDiv2).append(p2);
-
-
-
-/*
-	var innerDiv2 = document.createElement('div');
-	innerDiv2.className = 'square';
-	innerDiv2.id = 'sudeste';
-	innerDiv2.innerHTML = "\t Sudeste";
-	innerDiv2.style.margin = '3px';
-	divLegenda.appendChild(innerDiv2);
-
-	var innerDiv3 = document.createElement('div');
-	innerDiv3.className = 'square';
-	innerDiv3.id = 'centroeste';
-	innerDiv3.innerHTML = "\t Centro-Oeste";
-	innerDiv3.style.margin = '3px';
-	divLegenda.appendChild(innerDiv3);
-
-	var innerDiv4 = document.createElement('div');
-	innerDiv4.className = 'square';
-	innerDiv4.id = 'nordeste';
-	innerDiv4.innerHTML = "\t Nordeste";
-	innerDiv4.style.margin = '3px';
-	divLegenda.appendChild(innerDiv4);
-
-	var innerDiv5 = document.createElement('div');
-	innerDiv5.className = 'square';
-	innerDiv5.id = 'norte';
-	innerDiv5.innerHTML = "\t Norte";
-	innerDiv5.style.margin = '3px';
-	divLegenda.appendChild(innerDiv5);*/
 }
 //--------------------------------------------------------------------------
 
