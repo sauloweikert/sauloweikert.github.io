@@ -63,7 +63,7 @@ function montaLegendaEstados(){
 	innerDiv.style.margin = '3px';
 	divLegenda.appendChild(innerDiv);
 	var p = "<p>Sul</p>";
-	divLegenda.insertAdjacentHTML('beforebegin', p);
+	$(p).insertAfter(innerDiv);
 
 	var innerDiv2 = document.createElement('div');
 	innerDiv2.className = 'square';
