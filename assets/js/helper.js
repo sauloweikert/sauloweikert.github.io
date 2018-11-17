@@ -60,8 +60,6 @@ function montaLegendaEstados(){
 	// Now create and append to iDiv
 	var textDiv = document.createElement('div');
 	textDiv.style.width = '40%';
-	var p = "<p>Sul</p>";
-	$(textDiv).append(p);
 	divLegenda.appendChild(textDiv);
 
 	// Now create and append to iDiv
@@ -70,6 +68,9 @@ function montaLegendaEstados(){
 	innerDiv.className = 'square';
 	innerDiv.id = 'sul';
 	textDiv.appendChild(innerDiv);
+
+	var p = "<p>Sul</p>";
+	$(textDiv).append(p);
 
 
 	var innerDiv2 = document.createElement('div');
