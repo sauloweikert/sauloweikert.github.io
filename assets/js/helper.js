@@ -136,7 +136,7 @@ function montaGraficoEstados(){
 	var divGrafico = document.createElement('div');
 	divGrafico.id = 'div-grafico';
  	divGrafico.style.overflowX ='auto';
-	divLegenda.innerHTML = "Teste";
+	divGrafico.innerHTML = "Teste";
 	document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(divGrafico);
 //
 
