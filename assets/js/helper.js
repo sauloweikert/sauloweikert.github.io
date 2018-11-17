@@ -6,7 +6,7 @@ function sairGraficoEstado(){
 	d3.select("svg").remove();
 
 	//remove suporte
-	var element = document.getElementsByClassName("div-grafico");
+	var element = document.getElementById("div-grafico");
 	element.parentNode.removeChild(element);
 
 	//remove legenda
@@ -120,10 +120,10 @@ function fechaVisualizacoesSegundo(){
 function criaSuporteGraficoPrimeiro(){
 	var divGrafico = document.createElement('div');
 
-	divGrafico.className = 'div-grafico';
+	divGrafico.id = 'div-grafico';
  	divGrafico.style.overflowX ='auto';
 	divGrafico.innerHTML = "Teste";
-	document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(divGrafico);
+	document.getElementById("painel-grafico-primeiro")[0].appendChild(divGrafico);
 	return;
 }
 
@@ -149,7 +149,7 @@ function montaGraficoEstados(){
 	criaSuporteGraficoPrimeiro();
 
 	element.setAttribute("class", "chartEstado");
-	document.getElementsByClassName("div-grafico")[0].appendChild(element);
+	document.getElementById("div-grafico")[0].appendChild(element);
 
   configuraGraficoEstado(w,h);
 	montaGraficoEstadoOriginal(padding,w,h);
@@ -531,7 +531,7 @@ function sairGraficoPele(){
 	d3.select("svg").remove();
 
 	//remove suporte
-	var element = document.getElementsByClassName("div-grafico");
+	var element = document.getElementById("div-grafico");
 	element.parentNode.removeChild(element);
 
 	//remove legenda
@@ -621,7 +621,7 @@ function configuraGraficoCorPele(w,h){
 function criaSuporteGraficoSegundo(){
 	var divGrafico = document.createElement('div');
 
-	divGrafico.className = 'div-grafico';
+	divGrafico.Id = 'div-grafico';
  	divGrafico.style.overflowX ='auto';
 	divGrafico.innerHTML = "Teste2";
 	document.getElementsByClassName("painel-grafico-segundo")[0].appendChild(divGrafico);
@@ -650,7 +650,7 @@ function montaGraficoCorPele(){
   var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 
 	element.setAttribute("class", "chartCorPele");
-	document.getElementsByClassName("div-grafico")[0].appendChild(element);
+	document.getElementById("div-grafico")[0].appendChild(element);
 
   configuraGraficoCorPele(w,h);
   montaGraficoCorPeleOriginal(padding,w,h);
