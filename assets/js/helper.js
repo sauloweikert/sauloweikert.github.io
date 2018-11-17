@@ -27,6 +27,9 @@ function criaBotaoSairGraficoEstados(){
 	element.type = "button";
 	element.value = "Sair";
 	element.id='botao-sair';
+	element.style.position = 'absolute';
+	element.style.right ='10px';
+	element.style.marginTop ='10px';
 	element.onclick = function() { // Note this is a function
 		sairGraficoEstado();
 	};
@@ -46,7 +49,7 @@ function montaLegendaEstados(){
 	divLegenda.style.position = 'absolute';
 	divLegenda.style.right ='10px';
 	divLegenda.style.top ='10px';
-	divLegenda.style.backgroundColor = 'grey';
+	divLegenda.style.backgroundColor = 'white';
 	divLegenda.style.opacity = '50%';
 //	divLegenda.style.padding = '5px';
 	divLegenda.innerHTML = "Legenda";
@@ -119,7 +122,6 @@ function criaSuporteGraficoPrimeiro(){
 
 	divGrafico.className = 'div-grafico';
  	divGrafico.style.overflowX ='auto';
-	divGrafico.innerHTML = "Teste";
 	document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(divGrafico);
 	return;
 }
@@ -617,11 +619,9 @@ function criaSuporteGraficoSegundo(){
 
 	divGrafico.className = 'div-grafico';
  	divGrafico.style.overflowX ='auto';
-	divGrafico.innerHTML = "Teste2";
 	document.getElementsByClassName("painel-grafico-segundo")[0].appendChild(divGrafico);
 	return;
 }
-
 
 function montaGraficoCorPele(){
 
