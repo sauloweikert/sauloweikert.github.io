@@ -1100,7 +1100,7 @@ d3.select(".chartCorPele").selectAll("#circuloCorPele")
   .attr("cx", function(d) {
 		console.log(d.fem);
 		console.log(d.totalGrupo);
-		console.log(,(d.fem)/(d.totalGrupo));
+		console.log((d.fem)/(d.totalGrupo));
 		console.log("___");
     return xScale((d.fem)/(d.totalGrupo));
   })
