@@ -1098,11 +1098,8 @@ d3.select(".chartCorPele").selectAll("#circuloCorPele")
   .duration(2000)
   //definindo propriedades dos circulos
   .attr("cx", function(d) {
-		console.log(d.fem);
-		console.log(d.totalGrupo);
-		console.log((d.fem)/(d.totalGrupo));
-		console.log("___");
-    return xScale((d.fem)/(d.totalGrupo));
+		return xScale(0.4);
+    //return xScale((d.fem)/(d.totalGrupo));
   })
   .attr("cy", function(d) {
     return yScale((d.csup)/(d.totalGrupo));
