@@ -1123,7 +1123,7 @@ d3.select(".chartCorPele").selectAll("#circuloCorPele")
     return xScale((d.fem)/(d.total));
   })
   .attr("cy", function(d) {
-    return yScale((d.csup)/(d.total));
+    return yScale((d.csup)/(d.totalGrupo));
   })
   .attr("r", function(d) {
     return rScale(d.totalGrupo);
