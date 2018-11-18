@@ -1092,14 +1092,13 @@ function constroiCirculosCorPele(xScale,yScale,rScale){
 
 //desenha os circulos - grafico cor pele
 function desenhaCirculosCorPeleGrupo(xScale,yScale,rScale){
-	console.log("new");
+	console.log("new2");
 	var circles = d3.select(".chartCorPele").selectAll("#circuloCorPele")
   .data(dataset);
 
 	circles.exit().remove();
 
-	circles.
-  .transition()
+	circles.transition()
   .duration(2000)
   //definindo propriedades dos circulos
   .attr("cx", function(d) {
