@@ -39,7 +39,7 @@ function criaBotaoSairGraficoEstados(){
 //---------------------------------------------------construcao grafico estados
 
 //funcao montagem legenda grafico estados
-function montaLegendaEstados(){
+function montaLegendaEstados(opcao){
 	var divLegenda = document.createElement('div');
 	divLegenda.id = 'legend';
 	divLegenda.style.borderStyle = 'double';
@@ -54,6 +54,26 @@ function montaLegendaEstados(){
 	divLegenda.innerHTML = "Legenda";
 	$(".painel-grafico-primeiro").append(divLegenda);
 
+	if(opcao === 'geografico'){
+		var myObjects = [
+			{
+				"nome": "Sul"
+			},
+			{
+				"nome": "Sudeste"
+			},
+			{
+				"nome": "Centroeste"
+			},
+			{
+				"nome": "Nordeste"
+			},
+			{
+				"nome": "Norte"
+			}
+		];
+
+	}else if(opcao==='corpele')
 	var myObjects = [
 		{
 			"nome": "Sul"
@@ -65,10 +85,10 @@ function montaLegendaEstados(){
 			"nome": "Centroeste"
 		},
 		{
-			"nome": "Nordeste"
+			"nome": "Nordest"
 		},
 		{
-			"nome": "Norte"
+			"nome": "Nor"
 		}
 	];
 
@@ -157,7 +177,9 @@ function montaGraficoEstados(){
   configuraGraficoEstado(w,h);
 	montaGraficoEstadoOriginal(padding,w,h);
 
-	montaLegendaEstados();
+	var opcao = "geografico";
+
+	montaLegendaEstados(opcao);
 
   //reage ao clique em algum ano
   atualizaGraficoEstado(padding,w,h);
