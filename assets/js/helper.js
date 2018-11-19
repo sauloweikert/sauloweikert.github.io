@@ -39,7 +39,7 @@ function criaBotaoSairGraficoEstados(){
 //---------------------------------------------------construcao grafico estados
 
 //funcao montagem legenda grafico estados
-function montaLegendaEstados(opcao){
+function montaLegenda(opcao){
 	var divLegenda = document.createElement('div');
 	divLegenda.id = 'legend';
 	divLegenda.style.borderStyle = 'double';
@@ -54,7 +54,7 @@ function montaLegendaEstados(opcao){
 	divLegenda.innerHTML = "Legenda";
 	$(".painel-grafico-primeiro").append(divLegenda);
 
-	if(opcao === 'geografico'){
+	if(opcao === 'estados'){
 		var myObjects = [
 			{
 				"nome": "Sul"
@@ -73,25 +73,25 @@ function montaLegendaEstados(opcao){
 			}
 		];
 
-	}else if(opcao==='corpele')
-	var myObjects = [
-		{
-			"nome": "Sul"
-		},
-		{
-			"nome": "Sudeste"
-		},
-		{
-			"nome": "Centroeste"
-		},
-		{
-			"nome": "Nordest"
-		},
-		{
-			"nome": "Nor"
-		}
-	];
-
+	}else if(opcao==='corpele'){
+		var myObjects = [
+			{
+				"nome": "Indigena"
+			},
+			{
+				"nome": "Amarela"
+			},
+			{
+				"nome": "Negra"
+			},
+			{
+				"nome": "Parda"
+			},
+			{
+				"nome": "Branca"
+			}
+		];
+	}
 	$(function () {
 	    $.each(myObjects, function () {
 				var cell = document.createElement('div');
@@ -179,7 +179,7 @@ function montaGraficoEstados(){
 
 	var opcao = "corpele";
 
-	montaLegendaEstados(opcao);
+	montaLegenda(opcao);
 
   //reage ao clique em algum ano
   atualizaGraficoEstado(padding,w,h);
