@@ -33,7 +33,7 @@ function criaBotaoSairGraficoEstados(){
 	element.onclick = function() { // Note this is a function
 		sairGraficoEstado();
 	};
-	document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(element);
+	document.getElementsByClassName("painel-grafico-estados")[0].appendChild(element);
 }
 
 //---------------------------------------------------construcao grafico estados
@@ -52,7 +52,7 @@ function montaLegenda(opcao){
 	divLegenda.style.opacity = '50%';
 	divLegenda.style.padding = '5px';
 	divLegenda.innerHTML = "Legenda";
-	$(".painel-grafico-primeiro").append(divLegenda);
+	$(".painel-grafico-"+opcao).append(divLegenda);
 
 	if(opcao === 'estados'){
 		var myObjects = [
@@ -145,7 +145,7 @@ function criaSuporteGraficoPrimeiro(){
 
 	divGrafico.className = 'div-grafico';
  	divGrafico.style.overflowX ='auto';
-	document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(divGrafico);
+	document.getElementsByClassName("painel-grafico-estados")[0].appendChild(divGrafico);
 	return;
 }
 
@@ -580,7 +580,7 @@ function criaBotaoSairGraficoPele(){
 	element.onclick = function() { // Note this is a function
 		sairGraficoPele();
 	};
-	document.getElementsByClassName("painel-grafico-segundo")[0].appendChild(element);
+	document.getElementsByClassName("painel-grafico-corpele")[0].appendChild(element);
 }
 
 //---------------------------------------------------construcao grafico estados
@@ -599,7 +599,7 @@ function montaLegendaPele(){
 	divLegenda.style.opacity = '50%';
 	divLegenda.style.padding = '5px';
 	divLegenda.innerHTML = "Legenda";
-	$(".painel-grafico-segundo").append(divLegenda);
+	$(".painel-grafico-corpele").append(divLegenda);
 
 	$(function () {
 	    var myObjects = [
@@ -656,7 +656,7 @@ function criaSuporteGraficoSegundo(){
 
 	divGrafico.className = 'div-grafico';
  	divGrafico.style.overflowX ='auto';
-	document.getElementsByClassName("painel-grafico-segundo")[0].appendChild(divGrafico);
+	document.getElementsByClassName("painel-grafico-corpele")[0].appendChild(divGrafico);
 	return;
 }
 
