@@ -1,6 +1,6 @@
 
 //------------------------------------------------------saida grafico estados
-//funcao saida montaGraficoEstado
+//funcao saida montaGrafico
 function sairGrafico(opcao){
 
 //	d3.select("svg").remove();
@@ -23,14 +23,15 @@ function sairGrafico(opcao){
 //botao saida grafico Estados
 function criaBotaoSairGrafico(opcao){
 	var element = document.createElement("input");
-	//Assign different attributes to the element.
+
+	//definindo atributos e estilos dinamicamente
 	element.type = "button";
 	element.value = "Sair";
 	element.id='botao-sair';
 	element.style.position = 'absolute';
 	element.style.right ='10px';
 	element.style.marginTop ='10px';
-	element.onclick = function() { // Note this is a function
+	element.onclick = function() {
 		sairGrafico(opcao);
 	};
 	document.getElementsByClassName("painel-grafico-"+opcao)[0].appendChild(element);
@@ -130,38 +131,37 @@ function configuraGraficoEstado(w,h){
 }
 
 //verifica e fecha outras visualizações abertas
-function fechaVisualizacoesPrimeiro(){
-	var open =document.getElementById("botao-visualizar-corpele").disabled;
-	if(open == true) sairGrafico("corpele");
-	else return;
-}
+function fechaVisualizacoes(opcao){
 
-//verifica e fecha outras visualizações abertas
-function fechaVisualizacoesSegundo(){
-	var open =document.getElementById("botao-visualizar-estados").disabled;
-	if(open == true) sairGrafico("estados");
+	if(opcao === 'estados') var contraOpcao = "corpele";
+	else if(opcao === 'corpele') var contraOpcao = "estados";
+
+	var open =document.getElementById("botao-visualizar-"+contraOpcao).disabled;
+	if(open == true) sairGrafico(contraOpcao);
 	else return;
 }
 
 
 //------------------------------------------------------------------------------
 //funcoes montagem grafico Estado
-function criaSuporteGraficoPrimeiro(){
+function criaSuporteGrafico(opcao){
 	var divGrafico = document.createElement('div');
 
 	divGrafico.className = 'div-grafico';
  	divGrafico.style.overflowX ='auto';
-	document.getElementsByClassName("painel-grafico-estados")[0].appendChild(divGrafico);
+	document.getElementsByClassName("painel-grafico-"+opcao)[0].appendChild(divGrafico);
 	return;
 }
 
 function montaGraficoEstados(){
 
+	var opcao = "estados";
+
 	//verifica e fecha outras visualizações abertas
-	fechaVisualizacoesPrimeiro();
+	fechaVisualizacoes(opcao);
 
 	//desabilitar botao visualizar enquanto durante a visualização corrente
-	document.getElementById("botao-visualizar-estados").disabled = true;
+	document.getElementById("botao-visualizar-"+opcao).disabled = true;
 
   //largura e altura
   var w = 1500;
@@ -172,20 +172,16 @@ function montaGraficoEstados(){
 
 	var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 
-	var opcao = "estados";
-
 	criaBotaoSairGrafico(opcao);
 
 	//cria suporte grafico
-	criaSuporteGraficoPrimeiro();
+	criaSuporteGrafico(opcao);
 
 	element.setAttribute("class", "chartEstado");
 	document.getElementsByClassName("div-grafico")[0].appendChild(element);
 
   configuraGraficoEstado(w,h);
 	montaGraficoEstadoOriginal(padding,w,h);
-
-
 
 	montaLegenda(opcao);
 
@@ -558,25 +554,6 @@ function dicaCirculosPorEstado(){
 
 
 //------------------------------------------------------saida grafico estados
-//funcao saida montaGraficoEstado
-function sairGraficoPele(){
-
-	//d3.select("svg").remove();
-
-	//remove Suporte
-	$('.div-grafico').remove();
-
-	//remove legenda
-	$('#legend').remove();
-
-	//remove botao Sair
-	$('#botao-sair').remove();
-
-	//reabilita o botao visualizar
-	document.getElementById("botao-visualizar-corpele").disabled = false;
-
-	return;
-}
 
 
 //---------------------------------------------------construcao grafico estados
@@ -594,22 +571,15 @@ function configuraGraficoCorPele(w,h){
 }
 //------------------------------------------------------------------------------
 
-function criaSuporteGraficoSegundo(){
-	var divGrafico = document.createElement('div');
-
-	divGrafico.className = 'div-grafico';
- 	divGrafico.style.overflowX ='auto';
-	document.getElementsByClassName("painel-grafico-corpele")[0].appendChild(divGrafico);
-	return;
-}
-
 function montaGraficoCorPele(){
 
+	var opcao="corpele";
+
 	//fecha outras visualizaceos abertas
-	fechaVisualizacoesSegundo();
+	fechaVisualizacoes(opcao);
 
 	//desabilitar botao visualizar enquanto durante a visualização corrente
-	document.getElementById("botao-visualizar-corpele").disabled = true;
+	document.getElementById("botao-visualizar-"+opcao).disabled = true;
 
   //largura e altura
   var w = 1500;
@@ -618,13 +588,11 @@ function montaGraficoCorPele(){
   //padding
   var padding = 90;
 
-	var opcao="corpele";
-
 	//cria botao sair
 	criaBotaoSairGrafico(opcao);
 
 	//cria suporte grafico
-	criaSuporteGraficoSegundo();
+	criaSuporteGrafico(opcao);
 
   var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 
