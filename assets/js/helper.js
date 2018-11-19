@@ -75,7 +75,7 @@ function montaLegendaEstados(){
 			  },
 			  {
 			    "nome": "Norte",
-			    "codigo": "#003366"
+			    "codigo": "#003111"
 			  }
 			];
 	    $.each(myObjects, function () {
@@ -84,7 +84,7 @@ function montaLegendaEstados(){
 
 				var innerDiv = document.createElement('div');
 				innerDiv.className = 'square';
-				innerDiv.id = 'sul';
+				innerDiv.id = 'this.codigo';
 				$(textDiv).append(innerDiv);
 
 				var p = "<p>Sul</p>";
