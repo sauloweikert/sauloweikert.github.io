@@ -57,33 +57,44 @@ function montaLegendaEstados(){
 
 	$(function () {
 	    var myObjects = [
-	        {
-	            id: 1,
-	            firstname: "Jose",
-	            lastname: "souza"
-	        },
-	        {
-	            id: 2,
-	            firstname: "Joao",
-	            lastname: "Silva"
-	        },
-	        {
-	            id: 3,
-	            firstname: "Antonio",
-	            lastname: "Soares"
-	        }
-	    ];
+			  {
+			    "nome": "Sul",
+			    "codigo": "#003366"
+			  },
+			  {
+			    "nome": "Sudeste",
+			    "codigo": "#003366"
+			  },
+			  {
+			    "nome": "Centro-Oeste",
+			    "codigo": "#003366"
+			  },
+			  {
+			    "nome": "Nordeste",
+			    "codigo": "#003366"
+			  },
+			  {
+			    "nome": "Norte",
+			    "codigo": "#003366"
+			  }
+			];
 	    $.each(myObjects, function () {
-	        console.log("ID: " + this.id);
-	        console.log("First Name: " + this.firstname);
-	        console.log("Last Name: " + this.lastname);
-	        console.log(" ");
+				var textDiv = document.createElement('div');
+				$(divLegenda).append(textDiv);
+
+				var innerDiv = document.createElement('div');
+				innerDiv.className = 'square';
+				innerDiv.id = 'sul';
+				$(textDiv).append(innerDiv);
+
+				var p = "<p>"this.nome"</p>";
+				$(textDiv).append(p);
 	    });
 	});
 
 
 	//document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(divLegenda);
-
+/*
 	// Now create and append to iDiv
 	var textDiv = document.createElement('div');
 	$(divLegenda).append(textDiv);
@@ -143,7 +154,7 @@ function montaLegendaEstados(){
 
 	var p5 = "<p>Norte</p>";
 	$(textDiv5).append(p5);
-
+*/
 }
 //--------------------------------------------------------------------------
 
