@@ -177,7 +177,7 @@ function montaGraficoEstados(){
   configuraGraficoEstado(w,h);
 	montaGraficoEstadoOriginal(padding,w,h);
 
-	var opcao = "corpele";
+	var opcao = "estados";
 
 	montaLegenda(opcao);
 
@@ -584,59 +584,6 @@ function criaBotaoSairGraficoPele(){
 }
 
 //---------------------------------------------------construcao grafico estados
-//funcao montagem legenda grafico pele
-function montaLegendaPele(){
-	var divLegenda = document.createElement('div');
-	divLegenda.id = 'legend';
-
-	divLegenda.style.borderStyle = 'double';
-	divLegenda.style.display = 'inline-block';
-	divLegenda.style.width = '15%';
-	divLegenda.style.position = 'absolute';
-	divLegenda.style.right ='10px';
-	divLegenda.style.top ='10px';
-	divLegenda.style.backgroundColor = 'white';
-	divLegenda.style.opacity = '50%';
-	divLegenda.style.padding = '5px';
-	divLegenda.innerHTML = "Legenda";
-	$(".painel-grafico-corpele").append(divLegenda);
-
-	$(function () {
-	    var myObjects = [
-			  {
-			    "nome": "Indigena"
-			  },
-			  {
-			    "nome": "Amarela"
-			  },
-			  {
-			    "nome": "Negra"
-			  },
-			  {
-			    "nome": "Parda"
-			  },
-			  {
-			    "nome": "Branca"
-			  }
-			];
-	    $.each(myObjects, function () {
-				var cell = document.createElement('div');
-				$(divLegenda).append(cell);
-
-				var squareDiv = document.createElement('div');
-				squareDiv.className = 'square';
-				squareDiv.id = this.nome.toLowerCase();
-				$(cell).append(squareDiv);
-
-				var p = document.createElement('p');
-				$(p).text(this.nome);
-				$(cell).append(p);
-	    });
-	});
-}
-
-//--------------------------------------------------------------------------
-
 
 //funcao construcao inicial grafico
 function configuraGraficoCorPele(w,h){
@@ -689,7 +636,9 @@ function montaGraficoCorPele(){
   configuraGraficoCorPele(w,h);
   montaGraficoCorPeleOriginal(padding,w,h);
 
-	montaLegendaPele();
+	var opcao="corpele";
+
+	montaLegenda(opcao);
 
   //reage ao clique em algum ano
   atualizaGraficoCorPele(padding,w,h);
