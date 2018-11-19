@@ -58,19 +58,19 @@ function montaLegendaEstados(){
 	$(function () {
 	    var myObjects = [
 			  {
-			    "nome": "Sul";
+			    "nome": "Sul"
 			  },
 			  {
-			    "nome": "Sudeste";
+			    "nome": "Sudeste"
 			  },
 			  {
-			    "nome": "Centroeste";
+			    "nome": "Centroeste"
 			  },
 			  {
-			    "nome": "Nordeste";
+			    "nome": "Nordeste"
 			  },
 			  {
-			    "nome": "Norte";
+			    "nome": "Norte"
 			  }
 			];
 	    $.each(myObjects, function () {
