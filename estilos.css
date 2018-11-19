@@ -95,18 +95,6 @@ header h1 {
     }
 }
 
-.legend{
-/*  display: inline-grid;*/
-  border-style: double;
-  display: inline-block;
-  width: 15%;
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  background-color: white;
-  opacity: 50%;
-  padding: 5px;
-}
 .square {
   /*position: relative;*/
   height: 10px;
