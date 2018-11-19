@@ -54,35 +54,25 @@ function montaLegendaEstados(){
 	divLegenda.innerHTML = "Legenda";
 	$(".painel-grafico-primeiro").append(divLegenda);
 
-	$.getJSON("estados" + ".json", function(data) {
-				if (error) { //If error is not null, something went wrong.
-					console.log(error); //Log the error.
-				}
-				else { //If no error
-
-	        myItems = data.items;
-	        console.log(myItems);
-				}
-	});
+	var myObjects = [
+		{
+			"nome": "Sul"
+		},
+		{
+			"nome": "Sudeste"
+		},
+		{
+			"nome": "Centroeste"
+		},
+		{
+			"nome": "Nordeste"
+		},
+		{
+			"nome": "Norte"
+		}
+	];
 
 	$(function () {
-	    var myObjects = [
-			  {
-			    "nome": "Sul"
-			  },
-			  {
-			    "nome": "Sudeste"
-			  },
-			  {
-			    "nome": "Centroeste"
-			  },
-			  {
-			    "nome": "Nordeste"
-			  },
-			  {
-			    "nome": "Norte"
-			  }
-			];
 	    $.each(myObjects, function () {
 				var cell = document.createElement('div');
 				$(divLegenda).append(cell);
