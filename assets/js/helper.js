@@ -74,17 +74,17 @@ function montaLegendaEstados(){
 			  }
 			];
 	    $.each(myObjects, function () {
-				var textDiv = document.createElement('div');
-				$(divLegenda).append(textDiv);
+				var cell = document.createElement('div');
+				$(divLegenda).append(cell);
 
-				var innerDiv = document.createElement('div');
-				innerDiv.className = 'square';
-				innerDiv.id = this.nome.toLowerCase();
-				$(textDiv).append(innerDiv);
+				var squareDiv = document.createElement('div');
+				squareDiv.className = 'square';
+				squareDiv.id = this.nome.toLowerCase();
+				$(cell).append(squareDiv);
 
 				var p = document.createElement('p');
 				$(p).text(this.nome);
-				$(textDiv).append(p);
+				$(cell).append(p);
 	    });
 	});
 }
@@ -578,68 +578,39 @@ function montaLegendaPele(){
 	divLegenda.style.padding = '5px';
 	divLegenda.innerHTML = "Legenda";
 	$(".painel-grafico-segundo").append(divLegenda);
-	//document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(divLegenda);
 
-	// Now create and append to iDiv
-	var textDiv = document.createElement('div');
-	$(divLegenda).append(textDiv);
+	$(function () {
+	    var myObjects = [
+			  {
+			    "nome": "Indigena"
+			  },
+			  {
+			    "nome": "Amarela"
+			  },
+			  {
+			    "nome": "Negra"
+			  },
+			  {
+			    "nome": "Parda"
+			  },
+			  {
+			    "nome": "Branca"
+			  }
+			];
+	    $.each(myObjects, function () {
+				var cell = document.createElement('div');
+				$(divLegenda).append(cell);
 
-	var innerDiv = document.createElement('div');
-	innerDiv.className = 'square';
-	innerDiv.id = 'indigena';
-	$(textDiv).append(innerDiv);
+				var squareDiv = document.createElement('div');
+				squareDiv.className = 'square';
+				squareDiv.id = this.nome.toLowerCase();
+				$(cell).append(squareDiv);
 
-	var p = "<p>Indígena</p>";
-	$(textDiv).append(p);
-
-	// Now create and append to iDiv
-	var textDiv2 = document.createElement('div');
-	$(divLegenda).append(textDiv2);
-
-	var innerDiv2 = document.createElement('div');
-	innerDiv2.className = 'square';
-	innerDiv2.id = 'amarela';
-	$(textDiv2).append(innerDiv2);
-
-	var p2 = "<p>Amarela</p>";
-	$(textDiv2).append(p2);
-
-	// Now create and append to iDiv
-	var textDiv3 = document.createElement('div');
-	$(divLegenda).append(textDiv3);
-
-	var innerDiv3 = document.createElement('div');
-	innerDiv3.className = 'square';
-	innerDiv3.id = 'negra';
-	$(textDiv3).append(innerDiv3);
-
-	var p3 = "<p>Negra</p>";
-	$(textDiv3).append(p3);
-
-	// Now create and append to iDiv
-	var textDiv4 = document.createElement('div');
-	$(divLegenda).append(textDiv4);
-
-	var innerDiv4 = document.createElement('div');
-	innerDiv4.className = 'square';
-	innerDiv4.id = 'parda';
-	$(textDiv4).append(innerDiv4);
-
-	var p4 = "<p>Parda</p>";
-	$(textDiv4).append(p4);
-
-	// Now create and append to iDiv
-	var textDiv5 = document.createElement('div');
-	$(divLegenda).append(textDiv5);
-
-	var innerDiv5 = document.createElement('div');
-	innerDiv5.className = 'square';
-	innerDiv5.id = 'branca';
-	$(textDiv5).append(innerDiv5);
-
-	var p5 = "<p>Branca</p>";
-	$(textDiv5).append(p5);
-
+				var p = document.createElement('p');
+				$(p).text(this.nome);
+				$(cell).append(p);
+	    });
+	});
 }
 
 //--------------------------------------------------------------------------
