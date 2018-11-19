@@ -119,10 +119,10 @@ function montaLegenda(opcao){
 //--------------------------------------------------------------------------
 
 //funcao construcao inicial grafico
-function configuraGraficoEstado(w,h){
+function configuraGrafico(w,h,opcao){
 
 	//criando o elemento svg
-	d3.select(".chartEstado")
+	d3.select(".chart-"+opcao)
 		.attr("width", w)
 		.attr("height", h)
 		.attr("font-family", "sans-serif")
@@ -153,9 +153,7 @@ function criaSuporteGrafico(opcao){
 	return;
 }
 
-function montaGraficoEstados(){
-
-	var opcao = "estados";
+function montaGrafico(opcao){
 
 	//verifica e fecha outras visualizações abertas
 	fechaVisualizacoes(opcao);
@@ -163,11 +161,9 @@ function montaGraficoEstados(){
 	//desabilitar botao visualizar enquanto durante a visualização corrente
 	document.getElementById("botao-visualizar-"+opcao).disabled = true;
 
-  //largura e altura
+  //largura,altura,padding
   var w = 1500;
   var h = 400;
-
-  //padding
   var padding = 90;
 
 	var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -177,17 +173,25 @@ function montaGraficoEstados(){
 	//cria suporte grafico
 	criaSuporteGrafico(opcao);
 
-	element.setAttribute("class", "chartEstado");
+	element.setAttribute("class", "chart-"+opcao);
 	document.getElementsByClassName("div-grafico")[0].appendChild(element);
 
-  configuraGraficoEstado(w,h);
-	montaGraficoEstadoOriginal(padding,w,h);
-
+  configuraGrafico(w,h,opcao);
 	montaLegenda(opcao);
 
-  //reage ao clique em algum ano
-  atualizaGraficoEstado(padding,w,h);
 
+	if(opcao === 'estados'){
+
+		montaGraficoEstadoOriginal(padding,w,h);
+		//reage ao clique em algum ano
+	  atualizaGraficoEstado(padding,w,h);
+	}
+	else if(opcao === 'corpele'){
+
+	montaGraficoCorPeleOriginal(padding,w,h);
+	//reage ao clique em algum ano
+	atualizaGraficoCorPele(padding,w,h);
+	}
 }
 
 
@@ -230,8 +234,8 @@ function constroiCirculosEstadosOriginal(xScale,yScale,rScale){
 
 //desenha os circulos - grafico estados
 function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
-//  d3.select(".chartEstado").selectAll("#circuloEstado")
-	d3.select(".chartEstado").selectAll("#circuloEstado")
+//  d3.select(".chart-estados").selectAll("#circuloEstado")
+	d3.select(".chart-estados").selectAll("#circuloEstado")
     .data(dataset)
 		.enter()
 		.append("circle")
@@ -260,7 +264,7 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
 function rotulaCirculosEstadoOriginal(xScale,yScale){
-  d3.select(".chartEstado").selectAll("#textoEstado")
+  d3.select(".chart-estados").selectAll("#textoEstado")
     .data(dataset)
 		.enter()
 		.append("text")
@@ -288,7 +292,7 @@ function rotulaCirculosEstadoOriginal(xScale,yScale){
 //a ser usado para grafico Estados
 
 function dicaCirculosPorEstadoOriginal(){
-  d3.select(".chartEstado").selectAll("#circuloEstado")
+  d3.select(".chart-estados").selectAll("#circuloEstado")
     .data(dataset)
 		.enter()
     .append("title")
@@ -308,7 +312,7 @@ function atualizaGraficoEstado(padding,w,h){
 	//seleciona o ano e gera os circulos
 	d3.selectAll("#yearEstado")
 	.on("click", function() {
-    d3.select(".chartEstado").selectAll(".axis").remove();
+    d3.select(".chart-estados").selectAll(".axis").remove();
 		d3.json("dados/" + $(this).html() + ".json", function(error,data) {
 			if (error) { //If error is not null, something went wrong.
 				console.log(error); //Log the error.
@@ -401,7 +405,7 @@ function defineEixoX(xScale){
 
 function desenhaEixoXEstado(xAxis,padding,h){
 
-  d3.select(".chartEstado").append("g")
+  d3.select(".chart-estados").append("g")
   .attr("class", "axis") //Assign "axis" class
   .attr("transform", "translate(0," + (h - padding) + ")")
   .call(xAxis);
@@ -411,7 +415,7 @@ function desenhaEixoXEstado(xAxis,padding,h){
 
 // adiciona o rotulo do eixo
 function rotulaEixoXEstado(padding,h,w){
-d3.select(".chartEstado").append("text")
+d3.select(".chart-estados").append("text")
     .attr("transform", "translate(" + (w/ 2) + "," + (h) + ")")
     .style("text-anchor", "middle")
     .text("candidatos do Gênero Feminino/Total candidatos (%)");
@@ -448,7 +452,7 @@ function defineEixoY(yScale){
 function desenhaEixoYEstado(yAxis,padding){
 
   //Create Y axis
-  d3.select(".chartEstado").append("g")
+  d3.select(".chart-estados").append("g")
   .attr("class", "axis")
   .attr("transform", "translate(" + padding + ",0)")
   .call(yAxis);
@@ -457,7 +461,7 @@ function desenhaEixoYEstado(yAxis,padding){
 
 //desenha rotulo eixo y
 function rotulaEixoYEstado(padding,h){
-  d3.select(".chartEstado").append("text")
+  d3.select(".chart-estados").append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 120 - padding)
       .attr("x",0 - (h / 2))
@@ -491,8 +495,8 @@ function constroiCirculosEstados(xScale,yScale,rScale){
 
 //desenha os circulos - grafico estados
 function desenhaCirculosEstado(xScale,yScale,rScale){
-//  d3.select(".chartEstado").selectAll("#circuloEstado")
-	d3.select(".chartEstado").selectAll("#circuloEstado")
+//  d3.select(".chart-estados").selectAll("#circuloEstado")
+	d3.select(".chart-estados").selectAll("#circuloEstado")
     .data(dataset)
     .transition()
     .duration(2000)
@@ -516,7 +520,7 @@ function desenhaCirculosEstado(xScale,yScale,rScale){
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
 function rotulaCirculosEstado(xScale,yScale){
-  d3.select(".chartEstado").selectAll("#textoEstado")
+  d3.select(".chart-estados").selectAll("#textoEstado")
     .data(dataset)
     .transition()
     .duration(2000)
@@ -538,7 +542,7 @@ function rotulaCirculosEstado(xScale,yScale){
 //adiciona uma dica "tooltip" para cada circulo, visivel ao sobrepor o mouse
 //a ser usado para grafico Estados
 function dicaCirculosPorEstado(){
-  d3.select(".chartEstado").selectAll("#circuloEstado")
+  d3.select(".chart-estados").selectAll("#circuloEstado")
     .data(dataset)
       .text(function(d) {
         return "Estado:" +"\t"+"\t"+"\t" + d.nome + "\n"
@@ -551,64 +555,6 @@ function dicaCirculosPorEstado(){
 
 //------------------------------------------------------------
 //---------------------------FUNCOES GRAFICO COR PELE---------
-
-
-//------------------------------------------------------saida grafico estados
-
-
-//---------------------------------------------------construcao grafico estados
-
-//funcao construcao inicial grafico
-function configuraGraficoCorPele(w,h){
-
-	//criando o elemento svg
-	d3.select(".chartCorPele")
-		.attr("width", w)
-		.attr("height", h)
-		.attr("font-family", "sans-serif")
-		.attr("font-size", "11px");
-  return;
-}
-//------------------------------------------------------------------------------
-
-function montaGraficoCorPele(){
-
-	var opcao="corpele";
-
-	//fecha outras visualizaceos abertas
-	fechaVisualizacoes(opcao);
-
-	//desabilitar botao visualizar enquanto durante a visualização corrente
-	document.getElementById("botao-visualizar-"+opcao).disabled = true;
-
-  //largura e altura
-  var w = 1500;
-  var h = 400;
-
-  //padding
-  var padding = 90;
-
-	//cria botao sair
-	criaBotaoSairGrafico(opcao);
-
-	//cria suporte grafico
-	criaSuporteGrafico(opcao);
-
-  var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-
-	element.setAttribute("class", "chartCorPele");
-	document.getElementsByClassName("div-grafico")[0].appendChild(element);
-
-  configuraGraficoCorPele(w,h);
-  montaGraficoCorPeleOriginal(padding,w,h);
-
-	montaLegenda(opcao);
-
-  //reage ao clique em algum ano
-  atualizaGraficoCorPele(padding,w,h);
-	//atualizaGraficoCorPeleGrupo(padding,w,h);
-
-}
 
 
 //-------------------------------------funcoes grafico estados original
@@ -651,8 +597,8 @@ function constroiCirculosCorPeleOriginal(xScale,yScale,rScale){
 
 //desenha os circulos - grafico estados
 function desenhaCirculosCorPeleOriginal(xScale,yScale,rScale){
-//  d3.select(".chartEstado").selectAll("#circuloEstado")
-	d3.select(".chartCorPele").selectAll("#circuloCorPele")
+
+	d3.select(".chart-corpele").selectAll("#circuloCorPele")
     .data(dataset)
 		.enter()
 		.append("circle")
@@ -680,7 +626,7 @@ function desenhaCirculosCorPeleOriginal(xScale,yScale,rScale){
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
 function rotulaCirculosCorPeleOriginal(xScale,yScale){
-  d3.select(".chartCorPele").selectAll("#textoCorPele")
+  d3.select(".chart-corpele").selectAll("#textoCorPele")
     .data(dataset)
 		.enter()
 		.append("text")
@@ -708,7 +654,7 @@ function rotulaCirculosCorPeleOriginal(xScale,yScale){
 //a ser usado para grafico Pele
 
 function dicaCirculosPorCorPeleOriginal(){
-  d3.select(".chartCorPele").selectAll("#circuloCorPele")
+  d3.select(".chart-corpele").selectAll("#circuloCorPele")
     .data(dataset)
 		.enter()
     .append("title")
@@ -729,7 +675,7 @@ function atualizaGraficoCorPele(padding,w,h){
 	//seleciona o ano e gera os circulos
 	d3.selectAll("#yearCorPele")
 	.on("click", function() {
-    d3.select(".chartCorPele").selectAll(".axis").remove();
+    d3.select(".chart-corpele").selectAll(".axis").remove();
 		d3.json("dados/" + $(this).html() + ".json", function(error,data) {
 			if (error) { //If error is not null, something went wrong.
 				console.log(error); //Log the error.
@@ -799,7 +745,7 @@ function constroiEixosCorPele(xScale,yScale,padding,h,w){
 
 function desenhaEixoXCorPele(xAxis,padding,h){
 
-  d3.select(".chartCorPele").append("g")
+  d3.select(".chart-corpele").append("g")
   .attr("class", "axis") //Assign "axis" class
   .attr("transform", "translate(0," + (h - padding) + ")")
   .call(xAxis);
@@ -809,7 +755,7 @@ function desenhaEixoXCorPele(xAxis,padding,h){
 
 // adiciona o rotulo do eixo
 function rotulaEixoXCorPele(padding,h,w){
-d3.select(".chartCorPele").append("text")
+d3.select(".chart-corpele").append("text")
     .attr("transform", "translate(" + (w/ 2) + "," + (h) + ")")
     .style("text-anchor", "middle")
     .text("candidatos do Gênero Feminino/Total candidatos (%)");
@@ -831,7 +777,7 @@ function constroiEixoXCorPele(xScale,padding,h,w){
 function desenhaEixoYCorPele(yAxis,padding){
 
   //Create Y axis
-  d3.select(".chartCorPele").append("g")
+  d3.select(".chart-corpele").append("g")
   .attr("class", "axis")
   .attr("transform", "translate(" + padding + ",0)")
   .call(yAxis);
@@ -840,7 +786,7 @@ function desenhaEixoYCorPele(yAxis,padding){
 
 //desenha rotulo eixo y
 function rotulaEixoYCorPele(padding,h){
-  d3.select(".chartCorPele").append("text")
+  d3.select(".chart-corpele").append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 120 - padding)
       .attr("x",0 - (h / 2))
@@ -874,7 +820,7 @@ function constroiCirculosCorPele(xScale,yScale,rScale){
 
 //desenha os circulos - grafico cor pele
 function desenhaCirculosCorPele(xScale,yScale,rScale){
-d3.select(".chartCorPele").selectAll("#circuloCorPele")
+d3.select(".chart-corpele").selectAll("#circuloCorPele")
   .data(dataset)
   .transition()
   .duration(2000)
@@ -898,7 +844,7 @@ d3.select(".chartCorPele").selectAll("#circuloCorPele")
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
 function rotulaCirculosCorPele(xScale,yScale){
-  d3.select(".chartCorPele").selectAll("#textoCorPele")
+  d3.select(".chart-corpele").selectAll("#textoCorPele")
     .data(dataset)
     .transition()
     .duration(2000)
@@ -920,7 +866,7 @@ function rotulaCirculosCorPele(xScale,yScale){
 //adiciona uma dica "tooltip" para cada circulo, visivel ao sobrepor o mouse
 //a ser usado para grafico CorPele
 function dicaCirculosPorCorPele(){
-  d3.select(".chartCorPele").selectAll("#circuloCorPele")
+  d3.select(".chart-corpele").selectAll("#circuloCorPele")
     .data(dataset)
     .append("title")
       .text(function(d) {
