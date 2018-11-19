@@ -54,7 +54,7 @@ function montaLegendaEstados(){
 	divLegenda.innerHTML = "Legenda";
 	$(".painel-grafico-primeiro").append(divLegenda);
 
-	$.getJSON('estados' + '.json', function(data) {
+	$.getJSON("estados" + ".json", function(data) {
 				if (error) { //If error is not null, something went wrong.
 					console.log(error); //Log the error.
 				}
