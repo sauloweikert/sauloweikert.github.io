@@ -58,24 +58,19 @@ function montaLegendaEstados(){
 	$(function () {
 	    var myObjects = [
 			  {
-			    "nome": "Sul",
-			    "codigo": "#003366"
+			    "nome": "Sul";
 			  },
 			  {
-			    "nome": "Sudeste",
-			    "codigo": "#003366"
+			    "nome": "Sudeste";
 			  },
 			  {
-			    "nome": "Centro-Oeste",
-			    "codigo": "#003366"
+			    "nome": "Centroeste";
 			  },
 			  {
-			    "nome": "Nordeste",
-			    "codigo": "#003366"
+			    "nome": "Nordeste";
 			  },
 			  {
-			    "nome": "Norte",
-			    "codigo": "#003111"
+			    "nome": "Norte";
 			  }
 			];
 	    $.each(myObjects, function () {
