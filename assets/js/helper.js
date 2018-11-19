@@ -87,7 +87,7 @@ function montaLegendaEstados(){
 				innerDiv.id = 'sul';
 				$(textDiv).append(innerDiv);
 
-				var p = "<p>"this.nome"</p>";
+				var p = "<p>Sul</p>";
 				$(textDiv).append(p);
 	    });
 	});
