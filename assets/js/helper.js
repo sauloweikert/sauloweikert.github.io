@@ -179,34 +179,26 @@ function montaGrafico(opcao){
   configuraGrafico(w,h,opcao);
 	montaLegenda(opcao);
 
+	montaGraficoOriginal(padding,w,h,opcao);
 
-	if(opcao === 'estados'){
 
-		montaGraficoEstadoOriginal(padding,w,h);
-		//reage ao clique em algum ano
-	  atualizaGraficoEstado(padding,w,h);
-	}
-	else if(opcao === 'corpele'){
-
-	montaGraficoCorPeleOriginal(padding,w,h);
-	//reage ao clique em algum ano
-	atualizaGraficoCorPele(padding,w,h);
-	}
+	atualizaGrafico(padding,w,h,opcao);
 }
 
 
 //-------------------------------------funcoes grafico estados original
 
-function montaGraficoEstadoOriginal(padding,w,h){
+function montaGraficoOriginal(padding,w,h,opcao){
 
-		d3.json("dados/2014"+ ".json", function(error,data) {
+		d3.json("dados/2014-"+opcao + ".json", function(error,data) {
 			if (error) { //If error is not null, something went wrong.
 				console.log(error); //Log the error.
 			}
 			else { //If no error, the file loaded correctly. Yay!
 				//console.log(data); //Log the data.
 
-	       refrescaGraficoEstadoOriginal(data, padding,w,h);
+				if(opcao === 'estados')refrescaGraficoEstadoOriginal(data, padding,w,h);
+				else if(opcao === 'corpele')refrescaGraficoCorPeleOriginal(data, padding,w,h);
 
 			}//fecha else
 		});
@@ -307,12 +299,12 @@ function dicaCirculosPorEstadoOriginal(){
 
 //-----------------------------------------funcoes atualizacao grafico estado
 
-function atualizaGraficoEstado(padding,w,h){
+function atualizaGrafico(padding,w,h,opcao){
 
 	//seleciona o ano e gera os circulos
-	d3.selectAll("#yearEstado")
+	d3.selectAll("#year-"+opcao)
 	.on("click", function() {
-    d3.select(".chart-estados").selectAll(".axis").remove();
+    d3.select(".chart-"+opcao).selectAll(".axis").remove();
 		d3.json("dados/" + $(this).html() + ".json", function(error,data) {
 			if (error) { //If error is not null, something went wrong.
 				console.log(error); //Log the error.
@@ -320,9 +312,10 @@ function atualizaGraficoEstado(padding,w,h){
 			else { //If no error, the file loaded correctly. Yay!
 				//console.log(data); //Log the data.
 
-	       refrescaGraficoEstado(data, padding,w,h);
+				if(opcao === 'estados')refrescaGraficoEstado(data, padding,w,h);
+				else if(opcao === 'corpele')refrescaGraficoCorPele(data, padding,w,h);
 
-					}//fecha else
+				}//fecha else
 			});
 		});
 }
@@ -339,8 +332,6 @@ function refrescaGraficoEstado(data, padding,w,h){
 
   constroiCirculosEstados(xScale,yScale,rScale);
 }
-
-//----------------------------------------------funcoes atualiza grafico corpele
 
 
 //---------------------------------------------------------------------------
@@ -559,20 +550,6 @@ function dicaCirculosPorEstado(){
 
 //-------------------------------------funcoes grafico estados original
 
-function montaGraficoCorPeleOriginal(padding,w,h){
-
-		d3.json("dados/2014_"+ ".json", function(error,data) {
-			if (error) { //If error is not null, something went wrong.
-				console.log(error); //Log the error.
-			}
-			else { //If no error, the file loaded correctly. Yay!
-				//console.log(data); //Log the data.
-
-	       refrescaGraficoCorPeleOriginal(data, padding,w,h);
-
-			}//fecha else
-		});
-}
 
 //funcao refreca grafico estados original
 function refrescaGraficoCorPeleOriginal(data, padding,w,h){
@@ -667,29 +644,7 @@ function dicaCirculosPorCorPeleOriginal(){
     return;
 }
 
-//-----------------------------------------funcoes atualizacao grafico estado
-
-
-function atualizaGraficoCorPele(padding,w,h){
-
-	//seleciona o ano e gera os circulos
-	d3.selectAll("#yearCorPele")
-	.on("click", function() {
-    d3.select(".chart-corpele").selectAll(".axis").remove();
-		d3.json("dados/" + $(this).html() + ".json", function(error,data) {
-			if (error) { //If error is not null, something went wrong.
-				console.log(error); //Log the error.
-			}
-			else { //If no error, the file loaded correctly. Yay!
-				//console.log(data); //Log the data.
-
-	       refrescaGraficoCorPele(data, padding,w,h);
-
-					}//fecha else
-			});
-		});
-}
-
+//-----------------------------------------funcoes atualizacao grafico corpele
 
 function refrescaGraficoCorPele(data, padding,w,h){
   dataset = data;
@@ -702,8 +657,6 @@ function refrescaGraficoCorPele(data, padding,w,h){
 
   constroiCirculosCorPele(xScale,yScale,rScale);
 }
-
-//----------------------------------------------funcoes atualiza grafico corpele
 
 //---------------------------------------------------------------------------
 //funcoes escalas
