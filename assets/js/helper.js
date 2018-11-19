@@ -54,6 +54,34 @@ function montaLegendaEstados(){
 	divLegenda.style.padding = '5px';
 	divLegenda.innerHTML = "Legenda";
 	$(".painel-grafico-primeiro").append(divLegenda);
+
+	$(function () {
+	    var myObjects = [
+	        {
+	            id: 1,
+	            firstname: "Jose",
+	            lastname: "souza"
+	        },
+	        {
+	            id: 2,
+	            firstname: "Joao",
+	            lastname: "Silva"
+	        },
+	        {
+	            id: 3,
+	            firstname: "Antonio",
+	            lastname: "Soares"
+	        }
+	    ];
+	    $.each(myObjects, function () {
+	        console.log("ID: " + this.id);
+	        console.log("First Name: " + this.firstname);
+	        console.log("Last Name: " + this.lastname);
+	        console.log(" ");
+	    });
+	});
+
+
 	//document.getElementsByClassName("painel-grafico-primeiro")[0].appendChild(divLegenda);
 
 	// Now create and append to iDiv
@@ -186,8 +214,6 @@ function montaGraficoEstados(){
 	montaGraficoEstadoOriginal(padding,w,h);
 
 	montaLegendaEstados();
-
-
 
   //reage ao clique em algum ano
   atualizaGraficoEstado(padding,w,h);
