@@ -1,7 +1,7 @@
 
 //------------------------------------------------------saida grafico estados
 //funcao saida montaGraficoEstado
-function sairGraficoEstado(){
+function sairGrafico(opcao){
 
 //	d3.select("svg").remove();
 
@@ -15,13 +15,13 @@ function sairGraficoEstado(){
 	$('#botao-sair').remove();
 
 	//reabilita o botao visualizar
-	document.getElementById("botao-visualizar-primeiro").disabled = false;
+	document.getElementById("botao-visualizar-"+opcao).disabled = false;
 
 	return;
 }
 
 //botao saida grafico Estados
-function criaBotaoSairGraficoEstados(){
+function criaBotaoSairGrafico(opcao){
 	var element = document.createElement("input");
 	//Assign different attributes to the element.
 	element.type = "button";
@@ -31,9 +31,9 @@ function criaBotaoSairGraficoEstados(){
 	element.style.right ='10px';
 	element.style.marginTop ='10px';
 	element.onclick = function() { // Note this is a function
-		sairGraficoEstado();
+		sairGrafico(opcao);
 	};
-	document.getElementsByClassName("painel-grafico-estados")[0].appendChild(element);
+	document.getElementsByClassName("painel-grafico-"+opcao)[0].appendChild(element);
 }
 
 //---------------------------------------------------construcao grafico estados
@@ -42,6 +42,8 @@ function criaBotaoSairGraficoEstados(){
 function montaLegenda(opcao){
 	var divLegenda = document.createElement('div');
 	divLegenda.id = 'legend';
+
+	//definicao dinamica do estilo da legenda
 	divLegenda.style.borderStyle = 'double';
 	divLegenda.style.display = 'inline-block';
 	divLegenda.style.width = '15%';
@@ -51,7 +53,11 @@ function montaLegenda(opcao){
 	divLegenda.style.backgroundColor = 'white';
 	divLegenda.style.opacity = '50%';
 	divLegenda.style.padding = '5px';
+
+	//definicao do titulo da legenda
 	divLegenda.innerHTML = "Legenda";
+
+	//adicao da legenda no painel
 	$(".painel-grafico-"+opcao).append(divLegenda);
 
 	if(opcao === 'estados'){
@@ -94,17 +100,17 @@ function montaLegenda(opcao){
 	}
 	$(function () {
 	    $.each(myObjects, function () {
-				var cell = document.createElement('div');
-				$(divLegenda).append(cell);
+				var celula = document.createElement('div');
+				$(divLegenda).append(celula);
 
 				var squareDiv = document.createElement('div');
 				squareDiv.className = 'square';
 				squareDiv.id = this.nome.toLowerCase();
-				$(cell).append(squareDiv);
+				$(celula).append(squareDiv);
 
 				var p = document.createElement('p');
 				$(p).text(this.nome);
-				$(cell).append(p);
+				$(celula).append(p);
 	    });
 	});
 }
@@ -125,15 +131,15 @@ function configuraGraficoEstado(w,h){
 
 //verifica e fecha outras visualizações abertas
 function fechaVisualizacoesPrimeiro(){
-	var open =document.getElementById("botao-visualizar-segundo").disabled;
-	if(open == true) sairGraficoPele();
+	var open =document.getElementById("botao-visualizar-corpele").disabled;
+	if(open == true) sairGrafico("corpele");
 	else return;
 }
 
 //verifica e fecha outras visualizações abertas
 function fechaVisualizacoesSegundo(){
-	var open =document.getElementById("botao-visualizar-primeiro").disabled;
-	if(open == true) sairGraficoEstado();
+	var open =document.getElementById("botao-visualizar-estados").disabled;
+	if(open == true) sairGrafico("estados");
 	else return;
 }
 
@@ -155,7 +161,7 @@ function montaGraficoEstados(){
 	fechaVisualizacoesPrimeiro();
 
 	//desabilitar botao visualizar enquanto durante a visualização corrente
-	document.getElementById("botao-visualizar-primeiro").disabled = true;
+	document.getElementById("botao-visualizar-estados").disabled = true;
 
   //largura e altura
   var w = 1500;
@@ -166,7 +172,9 @@ function montaGraficoEstados(){
 
 	var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 
-	criaBotaoSairGraficoEstados();
+	var opcao = "estados";
+
+	criaBotaoSairGrafico(opcao);
 
 	//cria suporte grafico
 	criaSuporteGraficoPrimeiro();
@@ -177,7 +185,7 @@ function montaGraficoEstados(){
   configuraGraficoEstado(w,h);
 	montaGraficoEstadoOriginal(padding,w,h);
 
-	var opcao = "estados";
+
 
 	montaLegenda(opcao);
 
@@ -565,23 +573,11 @@ function sairGraficoPele(){
 	$('#botao-sair').remove();
 
 	//reabilita o botao visualizar
-	document.getElementById("botao-visualizar-segundo").disabled = false;
+	document.getElementById("botao-visualizar-corpele").disabled = false;
 
 	return;
 }
 
-//botao saida grafico Estados
-function criaBotaoSairGraficoPele(){
-	var element = document.createElement("input");
-	//Assign different attributes to the element.
-	element.type = "button";
-	element.value = "Sair";
-	element.id='botao-sair';
-	element.onclick = function() { // Note this is a function
-		sairGraficoPele();
-	};
-	document.getElementsByClassName("painel-grafico-corpele")[0].appendChild(element);
-}
 
 //---------------------------------------------------construcao grafico estados
 
@@ -613,7 +609,7 @@ function montaGraficoCorPele(){
 	fechaVisualizacoesSegundo();
 
 	//desabilitar botao visualizar enquanto durante a visualização corrente
-	document.getElementById("botao-visualizar-segundo").disabled = true;
+	document.getElementById("botao-visualizar-corpele").disabled = true;
 
   //largura e altura
   var w = 1500;
@@ -622,8 +618,10 @@ function montaGraficoCorPele(){
   //padding
   var padding = 90;
 
+	var opcao="corpele";
+
 	//cria botao sair
-	criaBotaoSairGraficoPele();
+	criaBotaoSairGrafico(opcao);
 
 	//cria suporte grafico
 	criaSuporteGraficoSegundo();
@@ -635,8 +633,6 @@ function montaGraficoCorPele(){
 
   configuraGraficoCorPele(w,h);
   montaGraficoCorPeleOriginal(padding,w,h);
-
-	var opcao="corpele";
 
 	montaLegenda(opcao);
 
