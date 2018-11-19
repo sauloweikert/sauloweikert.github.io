@@ -42,7 +42,7 @@ function criaBotaoSairGraficoEstados(){
 function montaLegendaEstados(){
 	var divLegenda = document.createElement('div');
 	divLegenda.id = 'legend';
-
+/*
 	divLegenda.style.borderStyle = 'double';
 	divLegenda.style.display = 'inline-block';
 	divLegenda.style.width = '15%';
@@ -51,7 +51,7 @@ function montaLegendaEstados(){
 	divLegenda.style.top ='10px';
 	divLegenda.style.backgroundColor = 'white';
 	divLegenda.style.opacity = '50%';
-	divLegenda.style.padding = '5px';
+	divLegenda.style.padding = '5px';*/
 	divLegenda.innerHTML = "Legenda";
 	$(".painel-grafico-primeiro").append(divLegenda);
 
