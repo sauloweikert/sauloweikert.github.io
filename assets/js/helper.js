@@ -84,7 +84,7 @@ function montaLegendaEstados(){
 
 				var innerDiv = document.createElement('div');
 				innerDiv.className = 'square';
-				innerDiv.id = 'this.nome'.toLowerCase();
+				innerDiv.id = this.nome.toLowerCase();
 				$(textDiv).append(innerDiv);
 
 				var p = "<p>Sul</p>";
