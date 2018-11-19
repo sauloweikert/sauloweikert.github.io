@@ -177,7 +177,7 @@ function montaGraficoEstados(){
   configuraGraficoEstado(w,h);
 	montaGraficoEstadoOriginal(padding,w,h);
 
-	var opcao = "geografico";
+	var opcao = "corpele";
 
 	montaLegendaEstados(opcao);
 
