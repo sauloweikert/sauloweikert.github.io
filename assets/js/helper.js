@@ -1,5 +1,4 @@
-
-//------------------------------------------------------saida grafico estados
+//------------------------------------------------------saida grafico
 //funcao saida montaGrafico
 function sairGrafico(opcao){
 
@@ -20,7 +19,7 @@ function sairGrafico(opcao){
 	return;
 }
 
-//botao saida grafico Estados
+//botao saida grafico
 function criaBotaoSairGrafico(opcao){
 	var element = document.createElement("input");
 
@@ -39,7 +38,7 @@ function criaBotaoSairGrafico(opcao){
 
 //---------------------------------------------------construcao grafico estados
 
-//funcao montagem legenda grafico estados
+//funcao montagem legenda grafico
 function montaLegenda(opcao){
 	var divLegenda = document.createElement('div');
 	divLegenda.id = 'legend';
@@ -130,9 +129,20 @@ function configuraGrafico(w,h,opcao){
   return;
 }
 
+//desabilitar botao visualizar do mesmo painel durante a visualização corrente
+function desabilitaBotaoVisualizar(opcao){
+
+	document.getElementById("botao-visualizar-"+opcao).disabled = true;
+	return;
+}
+
 //verifica e fecha outras visualizações abertas
 function fechaVisualizacoes(opcao){
 
+	//desabilitar botao visualizar do mesmo painel durante a visualização corrente
+	desabilitaBotaoVisualizar(opcao);
+
+	//fecha grficos de outros paineis que estejam abertos
 	if(opcao === 'estados') var contraOpcao = "corpele";
 	else if(opcao === 'corpele') var contraOpcao = "estados";
 
@@ -143,13 +153,20 @@ function fechaVisualizacoes(opcao){
 
 
 //------------------------------------------------------------------------------
-//funcoes montagem grafico Estado
+//funcoes montagem grafico
 function criaSuporteGrafico(opcao){
-	var divGrafico = document.createElement('div');
 
+	//cria dinamicamente elemento do tipo div para conter o grafico
+	var divGrafico = document.createElement('div');
 	divGrafico.className = 'div-grafico';
  	divGrafico.style.overflowX ='auto';
 	document.getElementsByClassName("painel-grafico-"+opcao)[0].appendChild(divGrafico);
+
+	//cria dinamicamente elemento tipo svg que sera o grafico
+	var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+	element.setAttribute("class", "chart-"+opcao);
+	document.getElementsByClassName("div-grafico")[0].appendChild(element);
+
 	return;
 }
 
@@ -158,35 +175,26 @@ function montaGrafico(opcao){
 	//verifica e fecha outras visualizações abertas
 	fechaVisualizacoes(opcao);
 
-	//desabilitar botao visualizar enquanto durante a visualização corrente
-	document.getElementById("botao-visualizar-"+opcao).disabled = true;
-
   //largura,altura,padding
   var w = 1500;
   var h = 400;
   var padding = 90;
-
-	var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 
 	criaBotaoSairGrafico(opcao);
 
 	//cria suporte grafico
 	criaSuporteGrafico(opcao);
 
-	element.setAttribute("class", "chart-"+opcao);
-	document.getElementsByClassName("div-grafico")[0].appendChild(element);
-
   configuraGrafico(w,h,opcao);
 	montaLegenda(opcao);
-
 	montaGraficoOriginal(padding,w,h,opcao);
 
-
+	//verifica acoes do usuario para carregar novos graficos
 	atualizaGrafico(padding,w,h,opcao);
 }
 
 
-//-------------------------------------funcoes grafico estados original
+//-------------------------------------funcoes grafico original
 
 function montaGraficoOriginal(padding,w,h,opcao){
 
@@ -306,11 +314,10 @@ function atualizaGrafico(padding,w,h,opcao){
 	.on("click", function() {
     d3.select(".chart-"+opcao).selectAll(".axis").remove();
 		d3.json("dados/" + $(this).html() + ".json", function(error,data) {
-			if (error) { //If error is not null, something went wrong.
+			if (error) {
 				console.log(error); //Log the error.
 			}
-			else { //If no error, the file loaded correctly. Yay!
-				//console.log(data); //Log the data.
+			else {
 
 				if(opcao === 'estados')refrescaGraficoEstado(data, padding,w,h);
 				else if(opcao === 'corpele')refrescaGraficoCorPele(data, padding,w,h);
@@ -661,7 +668,6 @@ function refrescaGraficoCorPele(data, padding,w,h){
 //---------------------------------------------------------------------------
 //funcoes escalas
 
-
 //define escala do raio
 function defineEscalaRaioCorPele(data){
 
@@ -681,12 +687,8 @@ function defineEscalaXCorPele(data,padding,w){
 		return xScale;
 }
 
-
-
 //---------------------------------------------------------------------------
 //funcoes eixos
-
-
 
 //constroi ambos os eixos
 function constroiEixosCorPele(xScale,yScale,padding,h,w){
@@ -761,7 +763,6 @@ function constroiEixoYCorPele(yScale,padding,h){
 
 //----------------------------------------------------------------------------
 //funcoes contrucao circulos - grafico cor pele
-
 
 
 //constroi circulos - cor de pele
