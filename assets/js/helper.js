@@ -133,10 +133,7 @@ function configuraGrafico(w,h,opcao){
 //verifica e fecha outras visualizações abertas
 function fechaVisualizacoes(opcao){
 
-	if(opcao === 'estados'){
-		console.log("vc quer ver estados");
-	 var contraOpcao = "corpele";
- 	}
+	if(opcao === 'estados') var contraOpcao = "corpele";
 	else if(opcao === 'corpele') var contraOpcao = "estados";
 
 	var open =document.getElementById("botao-visualizar-"+contraOpcao).disabled;
