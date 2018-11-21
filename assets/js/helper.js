@@ -184,9 +184,10 @@ function montaGrafico(opcao){
 
 	//cria suporte grafico
 	criaSuporteGrafico(opcao);
-
   configuraGrafico(w,h,opcao);
+
 	montaLegenda(opcao);
+
 	montaGraficoOriginal(padding,w,h,opcao);
 
 }
@@ -387,9 +388,6 @@ function atualizaEscalaY(data,padding,h,yScale){
 //---------------------------------------------------------------------------
 //funcoes eixos
 
-
-//----------------------------------------------------------------------------
-
 //define eixo x
 function defineEixoX(xScale){
 
@@ -429,19 +427,6 @@ d3.select(".chart-estados").append("text")
     .text("candidatos do Gênero Feminino/Total candidatos (%)");
 }
 
-
-
-//constroi o eixo X
-/*
-function constroiEixoXEstado(xScale,padding,h,w){
-
-  var xAxis = defineEixoX(xScale);
-
-  desenhaEixoXEstado(xAxis,padding,h);
-
-  rotulaEixoXEstado(padding,h,w);
-}
-*/
 
 //-----------------------------------------------------------------------------
 
@@ -488,7 +473,6 @@ function rotulaEixoYEstado(padding,h){
 }
 
 
-
 //----------------------------------------------------------------------------
 //funcoes contrucao circulos - grafico estados -
 
@@ -498,7 +482,6 @@ function constroiCirculosEstados(xScale,yScale,rScale){
   rotulaCirculosEstado(xScale,yScale);
   dicaCirculosPorEstado();
 }
-
 
 //desenha os circulos - grafico estados
 function desenhaCirculosEstado(xScale,yScale,rScale){
