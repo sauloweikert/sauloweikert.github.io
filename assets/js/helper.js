@@ -216,7 +216,7 @@ function montaGraficoOriginal(padding,w,h,opcao){
 					refrescaGraficoCorPeleOriginal(data, padding,w,h);
 				}
 				//verifica acoes do usuario para carregar novos graficos
-				atualizaGrafico(padding,w,h,opcao);
+				atualizaGrafico(padding,w,h,opcao,rScale);
 			}//fecha else
 
 		});
@@ -319,7 +319,7 @@ function dicaCirculosPorEstadoOriginal(){
 
 //-----------------------------------------funcoes atualizacao grafico estado
 
-function atualizaGrafico(padding,w,h,opcao){
+function atualizaGrafico(padding,w,h,opcao,rScale){
 
 	//seleciona o ano e gera os circulos
 	d3.selectAll("#year-"+opcao)
