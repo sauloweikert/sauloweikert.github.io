@@ -212,16 +212,16 @@ function montaGraficoOriginal(padding,w,h,opcao){
 					atualizaEscalaRaioEstados(data,rScale);
 
 					var xScale = d3.scale.linear();
-					atualizaEscalaXEstados(data,padding,w,xScale);
+					atualizaEscalaX(data,padding,w,xScale);
 					var xAxis = defineEixoX(xScale);
-					desenhaEixoXEstado(xAxis,padding,h);
-					rotulaEixoXEstado(padding,h,w);
+					desenhaEixoX(xAxis,padding,h,opcao);
+					rotulaEixoX(padding,h,w,opcao);
 
 					var yScale = d3.scale.linear();
 					atualizaEscalaY(data,padding,h,yScale);
 					var yAxis = defineEixoY(yScale);
-					desenhaEixoYEstado(yAxis,padding);
-					rotulaEixoYEstado(padding,h);
+					desenhaEixoY(yAxis,padding,opcao);
+					rotulaEixoY(padding,h,opcao);
 
 					constroiCirculosEstadosOriginal(xScale,yScale,rScale);
 
@@ -229,7 +229,22 @@ function montaGraficoOriginal(padding,w,h,opcao){
 
 				else if(opcao === 'corpele'){
 
-					refrescaGraficoCorPeleOriginal(data, padding,w,h);
+					var rScale = d3.scale.linear();
+					atualizaEscalaRaioCorPele(data,rScale);
+
+					var xScale = d3.scale.log();
+					atualizaEscalaX(data,padding,w,xScale);
+					var xAxis = defineEixoX(xScale);
+					desenhaEixoX(xAxis,padding,h,opcao);
+					rotulaEixoX(padding,h,w,opcao);
+
+					var yScale = d3.scale.linear();
+					atualizaEscalaY(data,padding,h,yScale);
+					var yAxis = defineEixoY(yScale);
+					desenhaEixoY(yAxis,padding,opcao);
+					rotulaEixoY(padding,h,opcao);
+
+					constroiCirculosCorPeleOriginal(xScale,yScale,rScale);
 				}
 				//verifica acoes do usuario para carregar novos graficos
 				atualizaGrafico(padding,w,h,opcao,rScale,xScale,yScale,xAxis,yAxis);
@@ -238,6 +253,42 @@ function montaGraficoOriginal(padding,w,h,opcao){
 		});
 }
 
+//-----------------------------------------funcoes atualizacao grafico estado
+
+function refrescaGraficoEstado(data, padding,w,h,rScale,xScale,yScale,xAxis,yAxis){
+  dataset = data;
+
+	atualizaEscalaRaioEstados(data,rScale);
+  atualizaEscalaX(data,padding,w,xScale);
+  atualizaEscalaY(data,padding,h,yScale);
+
+  atualizaEixoX(xAxis);
+	atualizaEixoY(yAxis);
+
+  constroiCirculosEstados(xScale,yScale,rScale);
+}
+
+function atualizaGrafico(padding,w,h,opcao,rScale,xScale,yScale,xAxis,yAxis){
+
+	//seleciona o ano e gera os circulos
+	d3.selectAll("#year-"+opcao)
+	.on("click", function() {
+    //d3.select(".chart-"+opcao).selectAll(".axis").remove();
+		d3.json("dados/" + $(this).html() + ".json", function(error,data) {
+			if (error) {
+				console.log(error); //Log the error.
+			}
+			else {
+
+				if(opcao === 'estados')refrescaGraficoEstado(data, padding,w,h,rScale,xScale,yScale,xAxis,yAxis);
+				else if(opcao === 'corpele')refrescaGraficoCorPele(data, padding,w,h);
+
+				}//fecha else
+			});
+		});
+}
+
+//-----------------------------------funcoes circulos - estados
 
 //constroi circulos - estados
 function constroiCirculosEstadosOriginal(xScale,yScale,rScale){
@@ -319,43 +370,6 @@ function dicaCirculosPorEstadoOriginal(){
     return;
 }
 
-//-----------------------------------------funcoes atualizacao grafico estado
-
-function atualizaGrafico(padding,w,h,opcao,rScale,xScale,yScale,xAxis,yAxis){
-
-	//seleciona o ano e gera os circulos
-	d3.selectAll("#year-"+opcao)
-	.on("click", function() {
-    //d3.select(".chart-"+opcao).selectAll(".axis").remove();
-		d3.json("dados/" + $(this).html() + ".json", function(error,data) {
-			if (error) {
-				console.log(error); //Log the error.
-			}
-			else {
-
-				if(opcao === 'estados')refrescaGraficoEstado(data, padding,w,h,rScale,xScale,yScale,xAxis,yAxis);
-				else if(opcao === 'corpele')refrescaGraficoCorPele(data, padding,w,h);
-
-				}//fecha else
-			});
-		});
-}
-
-
-function refrescaGraficoEstado(data, padding,w,h,rScale,xScale,yScale,xAxis,yAxis){
-  dataset = data;
-
-  atualizaEscalaRaioEstados(data,rScale);
-  atualizaEscalaXEstados(data,padding,w,xScale);
-  atualizaEscalaY(data,padding,h,yScale);
-
-  atualizaEixoXEstado(xAxis);
-	atualizaEixoYEstado(yAxis);
-
-  constroiCirculosEstados(xScale,yScale,rScale);
-}
-
-
 //---------------------------------------------------------------------------
 //funcoes escalas
 
@@ -368,7 +382,7 @@ function atualizaEscalaRaioEstados(data,rScale){
 }
 
 
-function atualizaEscalaXEstados(data,padding,w,xScale){
+function atualizaEscalaX(data,padding,w,xScale){
 		 xScale.domain([d3.min(data, function(d) { return (d.fem)/(d.total); })-0.001,
               d3.max(data, function(d) { return (d.fem)/(d.total); })])
 		 .range([padding, w-padding]);
@@ -402,15 +416,15 @@ function defineEixoX(xScale){
 }
 
 
-function desenhaEixoXEstado(xAxis,padding,h){
+function desenhaEixoX(xAxis,padding,h,opcao){
 
-  d3.select(".chart-estados").append("g")
+  d3.select(".chart-"+opcao).append("g")
   .attr("class", "x-axis") //Assign "axis" class
   .attr("transform", "translate(0," + (h - padding) + ")")
   .call(xAxis);
 }
 
-function atualizaEixoXEstado(xAxis){
+function atualizaEixoX(xAxis){
 
   d3.select("svg").select(".x-axis")
 	.transition()
@@ -420,8 +434,8 @@ function atualizaEixoXEstado(xAxis){
 
 
 // adiciona o rotulo do eixo
-function rotulaEixoXEstado(padding,h,w){
-d3.select(".chart-estados").append("text")
+function rotulaEixoX(padding,h,w,opcao){
+d3.select(".chart-"+opcao).append("text")
     .attr("transform", "translate(" + (w/ 2) + "," + (h) + ")")
     .style("text-anchor", "middle")
     .text("candidatos do Gênero Feminino/Total candidatos (%)");
@@ -443,16 +457,16 @@ function defineEixoY(yScale){
   return yAxis;
 }
 
-function desenhaEixoYEstado(yAxis,padding){
+function desenhaEixoY(yAxis,padding,opcao){
 
   //Create Y axis
-  d3.select(".chart-estados").append("g")
+  d3.select(".chart-"+opcao).append("g")
   .attr("class", "y-axis")
   .attr("transform", "translate(" + padding + ",0)")
   .call(yAxis);
 }
 
-function atualizaEixoYEstado(yAxis){
+function atualizaEixoY(yAxis){
 
   //atualiza Y axis
   d3.select(".y-axis")
@@ -462,8 +476,8 @@ function atualizaEixoYEstado(yAxis){
 }
 
 //desenha rotulo eixo y
-function rotulaEixoYEstado(padding,h){
-  d3.select(".chart-estados").append("text")
+function rotulaEixoY(padding,h,opcao){
+  d3.select(".chart-"+opcao).append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 120 - padding)
       .attr("x",0 - (h / 2))
@@ -545,25 +559,22 @@ function dicaCirculosPorEstado(){
 
 //------------------------------------------------------------
 //---------------------------FUNCOES GRAFICO COR PELE---------
-
-
-//-------------------------------------funcoes grafico estados original
-
-
-//funcao refreca grafico estados original
-function refrescaGraficoCorPeleOriginal(data, padding,w,h){
+function refrescaGraficoCorPele(data, padding,w,h,rScale,xScale,yScale,xAxis,yAxis){
   dataset = data;
 
-  var rScale =defineEscalaRaioCorPele(data);
-  var xScale =defineEscalaXCorPele(data,padding,w);
-  var yScale =defineEscalaY(data,padding,h);
+  atualizaEscalaRaioCorPele(data,rScale);
+  atualizaEscalaX(data,padding,w,xScale);
+  atualizaEscalaY(data,padding,h,yScale);
 
-  constroiEixosCorPele(xScale,yScale,padding,h,w);
+  atualizaEixoXEstado(xAxis);
+	atualizaEixoYEstado(yAxis);
 
-  constroiCirculosCorPeleOriginal(xScale,yScale,rScale);
+  constroiCirculosCorPele(xScale,yScale,rScale);
 }
 
-//constroi circulos - estados
+//-----------------------------------funcoes circulos - estados
+
+//constroi circulos -
 function constroiCirculosCorPeleOriginal(xScale,yScale,rScale){
   desenhaCirculosCorPeleOriginal(xScale,yScale,rScale);
   rotulaCirculosCorPeleOriginal(xScale,yScale);
@@ -571,7 +582,7 @@ function constroiCirculosCorPeleOriginal(xScale,yScale,rScale){
 }
 
 
-//desenha os circulos - grafico estados
+//desenha os circulos -
 function desenhaCirculosCorPeleOriginal(xScale,yScale,rScale){
 
 	d3.select(".chart-corpele").selectAll("#circuloCorPele")
@@ -643,115 +654,19 @@ function dicaCirculosPorCorPeleOriginal(){
     return;
 }
 
-//-----------------------------------------funcoes atualizacao grafico corpele
 
-function refrescaGraficoCorPele(data, padding,w,h){
-  dataset = data;
-
-  var rScale =defineEscalaRaioCorPele(data);
-  var xScale =defineEscalaXCorPele(data,padding,w);
-  var yScale =defineEscalaY(data,padding,h);
-
-  constroiEixosCorPele(xScale,yScale,padding,h,w);
-
-  constroiCirculosCorPele(xScale,yScale,rScale);
-}
-
-//---------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 //funcoes escalas
 
-//define escala do raio
-function defineEscalaRaioCorPele(data){
-
-	var rScale = d3.scale.linear()
+//atualiza escala do raio
+function atualizaEscalaRaioCorPele(data,rScale){
   .domain([d3.min(data, function(d) { return d.totalGrupo; }),
             d3.max(data, function(d) { return d.totalGrupo; })])
   .range([10, 60]);
-	return rScale;
+	return;
 }
 
 
-function defineEscalaXCorPele(data,padding,w){
-	var xScale = d3.scale.log()
-		 .domain([d3.min(data, function(d) { return (d.fem)/(d.total); })-0.001,
-              d3.max(data, function(d) { return (d.fem)/(d.total); })])
-		 .range([padding, w-padding]);
-		return xScale;
-}
-
-//---------------------------------------------------------------------------
-//funcoes eixos
-
-//constroi ambos os eixos
-function constroiEixosCorPele(xScale,yScale,padding,h,w){
-  constroiEixoXCorPele(xScale,padding,h,w);
-  constroiEixoYCorPele(yScale,padding,h);
-}
-//----------------------------------------------------------------------------
-
-
-function desenhaEixoXCorPele(xAxis,padding,h){
-
-  d3.select(".chart-corpele").append("g")
-  .attr("class", "axis") //Assign "axis" class
-  .attr("transform", "translate(0," + (h - padding) + ")")
-  .call(xAxis);
-}
-
-
-
-// adiciona o rotulo do eixo
-function rotulaEixoXCorPele(padding,h,w){
-d3.select(".chart-corpele").append("text")
-    .attr("transform", "translate(" + (w/ 2) + "," + (h) + ")")
-    .style("text-anchor", "middle")
-    .text("candidatos do Gênero Feminino/Total candidatos (%)");
-}
-
-
-//constroi o eixo X
-function constroiEixoXCorPele(xScale,padding,h,w){
-
-  var xAxis = defineEixoX(xScale);
-
-  desenhaEixoXCorPele(xAxis,padding,h);
-
-  rotulaEixoXCorPele(padding,h,w);
-}
-//-----------------------------------------------------------------------------
-
-//define eixo y
-function desenhaEixoYCorPele(yAxis,padding){
-
-  //Create Y axis
-  d3.select(".chart-corpele").append("g")
-  .attr("class", "axis")
-  .attr("transform", "translate(" + padding + ",0)")
-  .call(yAxis);
-}
-
-
-//desenha rotulo eixo y
-function rotulaEixoYCorPele(padding,h){
-  d3.select(".chart-corpele").append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 120 - padding)
-      .attr("x",0 - (h / 2))
-      .attr("dy", "1em")
-      .style("text-anchor", "middle")
-      .text("candidatos com curso superior completo/Total de candidatos (%)");
-}
-
-
-//constroi o eixo y
-function constroiEixoYCorPele(yScale,padding,h){
-
-  var yAxis = defineEixoY(yScale);
-
-  desenhaEixoYCorPele(yAxis,padding);
-
-  rotulaEixoYCorPele(padding,h);
-}
 
 //----------------------------------------------------------------------------
 //funcoes contrucao circulos - grafico cor pele
