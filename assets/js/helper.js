@@ -208,27 +208,29 @@ function montaGraficoOriginal(padding,w,h,opcao){
 				if(opcao === 'estados'){
 
 					var rScale = d3.scale.linear();
+					var xScale = d3.scale.linear();
 
-					refrescaGraficoEstadoOriginal(data, padding,w,h,rScale);
+					refrescaGraficoEstadoOriginal(data, padding,w,h,rScale,xScale);
 				}
 				else if(opcao === 'corpele'){
 
 					refrescaGraficoCorPeleOriginal(data, padding,w,h);
 				}
 				//verifica acoes do usuario para carregar novos graficos
-				atualizaGrafico(padding,w,h,opcao,rScale);
+				atualizaGrafico(padding,w,h,opcao,rScale,xScale);
 			}//fecha else
 
 		});
 }
 
 //funcao refreca grafico estados original
-function refrescaGraficoEstadoOriginal(data, padding,w,h,rScale){
+function refrescaGraficoEstadoOriginal(data, padding,w,h,rScale,xScale){
   dataset = data;
 
 	atualizaEscalaRaioEstados(data,rScale);
 
-  var xScale =defineEscalaXEstados(data,padding,w);
+	atualizaEscalaXEstados(data,padding,w,xScale);
+
   var yScale =defineEscalaY(data,padding,h);
 
   constroiEixosEstado(xScale,yScale,padding,h,w);
@@ -319,7 +321,7 @@ function dicaCirculosPorEstadoOriginal(){
 
 //-----------------------------------------funcoes atualizacao grafico estado
 
-function atualizaGrafico(padding,w,h,opcao,rScale){
+function atualizaGrafico(padding,w,h,opcao,rScale,xScale){
 
 	//seleciona o ano e gera os circulos
 	d3.selectAll("#year-"+opcao)
@@ -331,7 +333,7 @@ function atualizaGrafico(padding,w,h,opcao,rScale){
 			}
 			else {
 
-				if(opcao === 'estados')refrescaGraficoEstado(data, padding,w,h,rScale);
+				if(opcao === 'estados')refrescaGraficoEstado(data, padding,w,h,rScale,xScale);
 				else if(opcao === 'corpele')refrescaGraficoCorPele(data, padding,w,h);
 
 				}//fecha else
@@ -340,12 +342,12 @@ function atualizaGrafico(padding,w,h,opcao,rScale){
 }
 
 
-function refrescaGraficoEstado(data, padding,w,h,rScale){
+function refrescaGraficoEstado(data, padding,w,h,rScale,xScale){
   dataset = data;
 
   atualizaEscalaRaioEstados(data,rScale);
+  atualizaEscalaXEstados(data,padding,w,xScale);
 
-  var xScale =defineEscalaXEstados(data,padding,w);
   var yScale =defineEscalaY(data,padding,h);
 
   constroiEixosEstado(xScale,yScale,padding,h,w);
@@ -358,19 +360,6 @@ function refrescaGraficoEstado(data, padding,w,h,rScale){
 //funcoes escalas
 
 
-
-
-/*
-//define escala do raio
-function defineEscalaRaioEstados(data){
-
-	var rScale = d3.scale.linear().attr("id","escala r");
-	.domain([0, d3.max(data, function(d) { return d.total; })])
-	.range([10, 40]);
-	return rScale;
-}
-*/
-
 //atualiza escala do raio
 function atualizaEscalaRaioEstados(data,rScale){
 	rScale.domain([0, d3.max(data, function(d) { return d.total; })])
@@ -379,12 +368,11 @@ function atualizaEscalaRaioEstados(data,rScale){
 }
 
 
-function defineEscalaXEstados(data,padding,w){
-	var xScale = d3.scale.linear()
-		 .domain([d3.min(data, function(d) { return (d.fem)/(d.total); })-0.001,
+function atualizaEscalaXEstados(data,padding,w,xScale){
+		 xScale.domain([d3.min(data, function(d) { return (d.fem)/(d.total); })-0.001,
               d3.max(data, function(d) { return (d.fem)/(d.total); })])
 		 .range([padding, w-padding]);
-		return xScale;
+		return;
 }
 
 
