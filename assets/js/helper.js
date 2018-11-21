@@ -325,7 +325,7 @@ function atualizaGrafico(padding,w,h,opcao,rScale,xScale,yScale){
 	//seleciona o ano e gera os circulos
 	d3.selectAll("#year-"+opcao)
 	.on("click", function() {
-    d3.select(".chart-"+opcao).selectAll(".axis").remove();
+    //d3.select(".chart-"+opcao).selectAll(".axis").remove();
 		d3.json("dados/" + $(this).html() + ".json", function(error,data) {
 			if (error) {
 				console.log(error); //Log the error.
@@ -348,7 +348,8 @@ function refrescaGraficoEstado(data, padding,w,h,rScale,xScale,yScale){
   atualizaEscalaXEstados(data,padding,w,xScale);
   atualizaEscalaY(data,padding,h,yScale);
 
-  constroiEixosEstado(xScale,yScale,padding,h,w);
+  atualizaEixoXEstado();
+	atualizaEixoYEstado();
 
   constroiCirculosEstados(xScale,yScale,rScale);
 }
@@ -413,11 +414,18 @@ function defineEixoX(xScale){
 function desenhaEixoXEstado(xAxis,padding,h){
 
   d3.select(".chart-estados").append("g")
-  .attr("class", "axis") //Assign "axis" class
+  .attr("class", "x-axis") //Assign "axis" class
   .attr("transform", "translate(0," + (h - padding) + ")")
   .call(xAxis);
 }
 
+function atualizaEixoXEstado(){
+
+  d3.select(".x-axis")
+	.transition()
+	.duration(2000)
+  .call(xAxis);
+}
 
 
 // adiciona o rotulo do eixo
@@ -460,11 +468,19 @@ function desenhaEixoYEstado(yAxis,padding){
 
   //Create Y axis
   d3.select(".chart-estados").append("g")
-  .attr("class", "axis")
+  .attr("class", "y-axis")
   .attr("transform", "translate(" + padding + ",0)")
   .call(yAxis);
 }
 
+function atualizaEixoYEstado(){
+
+  //atualiza Y axis
+  d3.select(".y-axis")
+	.transition()
+  .duration(2000)
+  .call(yAxis);
+}
 
 //desenha rotulo eixo y
 function rotulaEixoYEstado(padding,h){
