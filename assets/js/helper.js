@@ -209,7 +209,7 @@ function montaGraficoOriginal(padding,w,h,opcao){
 
 					var rScale = d3.scale.linear();
 
-					refrescaGraficoEstadoOriginal(data, padding,w,h,rscale);
+					refrescaGraficoEstadoOriginal(data, padding,w,h,rScale);
 				}
 				else if(opcao === 'corpele'){
 
