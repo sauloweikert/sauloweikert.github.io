@@ -203,6 +203,8 @@ function montaGraficoOriginal(padding,w,h,opcao){
 			else { //If no error, the file loaded correctly. Yay!
 				//console.log(data); //Log the data.
 
+				dataset = data;
+
 				if(opcao === 'estados'){
 
 					var rScale = d3.scale.linear();
