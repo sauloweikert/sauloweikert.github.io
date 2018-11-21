@@ -236,7 +236,7 @@ function constroiCirculosEstadosOriginal(xScale,yScale,rScale){
 function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 //  d3.select(".chart-estados").selectAll("#circuloEstado")
 	d3.select(".chart-estados").selectAll("#circuloEstado")
-		exit().remove();
+		.remove();
 
 	d3.select(".chart-estados").selectAll("#circuloEstado")
     .data(dataset)
