@@ -381,15 +381,12 @@ function atualizaEscalaRaioEstados(data,rScale){
 	return;
 }
 
-
 function atualizaEscalaX(data,padding,w,xScale){
 		 xScale.domain([d3.min(data, function(d) { return (d.fem)/(d.total); })-0.001,
               d3.max(data, function(d) { return (d.fem)/(d.total); })])
 		 .range([padding, w-padding]);
 		return;
 }
-
-
 
 function atualizaEscalaY(data,padding,h,yScale){
 
@@ -660,7 +657,7 @@ function dicaCirculosPorCorPeleOriginal(){
 
 //atualiza escala do raio
 function atualizaEscalaRaioCorPele(data,rScale){
-  .domain([d3.min(data, function(d) { return d.totalGrupo; }),
+  rScale.domain([d3.min(data, function(d) { return d.totalGrupo; }),
             d3.max(data, function(d) { return d.totalGrupo; })])
   .range([10, 60]);
 	return;
@@ -700,8 +697,6 @@ d3.select(".chart-corpele").selectAll("#circuloCorPele")
     return d.corCirculo;
   })*/;
 }
-
-
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
 function rotulaCirculosCorPele(xScale,yScale){
