@@ -216,7 +216,7 @@ function montaGraficoOriginal(padding,w,h,opcao){
 function refrescaGraficoEstadoOriginal(data, padding,w,h){
   dataset = data;
 
-  var rScale = d3.scale.linear().attr("id","escala r");
+  var rScale = d3.scale.linear();
 	atualizaEscalaRaioEstados(data);
 
   var xScale =defineEscalaXEstados(data,padding,w);
@@ -334,7 +334,7 @@ function refrescaGraficoEstado(data, padding,w,h){
   dataset = data;
 
   atualizaEscalaRaioEstados(data);
-	
+
   var xScale =defineEscalaXEstados(data,padding,w);
   var yScale =defineEscalaY(data,padding,h);
 
