@@ -190,7 +190,7 @@ function montaGrafico(opcao){
 	montaGraficoOriginal(padding,w,h,opcao);
 
 	//verifica acoes do usuario para carregar novos graficos
-	atualizaGrafico(padding,w,h,opcao);
+	//atualizaGrafico(padding,w,h,opcao);
 }
 
 
@@ -205,19 +205,28 @@ function montaGraficoOriginal(padding,w,h,opcao){
 			else { //If no error, the file loaded correctly. Yay!
 				//console.log(data); //Log the data.
 
-				if(opcao === 'estados')refrescaGraficoEstadoOriginal(data, padding,w,h);
-				else if(opcao === 'corpele')refrescaGraficoCorPeleOriginal(data, padding,w,h);
+				if(opcao === 'estados'){
 
+					var rScale = d3.scale.linear();
+
+					refrescaGraficoEstadoOriginal(data, padding,w,h,rscale);
+				}
+				else if(opcao === 'corpele'){
+
+					refrescaGraficoCorPeleOriginal(data, padding,w,h);
+				}
+				//verifica acoes do usuario para carregar novos graficos
+				atualizaGrafico(padding,w,h,opcao);
 			}//fecha else
+
 		});
 }
 
 //funcao refreca grafico estados original
-function refrescaGraficoEstadoOriginal(data, padding,w,h){
+function refrescaGraficoEstadoOriginal(data, padding,w,h,rscale){
   dataset = data;
 
-  var rScale = d3.scale.linear();
-	atualizaEscalaRaioEstados(data);
+	atualizaEscalaRaioEstados(data,rscale);
 
   var xScale =defineEscalaXEstados(data,padding,w);
   var yScale =defineEscalaY(data,padding,h);
@@ -225,6 +234,7 @@ function refrescaGraficoEstadoOriginal(data, padding,w,h){
   constroiEixosEstado(xScale,yScale,padding,h,w);
 
   constroiCirculosEstadosOriginal(xScale,yScale,rScale);
+
 }
 
 //constroi circulos - estados
@@ -362,7 +372,7 @@ function defineEscalaRaioEstados(data){
 */
 
 //atualiza escala do raio
-function atualizaEscalaRaioEstados(data){
+function atualizaEscalaRaioEstados(data,rScale){
 	rScale.domain([0, d3.max(data, function(d) { return d.total; })])
 	.range([10, 40]);
 	return;
