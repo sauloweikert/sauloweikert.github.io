@@ -563,8 +563,8 @@ function refrescaGraficoCorPele(data, padding,w,h,rScale,xScale,yScale,xAxis,yAx
   atualizaEscalaX(data,padding,w,xScale);
   atualizaEscalaY(data,padding,h,yScale);
 
-  atualizaEixoXEstado(xAxis);
-	atualizaEixoYEstado(yAxis);
+  atualizaEixoX(xAxis);
+	atualizaEixoY(yAxis);
 
   constroiCirculosCorPele(xScale,yScale,rScale);
 }
