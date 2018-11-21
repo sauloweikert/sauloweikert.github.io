@@ -331,7 +331,7 @@ function atualizaGrafico(padding,w,h,opcao){
 			}
 			else {
 
-				if(opcao === 'estados')refrescaGraficoEstado(data, padding,w,h);
+				if(opcao === 'estados')refrescaGraficoEstado(data, padding,w,h,rScale);
 				else if(opcao === 'corpele')refrescaGraficoCorPele(data, padding,w,h);
 
 				}//fecha else
@@ -340,10 +340,10 @@ function atualizaGrafico(padding,w,h,opcao){
 }
 
 
-function refrescaGraficoEstado(data, padding,w,h){
+function refrescaGraficoEstado(data, padding,w,h,rScale){
   dataset = data;
 
-  atualizaEscalaRaioEstados(data);
+  atualizaEscalaRaioEstados(data,rScale);
 
   var xScale =defineEscalaXEstados(data,padding,w);
   var yScale =defineEscalaY(data,padding,h);
