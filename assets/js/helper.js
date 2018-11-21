@@ -226,7 +226,7 @@ function montaGraficoOriginal(padding,w,h,opcao){
 function refrescaGraficoEstadoOriginal(data, padding,w,h,rscale){
   dataset = data;
 
-	atualizaEscalaRaioEstados(data,rscale);
+	atualizaEscalaRaioEstados(data,rScale);
 
   var xScale =defineEscalaXEstados(data,padding,w);
   var yScale =defineEscalaY(data,padding,h);
