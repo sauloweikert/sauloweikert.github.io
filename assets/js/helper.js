@@ -189,8 +189,6 @@ function montaGrafico(opcao){
 	montaLegenda(opcao);
 	montaGraficoOriginal(padding,w,h,opcao);
 
-	//verifica acoes do usuario para carregar novos graficos
-	//atualizaGrafico(padding,w,h,opcao);
 }
 
 
@@ -322,7 +320,7 @@ function dicaCirculosPorEstadoOriginal(){
 
 //-----------------------------------------funcoes atualizacao grafico estado
 
-function atualizaGrafico(padding,w,h,opcao,rScale,xScale){
+function atualizaGrafico(padding,w,h,opcao,rScale,xScale,yScale){
 
 	//seleciona o ano e gera os circulos
 	d3.selectAll("#year-"+opcao)
@@ -334,7 +332,7 @@ function atualizaGrafico(padding,w,h,opcao,rScale,xScale){
 			}
 			else {
 
-				if(opcao === 'estados')refrescaGraficoEstado(data, padding,w,h,rScale,xScale);
+				if(opcao === 'estados')refrescaGraficoEstado(data, padding,w,h,rScale,xScale,yScale);
 				else if(opcao === 'corpele')refrescaGraficoCorPele(data, padding,w,h);
 
 				}//fecha else
