@@ -223,7 +223,7 @@ function montaGraficoOriginal(padding,w,h,opcao){
 }
 
 //funcao refreca grafico estados original
-function refrescaGraficoEstadoOriginal(data, padding,w,h,rscale){
+function refrescaGraficoEstadoOriginal(data, padding,w,h,rScale){
   dataset = data;
 
 	atualizaEscalaRaioEstados(data,rScale);
