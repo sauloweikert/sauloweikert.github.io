@@ -216,7 +216,9 @@ function montaGraficoOriginal(padding,w,h,opcao){
 function refrescaGraficoEstadoOriginal(data, padding,w,h){
   dataset = data;
 
-  var rScale =defineEscalaRaioEstados(data);
+  var rScale = d3.scale.linear().attr("id","escala r");
+	atualizaEscalaRaioEstados(data);
+
   var xScale =defineEscalaXEstados(data,padding,w);
   var yScale =defineEscalaY(data,padding,h);
 
@@ -331,7 +333,8 @@ function atualizaGrafico(padding,w,h,opcao){
 function refrescaGraficoEstado(data, padding,w,h){
   dataset = data;
 
-  var rScale =defineEscalaRaioEstados(data);
+  atualizaEscalaRaioEstados(data);
+	
   var xScale =defineEscalaXEstados(data,padding,w);
   var yScale =defineEscalaY(data,padding,h);
 
@@ -344,15 +347,26 @@ function refrescaGraficoEstado(data, padding,w,h){
 //---------------------------------------------------------------------------
 //funcoes escalas
 
+
+
+
+/*
 //define escala do raio
 function defineEscalaRaioEstados(data){
 
-	var rScale = d3.scale.linear()
-		.domain([0, d3.max(data, function(d) { return d.total; })])
-		.range([10, 40]);
+	var rScale = d3.scale.linear().attr("id","escala r");
+	.domain([0, d3.max(data, function(d) { return d.total; })])
+	.range([10, 40]);
 	return rScale;
 }
+*/
 
+//atualiza escala do raio
+function atualizaEscalaRaioEstados(data){
+	rScale.domain([0, d3.max(data, function(d) { return d.total; })])
+	.range([10, 40]);
+	return;
+}
 
 
 function defineEscalaXEstados(data,padding,w){
