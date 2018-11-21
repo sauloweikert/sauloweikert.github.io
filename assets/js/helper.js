@@ -209,29 +209,30 @@ function montaGraficoOriginal(padding,w,h,opcao){
 
 					var rScale = d3.scale.linear();
 					var xScale = d3.scale.linear();
+					var yScale = d3.scale.linear();
 
-					refrescaGraficoEstadoOriginal(data, padding,w,h,rScale,xScale);
+					refrescaGraficoEstadoOriginal(data, padding,w,h,rScale,xScale,yScale);
 				}
 				else if(opcao === 'corpele'){
 
 					refrescaGraficoCorPeleOriginal(data, padding,w,h);
 				}
 				//verifica acoes do usuario para carregar novos graficos
-				atualizaGrafico(padding,w,h,opcao,rScale,xScale);
+				atualizaGrafico(padding,w,h,opcao,rScale,xScale,yScale);
 			}//fecha else
 
 		});
 }
 
 //funcao refreca grafico estados original
-function refrescaGraficoEstadoOriginal(data, padding,w,h,rScale,xScale){
+function refrescaGraficoEstadoOriginal(data, padding,w,h,rScale,xScale,yScale){
   dataset = data;
 
 	atualizaEscalaRaioEstados(data,rScale);
 
 	atualizaEscalaXEstados(data,padding,w,xScale);
 
-  var yScale =defineEscalaY(data,padding,h);
+	atualizaEscalaY(data,padding,h,yScale);
 
   constroiEixosEstado(xScale,yScale,padding,h,w);
 
@@ -342,13 +343,12 @@ function atualizaGrafico(padding,w,h,opcao,rScale,xScale){
 }
 
 
-function refrescaGraficoEstado(data, padding,w,h,rScale,xScale){
+function refrescaGraficoEstado(data, padding,w,h,rScale,xScale,yScale){
   dataset = data;
 
   atualizaEscalaRaioEstados(data,rScale);
   atualizaEscalaXEstados(data,padding,w,xScale);
-
-  var yScale =defineEscalaY(data,padding,h);
+  atualizaEscalaY(data,padding,h,yScale);
 
   constroiEixosEstado(xScale,yScale,padding,h,w);
 
@@ -377,13 +377,12 @@ function atualizaEscalaXEstados(data,padding,w,xScale){
 
 
 
-function defineEscalaY(data,padding,h){
+function atualizaEscalaY(data,padding,h,yScale){
 
-	var yScale = d3.scale.linear()
-		.domain([d3.min(data, function(d) { return (d.csup)/(d.total); })-0.02,
+		yScale.domain([d3.min(data, function(d) { return (d.csup)/(d.total); })-0.02,
               d3.max(data, function(d) { return (d.csup)/(d.total); })])
 		.range([h-padding, padding]);
-		return yScale;
+		return;
 }
 
 //---------------------------------------------------------------------------
