@@ -236,6 +236,9 @@ function constroiCirculosEstadosOriginal(xScale,yScale,rScale){
 function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 //  d3.select(".chart-estados").selectAll("#circuloEstado")
 	d3.select(".chart-estados").selectAll("#circuloEstado")
+		exit().remove();
+
+	d3.select(".chart-estados").selectAll("#circuloEstado")
     .data(dataset)
 		.enter()
 		.append("circle")
@@ -485,7 +488,7 @@ function constroiEixoYEstado(yScale,padding,h){
 
 //constroi circulos - estados
 function constroiCirculosEstados(xScale,yScale,rScale){
-  desenhaCirculosEstado(xScale,yScale,rScale);
+  desenhaCirculosEstadoOriginal(xScale,yScale,rScale);
   rotulaCirculosEstado(xScale,yScale);
   dicaCirculosPorEstado();
 }
