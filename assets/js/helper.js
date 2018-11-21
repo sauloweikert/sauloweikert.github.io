@@ -206,37 +206,35 @@ function montaGraficoOriginal(padding,w,h,opcao){
 				if(opcao === 'estados'){
 
 					var rScale = d3.scale.linear();
-					var xScale = d3.scale.linear();
-					var yScale = d3.scale.linear();
+					atualizaEscalaRaioEstados(data,rScale);
 
-					refrescaGraficoEstadoOriginal(data, padding,w,h,rScale,xScale,yScale);
+					var xScale = d3.scale.linear();
+					atualizaEscalaXEstados(data,padding,w,xScale);
+					var xAxis = defineEixoX(xScale);
+					desenhaEixoXEstado(xAxis,padding,h);
+					rotulaEixoXEstado(padding,h,w);
+
+					var yScale = d3.scale.linear();
+					atualizaEscalaY(data,padding,h,yScale);
+					var yAxis = defineEixoY(yScale);
+					desenhaEixoYEstado(yAxis,padding);
+					rotulaEixoYEstado(padding,h);
+
+					constroiCirculosEstadosOriginal(xScale,yScale,rScale);
+
 				}
+
 				else if(opcao === 'corpele'){
 
 					refrescaGraficoCorPeleOriginal(data, padding,w,h);
 				}
 				//verifica acoes do usuario para carregar novos graficos
-				atualizaGrafico(padding,w,h,opcao,rScale,xScale,yScale);
+				atualizaGrafico(padding,w,h,opcao,rScale,xScale,yScale,xAxis,yAxis);
 			}//fecha else
 
 		});
 }
 
-//funcao refreca grafico estados original
-function refrescaGraficoEstadoOriginal(data, padding,w,h,rScale,xScale,yScale){
-  dataset = data;
-
-	atualizaEscalaRaioEstados(data,rScale);
-
-	atualizaEscalaXEstados(data,padding,w,xScale);
-
-	atualizaEscalaY(data,padding,h,yScale);
-
-  constroiEixosEstado(xScale,yScale,padding,h,w);
-
-  constroiCirculosEstadosOriginal(xScale,yScale,rScale);
-
-}
 
 //constroi circulos - estados
 function constroiCirculosEstadosOriginal(xScale,yScale,rScale){
@@ -320,7 +318,7 @@ function dicaCirculosPorEstadoOriginal(){
 
 //-----------------------------------------funcoes atualizacao grafico estado
 
-function atualizaGrafico(padding,w,h,opcao,rScale,xScale,yScale){
+function atualizaGrafico(padding,w,h,opcao,rScale,xScale,yScale,xAxis,yAxis){
 
 	//seleciona o ano e gera os circulos
 	d3.selectAll("#year-"+opcao)
@@ -332,7 +330,7 @@ function atualizaGrafico(padding,w,h,opcao,rScale,xScale,yScale){
 			}
 			else {
 
-				if(opcao === 'estados')refrescaGraficoEstado(data, padding,w,h,rScale,xScale,yScale);
+				if(opcao === 'estados')refrescaGraficoEstado(data, padding,w,h,rScale,xScale,yScale,xAxis,yAxis);
 				else if(opcao === 'corpele')refrescaGraficoCorPele(data, padding,w,h);
 
 				}//fecha else
@@ -341,15 +339,15 @@ function atualizaGrafico(padding,w,h,opcao,rScale,xScale,yScale){
 }
 
 
-function refrescaGraficoEstado(data, padding,w,h,rScale,xScale,yScale){
+function refrescaGraficoEstado(data, padding,w,h,rScale,xScale,yScale,xAxis,yAxis){
   dataset = data;
 
   atualizaEscalaRaioEstados(data,rScale);
   atualizaEscalaXEstados(data,padding,w,xScale);
   atualizaEscalaY(data,padding,h,yScale);
 
-  atualizaEixoXEstado();
-	atualizaEixoYEstado();
+  atualizaEixoXEstado(xAxis);
+	atualizaEixoYEstado(yAxis);
 
   constroiCirculosEstados(xScale,yScale,rScale);
 }
@@ -387,13 +385,6 @@ function atualizaEscalaY(data,padding,h,yScale){
 //---------------------------------------------------------------------------
 //funcoes eixos
 
-//constroi ambos os eixos
-function constroiEixosEstado(xScale,yScale,padding,h,w){
-
-  constroiEixoXEstado(xScale,padding,h,w);
-  constroiEixoYEstado(yScale,padding,h);
-}
-
 
 //----------------------------------------------------------------------------
 
@@ -419,7 +410,7 @@ function desenhaEixoXEstado(xAxis,padding,h){
   .call(xAxis);
 }
 
-function atualizaEixoXEstado(){
+function atualizaEixoXEstado(xAxis){
 
   d3.select("svg").select(".x-axis")
 	.transition()
@@ -439,6 +430,7 @@ d3.select(".chart-estados").append("text")
 
 
 //constroi o eixo X
+/*
 function constroiEixoXEstado(xScale,padding,h,w){
 
   var xAxis = defineEixoX(xScale);
@@ -447,7 +439,7 @@ function constroiEixoXEstado(xScale,padding,h,w){
 
   rotulaEixoXEstado(padding,h,w);
 }
-
+*/
 
 //-----------------------------------------------------------------------------
 
@@ -473,7 +465,7 @@ function desenhaEixoYEstado(yAxis,padding){
   .call(yAxis);
 }
 
-function atualizaEixoYEstado(){
+function atualizaEixoYEstado(yAxis){
 
   //atualiza Y axis
   d3.select(".y-axis")
@@ -494,16 +486,6 @@ function rotulaEixoYEstado(padding,h){
 }
 
 
-
-//constroi o eixo y
-function constroiEixoYEstado(yScale,padding,h){
-
-  var yAxis = defineEixoY(yScale);
-
-  desenhaEixoYEstado(yAxis,padding);
-
-  rotulaEixoYEstado(padding,h);
-}
 
 //----------------------------------------------------------------------------
 //funcoes contrucao circulos - grafico estados -
