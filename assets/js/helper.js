@@ -281,7 +281,7 @@ function atualizaGrafico(padding,w,h,opcao,rScale,xScale,yScale,xAxis,yAxis){
 			else {
 
 				if(opcao === 'estados')refrescaGraficoEstado(data, padding,w,h,rScale,xScale,yScale,xAxis,yAxis);
-				else if(opcao === 'corpele')refrescaGraficoCorPele(data, padding,w,h);
+				else if(opcao === 'corpele')refrescaGraficoCorPele(data, padding,w,h,rScale,xScale,yScale,xAxis,yAxis);
 
 				}//fecha else
 			});
