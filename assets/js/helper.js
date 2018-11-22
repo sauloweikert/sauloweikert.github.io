@@ -168,6 +168,11 @@ function criaSuporteGrafico(opcao){
 	element.setAttribute("class", "chart-"+opcao);
 	document.getElementsByClassName("div-grafico")[0].appendChild(element);
 
+	// Define the div for the tooltip
+	var div = d3.select("svg").append("div")
+	    .attr("class", "tooltip")
+	    .style("opacity", 0);
+
 	return;
 }
 
@@ -324,7 +329,20 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
     })
 		.attr("id", function(d) {
 			return "circuloEstado";
-		});
+		})
+		.on("mouseover", function(d) {
+            div.transition()
+                .duration(200)
+                .style("opacity", .9);
+            div	.html("estado:" + d.nome + "fem:" + d.fem + "<br/>"  +"csup:" + d.csup)
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY - 28) + "px");
+            })
+        .on("mouseout", function(d) {
+            div.transition()		
+                .duration(500)
+                .style("opacity", 0);
+        });
 }
 
 
