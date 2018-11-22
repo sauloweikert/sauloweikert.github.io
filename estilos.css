@@ -131,7 +131,7 @@ header h1 {
   background-color: #cc0000;
 }
 
-div.tooltip {
+.tooltip {
     position: absolute;
     text-align: center;
     width: 60px;
