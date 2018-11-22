@@ -334,10 +334,10 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 
 
 		circulos.on("mouseover", function(d) {
-            div.transition()
+            d3.select('.tooltip').transition()
                 .duration(200)
                 .style("opacity", .9);
-            div	.html("estado:" + d.nome + "fem:" + d.fem + "<br/>"  +"csup:" + d.csup)
+            d3.select('.tooltip')..html("estado:" + d.nome + "fem:" + d.fem + "<br/>"  +"csup:" + d.csup)
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY - 28) + "px");
             })
