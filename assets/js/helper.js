@@ -300,7 +300,7 @@ function atualizaGrafico(padding,w,h,opcao,rScale,xScale,yScale,xAxis,yAxis){
 function constroiCirculosEstadosOriginal(xScale,yScale,rScale){
   desenhaCirculosEstadoOriginal(xScale,yScale,rScale);
   rotulaCirculosEstadoOriginal(xScale,yScale);
-	dicaCirculosPorEstadoOriginal();
+	//dicaCirculosPorEstadoOriginal();
 }
 
 //desenha os circulos - grafico estados
@@ -339,7 +339,7 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
                 .style("top", (d3.event.pageY - 28) + "px");
             })
         .on("mouseout", function(d) {
-            div.transition()		
+            div.transition()
                 .duration(500)
                 .style("opacity", 0);
         });
