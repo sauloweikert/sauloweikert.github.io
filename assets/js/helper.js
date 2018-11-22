@@ -311,10 +311,7 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 		.enter()
 		.append("circle")
 
-		//define propiedades dos circulos
-    .transition()
-    .duration(2000)
-    //definindo propriedades dos circulos
+		//definindo propriedades dos circulos
     .attr("cx", function(d) {
       return xScale((d.fem)/(d.total));
     })
@@ -330,6 +327,11 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 		.attr("id", function(d) {
 			return "circuloEstado";
 		});
+
+		circulos//define propiedades dos circulos
+    .transition()
+    .duration(2000);
+
 
 		circulos.on("mouseover", function(d) {
             div.transition()
