@@ -359,7 +359,7 @@ function rotulaCirculosEstadoOriginal(xScale,yScale){
 function dicaCirculosPorEstadoOriginal(){
   d3.select(".chart-estados").selectAll("#circuloEstado")
     .data(dataset)
-		//.enter()
+		.enter()
     .append("title")
       .text(function(d) {
         return "Estado:" +"\t"+"\t"+"\t" + d.nome + "\n"
@@ -367,7 +367,6 @@ function dicaCirculosPorEstadoOriginal(){
         + "Feminino:" +"\t"+"\t"+d.fem + "\n"
         + "Curso sup.completo:" +"\t"+ d.csup;
       });
-    return;
 }
 
 //---------------------------------------------------------------------------
