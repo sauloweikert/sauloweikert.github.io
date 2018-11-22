@@ -342,7 +342,7 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
                 .style("top", (d3.event.pageY - 28) + "px");
             })
         .on("mouseout", function(d) {
-            div.transition()
+            d3.select('.tooltip').transition()
                 .duration(500)
                 .style("opacity", 0);
         });
