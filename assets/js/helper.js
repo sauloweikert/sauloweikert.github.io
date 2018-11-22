@@ -178,7 +178,6 @@ function criaSuporteGrafico(opcao){
 	    .attr("font-family", "sans-serif")
 	    .attr("font-size", "11px")
 	    .attr("fill", "black");			
-			}
 
 	return;
 }
