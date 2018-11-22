@@ -330,7 +330,7 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
     })
 		.attr("id", function(d) {
 			return "circuloEstado";
-		});
+		})
 		.on("mouseover", function(){return tooltip.style("visibility", "visible");})
 		.on("mousemove", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
 		.on("mouseout", function(){return tooltip.style("visibility", "hidden");});
