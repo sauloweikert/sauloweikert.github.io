@@ -306,7 +306,7 @@ function constroiCirculosEstadosOriginal(xScale,yScale,rScale){
 //desenha os circulos - grafico estados
 function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 
-	d3.select(".chart-estados").selectAll("#circuloEstado")
+	var circulos = d3.select(".chart-estados").selectAll("#circuloEstado")
     .data(dataset)
 		.enter()
 		.append("circle")
@@ -329,8 +329,9 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
     })
 		.attr("id", function(d) {
 			return "circuloEstado";
-		})
-		.on("mouseover", function(d) {
+		});
+
+		circulos.on("mouseover", function(d) {
             div.transition()
                 .duration(200)
                 .style("opacity", .9);
