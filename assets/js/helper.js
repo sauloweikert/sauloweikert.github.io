@@ -357,7 +357,7 @@ function rotulaCirculosEstadoOriginal(xScale,yScale){
 //a ser usado para grafico Estados
 
 function dicaCirculosPorEstadoOriginal(){
-  d3.select(".chart-estados").selectAll("#circuloEstado")
+  d3.select(".chart-estados")//.selectAll("#circuloEstado")
     .data(dataset)
 		.enter()
     .append("title")
