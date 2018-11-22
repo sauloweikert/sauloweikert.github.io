@@ -126,6 +126,13 @@ function configuraGrafico(w,h,opcao){
 		.attr("height", h)
 		.attr("font-family", "sans-serif")
 		.attr("font-size", "11px");
+
+	var tooltip = d3.select(".chart-"+opcao)
+		.append("div")
+		.style("position", "absolute")
+		.style("z-index", "10")
+		.style("visibility", "hidden")
+		.text("a simple tooltip");
   return;
 }
 
@@ -187,13 +194,6 @@ function montaGrafico(opcao){
   configuraGrafico(w,h,opcao);
 
 	montaLegenda(opcao);
-
-	var tooltip = d3.select("body")
-		.append("div")
-		.style("position", "absolute")
-		.style("z-index", "10")
-		.style("visibility", "hidden")
-		.text("a simple tooltip");
 
 	montaGraficoOriginal(padding,w,h,opcao);
 
