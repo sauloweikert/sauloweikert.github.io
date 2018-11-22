@@ -171,7 +171,14 @@ function criaSuporteGrafico(opcao){
 	// Define the div for the tooltip
 	var div = d3.select("svg").append("div")
 	    .attr("class", "tooltip")
-	    .style("opacity", 0);
+	    .style("opacity", 0)
+			.style("width","60px")
+			.style("height","28px")
+			.attr("text-anchor", "middle")
+	    .attr("font-family", "sans-serif")
+	    .attr("font-size", "11px")
+	    .attr("fill", "black");			
+			}
 
 	return;
 }
