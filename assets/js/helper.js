@@ -188,6 +188,13 @@ function montaGrafico(opcao){
 
 	montaLegenda(opcao);
 
+	var tooltip = d3.select("body")
+		.append("div")
+		.style("position", "absolute")
+		.style("z-index", "10")
+		.style("visibility", "hidden")
+		.text("a simple tooltip");
+
 	montaGraficoOriginal(padding,w,h,opcao);
 
 }
@@ -324,15 +331,9 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 		.attr("id", function(d) {
 			return "circuloEstado";
 		});
-
-		$('svg circle').tipsy({
-			gravity: 'w',
-			html: true,
-			title: function() {
-				var d = this.__data__, c = d.nome;
-				return 'Hi there! My color is <span style="color:' + c + '">' + c + '</span>';
-		}
-});
+		.on("mouseover", function(){return tooltip.style("visibility", "visible");})
+		.on("mousemove", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
+		.on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 }
 
 
