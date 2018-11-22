@@ -127,12 +127,6 @@ function configuraGrafico(w,h,opcao){
 		.attr("font-family", "sans-serif")
 		.attr("font-size", "11px");
 
-	var tooltip = d3.select(".chart-"+opcao)
-		.append("div")
-		.style("position", "absolute")
-		.style("z-index", "10")
-		.style("visibility", "hidden")
-		.text("a simple tooltip");
   return;
 }
 
