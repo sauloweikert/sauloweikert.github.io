@@ -324,6 +324,15 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 		.attr("id", function(d) {
 			return "circuloEstado";
 		});
+
+		$('svg circle').tipsy({
+			gravity: 'w',
+			html: true,
+			title: function() {
+				var d = this.__data__, c = d.nome;
+				return 'Hi there! My color is <span style="color:' + c + '">' + c + '</span>';
+		}
+});
 }
 
 
@@ -355,7 +364,7 @@ function rotulaCirculosEstadoOriginal(xScale,yScale){
 
 //adiciona uma dica "tooltip" para cada circulo, visivel ao sobrepor o mouse
 //a ser usado para grafico Estados
-
+/*
 function dicaCirculosPorEstadoOriginal(){
 	console.log(dataset);
   d3.select(".chart-estados").selectAll("#circuloEstado")
@@ -368,7 +377,7 @@ function dicaCirculosPorEstadoOriginal(){
         + "Feminino:" +"\t"+"\t"+d.fem + "\n"
         + "Curso sup.completo:" +"\t"+ d.csup;
       });
-}
+}*/
 
 //---------------------------------------------------------------------------
 //funcoes escalas
