@@ -294,7 +294,7 @@ function atualizaGrafico(padding,w,h,opcao,rScale,xScale,yScale,xAxis,yAxis){
 function constroiCirculosEstadosOriginal(xScale,yScale,rScale){
   desenhaCirculosEstadoOriginal(xScale,yScale,rScale);
   rotulaCirculosEstadoOriginal(xScale,yScale);
-	dicaCirculosPorEstadoOriginal();
+	//dicaCirculosPorEstadoOriginal();
 }
 
 //desenha os circulos - grafico estados
