@@ -360,7 +360,7 @@ function dicaCirculosPorEstadoOriginal(){
   d3.select(".chart-estados").selectAll("#circuloEstado")
     .data(dataset)
 		.enter()
-    .append("title")
+    .append("svg:title")
       .text(function(d) {
         return "Estado:" +"\t"+"\t"+"\t" + d.nome + "\n"
         + "Total:" +"\t"+"\t"+"\t" + d.total + "\n"
