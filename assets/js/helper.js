@@ -447,7 +447,7 @@ function defineEixoY(yScale){
 
 function desenhaEixoY(yAxis,padding,opcao){
 
-  //Create Y axis
+  //Cria eixo y
   d3.select(".chart-"+opcao).append("g")
   .attr("class", "y-axis")
   .attr("transform", "translate(" + padding + ",0)")
