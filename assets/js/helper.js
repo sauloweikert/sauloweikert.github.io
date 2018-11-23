@@ -61,43 +61,13 @@ function montaLegenda(opcao){
 	$(".painel-grafico-"+opcao).append(divLegenda);
 
 	if(opcao === 'estados'){
-		var myObjects = [
-			{
-				"nome": "Sul"
-			},
-			{
-				"nome": "Sudeste"
-			},
-			{
-				"nome": "Centroeste"
-			},
-			{
-				"nome": "Nordeste"
-			},
-			{
-				"nome": "Norte"
-			}
-		];
+		var myObjects = [{"nome": "Sul"},{"nome": "Sudeste"},{"nome": "Centroeste"},
+			{"nome": "Nordeste"},{"nome": "Norte"}];
 
 	}else if(opcao==='corpele'){
-		var myObjects = [
-			{
-				"nome": "Indigena"
-			},
-			{
-				"nome": "Amarela"
-			},
-			{
-				"nome": "Negra"
-			},
-			{
-				"nome": "Parda"
-			},
-			{
-				"nome": "Branca"
-			}
-		];
-	}
+		var myObjects = [{"nome": "Indigena"},{"nome": "Amarela"},{"nome": "Negra"},
+			{"nome": "Parda"},{"nome": "Branca"}];}
+
 	$(function () {
 	    $.each(myObjects, function () {
 				var celula = document.createElement('div');
@@ -169,7 +139,7 @@ function criaSuporteGrafico(opcao){
 	document.getElementsByClassName("div-grafico")[0].appendChild(element);
 
 	// Define the div for the tooltip
-	var div = d3.select("svg").append("div")
+/*	var div = d3.select("svg").append("div")
 	    .attr("class", "tooltip")
 	    .style("opacity", 0)
 			.style("width","60px")
@@ -177,7 +147,7 @@ function criaSuporteGrafico(opcao){
 			.attr("text-anchor", "middle")
 	    .attr("font-family", "sans-serif")
 	    .attr("font-size", "11px")
-	    .attr("fill", "black");			
+	    .attr("fill", "black");*/
 
 	return;
 }
@@ -306,17 +276,18 @@ function atualizaGrafico(padding,w,h,opcao,rScale,xScale,yScale,xAxis,yAxis){
 function constroiCirculosEstadosOriginal(xScale,yScale,rScale){
   desenhaCirculosEstadoOriginal(xScale,yScale,rScale);
   rotulaCirculosEstadoOriginal(xScale,yScale);
-	//dicaCirculosPorEstadoOriginal();
+	dicaCirculosPorEstadoOriginal();
 }
 
 //desenha os circulos - grafico estados
 function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 
-	var circulos = d3.select(".chart-estados").selectAll("#circuloEstado")
+	d3.select(".chart-estados").selectAll("#circuloEstado")
     .data(dataset)
 		.enter()
 		.append("circle")
-
+		.transition()
+		.duration(2000);
 		//definindo propriedades dos circulos
     .attr("cx", function(d) {
       return xScale((d.fem)/(d.total));
@@ -334,11 +305,7 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 			return "circuloEstado";
 		});
 
-		circulos//define propiedades dos circulos
-    .transition()
-    .duration(2000);
-
-
+/*
 		circulos.on("mouseover", function(d) {
             d3.select('.tooltip').transition()
                 .duration(200)
@@ -351,7 +318,7 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
             d3.select('.tooltip').transition()
                 .duration(500)
                 .style("opacity", 0);
-        });
+        });*/
 }
 
 
