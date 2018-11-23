@@ -19,18 +19,13 @@ function fazGraficoEleitores(opcao){
 //  element.setAttribute("class", "chart-"+opcao);
   document.getElementsByClassName("div-grafico")[0].appendChild(element);
 
-  //--configura grafico
-  //largura,altura
-  var width = 800;
-  var height = 900;
-
 
   /*Cria objeto svg e o objeto de grupo g para manipulação do DOM.*/
   var svg = d3.select("svg"),
       margin = {top: 20, right: 20, bottom: 30, left: 40},
       //margin = {top: 0, right: 0, bottom: 0, left: 0},
-      width = svg.attr("width",width) - margin.left - margin.right - 150,
-      height = svg.attr("height",height) - margin.top - margin.bottom-20,
+      width = svg.attr("width",800) - margin.left - margin.right - 150,
+      height = svg.attr("height",500) - margin.top - margin.bottom-20,
       g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
