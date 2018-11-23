@@ -441,7 +441,7 @@ function defineEixoY(yScale){
   var formatAsPercentage = d3.format(".1%");
 
   var yAxis = d3.axisLeft(yScale)
-  .tickFormat(formatAsPercentage)
+  .tickFormat(formatAsPercentage);
   return yAxis;
 }
 
