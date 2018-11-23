@@ -400,10 +400,8 @@ function defineEixoX(xScale){
       //formatando eixos como porcentagem
   var formatAsPercentage = d3.format(".1%");
 
-  var xAxis = d3.svg.axis()
-  .scale(xScale)
+  var xAxis = d3.axisBottom(xScale)
   .tickFormat(formatAsPercentage)
-  .orient("bottom");
   return xAxis;
 }
 
@@ -442,10 +440,8 @@ function defineEixoY(yScale){
       //formatando eixos como porcentagem
   var formatAsPercentage = d3.format(".1%");
 
-  var yAxis = d3.svg.axis()
-  .scale(yScale)
+  var yAxis = d3.axisLeft(yScale)
   .tickFormat(formatAsPercentage)
-  .orient("left");
   return yAxis;
 }
 
