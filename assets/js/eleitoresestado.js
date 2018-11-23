@@ -30,7 +30,7 @@ function fazGraficoEleitores(opcao){
       //margin = {top: 20, right: 20, bottom: 30, left: 40},
       width = svg.attr("width",width);// - margin.left - margin.right - 150,
       height = svg.attr("height",height);// - margin.top - margin.bottom-20,
-      g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      g = svg.append("g");//.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
   var estados = [["AC","Acre"],["AL","Alagoas"],["AM","Amazonas"],["AP","Amapá"],
@@ -388,7 +388,7 @@ function fazGraficoEleitores(opcao){
 
   		d3.select("g").remove();
 
-  		g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  		g = svg.append("g");//.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   		d3.selectAll("#rectan").remove();
   		d3.selectAll("#ax").remove();
   		d3.selectAll("#outraL").remove();
@@ -421,8 +421,8 @@ function fazGraficoEleitores(opcao){
   		tipoGrafico=2;
 
   		d3.select("g").remove();
-  		g = svg.append("g")
-  			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  		g = svg.append("g");
+  			//.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   		d3.selectAll("#rectan").remove();
   		d3.selectAll("#ax").remove();
   		d3.selectAll("#outraL").remove();
