@@ -51,7 +51,7 @@ por estado.*/
 
 var funcaoGerarDados = function(arquivoASerLido){
 
-
+/*codigo v3
 var x0 = d3.scale.ordinal()
     .rangeRoundBands([0, width],(0.1));
 //    .paddingInner(0.1);
@@ -64,7 +64,7 @@ var y = d3.scale.linear()
 
 var z = d3.scale.ordinal()
     .range(["#1b9e77", "#d95f02","#7570b3","#1b9e77", "#d95f02","#7570b3"]);
-
+*/
 /*Função que lê o arquivo csv.*/
 d3.csv("dados/"+ arquivoASerLido, function(d, i, columns) {
   for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = +d[columns[i]];
