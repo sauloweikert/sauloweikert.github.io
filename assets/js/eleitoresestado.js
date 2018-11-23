@@ -21,8 +21,8 @@ function fazGraficoEleitores(opcao){
 
   //--configura grafico
   //largura,altura
-  var width = 1500;
-  var height = 500;
+  var width = 800;
+  var height = 900;
 
 
   /*Cria objeto svg e o objeto de grupo g para manipulação do DOM.*/
