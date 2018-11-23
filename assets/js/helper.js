@@ -214,7 +214,7 @@ function montaGraficoOriginal(padding,w,h,opcao){
 					var rScale = d3.scaleLinear();
 					atualizaEscalaRaioCorPele(data,rScale);
 
-					var xScale = d3.scale.log();
+					var xScale = d3.scaleLog();
 					atualizaEscalaX(data,padding,w,xScale);
 					var xAxis = defineEixoX(xScale);
 					desenhaEixoX(xAxis,padding,h,opcao);
