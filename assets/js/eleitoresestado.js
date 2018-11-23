@@ -1,4 +1,4 @@
-fazGraficoEleitores(opcao){
+function fazGraficoEleitores(opcao){
 
   //verifica e fecha outras visualizações abertas
   fechaVisualizacoes(opcao);
@@ -19,12 +19,10 @@ fazGraficoEleitores(opcao){
 //  element.setAttribute("class", "chart-"+opcao);
   document.getElementsByClassName("div-grafico")[0].appendChild(element);
 
-//--configura grafico
-//largura,altura
-var width = 800;
-var height = 500;
-
-
+  //--configura grafico
+  //largura,altura
+  var width = 800;
+  var height = 500;
 
 
   /*Cria objeto svg e o objeto de grupo g para manipulação do DOM.*/
