@@ -34,14 +34,35 @@ function fazGraficoEleitores(opcao){
       g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-  var estados = [["AC","Acre"],["AL","Alagoas"],["AM","Amazonas"],["AP","Amapá"],
-  ["BA","Bahia"],["CE","Ceará"],["DF","Distrito Federal"],["ES","Espírito Santo"],
-  ["GO","Goiânia"],["MA","Maranhão"],["MG","Minas Gerais"],
-  ["MS","Mato Grosso do Sul"],["MT","Mato Grosso"],["PA","Pará"],["PB","Paraíba"],
-  ["PE","Pernambuco"],["PI","Piaui"],["PR","Paraná"],["RJ","Rio de Janeiro"],
-  ["RN","Rio Grande do Norte"],["RO","Rondonia"],["RR","Roraima"],
-  ["RS","Rio Grande do Sul"],["SC","Santa Catarina"],["SE","Sergipe"],
-  ["SP","São Paulo"],["TO","Tocantins"],["ZZ","Estrangeiro"]];
+      var estados = [];
+      estados.push(["AC","Acre"]);
+      estados.push(["AL","Alagoas"]);
+      estados.push(["AM","Amazonas"]);
+      estados.push(["AP","Amapá"]);
+      estados.push(["BA","Bahia"]);
+      estados.push(["CE","Ceará"]);
+      estados.push(["DF","Distrito Federal"]);
+      estados.push(["ES","Espírito Santo"]);
+      estados.push(["GO","Goiânia"]);
+      estados.push(["MA","Maranhão"]);
+      estados.push(["MG","Minas Gerais"]);
+      estados.push(["MS","Mato Grosso do Sul"]);
+      estados.push(["MT","Mato Grosso"]);
+      estados.push(["PA","Pará"]);
+      estados.push(["PB","Paraíba"]);
+      estados.push(["PE","Pernambuco"]);
+      estados.push(["PI","Piaui"]);
+      estados.push(["PR","Paraná"]);
+      estados.push(["RJ","Rio de Janeiro"]);
+      estados.push(["RN","Rio Grande do Norte"]);
+      estados.push(["RO","Rondonia"]);
+      estados.push(["RR","Roraima"]);
+      estados.push(["RS","Rio Grande do Sul"]);
+      estados.push(["SC","Santa Catarina"]);
+      estados.push(["SE","Sergipe"]);
+      estados.push(["SP","São Paulo"]);
+      estados.push(["TO","Tocantins"]);
+      estados.push(["ZZ","Estrangeiro"]);
 
 
   var retornaPosicao = function(vetor,key){
