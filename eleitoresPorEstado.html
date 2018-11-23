@@ -56,8 +56,8 @@ var x0 = d3.scale.ordinal()
     .rangeRoundBands([0, width],(0.1));
 //    .paddingInner(0.1);
 
-var x1 = d3.scaleBand()
-    .padding(0.05);
+var x1 = d3.scale.ordinal()
+    .rangeRoundBands(0.05);
 
 var y = d3.scaleLinear()
     .rangeRound([height, 0]);
