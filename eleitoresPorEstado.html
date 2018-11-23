@@ -5,14 +5,12 @@
   display: none;
 }
 
-
 </style>
 
 <head>
 	<svg width="800" height="500"></svg>
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
-
 
 <body>
 
@@ -25,7 +23,6 @@ var svg = d3.select("svg"),
     height = +svg.attr("height") - margin.top - margin.bottom-20,
     g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-
 var estados = [["AC","Acre"],["AL","Alagoas"],["AM","Amazonas"],["AP","Amapá"],
 ["BA","Bahia"],["CE","Ceará"],["DF","Distrito Federal"],["ES","Espírito Santo"],
 ["GO","Goiânia"],["MA","Maranhão"],["MG","Minas Gerais"],
@@ -34,6 +31,7 @@ var estados = [["AC","Acre"],["AL","Alagoas"],["AM","Amazonas"],["AP","Amapá"],
 ["RN","Rio Grande do Norte"],["RO","Rondonia"],["RR","Roraima"],
 ["RS","Rio Grande do Sul"],["SC","Santa Catarina"],["SE","Sergipe"],
 ["SP","São Paulo"],["TO","Tocantins"],["ZZ","Estrangeiro"]];
+
 
 var retornaPosicao = function(vetor,key){
 
