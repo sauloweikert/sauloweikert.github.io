@@ -9,8 +9,8 @@
 
 <head>
 	<svg width="800" height="500"></svg>
-  <script type = "text/javascript" src="d3/d3.v3.min.js"></script>
-<!--	<script src="https://d3js.org/d3.v4.min.js"></script>-->
+<!--  <script type = "text/javascript" src="d3/d3.v3.min.js"></script>-->
+	<script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 
 <body>
@@ -50,6 +50,19 @@ var retornaPosicao = function(vetor,key){
 por estado.*/
 
 var funcaoGerarDados = function(arquivoASerLido){
+
+  var x0 = d3.scaleBand()
+      .rangeRound([0, width])
+      .paddingInner(0.1);
+
+  var x1 = d3.scaleBand()
+      .padding(0.05);
+
+  var y = d3.scaleLinear()
+      .rangeRound([height, 0]);
+
+  var z = d3.scaleOrdinal()
+      .range(["#1b9e77", "#d95f02","#7570b3","#1b9e77", "#d95f02","#7570b3"]);
 
 /*codigo v3
 var x0 = d3.scale.ordinal()
