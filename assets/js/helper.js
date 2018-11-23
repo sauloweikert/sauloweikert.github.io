@@ -8,7 +8,7 @@ function sairGrafico(opcao){
 	$('.div-grafico').remove();
 
 	//remove legenda
-	$('#legend').remove();
+	//$('#legend').remove();
 
 	//remove botao Sair
 	$('#botao-sair').remove();
@@ -114,8 +114,9 @@ function fechaVisualizacoes(opcao){
 	desabilitaBotaoVisualizar(opcao);
 
 	//fecha grficos de outros paineis que estejam abertos
-	if(opcao === 'estados') var contraOpcao = "corpele";
+	if(opcao === 'estados') var contraOpcao = "eleitoresestado";
 	else if(opcao === 'corpele') var contraOpcao = "estados";
+	else if(opcao === 'eleitoresestado') var contraOpcao = "corpele";
 
 	var open =document.getElementById("botao-visualizar-"+contraOpcao).disabled;
 	if(open == true) sairGrafico(contraOpcao);

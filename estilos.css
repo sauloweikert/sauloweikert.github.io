@@ -2,7 +2,7 @@ p{
   text-align: justify;
 }
 
-.painel-grafico-estados, .painel-grafico-corpele {
+.painel-grafico-estados, .painel-grafico-corpele, .painel-grafico-eleitoresestado {
   overflow-x: auto;
   position: relative;
 }
