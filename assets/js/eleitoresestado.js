@@ -373,11 +373,11 @@ function fazGraficoEleitores(opcao){
   var ok = funcaoGerarDados("numeroEleitoresAlf.csv");
 
 
-  d3.select("body")
+  d3.select(".painel-grafico-"+opcao)
   	.append("p");
 
 
-  d3.select("body")
+  d3.select(".painel-grafico-"+opcao)
   	.append("text")
   	.text("Eixo em valor absoluto")
   	.style("background", "#F0F8FF")
@@ -409,9 +409,9 @@ function fazGraficoEleitores(opcao){
 
   	});
 
-  d3.select("body")
+  d3.select(".painel-grafico-"+opcao)
   	.append("p");
-  d3.select("body")
+  d3.select(".painel-grafico-"+opcao)
   	.append("text")
   	.text("Eixo em valor porcentagem")
   	.style("background", "#F0F8FF")
@@ -450,9 +450,9 @@ function fazGraficoEleitores(opcao){
   que não são estáticos, logo após o gráfico é construído
   com as informações na ordem desejada.*/
 
-  d3.select("body")
+  d3.select(".painel-grafico-"+opcao)
   	.append("p");
-  d3.select("body")
+  d3.select(".painel-grafico-"+opcao)
   	.append("text")
   	.text("Ordene em ordem alfabética")
   	.style("background", "#F0F8FF")
@@ -473,10 +473,10 @@ function fazGraficoEleitores(opcao){
   	});
 
 
-  d3.select("body")
+  d3.select(".painel-grafico-"+opcao)
   	.append("p");
 
-  d3.select("body")
+  d3.select(".painel-grafico-"+opcao)
   	.append("text")
   	.text("Ordene em ordem crescente")
   	.style("background", "#F0F8FF")
@@ -495,10 +495,10 @@ function fazGraficoEleitores(opcao){
   		else{ funcaoGerarDadosP("numeroEleitoresCresc.csv");}
   	});
 
-  d3.select("body")
+  d3.select(".painel-grafico-"+opcao)
   	.append("p");
 
-  d3.select("body")
+  d3.select(".painel-grafico-"+opcao)
   	.append("text")
   	.text("Ordene em ordem decrescente")
   	.style("background", "#F0F8FF")
