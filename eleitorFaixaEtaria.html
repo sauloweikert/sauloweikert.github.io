@@ -42,7 +42,7 @@ var z = d3.scaleOrdinal()
 
 
 
-d3.csv(arquivoASerLido, function(d, i, columns) {
+d3.csv("dados/"+ arquivoASerLido, function(d, i, columns) {
   for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = +d[columns[i]];
   return d;
 }, function(error, data) {
@@ -54,7 +54,7 @@ d3.csv(arquivoASerLido, function(d, i, columns) {
   var keys = data.columns.slice(1,4);
   //console.log(keys);
 
-  
+
   x0.domain(data.map(function(d) { return d.idade; }));
   x1.domain(keys).rangeRound([0, x0.bandwidth()]);
   y.domain([0, d3.max(data, function(d) { return d3.max(keys, function(key) { return d[key]; }); })]).nice();
@@ -86,8 +86,8 @@ d3.csv(arquivoASerLido, function(d, i, columns) {
 
         d3.select(this)
           .style("opacity",0.7);
-	
-	
+
+
 	g.append("text")
 		.attr("id","tool")
 		.attr("x", width/2)
