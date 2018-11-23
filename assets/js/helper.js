@@ -211,7 +211,7 @@ function montaGraficoOriginal(padding,w,h,opcao){
 
 				else if(opcao === 'corpele'){
 
-					var rScale = d3.scale.Linear();
+					var rScale = d3.scaleLinear();
 					atualizaEscalaRaioCorPele(data,rScale);
 
 					var xScale = d3.scale.log();
@@ -220,7 +220,7 @@ function montaGraficoOriginal(padding,w,h,opcao){
 					desenhaEixoX(xAxis,padding,h,opcao);
 					rotulaEixoX(padding,h,w,opcao);
 
-					var yScale = d3.scale.Linear();
+					var yScale = d3.scaleLinear();
 					atualizaEscalaY(data,padding,h,yScale);
 					var yAxis = defineEixoY(yScale);
 					desenhaEixoY(yAxis,padding,opcao);
