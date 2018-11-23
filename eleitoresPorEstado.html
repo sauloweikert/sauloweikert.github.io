@@ -52,7 +52,7 @@ por estado.*/
 var funcaoGerarDados = function(arquivoASerLido){
 
 
-var x0 = d3.scaleBand()
+var x0 = d3.scale.ordinal()
     .rangeRound([0, width])
     .paddingInner(0.1);
 
