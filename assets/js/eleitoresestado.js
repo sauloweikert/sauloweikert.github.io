@@ -21,7 +21,7 @@ function fazGraficoEleitores(opcao){
 
   //--configura grafico
   //largura,altura
-  var width = 800;
+  var width = 1500;
   var height = 500;
 
 
