@@ -190,16 +190,16 @@ function montaGraficoOriginal(padding,w,h,opcao){
 
 				if(opcao === 'estados'){
 
-					var rScale = d3.scale.linear();
+					var rScale = d3.scaleLinear();
 					atualizaEscalaRaioEstados(data,rScale);
 
-					var xScale = d3.scale.linear();
+					var xScale = d3.scaleLinear();
 					atualizaEscalaX(data,padding,w,xScale);
 					var xAxis = defineEixoX(xScale);
 					desenhaEixoX(xAxis,padding,h,opcao);
 					rotulaEixoX(padding,h,w,opcao);
 
-					var yScale = d3.scale.linear();
+					var yScale = d3.scaleLinear();
 					atualizaEscalaY(data,padding,h,yScale);
 					var yAxis = defineEixoY(yScale);
 					desenhaEixoY(yAxis,padding,opcao);
@@ -211,7 +211,7 @@ function montaGraficoOriginal(padding,w,h,opcao){
 
 				else if(opcao === 'corpele'){
 
-					var rScale = d3.scale.linear();
+					var rScale = d3.scale.Linear();
 					atualizaEscalaRaioCorPele(data,rScale);
 
 					var xScale = d3.scale.log();
@@ -220,7 +220,7 @@ function montaGraficoOriginal(padding,w,h,opcao){
 					desenhaEixoX(xAxis,padding,h,opcao);
 					rotulaEixoX(padding,h,w,opcao);
 
-					var yScale = d3.scale.linear();
+					var yScale = d3.scale.Linear();
 					atualizaEscalaY(data,padding,h,yScale);
 					var yAxis = defineEixoY(yScale);
 					desenhaEixoY(yAxis,padding,opcao);
