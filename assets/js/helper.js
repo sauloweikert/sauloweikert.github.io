@@ -137,8 +137,8 @@ function criaSuporteGrafico(opcao){
 	//cria dinamicamente elemento tipo svg que sera o grafico
 	var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 	element.setAttribute("class", "chart-"+opcao);
-	document.getElementsByClassName("div-grafico")[0].appendChild(element);
-
+	//document.getElementsByClassName("div-grafico")[0].appendChild(element);
+	$("div-grafico").append(element);
 
 	// Define the div for the tooltip
 /*	var div = d3.select("svg").append("div")
