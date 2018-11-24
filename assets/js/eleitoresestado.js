@@ -15,15 +15,15 @@ function fazGraficoEleitores(opcao){
 //  divGrafico.style.right ='0px';
   divGrafico.style.left ='10px';
   divGrafico.style.backgroundColor = 'white';
+  document.getElementsByClassName("painel-grafico-"+opcao)[0].appendChild(divGrafico);
 
-  $("painel-grafico-"+opcao).append(divGrafico);
 
 
   //cria dinamicamente elemento tipo svg que sera o grafico
   var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 //  element.setAttribute("class", "chart-"+opcao);
-  //document.getElementsByClassName("div-op")[0].appendChild(element);;
-  $("div-grafico").append(element);
+  document.getElementsByClassName("div-grafico")[0].appendChild(element);
+
 
   //cria div para operacoes
   var divOp = document.createElement('div');
@@ -33,7 +33,8 @@ function fazGraficoEleitores(opcao){
   divGrafico.style.left ='10px';
   divGrafico.style.backgroundColor = 'white';
 
-  $("painel-grafico-"+opcao).append(divOp);
+  document.getElementsByClassName("painel-grafico-"+opcao)[0].appendChild(divOp);
+
 
 
 
