@@ -6,7 +6,6 @@ p{
   overflow-x: auto;
   overflow-y: auto;
   position: relative;
-  width: 80%;
 }
 
 #paineis-sobre{
@@ -89,7 +88,7 @@ header h1 {
     .observatorioSocial-banner {
     left: 0;
     transform: translate(0, -80%);
-    width: 50%;
+    width: 80%;
     }
     .observatorioSocial-bannerWrapper{
       position: relative;
