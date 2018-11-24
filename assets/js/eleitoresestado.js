@@ -15,6 +15,7 @@ function fazGraficoEleitores(opcao){
   divGrafico.style.overflowY ='auto';
   divGrafico.style.position = 'fixed';
   divGrafico.style.right ='0px';
+  divGrafico.style.left ='0px';
   divGrafico.style.top ='0px';
   divGrafico.style.backgroundColor = 'white';
   $("body").append(divGrafico);
