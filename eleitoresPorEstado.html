@@ -24,6 +24,7 @@ var svg = d3.select("svg"),
     height = +svg.attr("height") - margin.top - margin.bottom-20,
     g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+console.log("me é " + margin.left);
 
 var estados = [["AC","Acre"],["AL","Alagoas"],["AM","Amazonas"],["AP","Amapá"],
 ["BA","Bahia"],["CE","Ceará"],["DF","Distrito Federal"],["ES","Espírito Santo"],
@@ -64,20 +65,7 @@ var funcaoGerarDados = function(arquivoASerLido){
   var z = d3.scaleOrdinal()
       .range(["#1b9e77", "#d95f02","#7570b3","#1b9e77", "#d95f02","#7570b3"]);
 
-/*codigo v3
-var x0 = d3.scale.ordinal()
-    .rangeRoundBands([0, width],(0.1));
-//    .paddingInner(0.1);
 
-var x1 = d3.scale.ordinal()
-    .rangeRoundBands(0.05);
-
-var y = d3.scale.linear()
-    .rangeRound([height, 0]);
-
-var z = d3.scale.ordinal()
-    .range(["#1b9e77", "#d95f02","#7570b3","#1b9e77", "#d95f02","#7570b3"]);
-*/
 /*Função que lê o arquivo csv.*/
 d3.csv("dados/"+ arquivoASerLido, function(d, i, columns) {
   for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = +d[columns[i]];
