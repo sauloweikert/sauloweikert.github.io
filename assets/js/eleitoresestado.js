@@ -42,6 +42,7 @@ function fazGraficoEleitores(opcao){
 
       console.log("g" +g);
       console.log("width  " + width);
+      console.log("he" + heigth);
       console.log("svg w" + svg.width);
 
 
