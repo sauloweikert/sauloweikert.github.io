@@ -18,6 +18,7 @@ function fazGraficoEleitores(opcao){
   divGrafico.style.left ='0px';
   divGrafico.style.top ='0px';
   divGrafico.style.backgroundColor = 'white';
+  divGrafico.style.height ='1500 px';
   $("body").append(divGrafico);
 
 
