@@ -34,7 +34,7 @@ function fazGraficoEleitores(opcao){
       margin = {top: 20, right: 20, bottom: 30, left: 40},
       //margin = {top: 0, right: 0, bottom: 0, left: 0},
       width = +largura - margin.left - margin.right - 150,
-      height = +altura - margin.top - margin.bottom-20,
+      heigth = +altura - margin.top - margin.bottom-20,
       g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
       console.log("h" + heigth);
@@ -97,7 +97,7 @@ function fazGraficoEleitores(opcao){
         .padding(0.05);
 
     var y = d3.scaleLinear()
-        .rangeRound([height, 0]);
+        .rangeRound([heigth, 0]);
 
     var z = d3.scaleOrdinal()
         .range(["#1b9e77", "#d95f02","#7570b3","#1b9e77", "#d95f02","#7570b3"]);
@@ -139,7 +139,7 @@ function fazGraficoEleitores(opcao){
         .attr("y", function(d) { return y(d.value); })
         .attr("width", x1.bandwidth()+0.4)
         .attr("id", "rectan")
-        .attr("height", function(d) { return height - y(d.value); })
+        .attr("heigth", function(d) { return heigth - y(d.value); })
         .attr("fill", function(d) { return z(d.key); })
         .data(function(d) {
   	return outrasKeys.map(function(outrasKeys) { return {outrasKeys: outrasKeys, value: d		[outrasKeys], estado: d.estado};
@@ -158,7 +158,7 @@ function fazGraficoEleitores(opcao){
   	g.append("text")
   		.attr("id","tool")
   		.attr("x", width/2-40)
-  		.attr("y",height/2 - 90)
+  		.attr("y",heigth/2 - 90)
   		.style("font-size","12px")
         		.attr("font-weight", "bold")
   		.style("font-family", "Arial, Helvetica, sans-serif")
@@ -167,7 +167,7 @@ function fazGraficoEleitores(opcao){
   	g.append("text")
   		.attr("id","tool1")
   		.attr("x", width/2-40)
-  		.attr("y",height/2 - 80)
+  		.attr("y",heigth/2 - 80)
   		.style("font-size","12px")
         		.attr("font-weight", "bold")
   		.style("font-family", "Arial, Helvetica, sans-serif")
@@ -187,7 +187,7 @@ function fazGraficoEleitores(opcao){
     g.append("g")
         .attr("class", "axis")
         .attr("id", "tentativa")
-        .attr("transform", "translate(0," + height + ")")
+        .attr("transform", "translate(0," + heigth + ")")
         .call(d3.axisBottom(x0));
 
     /*Adiciona ao gráfico o eixo X com os estados.*/
@@ -220,7 +220,7 @@ function fazGraficoEleitores(opcao){
     legend.append("rect")
         .attr("x", 700)
         .attr("width", 10)
-        .attr("height", 10)
+        .attr("heigth", 10)
         .attr("id", "oi")
         .attr("fill", z);
 
@@ -249,7 +249,7 @@ function fazGraficoEleitores(opcao){
       .padding(0.05);
 
   var y = d3.scaleLinear()
-      .rangeRound([height, 0]);
+      .rangeRound([heigth, 0]);
 
   var z = d3.scaleOrdinal()
       .range(["#1b9e77", "#d95f02","#7570b3","#1b9e77", "#d95f02","#7570b3"]);
@@ -290,7 +290,7 @@ function fazGraficoEleitores(opcao){
         .attr("y", function(d) { return y(d.value); })
         .attr("width", x1.bandwidth()+0.4)
         .attr("id", "rectan")
-        .attr("height", function(d) { return height - y(d.value); })
+        .attr("heigth", function(d) { return heigth - y(d.value); })
         .attr("fill", function(d) { return z(d.key); })
         .data(function(d) {
   	return outrasKeys.map(function(outrasKeys) { return {outrasKeys: outrasKeys, value: d		[outrasKeys], estado: d.estado};
@@ -309,7 +309,7 @@ function fazGraficoEleitores(opcao){
   	g.append("text")
   		.attr("id","tool")
   		.attr("x", width/2-40)
-  		.attr("y",height/2 - 90)
+  		.attr("y",heigth/2 - 90)
   		.style("font-size","12px")
         		.attr("font-weight", "bold")
   		.style("font-family", "Arial, Helvetica, sans-serif")
@@ -318,7 +318,7 @@ function fazGraficoEleitores(opcao){
   	g.append("text")
   		.attr("id","tool1")
   		.attr("x", width/2-40)
-  		.attr("y",height/2 - 80)
+  		.attr("y",heigth/2 - 80)
   		.style("font-size","12px")
         		.attr("font-weight", "bold")
   		.style("font-family", "Arial, Helvetica, sans-serif")
@@ -338,7 +338,7 @@ function fazGraficoEleitores(opcao){
     g.append("g")
         .attr("class", "axis")
         .attr("id", "tentativa")
-        .attr("transform", "translate(0," + height + ")")
+        .attr("transform", "translate(0," + heigth + ")")
         .call(d3.axisBottom(x0));
 
     /*Adiciona ao gráfico o eixo X com os estados.*/
@@ -371,7 +371,7 @@ function fazGraficoEleitores(opcao){
     legend.append("rect")
         .attr("x", 700)
         .attr("width", 10)
-        .attr("height", 10)
+        .attr("heigth", 10)
         .attr("id", "oi")
         .attr("fill", z);
 
