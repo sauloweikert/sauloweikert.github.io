@@ -46,6 +46,7 @@ footer address:last-child {
 html,
 body {
     height: 100%;
+    width:100%;
 }
 
 header {
@@ -88,7 +89,7 @@ header h1 {
     .observatorioSocial-banner {
     left: 0;
     transform: translate(0, -80%);
-    width: 80%;
+    width: 50%;
     }
     .observatorioSocial-bannerWrapper{
       position: relative;
