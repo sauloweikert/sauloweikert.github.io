@@ -99,6 +99,7 @@ function fazGraficoEleitores(opcao){
 
     var dadosComp = data;
 
+
     /*Dados que serão utilizados para o valor absoluto.*/
     var keys = data.columns.slice(1,4);
     //console.log(keys);
