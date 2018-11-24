@@ -12,7 +12,7 @@ function fazGraficoEleitores(opcao){
   var divGrafico = document.createElement('div');
   divGrafico.className = 'div-grafico';
   divGrafico.style.overflowX ='auto';
-  $("body").append(divLegenda);
+  $("body").append(divGrafico);
 
   //cria dinamicamente elemento tipo svg que sera o grafico
   var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
