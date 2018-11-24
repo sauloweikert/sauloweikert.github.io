@@ -10,24 +10,31 @@ function fazGraficoEleitores(opcao){
 
   //cria dinamicamente elemento do tipo div para conter o grafico
   var divGrafico = document.createElement('div');
-  divGrafico.className = 'div-popup';
-  divGrafico.style.height ='100%';
+  divGrafico.className = 'div-grafico';
   divGrafico.style.overflowX ='auto';
-  divGrafico.style.overflowY ='auto';
-  divGrafico.style.position = 'fixed';
-  divGrafico.style.right ='0px';
-  divGrafico.style.left ='0px';
-  divGrafico.style.top ='0px';
+//  divGrafico.style.right ='0px';
+  divGrafico.style.left ='10px';
   divGrafico.style.backgroundColor = 'white';
 
-  $("body").append(divGrafico);
+  $("painel-grafico-"+opcao).append(divGrafico);
 
 
   //cria dinamicamente elemento tipo svg que sera o grafico
   var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 //  element.setAttribute("class", "chart-"+opcao);
-  //document.getElementsByClassName("div-popup")[0].appendChild(element);
-  document.getElementsByClassName("div-popup")[0].appendChild(element);
+  //document.getElementsByClassName("div-op")[0].appendChild(element);;
+  $("div-grafico").append(element);
+
+  //cria div para operacoes
+  var divOp = document.createElement('div');
+  divGrafico.className = 'div-op';
+//  divGrafico.style.overflowX ='auto';
+//  divGrafico.style.right ='0px';
+  divGrafico.style.left ='10px';
+  divGrafico.style.backgroundColor = 'white';
+
+  $("painel-grafico-"+opcao).append(divOp);
+
 
 
   /*Cria objeto svg e o objeto de grupo g para manipulação do DOM.*/
@@ -415,11 +422,11 @@ function fazGraficoEleitores(opcao){
   var ok = funcaoGerarDados("numeroEleitoresAlf.csv");
 
 
-  d3.select("div-popup")
+  d3.select("div-op")
   	.append("p");
 
 
-  d3.select("div-popup")
+  d3.select("div-op")
   	.append("text")
   	.text("Eixo em valor absoluto")
   	.style("background", "#F0F8FF")
@@ -451,9 +458,9 @@ function fazGraficoEleitores(opcao){
 
   	});
 
-  d3.select("div-popup")
+  d3.select("div-op")
   	.append("p");
-  d3.select("div-popup")
+  d3.select("div-op")
   	.append("text")
   	.text("Eixo em valor porcentagem")
   	.style("background", "#F0F8FF")
@@ -492,9 +499,9 @@ function fazGraficoEleitores(opcao){
   que não são estáticos, logo após o gráfico é construído
   com as informações na ordem desejada.*/
 
-  d3.select("div-popup")
+  d3.select("div-op")
   	.append("p");
-  d3.select("div-popup")
+  d3.select("div-op")
   	.append("text")
   	.text("Ordene em ordem alfabética")
   	.style("background", "#F0F8FF")
@@ -515,10 +522,10 @@ function fazGraficoEleitores(opcao){
   	});
 
 
-  d3.select("div-popup")
+  d3.select("div-op")
   	.append("p");
 
-  d3.select("div-popup")
+  d3.select("div-op")
   	.append("text")
   	.text("Ordene em ordem crescente")
   	.style("background", "#F0F8FF")
@@ -537,10 +544,10 @@ function fazGraficoEleitores(opcao){
   		else{ funcaoGerarDadosP("numeroEleitoresCresc.csv");}
   	});
 
-  d3.select("div-popup")
+  d3.select("div-op")
   	.append("p");
 
-  d3.select("div-popup")
+  d3.select("div-op")
   	.append("text")
   	.text("Ordene em ordem decrescente")
   	.style("background", "#F0F8FF")
