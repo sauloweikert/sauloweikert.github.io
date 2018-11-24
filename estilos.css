@@ -6,6 +6,7 @@ p{
   overflow-x: auto;
   overflow-y: auto;
   position: relative;
+  width: 80%;
 }
 
 #paineis-sobre{
