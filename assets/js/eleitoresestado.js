@@ -12,13 +12,15 @@ function fazGraficoEleitores(opcao){
   var divGrafico = document.createElement('div');
   divGrafico.className = 'div-grafico';
   divGrafico.style.overflowX ='auto';
-  $("painel-grafico-"+opcao).append(divGrafico);
+  document.getElementsByClassName("painel-grafico-"+opcao)[0].appendChild(divGrafico);
+
 
   //cria dinamicamente elemento tipo svg que sera o grafico
   var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 //  element.setAttribute("class", "chart-"+opcao);
   //document.getElementsByClassName("div-grafico")[0].appendChild(element);
-  $("div-grafico").append(element);
+  document.getElementsByClassName("div-grafico")[0].appendChild(element);
+
 
   /*Cria objeto svg e o objeto de grupo g para manipulação do DOM.*/
 

@@ -33,7 +33,7 @@ function criaBotaoSairGrafico(opcao){
 	element.onclick = function() {
 		sairGrafico(opcao);
 	};
-	$("painel-grafico-"+opcao).append(element);
+	document.getElementsByClassName("painel-grafico-"+opcao)[0].appendChild(element);
 }
 
 //---------------------------------------------------construcao grafico estados
