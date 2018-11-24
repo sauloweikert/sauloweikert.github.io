@@ -30,6 +30,7 @@ function fazGraficoEleitores(opcao){
 
       console.log("me" + margin.left);
       console.log("width  " + width);
+      console.log("svg w" + svg.width);
 
 
       var estados = [];
