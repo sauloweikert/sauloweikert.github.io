@@ -12,7 +12,7 @@ function fazGraficoEleitores(opcao){
   var divGrafico = document.createElement('div');
   divGrafico.className = 'div-grafico';
   divGrafico.style.overflowX ='auto';
-  $("body").append(divGrafico);
+  $("painel-grafico-"+opcao).append(divGrafico);
 
   //cria dinamicamente elemento tipo svg que sera o grafico
   var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -22,7 +22,7 @@ function fazGraficoEleitores(opcao){
 
   /*Cria objeto svg e o objeto de grupo g para manipulação do DOM.*/
 
- var largura = 800;
+ var largura = 1500;
  var altura = 500;
 
   d3.select("svg")
@@ -404,11 +404,11 @@ function fazGraficoEleitores(opcao){
   var ok = funcaoGerarDados("numeroEleitoresAlf.csv");
 
 
-  d3.select("body")
+  d3.select("painel-grafico-"+opcao)
   	.append("p");
 
 
-  d3.select("body")
+  d3.select("painel-grafico-"+opcao)
   	.append("text")
   	.text("Eixo em valor absoluto")
   	.style("background", "#F0F8FF")
@@ -440,9 +440,9 @@ function fazGraficoEleitores(opcao){
 
   	});
 
-  d3.select("body")
+  d3.select("painel-grafico-"+opcao)
   	.append("p");
-  d3.select("body")
+  d3.select("painel-grafico-"+opcao)
   	.append("text")
   	.text("Eixo em valor porcentagem")
   	.style("background", "#F0F8FF")
@@ -481,9 +481,9 @@ function fazGraficoEleitores(opcao){
   que não são estáticos, logo após o gráfico é construído
   com as informações na ordem desejada.*/
 
-  d3.select("body")
+  d3.select("painel-grafico-"+opcao)
   	.append("p");
-  d3.select("body")
+  d3.select("painel-grafico-"+opcao)
   	.append("text")
   	.text("Ordene em ordem alfabética")
   	.style("background", "#F0F8FF")
@@ -504,10 +504,10 @@ function fazGraficoEleitores(opcao){
   	});
 
 
-  d3.select("body")
+  d3.select("painel-grafico-"+opcao)
   	.append("p");
 
-  d3.select("body")
+  d3.select("painel-grafico-"+opcao)
   	.append("text")
   	.text("Ordene em ordem crescente")
   	.style("background", "#F0F8FF")
@@ -526,10 +526,10 @@ function fazGraficoEleitores(opcao){
   		else{ funcaoGerarDadosP("numeroEleitoresCresc.csv");}
   	});
 
-  d3.select("body")
+  d3.select("painel-grafico-"+opcao)
   	.append("p");
 
-  d3.select("body")
+  d3.select("painel-grafico-"+opcao)
   	.append("text")
   	.text("Ordene em ordem decrescente")
   	.style("background", "#F0F8FF")
