@@ -11,7 +11,7 @@ function fazGraficoEleitores(opcao){
   //cria dinamicamente elemento do tipo div para conter o grafico
   var divGrafico = document.createElement('div');
   divGrafico.className = 'div-popup';
-  divGrafico.style.height ='1500 px';
+  divGrafico.style.height ='100%';
   divGrafico.style.overflowX ='auto';
   divGrafico.style.overflowY ='auto';
   divGrafico.style.position = 'fixed';
