@@ -26,7 +26,7 @@ function fazGraficoEleitores(opcao){
       //margin = {top: 0, right: 0, bottom: 0, left: 0},
       width = svg.attr("width",1100) - margin.left - margin.right - 150,
       height = svg.attr("height",500) - margin.top - margin.bottom-20,
-      g = svg.append("g");//.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      g = svg.append("g").attr("transform", "translate(0,0)");
 
 
       var estados = [];
