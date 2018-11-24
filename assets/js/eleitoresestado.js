@@ -16,6 +16,7 @@ function fazGraficoEleitores(opcao){
   divGrafico.style.position = 'fixed';
   divGrafico.style.right ='0px';
   divGrafico.style.top ='0px';
+  divGrafico.style.backgroundColor = 'white';
   document.getElementsByClassName("body")[0].appendChild(divGrafico);
 
 
