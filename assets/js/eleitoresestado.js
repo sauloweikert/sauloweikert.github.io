@@ -28,6 +28,7 @@ function fazGraficoEleitores(opcao){
       height = svg.attr("height",500) - margin.top - margin.bottom-20,
       g = svg.append("g").attr("transform", "translate(0,0)");
 
+      console.log("me" + margin.left);
       console.log("width  " + width);
 
 
