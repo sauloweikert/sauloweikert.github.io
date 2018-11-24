@@ -12,6 +12,7 @@ function fazGraficoEleitores(opcao){
   var divGrafico = document.createElement('div');
   divGrafico.className = 'div-grafico';
   divGrafico.style.overflowX ='auto';
+  divGrafico.style.overflowY ='auto';
   document.getElementsByClassName("painel-grafico-"+opcao)[0].appendChild(divGrafico);
 
 
