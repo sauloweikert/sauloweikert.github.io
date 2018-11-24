@@ -17,7 +17,7 @@ function fazGraficoEleitores(opcao){
   divGrafico.style.right ='0px';
   divGrafico.style.top ='0px';
   divGrafico.style.backgroundColor = 'white';
-  document.getElementsByClassName("body")[0].appendChild(divGrafico);
+  $("body").append(divGrafico);
 
 
   //cria dinamicamente elemento tipo svg que sera o grafico
