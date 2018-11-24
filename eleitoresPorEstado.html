@@ -1,17 +1,18 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <style>
 
 .axis .domain {
   display: none;
 }
 
+S
 </style>
 
 <head>
 	<svg width="800" height="500"></svg>
-<!--  <script type = "text/javascript" src="d3/d3.v3.min.js"></script>-->
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
+
 
 <body>
 
@@ -24,17 +25,36 @@ var svg = d3.select("svg"),
     height = +svg.attr("height") - margin.top - margin.bottom-20,
     g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-console.log("g" +g);
 
-var estados = [["AC","Acre"],["AL","Alagoas"],["AM","Amazonas"],["AP","Amapá"],
-["BA","Bahia"],["CE","Ceará"],["DF","Distrito Federal"],["ES","Espírito Santo"],
-["GO","Goiânia"],["MA","Maranhão"],["MG","Minas Gerais"],
-["MS","Mato Grosso do Sul"],["MT","Mato Grosso"],["PA","Pará"],["PB","Paraíba"],
-["PE","Pernambuco"],["PI","Piaui"],["PR","Paraná"],["RJ","Rio de Janeiro"],
-["RN","Rio Grande do Norte"],["RO","Rondonia"],["RR","Roraima"],
-["RS","Rio Grande do Sul"],["SC","Santa Catarina"],["SE","Sergipe"],
-["SP","São Paulo"],["TO","Tocantins"],["ZZ","Estrangeiro"]];
-
+var estados = [];
+estados.push(["AC","Acre"]);
+estados.push(["AL","Alagoas"]);
+estados.push(["AM","Amazonas"]);
+estados.push(["AP","Amapá"]);
+estados.push(["BA","Bahia"]);
+estados.push(["CE","Ceará"]);
+estados.push(["DF","Distrito Federal"]);
+estados.push(["ES","Espírito Santo"]);
+estados.push(["GO","Goiânia"]);
+estados.push(["MA","Maranhão"]);
+estados.push(["MG","Minas Gerais"]);
+estados.push(["MS","Mato Grosso do Sul"]);
+estados.push(["MT","Mato Grosso"]);
+estados.push(["PA","Pará"]);
+estados.push(["PB","Paraíba"]);
+estados.push(["PE","Pernambuco"]);
+estados.push(["PI","Piaui"]);
+estados.push(["PR","Paraná"]);
+estados.push(["RJ","Rio de Janeiro"]);
+estados.push(["RN","Rio Grande do Norte"]);
+estados.push(["RO","Rondonia"]);
+estados.push(["RR","Roraima"]);
+estados.push(["RS","Rio Grande do Sul"]);
+estados.push(["SC","Santa Catarina"]);
+estados.push(["SE","Sergipe"]);
+estados.push(["SP","São Paulo"]);
+estados.push(["TO","Tocantins"]);
+estados.push(["ZZ","Estrangeiro"]);
 
 var retornaPosicao = function(vetor,key){
 
@@ -52,22 +72,22 @@ por estado.*/
 
 var funcaoGerarDados = function(arquivoASerLido){
 
-  var x0 = d3.scaleBand()
-      .rangeRound([0, width])
-      .paddingInner(0.1);
 
-  var x1 = d3.scaleBand()
-      .padding(0.05);
+var x0 = d3.scaleBand()
+    .rangeRound([0, width])
+    .paddingInner(0.1);
 
-  var y = d3.scaleLinear()
-      .rangeRound([height, 0]);
+var x1 = d3.scaleBand()
+    .padding(0.05);
 
-  var z = d3.scaleOrdinal()
-      .range(["#1b9e77", "#d95f02","#7570b3","#1b9e77", "#d95f02","#7570b3"]);
+var y = d3.scaleLinear()
+    .rangeRound([height, 0]);
 
+var z = d3.scaleOrdinal()
+    .range(["#d7191c", "#fdae61","#2c7bb6","#d7191c", "#fdae61","#2c7bb6"]);
 
 /*Função que lê o arquivo csv.*/
-d3.csv("dados/"+ arquivoASerLido, function(d, i, columns) {
+d3.csv(arquivoASerLido, function(d, i, columns) {
   for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = +d[columns[i]];
   return d;
 }, function(error, data) {
@@ -79,14 +99,14 @@ d3.csv("dados/"+ arquivoASerLido, function(d, i, columns) {
   var keys = data.columns.slice(1,4);
   //console.log(keys);
 
-
+  
   x0.domain(data.map(function(d) { return d.estado; }));
   x1.domain(keys).rangeRound([0, x0.bandwidth()]);
   y.domain([0, d3.max(data, function(d) { return d3.max(keys, function(key) { return d[key]; }); })]).nice();
 
   /*Dados que serão utilizados para o valor em porcentagem.*/
   var outrasKeys = dadosComp.columns.slice(4,7);
-
+  
   /*Cria o conjunto de barras múltiplas baseando-se no valor absoluto e agrupando as barras
   por estado.*/
   g.append("g")
@@ -115,8 +135,8 @@ d3.csv("dados/"+ arquivoASerLido, function(d, i, columns) {
 
         d3.select(this)
           .style("opacity",0.7);
-
-
+	
+	
 	g.append("text")
 		.attr("id","tool")
 		.attr("x", width/2-40)
@@ -150,7 +170,19 @@ d3.csv("dados/"+ arquivoASerLido, function(d, i, columns) {
       .attr("class", "axis")
       .attr("id", "tentativa")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x0));
+      .call(d3.axisBottom(x0))
+      .selectAll("text")
+      .on("click", function(d){
+	var minhaJanela = window.open("");
+	minhaJanela.document.write(estados[retornaPosicao(estados,d)][1]+"<p>");
+	d3.csv("dadosPorEstado/"+d+".csv",function(aux){
+		minhaJanela.document.write("Genero, " + "Ano 2012, "
+			+ "Ano 2014, "+ "Ano 2016"+"<br>");
+		minhaJanela.document.write(aux[0].genero +", "+aux[0].N2012+", "+aux[0].N2014+", "+aux[0].N2016+"<br>");
+		minhaJanela.document.write(aux[1].genero +", "+aux[1].N2012+", "+aux[1].N2014+", "+aux[1].N2016+"<br>");
+		minhaJanela.document.write(aux[2].genero +", "+aux[2].N2012+", "+aux[2].N2014+", "+aux[2].N2016+"<br>");			
+	});
+      });
 
   /*Adiciona ao gráfico o eixo X com os estados.*/
   g.append("g")
@@ -213,12 +245,13 @@ var x1 = d3.scaleBand()
 var y = d3.scaleLinear()
     .rangeRound([height, 0]);
 
+
 var z = d3.scaleOrdinal()
-    .range(["#1b9e77", "#d95f02","#7570b3","#1b9e77", "#d95f02","#7570b3"]);
+    .range(["#d7191c", "#fdae61","#2c7bb6","#d7191c", "#fdae61","#2c7bb6"]);
 
 
 /*Função que lê o arquivo csv.*/
-d3.csv("dados/"+arquivoASerLido, function(d, i, columns) {
+d3.csv(arquivoASerLido, function(d, i, columns) {
   for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = +d[columns[i]];
   return d;
 }, function(error, data) {
@@ -230,14 +263,14 @@ d3.csv("dados/"+arquivoASerLido, function(d, i, columns) {
   var keys = data.columns.slice(4,7);
   //console.log(keys);
 
-
+  
   x0.domain(data.map(function(d) { return d.estado; }));
   x1.domain(keys).rangeRound([0, x0.bandwidth()]);
   y.domain([0, d3.max(data, function(d) { return d3.max(keys, function(key) { return d[key]; }); })]).nice();
 
   /*Dados que serão utilizados para o valor em porcentagem.*/
   var outrasKeys = dadosComp.columns.slice(1,4);
-
+  
   /*Cria o conjunto de barras múltiplas baseando-se no valor absoluto e agrupando as barras
   por estado.*/
   g.append("g")
@@ -266,8 +299,8 @@ d3.csv("dados/"+arquivoASerLido, function(d, i, columns) {
 
         d3.select(this)
           .style("opacity",0.7);
-
-
+	
+	
 	g.append("text")
 		.attr("id","tool")
 		.attr("x", width/2-40)
@@ -301,7 +334,19 @@ d3.csv("dados/"+arquivoASerLido, function(d, i, columns) {
       .attr("class", "axis")
       .attr("id", "tentativa")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x0));
+      .call(d3.axisBottom(x0))
+      .selectAll("text")
+      .on("click", function(d){
+	var minhaJanela = window.open("");
+	minhaJanela.document.write(estados[retornaPosicao(estados,d)][1]+"<p>");
+	d3.csv("dadosPorEstado/"+d+".csv",function(aux){
+		minhaJanela.document.write("Genero, " + "Ano 2012, "
+			+ "Ano 2014, "+ "Ano 2016"+"<br>");
+		minhaJanela.document.write(aux[0].genero +", "+aux[0].N2012+", "+aux[0].N2014+", "+aux[0].N2016+"<br>");
+		minhaJanela.document.write(aux[1].genero +", "+aux[1].N2012+", "+aux[1].N2014+", "+aux[1].N2016+"<br>");
+		minhaJanela.document.write(aux[2].genero +", "+aux[2].N2012+", "+aux[2].N2014+", "+aux[2].N2016+"<br>");			
+	});
+      });
 
   /*Adiciona ao gráfico o eixo X com os estados.*/
   g.append("g")

@@ -8,7 +8,7 @@
 
 </style>
 <head>
-<svg width="1300" height="400"></svg>
+<svg width="700" height="600"></svg>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 <body>
@@ -17,19 +17,19 @@
 var svg = d3.select("svg"),
     margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = +svg.attr("width") - margin.left - margin.right - 200,
-    height = +svg.attr("height") - margin.top - margin.bottom-20,
+    height = +svg.attr("height") - margin.top - margin.bottom-100,
     g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
 /*Função que irá criar o gráfico de barras múltiplos para o número total de eleitores
-por estado.*/
+por genero.*/
 
 var funcaoGerarDados = function(arquivoASerLido){
 
 
 var x0 = d3.scaleBand()
     .rangeRound([0, width])
-    .paddingInner(0.1);
+    .paddingInner(0.40);
 
 var x1 = d3.scaleBand()
     .padding(0.05);
@@ -49,13 +49,13 @@ d3.csv(arquivoASerLido, function(d, i, columns) {
   if (error) throw error;
 
   var dadosComp = data;
-
+  console.log(data);
 
   var keys = data.columns.slice(1,4);
   //console.log(keys);
 
   
-  x0.domain(data.map(function(d) { return d.idade; }));
+  x0.domain(data.map(function(d) { return d.escolaridade; }));
   x1.domain(keys).rangeRound([0, x0.bandwidth()]);
   y.domain([0, d3.max(data, function(d) { return d3.max(keys, function(key) { return d[key]; }); })]).nice();
 
@@ -68,7 +68,7 @@ d3.csv(arquivoASerLido, function(d, i, columns) {
     .selectAll("g")
     .data(data)
     .enter().append("g")
-      .attr("transform", function(d) { return "translate(" + x0(d.idade) + ",0)"; })
+      .attr("transform", function(d) { return "translate(" + x0(d.escolaridade) + ",0)"; })
     .selectAll("rect")
     .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
     .enter().append("rect")
@@ -91,9 +91,9 @@ d3.csv(arquivoASerLido, function(d, i, columns) {
 	g.append("text")
 		.attr("id","tool")
 		.attr("x", width/2)
-		.attr("y",d.value*85)
-		.style("background", "#e6e6e6")
-		.style("font-size","16px")
+		.attr("y",height/2 - 200)
+		.style("font-size","14px")
+		.style("font-weight","bold")
 		.style("font-family", "Arial, Helvetica, sans-serif")
 		.text(texto);
        })
@@ -107,8 +107,13 @@ d3.csv(arquivoASerLido, function(d, i, columns) {
   g.append("g")
       .attr("class", "axis")
       .attr("id", "tentativa")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x0));
+      .attr("transform", "translate(10," + (height) + ")")
+      .call(d3.axisBottom(x0))
+      .selectAll("text")
+	.attr("font-weight","bold")
+	.attr("transform", function(d) {
+                return "rotate(-90)" 
+        });
 
   g.append("g")
       .attr("class", "axis")
@@ -123,8 +128,9 @@ d3.csv(arquivoASerLido, function(d, i, columns) {
       .attr("text-anchor", "start")
       .attr("text-size", 20)
       .attr("font-family", "Arial")
-      .text("Eleitores por Estado");
+      .text("Número Eleitores");
 
+ /*Adiciona a legenda ao gráfico.*/
   var legend = g.append("g")
       .attr("font-family", "sans-serif")
       .attr("font-size", 12)
@@ -136,7 +142,7 @@ d3.csv(arquivoASerLido, function(d, i, columns) {
       .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
   legend.append("rect")
-      .attr("x", 1100)
+      .attr("x", 500)
       .attr("width", 10)
       .attr("height", 10)
       .attr("id", "oi")
@@ -144,7 +150,7 @@ d3.csv(arquivoASerLido, function(d, i, columns) {
 
 
   legend.append("text")
-      .attr("x", 1200)
+      .attr("x", 600)
       .attr("y", 6)
       .attr("id", "lengtxt")
       .attr("dy", "0.32em")
@@ -157,7 +163,6 @@ d3.csv(arquivoASerLido, function(d, i, columns) {
 }
 
 
-width
 
 d3.select("g")
 	.append("text")
@@ -165,9 +170,10 @@ d3.select("g")
 	.attr("y", 0)
 	.attr("text-anchor", "middle")
 	.style("font-size", 15)
-	.text("Quantidade de eleitores por faixa etária");
+	.attr("text-width","bold")
+	.text("Quantidade de eleitores por escolaridade");
 
-var ok = funcaoGerarDados("numeroEleitoresAlf4.csv");
+var ok = funcaoGerarDados("numeroEleitoresAlf5.csv");
 
 
 
@@ -175,7 +181,7 @@ d3.select("body")
 	.append("p");
 d3.select("body")
 	.append("text")
-	.text("Ordene em ordem alfabética")
+	.text("Ordene em ordem de nível de escolaridade")
 	.style("background", "#F0F8FF")
 	.style("color", "#800000")
 	.attr("font-size", "20px")
@@ -187,7 +193,7 @@ d3.select("body")
 		d3.selectAll("#oi").remove();
 		d3.selectAll("#xuxu").remove();
 		d3.selectAll("#tentativa").remove();
-		funcaoGerarDados("numeroEleitoresAlf4.csv");
+		funcaoGerarDados("numeroEleitoresAlf5.csv");
 	});
 
 
@@ -208,7 +214,7 @@ d3.select("body")
 		d3.selectAll("#oi").remove();
 		d3.selectAll("#xuxu").remove();
 		d3.selectAll("#tentativa").remove();
-		funcaoGerarDados("numeroEleitoresCresc4.csv");
+		funcaoGerarDados("numeroEleitoresCresc5.csv");
 	});
 
 d3.select("body")
@@ -228,11 +234,11 @@ d3.select("body")
 		d3.selectAll("#oi").remove();
 		d3.selectAll("#xuxu").remove();
 		d3.selectAll("#tentativa").remove();
-		funcaoGerarDados("numeroEleitoresDecr4.csv");
+		funcaoGerarDados("numeroEleitoresDecr5.csv");
 	});
 
 
-//Fim dos métodos associados ao número de eleitores por faixa etária.
+//Fim dos métodos associados ao número de eleitores por gênero.
 
 
 </script>
