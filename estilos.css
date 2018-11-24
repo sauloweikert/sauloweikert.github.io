@@ -4,6 +4,7 @@ p{
 
 .painel-grafico-estados, .painel-grafico-corpele, .painel-grafico-eleitoresestado {
   overflow-x: auto;
+  overflow-y: auto;
   position: relative;
 }
 
