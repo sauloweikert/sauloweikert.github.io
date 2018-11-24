@@ -10,17 +10,20 @@ function fazGraficoEleitores(opcao){
 
   //cria dinamicamente elemento do tipo div para conter o grafico
   var divGrafico = document.createElement('div');
-  divGrafico.className = 'div-grafico';
+  divGrafico.className = 'div-popup';
   divGrafico.style.overflowX ='auto';
   divGrafico.style.overflowY ='auto';
+  divGrafico.style.position = 'fixed';
+  divGrafico.style.right ='0px';
+  divGrafico.style.top ='0px';
   document.getElementsByClassName("painel-grafico-"+opcao)[0].appendChild(divGrafico);
 
 
   //cria dinamicamente elemento tipo svg que sera o grafico
   var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 //  element.setAttribute("class", "chart-"+opcao);
-  //document.getElementsByClassName("div-grafico")[0].appendChild(element);
-  document.getElementsByClassName("div-grafico")[0].appendChild(element);
+  //document.getElementsByClassName("div-popup")[0].appendChild(element);
+  document.getElementsByClassName("div-popup")[0].appendChild(element);
 
 
   /*Cria objeto svg e o objeto de grupo g para manipulação do DOM.*/
