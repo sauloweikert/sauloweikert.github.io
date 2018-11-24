@@ -118,7 +118,7 @@ function fazGraficoEleitores(opcao){
         .rangeRound([height, 0]);
 
     var z = d3.scaleOrdinal()
-        .range(["#1b9e77", "#d95f02","#7570b3","#1b9e77", "#d95f02","#7570b3"]);
+        .range(["#d7191c", "#fdae61","#2c7bb6","#d7191c", "#fdae61","#2c7bb6"]);
 
 
   /*Função que lê o arquivo csv.*/
@@ -201,13 +201,33 @@ function fazGraficoEleitores(opcao){
   	d3.select("#tool1").remove();
         });
 
-    /*Adiciona um eixo Y ao gráfico.*/
+        /*Adiciona um eixo Y ao gráfico.*/
+    g.append("g")
+      .attr("class", "axis")
+      .attr("id", "tentativa")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x0))
+      .selectAll("text")
+      .on("click", function(d){
+         var minhaJanela = window.open("");
+      	 minhaJanela.document.write(estados[retornaPosicao(estados,d)][1]+"<p>");
+         d3.csv("dadosPorEstado/"+d+".csv",function(aux){
+      	    minhaJanela.document.write("Genero, " + "Ano 2012, "
+      		  + "Ano 2014, "+ "Ano 2016"+"<br>");
+      		  minhaJanela.document.write(aux[0].genero +", "+aux[0].N2012+", "+aux[0].N2014+", "+aux[0].N2016+"<br>");
+      	    minhaJanela.document.write(aux[1].genero +", "+aux[1].N2012+", "+aux[1].N2014+", "+aux[1].N2016+"<br>");
+      		  minhaJanela.document.write(aux[2].genero +", "+aux[2].N2012+", "+aux[2].N2014+", "+aux[2].N2016+"<br>");
+      	 });
+      });
+
+/*versao velha
+    Adiciona um eixo Y ao gráfico.
     g.append("g")
         .attr("class", "axis")
         .attr("id", "tentativa")
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x0));
-
+*/
     /*Adiciona ao gráfico o eixo X com os estados.*/
     g.append("g")
         .attr("class", "axis")
@@ -270,7 +290,7 @@ function fazGraficoEleitores(opcao){
       .rangeRound([height, 0]);
 
   var z = d3.scaleOrdinal()
-      .range(["#1b9e77", "#d95f02","#7570b3","#1b9e77", "#d95f02","#7570b3"]);
+      .range(["#d7191c", "#fdae61","#2c7bb6","#d7191c", "#fdae61","#2c7bb6"]);
 
 
   /*Função que lê o arquivo csv.*/
@@ -352,12 +372,31 @@ function fazGraficoEleitores(opcao){
   	d3.select("#tool1").remove();
         });
 
-    /*Adiciona um eixo Y ao gráfico.*/
+        /*Adiciona um eixo Y ao gráfico.*/
+    g.append("g")
+      .attr("class", "axis")
+      .attr("id", "tentativa")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x0))
+      .selectAll("text")
+      .on("click", function(d){
+        var minhaJanela = window.open("");
+        minhaJanela.document.write(estados[retornaPosicao(estados,d)][1]+"<p>");
+        d3.csv("dadosPorEstado/"+d+".csv",function(aux){
+          minhaJanela.document.write("Genero, " + "Ano 2012, "
+          + "Ano 2014, "+ "Ano 2016"+"<br>");
+          minhaJanela.document.write(aux[0].genero +", "+aux[0].N2012+", "+aux[0].N2014+", "+aux[0].N2016+"<br>");
+          minhaJanela.document.write(aux[1].genero +", "+aux[1].N2012+", "+aux[1].N2014+", "+aux[1].N2016+"<br>");
+          minhaJanela.document.write(aux[2].genero +", "+aux[2].N2012+", "+aux[2].N2014+", "+aux[2].N2016+"<br>");
+        });
+      });
+
+    /* velha Adiciona um eixo Y ao gráfico.
     g.append("g")
         .attr("class", "axis")
         .attr("id", "tentativa")
         .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x0));
+        .call(d3.axisBottom(x0));*/
 
     /*Adiciona ao gráfico o eixo X com os estados.*/
     g.append("g")
