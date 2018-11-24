@@ -33,7 +33,7 @@ function fazGraficoEleitores(opcao){
   /*Cria objeto svg e o objeto de grupo g para manipulação do DOM.*/
 
  var largura = 1500;
- var altura = 1500;
+ var altura = 600;
 
   d3.select("svg")
     .attr("width",largura)
