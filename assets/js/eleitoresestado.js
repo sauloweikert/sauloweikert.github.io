@@ -23,17 +23,21 @@ function fazGraficoEleitores(opcao){
   /*Cria objeto svg e o objeto de grupo g para manipulação do DOM.*/
 
  var largura = 800;
+ var altura = 500;
 
-  d3.select("svg").attr("width",largura);
+  d3.select("svg")
+    .attr("width",largura)
+    .attr("heigth",altura);
+
 
   var svg = d3.select("svg"),
       margin = {top: 20, right: 20, bottom: 30, left: 40},
       //margin = {top: 0, right: 0, bottom: 0, left: 0},
       width = +largura - margin.left - margin.right - 150,
-      height = svg.attr("height",500) - margin.top - margin.bottom-20,
-      g = svg.append("g").attr("transform", "translate(0,0)");
+      height = +altura - margin.top - margin.bottom-20,
+      g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-      console.log("me" + margin.left);
+      console.log("h" + heigth);
       console.log("width  " + width);
       console.log("svg w" + svg.width);
 
