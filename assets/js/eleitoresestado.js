@@ -384,7 +384,8 @@ function fazGraficoEleitoresEstado(opcao){
         .attr("font-family", "Arial")
         .text("% de Eleitores por Estado");
 
-    /*Adiciona a legenda ao gráfico.*/
+    /*Adiciona a legenda ao gráfico.
+
     var legend = g.append("g")
         .attr("font-family", "sans-serif")
         .attr("font-size", 12)
@@ -413,7 +414,7 @@ function fazGraficoEleitoresEstado(opcao){
         .attr("id", "lengtxt")
         .attr("dy", "0.32em")
         .attr("id", "xuxu")
-        .text(function(d) { return d; });
+        .text(function(d) { return d; });*/
 
 
   	});
@@ -487,7 +488,7 @@ function fazGraficoEleitoresEstado(opcao){
   			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   		d3.selectAll("#rectan").remove();
   		d3.selectAll("#ax").remove();
-  		d3.selectAll("#outraL").remove();
+  		//d3.selectAll("#outraL").remove();
   		d3.selectAll("#lengtxt").remove();
   		d3.selectAll("#oi").remove();
   		d3.selectAll("#xuxu").remove();
@@ -524,7 +525,7 @@ function fazGraficoEleitoresEstado(opcao){
 
   		d3.selectAll("#rectan").remove();
   		d3.selectAll("#ax").remove();
-  		d3.selectAll("#outraL").remove();
+  		//d3.selectAll("#outraL").remove();
   		d3.selectAll("#lengtxt").remove();
   		d3.selectAll("#oi").remove();
   		d3.selectAll("#xuxu").remove();
@@ -548,7 +549,7 @@ function fazGraficoEleitoresEstado(opcao){
   		d3.selectAll("#rectan").remove();
   		d3.selectAll("#ax").remove();
   		d3.selectAll("#lengtxt").remove();
-  		d3.selectAll("#outraL").remove();
+  		//d3.selectAll("#outraL").remove();
   		d3.selectAll("#oi").remove();
   		d3.selectAll("#xuxu").remove();
   		d3.selectAll("#tentativa").remove();
@@ -570,7 +571,7 @@ function fazGraficoEleitoresEstado(opcao){
   		d3.selectAll("#rectan").remove();
   		d3.selectAll("#ax").remove();
   		d3.selectAll("#lengtxt").remove();
-  		d3.selectAll("#outraL").remove();
+  		//d3.selectAll("#outraL").remove();
   		d3.selectAll("#oi").remove();
   		d3.selectAll("#xuxu").remove();
   		d3.selectAll("#tentativa").remove();
