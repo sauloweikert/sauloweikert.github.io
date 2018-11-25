@@ -631,7 +631,7 @@ function dicaCirculosPorCorPeleOriginal(){
 function atualizaEscalaRaioCorPele(data,rScale){
   rScale.domain([d3.min(data, function(d) { return d.totalGrupo; }),
             d3.max(data, function(d) { return d.totalGrupo; })])
-  .range([10, 60]);
+  .range([10, 40]);
 	return;
 }
 
