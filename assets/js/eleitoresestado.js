@@ -11,8 +11,7 @@ function configuraGraficoEleitores(opcao,largura,altura){
   divGrafico.className = 'div-grafico';
   divGrafico.style.overflowX ='auto';
   divGrafico.style.overflowY ='auto';
-  divGrafico.style.left ='10px';
-  divGrafico.style.backgroundColor = 'white';
+  //divGrafico.style.left ='10px';
   document.getElementsByClassName("painel-grafico-"+opcao)[0].appendChild(divGrafico);
 
 
