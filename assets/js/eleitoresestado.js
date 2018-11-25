@@ -294,8 +294,6 @@ function fazGraficoEleitores(opcao){
       .selectAll("rect")
       .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
       .enter().append("rect")
-        .transition()
-        .duration(2000)
         .attr("x", function(d) { return x1(d.key); })
         .attr("y", function(d) { return y(d.value); })
         .attr("width", x1.bandwidth()+0.4)
