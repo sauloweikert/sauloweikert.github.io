@@ -23,7 +23,7 @@ function fazGraficoEleitoresGenero(opcao){
     var z = fazZ();
 
 
-  d3.csv(("dados/"+arquivoASerLido, function(d, i, columns) {
+  d3.csv("dados/"+arquivoASerLido, function(d, i, columns) {
     for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = +d[columns[i]];
     return d;
   }, function(error, data) {
@@ -60,22 +60,22 @@ function fazGraficoEleitoresGenero(opcao){
         .attr("fill", function(d) { return z(d.key); })
         .data(function(d) {return outrasKeys.map(function(outrasKeys) { return {outrasKeys: outrasKeys, value: d[outrasKeys]};});})
         .on('mouseover', function(d,i){
-  	var texto;
+  	       var texto;
 
-  	texto = "Frequência: "+d.value+"%";
+  	       texto = "Frequência: "+d.value+"%";
 
-          d3.select(this)
+           d3.select(this)
             .style("opacity",0.7);
 
 
-  	g.append("text")
-  		.attr("id","tool")
-  		.attr("x", width/2)
-  		.attr("y",height/2 - 100)
-  		.style("font-size","14px")
-  		.style("font-family", "Arial, Helvetica, sans-serif")
-  		.text(texto);
-         })
+          	g.append("text")
+          		.attr("id","tool")
+          		.attr("x", width/2)
+          		.attr("y",height/2 - 100)
+          		.style("font-size","14px")
+          		.style("font-family", "Arial, Helvetica, sans-serif")
+          		.text(texto);
+       })
         .on("mouseout", function(d,i){
   	d3.select(this)
   	  .style("opacity",1);
