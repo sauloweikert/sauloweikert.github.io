@@ -30,15 +30,8 @@ function configuraGraficoEleitores(opcao,largura,altura){
     .attr("width",largura)
     .attr("height",altura);
 
-
-  var svg = d3.select("svg"),
-      margin = {top: 20, right: 20, bottom: 30, left: 40},
-      //margin = {top: 0, right: 0, bottom: 0, left: 0},
-      width = +largura - margin.left - margin.right - 150,
-      height = +altura - margin.top - margin.bottom-20,
-      g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
 }
+
 
 function fazGraficoEleitores(opcao){
 
@@ -46,6 +39,13 @@ function fazGraficoEleitores(opcao){
   var altura = 600;
 
   configuraGraficoEleitores(opcao,largura,altura);
+
+  var svg = d3.select("svg"),
+      margin = {top: 20, right: 20, bottom: 30, left: 40},
+      //margin = {top: 0, right: 0, bottom: 0, left: 0},
+      width = +largura - margin.left - margin.right - 150,
+      height = +altura - margin.top - margin.bottom-20,
+      g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
   var estados = [["AC","Acre"],["AL","Alagoas"],["AM","Amazonas"],["AP","Amapá"],
@@ -72,7 +72,7 @@ function fazGraficoEleitores(opcao){
   /*Função que irá criar o gráfico de barras múltiplos para o número total de eleitores
   por estado.*/
 
-  var funcaoGerarDados = function(arquivoASerLido){
+  var funcaoGerarDados = function(arquivoASerLido,width,height){
 
     var x0 = d3.scaleBand()
         .rangeRound([0, width])
