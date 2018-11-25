@@ -2,7 +2,9 @@ p{
   text-align: justify;
 }
 
-.painel-grafico-estados, .painel-grafico-corpele, .painel-grafico-eleitoresestado {
+.painel-grafico-estados, .painel-grafico-corpele, .painel-grafico-eleitoresestado,
+painel-grafico-eleitoresgenero,painel-grafico-eleitoresescolaridade,
+painel-grafico-eleitoresfaixaetaria {
   overflow-x: auto;
   overflow-y: auto;
   position: relative;
