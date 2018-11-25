@@ -1,13 +1,9 @@
 function configuraGraficoEleitores(opcao,largura,altura){
 
-  //restaura o estado inicial de atividade dos botoes dos paineis
-	reabilitaBotaoVisualizacao();
+  //verifica e fecha outras visualizações abertas
+  //fechaVisualizacoes(opcao);
 
-	//desabilitar botao visualizar do mesmo painel durante a visualização corrente
-	desabilitaBotaoVisualizar(opcao);
-
-	//verifica e fecha outras visualizações abertas
-	fechaVisualizacoes();
+  criaBotaoSairGrafico(opcao);
 
   //--cria suporte grafico
   //cria dinamicamente elemento do tipo div para conter o grafico

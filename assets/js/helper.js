@@ -1,15 +1,6 @@
 //------------------------------------------------------saida grafico
-
-function reabilitaBotaoVisualizacao(){
-
-		document.getElementsByClassName("botao-visualizacao").disabled = false;
-		return;
-}
-
-
 //funcao saida montaGrafico
-
-function fechaVisualizacoes(){
+function sairGrafico(opcao){
 
 //	d3.select("svg").remove();
 
@@ -17,19 +8,19 @@ function fechaVisualizacoes(){
 	$('.div-grafico').remove();
 
 	//remove legenda
-//	if((opcao==='estados')||(opcao==='corpele')){
-	//	$('#legend').remove();
-//	}
-/*
+	if((opcao==='estados')||(opcao==='corpele')){
+		$('#legend').remove();
+	}
+
 	//remove botao Sair
 	$('#botao-sair').remove();
 
 	//reabilita o botao visualizar
 	document.getElementById("botao-visualizar-"+opcao).disabled = false;
-*/
+
 	return;
 }
-/*
+
 //botao saida grafico
 function criaBotaoSairGrafico(opcao){
 	var element = document.createElement("input");
@@ -46,8 +37,7 @@ function criaBotaoSairGrafico(opcao){
 		sairGrafico(opcao);
 	};
 	document.getElementsByClassName("painel-grafico-"+opcao)[0].appendChild(element);
-}*/
-
+}
 //---------------------------------------------------construcao grafico estados
 
 //funcao montagem legenda grafico
@@ -118,7 +108,7 @@ function desabilitaBotaoVisualizar(opcao){
 	document.getElementById("botao-visualizar-"+opcao).disabled = true;
 	return;
 }
-/*
+
 //verifica e fecha outras visualizações abertas
 function fechaVisualizacoes(opcao){
 
@@ -133,7 +123,7 @@ function fechaVisualizacoes(opcao){
 	var open =document.getElementById("botao-visualizar-"+contraOpcao).disabled;
 	if(open == true) sairGrafico(contraOpcao);
 	else return;
-}*/
+}
 
 
 //------------------------------------------------------------------------------
@@ -168,20 +158,15 @@ function criaSuporteGrafico(opcao){
 
 function montaGrafico(opcao){
 
-	//restaura o estado inicial de atividade dos botoes dos paineis
-	reabilitaBotaoVisualizacao();
-
-	//desabilitar botao visualizar do mesmo painel durante a visualização corrente
-	desabilitaBotaoVisualizar(opcao);
-
 	//verifica e fecha outras visualizações abertas
-	fechaVisualizacoes();
+	fechaVisualizacoes(opcao);
 
   //largura,altura,padding
   var w = 1500;
   var h = 400;
   var padding = 90;
 
+	criaBotaoSairGrafico(opcao);
 
 	//cria suporte grafico
 	criaSuporteGrafico(opcao);
