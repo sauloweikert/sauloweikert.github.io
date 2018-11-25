@@ -358,7 +358,7 @@ function atualizaEscalaRaioEstados(data,rScale){
 }
 
 function atualizaEscalaX(data,padding,w,xScale){
-		 xScale.domain([d3.min(data, function(d) { return (9 * d.fem)/(10 * d.total)); }),
+		 xScale.domain([d3.min(data, function(d) { return (d.fem)/(d.total); })-0.001,
               d3.max(data, function(d) { return (d.fem)/(d.total); })])
 		 .range([padding, w-padding]);
 		return;
