@@ -110,6 +110,7 @@ function desabilitaBotaoVisualizar(opcao){
 	return;
 }
 
+/*
 //verifica e fecha outras visualizações abertas
 function fechaVisualizacoes(opcao){
 
@@ -125,6 +126,7 @@ function fechaVisualizacoes(opcao){
 	if(open == true) sairGrafico(contraOpcao);
 	else return;
 }
+*/
 
 
 //------------------------------------------------------------------------------
@@ -142,17 +144,6 @@ function criaSuporteGrafico(opcao){
 	element.setAttribute("class", "chart-"+opcao);
 	document.getElementsByClassName("div-grafico")[0].appendChild(element);
 
-
-	// Define the div for the tooltip
-/*	var div = d3.select("svg").append("div")
-	    .attr("class", "tooltip")
-	    .style("opacity", 0)
-			.style("width","60px")
-			.style("height","28px")
-			.attr("text-anchor", "middle")
-	    .attr("font-family", "sans-serif")
-	    .attr("font-size", "11px")
-	    .attr("fill", "black");*/
 
 	return;
 }
@@ -309,21 +300,6 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 		.attr("id", function(d) {
 			return "circuloEstado";
 		});
-
-/*
-		circulos.on("mouseover", function(d) {
-            d3.select('.tooltip').transition()
-                .duration(200)
-                .style("opacity", .9);
-            d3.select('.tooltip').html("estado:" + d.nome + "fem:" + d.fem + "<br/>"  +"csup:" + d.csup)
-                .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY - 28) + "px");
-            })
-        .on("mouseout", function(d) {
-            d3.select('.tooltip').transition()
-                .duration(500)
-                .style("opacity", 0);
-        });*/
 }
 
 
@@ -730,4 +706,3 @@ function dicaCirculosPorCorPele(){
       return;
 }
 //----------------------------------------------------------------------------
-//------------------FUNCOES GRAFICO ELEITORES ESTADOS
