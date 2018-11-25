@@ -210,7 +210,7 @@ function montaGraficoOriginal(padding,w,h,opcao){
 					var rScale = d3.scaleLinear();
 					atualizaEscalaRaioCorPele(data,rScale);
 
-					var xScale = d3.scaleLinear();
+					var xScale = d3.scaleLog();
 					atualizaEscalaX(data,padding,w,xScale);
 					var xAxis = defineEixoX(xScale);
 					desenhaEixoX(xAxis,padding,h,opcao);
@@ -360,7 +360,7 @@ function atualizaEscalaRaioEstados(data,rScale){
 function atualizaEscalaX(data,padding,w,xScale){
 		 xScale.domain([d3.min(data, function(d) { return (d.fem)/(d.total); })-0.001,
               d3.max(data, function(d) { return (d.fem)/(d.total); })])
-		 .range([padding+ 50, w-padding-50]);
+		 .range([padding, w-padding]);
 		return;
 }
 
