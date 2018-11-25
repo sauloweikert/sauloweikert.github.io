@@ -1,4 +1,4 @@
-function fazGraficoEleitores(opcao){
+function configuraGraficoEleitores(opcao,largura,altura){
 
   //verifica e fecha outras visualizações abertas
   fechaVisualizacoes(opcao);
@@ -18,7 +18,6 @@ function fazGraficoEleitores(opcao){
   document.getElementsByClassName("painel-grafico-"+opcao)[0].appendChild(divGrafico);
 
 
-
   //cria dinamicamente elemento tipo svg que sera o grafico
   var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 //  element.setAttribute("class", "chart-"+opcao);
@@ -26,9 +25,6 @@ function fazGraficoEleitores(opcao){
 
 
   /*Cria objeto svg e o objeto de grupo g para manipulação do DOM.*/
-
- var largura = 1100;
- var altura = 600;
 
   d3.select("svg")
     .attr("width",largura)
@@ -41,6 +37,15 @@ function fazGraficoEleitores(opcao){
       width = +largura - margin.left - margin.right - 150,
       height = +altura - margin.top - margin.bottom-20,
       g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+}
+
+function fazGraficoEleitores(opcao){
+
+  var largura = 1100;
+  var altura = 600;
+
+  configuraGraficoEleitores(opcao,largura,altura);
 
 
   var estados = [["AC","Acre"],["AL","Alagoas"],["AM","Amazonas"],["AP","Amapá"],
