@@ -17,20 +17,10 @@ function fazGraficoEleitoresGenero(opcao){
 
   var funcaoGerarDados = function(arquivoASerLido){
 
-
-  var x0 = d3.scaleBand()
-      .rangeRound([0, width])
-      .paddingInner(0.1);
-
-  var x1 = d3.scaleBand()
-      .padding(0.05);
-
-  var y = d3.scaleLinear()
-      .rangeRound([height, 0]);
-
-  var z = d3.scaleOrdinal()
-      .range(["#d7191c", "#fdae61","#2c7bb6","#d7191c", "#fdae61","#2c7bb6"]);
-
+    var x0 = fazX0();
+    var x1 = fazX1();
+    var y = fazY(height);
+    var z = fazZ();
 
 
   d3.csv(arquivoASerLido, function(d, i, columns) {

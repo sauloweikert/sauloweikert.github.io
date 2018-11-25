@@ -32,13 +32,33 @@ function configuraGraficoEleitores(opcao,largura,altura){
 }
 
 function fazX0(){
-  var x0 = d3.scaleBand()
+  var valor = d3.scaleBand()
       .rangeRound([0, width])
       .paddingInner(0.1);
 
-  return x0;
+  return valor;
 }
 
+function fazX1(){
+  var valor = d3.scaleBand()
+    .padding(0.05);
+
+  return valor;
+}
+
+function fazY(height){
+  var valor = d3.scaleLinear()
+      .rangeRound([height, 0]);
+
+  return valor;
+}
+
+function fazZ(){
+  var valor = d3.scaleOrdinal()
+      .range(["#d7191c", "#fdae61","#2c7bb6","#d7191c", "#fdae61","#2c7bb6"]);
+
+  return valor;
+}
 
 function fazGraficoEleitoresEstado(opcao){
 
@@ -81,21 +101,10 @@ function fazGraficoEleitoresEstado(opcao){
 
   var funcaoGerarDados = function(arquivoASerLido){
 
-
     var x0 = fazX0();
-    /*d3.scaleBand()
-        .rangeRound([0, width])
-        .paddingInner(0.1);
-*/
-    var x1 = d3.scaleBand()
-        .padding(0.05);
-
-    var y = d3.scaleLinear()
-        .rangeRound([height, 0]);
-
-    var z = d3.scaleOrdinal()
-        .range(["#d7191c", "#fdae61","#2c7bb6","#d7191c", "#fdae61","#2c7bb6"]);
-
+    var x1 = fazX1();
+    var y = fazY(height);
+    var z = fazZ();
 
   /*Função que lê o arquivo csv.*/
   d3.csv("dados/"+ arquivoASerLido, function(d, i, columns) {
