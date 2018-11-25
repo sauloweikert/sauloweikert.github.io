@@ -11,6 +11,7 @@ function fazGraficoEleitores(opcao){
   var divGrafico = document.createElement('div');
   divGrafico.className = 'div-grafico';
   divGrafico.style.overflowX ='auto';
+  divGrafico.style.overflowY ='auto';
 //  divGrafico.style.right ='0px';
   divGrafico.style.left ='10px';
   divGrafico.style.backgroundColor = 'white';
@@ -22,18 +23,6 @@ function fazGraficoEleitores(opcao){
   var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 //  element.setAttribute("class", "chart-"+opcao);
   document.getElementsByClassName("div-grafico")[0].appendChild(element);
-
-/*
-  //cria div para operacoessvg
-  var divOp = document.createElement('div');
-  divGrafico.className = 'div-grafico';
-//  divGrafico.style.overflowX ='auto';
-//  divGrafico.style.right ='0px';
-  divGrafico.style.left ='10px';
-  divGrafico.style.backgroundColor = 'white';
-
-  document.getElementsByClassName("painel-grafico-"+opcao)[0].appendChild(divOp);
-*/
 
 
   /*Cria objeto svg e o objeto de grupo g para manipulação do DOM.*/
