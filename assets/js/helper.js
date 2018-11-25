@@ -31,7 +31,8 @@ function criaBotaoSairGrafico(opcao){
 	element.id='botao-sair';
 	element.style.position = 'absolute';
 	element.style.right ='10px';
-	element.style.marginTop ='10px';
+	element.style.bottom ='10px';
+	//element.style.marginTop ='10px';
 	element.onclick = function() {
 		sairGrafico(opcao);
 	};
