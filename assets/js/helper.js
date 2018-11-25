@@ -3,6 +3,7 @@
 function reabilitaBotaoVisualizacao(){
 
 		document.getElementsByClassName("botao-visualizacao").disabled = false;
+		return;
 }
 
 
