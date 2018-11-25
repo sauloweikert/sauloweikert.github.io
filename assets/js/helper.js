@@ -1,6 +1,7 @@
 //------------------------------------------------------saida grafico
 //funcao saida montaGrafico
-function sairGrafico(opcao){
+
+function sairGrafico(){
 
 //	d3.select("svg").remove();
 
@@ -8,19 +9,19 @@ function sairGrafico(opcao){
 	$('.div-grafico').remove();
 
 	//remove legenda
-	if((opcao==='estados')||(opcao==='corpele')){
-		$('#legend').remove();
-	}
-
+//	if((opcao==='estados')||(opcao==='corpele')){
+	//	$('#legend').remove();
+//	}
+/*
 	//remove botao Sair
 	$('#botao-sair').remove();
 
 	//reabilita o botao visualizar
 	document.getElementById("botao-visualizar-"+opcao).disabled = false;
-
+*/
 	return;
 }
-
+/*
 //botao saida grafico
 function criaBotaoSairGrafico(opcao){
 	var element = document.createElement("input");
@@ -37,7 +38,7 @@ function criaBotaoSairGrafico(opcao){
 		sairGrafico(opcao);
 	};
 	document.getElementsByClassName("painel-grafico-"+opcao)[0].appendChild(element);
-}
+}*/
 
 //---------------------------------------------------construcao grafico estados
 
@@ -102,7 +103,7 @@ function configuraGrafico(w,h,opcao){
 
   return;
 }
-
+/*
 //desabilitar botao visualizar do mesmo painel durante a visualização corrente
 function desabilitaBotaoVisualizar(opcao){
 
@@ -124,7 +125,7 @@ function fechaVisualizacoes(opcao){
 	var open =document.getElementById("botao-visualizar-"+contraOpcao).disabled;
 	if(open == true) sairGrafico(contraOpcao);
 	else return;
-}
+}*/
 
 
 //------------------------------------------------------------------------------
@@ -160,14 +161,13 @@ function criaSuporteGrafico(opcao){
 function montaGrafico(opcao){
 
 	//verifica e fecha outras visualizações abertas
-	fechaVisualizacoes(opcao);
+	sairGrafico();
 
   //largura,altura,padding
   var w = 1500;
   var h = 400;
   var padding = 90;
 
-	criaBotaoSairGrafico(opcao);
 
 	//cria suporte grafico
 	criaSuporteGrafico(opcao);
