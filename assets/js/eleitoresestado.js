@@ -123,6 +123,8 @@ function fazGraficoEleitores(opcao){
         .attr("id", "rectan")
         .attr("height", function(d) { return height - y(d.value); })
         .attr("fill", function(d) { return z(d.key); })
+
+        .selectAll("rect")  
         .data(function(d) {
   	return outrasKeys.map(function(outrasKeys) { return {outrasKeys: outrasKeys, value: d		[outrasKeys], estado: d.estado};
   				})
