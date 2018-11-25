@@ -12,7 +12,6 @@ function configuraGraficoEleitores(opcao,largura,altura){
   divGrafico.className = 'div-grafico';
   divGrafico.style.overflowX ='auto';
   divGrafico.style.overflowY ='auto';
-//  divGrafico.style.right ='0px';
   divGrafico.style.left ='10px';
   divGrafico.style.backgroundColor = 'white';
   document.getElementsByClassName("painel-grafico-"+opcao)[0].appendChild(divGrafico);
@@ -72,7 +71,7 @@ function fazGraficoEleitores(opcao){
   /*Função que irá criar o gráfico de barras múltiplos para o número total de eleitores
   por estado.*/
 
-  var funcaoGerarDados = function(arquivoASerLido,width,height){
+  var funcaoGerarDados = function(arquivoASerLido){
 
     var x0 = d3.scaleBand()
         .rangeRound([0, width])
