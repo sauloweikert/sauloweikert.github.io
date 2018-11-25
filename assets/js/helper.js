@@ -1,7 +1,14 @@
 //------------------------------------------------------saida grafico
+
+function reabilitaBotaoVisualizacao(){
+
+		document.getElementsByClassName("botao-visualizacao").disabled = false;
+}
+
+
 //funcao saida montaGrafico
 
-function sairGrafico(){
+function fechaVisualizacoes(){
 
 //	d3.select("svg").remove();
 
@@ -103,14 +110,14 @@ function configuraGrafico(w,h,opcao){
 
   return;
 }
-/*
+
 //desabilitar botao visualizar do mesmo painel durante a visualização corrente
 function desabilitaBotaoVisualizar(opcao){
 
 	document.getElementById("botao-visualizar-"+opcao).disabled = true;
 	return;
 }
-
+/*
 //verifica e fecha outras visualizações abertas
 function fechaVisualizacoes(opcao){
 
@@ -160,8 +167,14 @@ function criaSuporteGrafico(opcao){
 
 function montaGrafico(opcao){
 
+	//restaura o estado inicial de atividade dos botoes dos paineis
+	reabilitaBotaoVisualizacao();
+
+	//desabilitar botao visualizar do mesmo painel durante a visualização corrente
+	desabilitaBotaoVisualizar(opcao);
+
 	//verifica e fecha outras visualizações abertas
-	sairGrafico();
+	fechaVisualizacoes();
 
   //largura,altura,padding
   var w = 1500;
