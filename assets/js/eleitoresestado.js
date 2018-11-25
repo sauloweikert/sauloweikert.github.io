@@ -115,16 +115,15 @@ function fazGraficoEleitores(opcao){
       .selectAll("rect")
       .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
       .enter().append("rect")
-      .data(function(d) {
-  return outrasKeys.map(function(outrasKeys) { return {outrasKeys: outrasKeys, value: d		[outrasKeys], estado: d.estado};
-        })
         .attr("x", function(d) { return x1(d.key); })
         .attr("y", function(d) { return y(d.value); })
         .attr("width", x1.bandwidth()+0.4)
         .attr("id", "rectan")
         .attr("height", function(d) { return height - y(d.value); })
         .attr("fill", function(d) { return z(d.key); })
-
+        .data(function(d) {
+    return outrasKeys.map(function(outrasKeys) { return {outrasKeys: outrasKeys, value: d		[outrasKeys], estado: d.estado};
+          })
   	;})
         .on('mouseover', function(d,i){
   	/*Ao se passar o mouse em cima de cada barra, mostre a porcentagem correspondente.*/
