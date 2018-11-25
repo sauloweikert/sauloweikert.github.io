@@ -8,7 +8,9 @@ function sairGrafico(opcao){
 	$('.div-grafico').remove();
 
 	//remove legenda
-	//$('#legend').remove();
+	if((opcao==='estados')||(opcao==='corpele')){
+		$('#legend').remove();
+	}
 
 	//remove botao Sair
 	$('#botao-sair').remove();
