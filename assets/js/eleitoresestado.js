@@ -205,14 +205,7 @@ function fazGraficoEleitoresEstado(opcao){
       	 });
       });
 
-/*versao velha
-    Adiciona um eixo Y ao gráfico.
-    g.append("g")
-        .attr("class", "axis")
-        .attr("id", "tentativa")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x0));
-*/
+
     /*Adiciona ao gráfico o eixo X com os estados.*/
     g.append("g")
         .attr("class", "axis")
@@ -373,9 +366,12 @@ function fazGraficoEleitoresEstado(opcao){
 
 
     /*Adiciona ao gráfico o eixo X com os estados.*/
+
+    var formatAsPercentage = d3.format(".1%");
+
     g.append("g")
         .attr("class", "axis")
-        .call(d3.axisLeft(y).ticks(null, "s"))
+        .call(d3.axisLeft(y).tickFormat(formatAsPercentage))
         .append("text")
         .attr("x", 5)
         .attr("id", "ax")
