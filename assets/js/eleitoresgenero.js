@@ -17,20 +17,19 @@ function fazGraficoEleitoresGenero(opcao){
 
   var funcaoGerarDados = function(arquivoASerLido){
 
-    var x0 = fazX0();
+    var x0 = fazX0(width);
     var x1 = fazX1();
     var y = fazY(height);
     var z = fazZ();
 
 
-  d3.csv(arquivoASerLido, function(d, i, columns) {
+  d3.csv(("dados/"+arquivoASerLido, function(d, i, columns) {
     for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = +d[columns[i]];
     return d;
   }, function(error, data) {
     if (error) throw error;
 
     var dadosComp = data;
-    console.log(data);
 
     var keys = data.columns.slice(1,4);
     //console.log(keys);
@@ -42,7 +41,7 @@ function fazGraficoEleitoresGenero(opcao){
 
     var outrasKeys = dadosComp.columns.slice(4,7);
 
-    console.log(outrasKeys);
+    //console.log(outrasKeys);
 
 
     g.append("g")
@@ -137,7 +136,7 @@ function fazGraficoEleitoresGenero(opcao){
   }
 
 
-  width
+  //width
 
   d3.select("g")
   	.append("text")
@@ -151,9 +150,9 @@ function fazGraficoEleitoresGenero(opcao){
 
 
 
-  d3.select("body")
+  d3.select(".div-grafico")
   	.append("p");
-  d3.select("body")
+  d3.select(".div-grafico")
   	.append("text")
   	.text("Ordene em ordem alfabética")
   	.style("background", "#F0F8FF")
@@ -171,10 +170,10 @@ function fazGraficoEleitoresGenero(opcao){
   	});
 
 
-  d3.select("body")
+  d3.select(".div-grafico")
   	.append("p");
 
-  d3.select("body")
+  d3.select(".div-grafico")
   	.append("text")
   	.text("Ordene em ordem crescente")
   	.style("background", "#F0F8FF")
@@ -191,10 +190,10 @@ function fazGraficoEleitoresGenero(opcao){
   		funcaoGerarDados("numeroEleitoresCresc2.csv");
   	});
 
-  d3.select("body")
+  d3.select(".div-grafico")
   	.append("p");
 
-  d3.select("body")
+  d3.select(".div-grafico")
   	.append("text")
   	.text("Ordene em ordem decrescente")
   	.style("background", "#F0F8FF")
@@ -215,6 +214,4 @@ function fazGraficoEleitoresGenero(opcao){
   //Fim dos métodos associados ao número de eleitores por gênero.
 
 
-  </script>
-  </body>
 }
