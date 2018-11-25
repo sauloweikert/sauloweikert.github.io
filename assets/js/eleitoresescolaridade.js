@@ -19,7 +19,7 @@ function fazGraficoEleitoresEscolaridade(opcao){
   var funcaoGerarDados = function(arquivoASerLido){
 
 
-    var x0 = fazX0(width);
+    var x0 = fazX0(width,0.4);
     var x1 = fazX1();
     var y = fazY(height);
     var z = fazZ();
