@@ -151,7 +151,7 @@ function criaSuporteGrafico(opcao){
 function montaGrafico(opcao){
 
 	//verifica e fecha outras visualizações abertas
-	fechaVisualizacoes(opcao);
+	//fechaVisualizacoes(opcao);
 
   //largura,altura,padding
   var w = 1500;
