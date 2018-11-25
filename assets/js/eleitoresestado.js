@@ -31,8 +31,16 @@ function configuraGraficoEleitores(opcao,largura,altura){
 
 }
 
+function fazX0(){
+  var x0 = d3.scaleBand()
+      .rangeRound([0, width])
+      .paddingInner(0.1);
 
-function fazGraficoEleitores(opcao){
+  return x0;
+}
+
+
+function fazGraficoEleitoresEstado(opcao){
 
   var largura = 1100;
   var altura = 600;
@@ -73,10 +81,12 @@ function fazGraficoEleitores(opcao){
 
   var funcaoGerarDados = function(arquivoASerLido){
 
-    var x0 = d3.scaleBand()
+
+    var x0 = fazX0();
+    /*d3.scaleBand()
         .rangeRound([0, width])
         .paddingInner(0.1);
-
+*/
     var x1 = d3.scaleBand()
         .padding(0.05);
 
