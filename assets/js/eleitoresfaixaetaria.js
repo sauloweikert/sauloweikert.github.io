@@ -122,7 +122,7 @@ function fazGraficoEleitoresFaixaEtaria(opcao){
         .attr("x", 1100)
         .attr("width", 10)
         .attr("height", 10)
-        .attr("id", "oi")
+        .attr("id", "itemLegendaCor")
         .attr("fill", z);
 
 
@@ -131,7 +131,7 @@ function fazGraficoEleitoresFaixaEtaria(opcao){
         .attr("y", 6)
         .attr("id", "lengtxt")
         .attr("dy", "0.32em")
-        .attr("id", "xuxu")
+        .attr("id", "itemLegendaTexto")
         .text(function(d) { return d; });
 
 
@@ -166,8 +166,8 @@ function fazGraficoEleitoresFaixaEtaria(opcao){
   		d3.selectAll("#ax").remove();
   		d3.selectAll("#outraL").remove();
   		d3.selectAll("#lengtxt").remove();
-  		d3.selectAll("#oi").remove();
-  		d3.selectAll("#xuxu").remove();
+  		d3.selectAll("#itemLegendaCor").remove();
+  		d3.selectAll("#itemLegendaTexto").remove();
   		d3.selectAll("#tentativa").remove();
   		funcaoGerarDados("numeroEleitoresAlf4.csv");
   	});
@@ -187,8 +187,8 @@ function fazGraficoEleitoresFaixaEtaria(opcao){
   		d3.selectAll("#ax").remove();
   		d3.selectAll("#lengtxt").remove();
   		d3.selectAll("#outraL").remove();
-  		d3.selectAll("#oi").remove();
-  		d3.selectAll("#xuxu").remove();
+  		d3.selectAll("#itemLegendaCor").remove();
+  		d3.selectAll("#itemLegendaTexto").remove();
   		d3.selectAll("#tentativa").remove();
   		funcaoGerarDados("numeroEleitoresCresc4.csv");
   	});
@@ -207,8 +207,8 @@ function fazGraficoEleitoresFaixaEtaria(opcao){
   		d3.selectAll("#ax").remove();
   		d3.selectAll("#lengtxt").remove();
   		d3.selectAll("#outraL").remove();
-  		d3.selectAll("#oi").remove();
-  		d3.selectAll("#xuxu").remove();
+  		d3.selectAll("#itemLegendaCor").remove();
+  		d3.selectAll("#itemLegendaTexto").remove();
   		d3.selectAll("#tentativa").remove();
   		funcaoGerarDados("numeroEleitoresDecr4.csv");
   	});

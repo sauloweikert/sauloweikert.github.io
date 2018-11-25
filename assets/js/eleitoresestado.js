@@ -239,7 +239,7 @@ function fazGraficoEleitoresEstado(opcao){
         .attr("x", 700)
         .attr("width", 10)
         .attr("height", 10)
-        .attr("id", "oi")
+        .attr("id", "itemLegendaCor")
         .attr("fill", z);
 
 
@@ -250,7 +250,7 @@ function fazGraficoEleitoresEstado(opcao){
         .attr("y", 6)
         .attr("id", "lengtxt")
         .attr("dy", "0.32em")
-        .attr("id", "xuxu")
+        .attr("id", "itemLegendaTexto")
         .text(function(d) { return d; });
 
 
@@ -384,7 +384,7 @@ function fazGraficoEleitoresEstado(opcao){
         .attr("font-family", "Arial")
         .text("% de Eleitores por Estado");
 
-    /*Adiciona a legenda ao gráfico.
+    /*Adiciona a legenda ao gráfico.*/
 
     var legend = g.append("g")
         .attr("font-family", "sans-serif")
@@ -402,7 +402,7 @@ function fazGraficoEleitoresEstado(opcao){
         .attr("x", 700)
         .attr("width", 10)
         .attr("height", 10)
-        .attr("id", "oi")
+        .attr("id", "itemLegendaCor")
         .attr("fill", z);
 
 
@@ -413,8 +413,8 @@ function fazGraficoEleitoresEstado(opcao){
         .attr("y", 6)
         .attr("id", "lengtxt")
         .attr("dy", "0.32em")
-        .attr("id", "xuxu")
-        .text(function(d) { return d; });*/
+        .attr("id", "itemLegendaTexto")
+        .text(function(d) { return d; });
 
 
   	});
@@ -456,8 +456,8 @@ function fazGraficoEleitoresEstado(opcao){
   		d3.selectAll("#ax").remove();
   		//d3.selectAll("#outraL").remove();
   		d3.selectAll("#lengtxt").remove();
-  		d3.selectAll("#oi").remove();
-  		d3.selectAll("#xuxu").remove();
+  		d3.selectAll("#itemLegendaCor").remove();
+  		d3.selectAll("#itemLegendaTexto").remove();
   		d3.selectAll("#tentativa").remove();
   		d3.selectAll("#axis").remove();
   		/*Adiciona título ao gráfico.*/
@@ -488,10 +488,10 @@ function fazGraficoEleitoresEstado(opcao){
   			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   		d3.selectAll("#rectan").remove();
   		d3.selectAll("#ax").remove();
-  		//d3.selectAll("#outraL").remove();
+  		d3.selectAll("#outraL").remove();
   		d3.selectAll("#lengtxt").remove();
-  		d3.selectAll("#oi").remove();
-  		d3.selectAll("#xuxu").remove();
+  		d3.selectAll("#itemLegendaCor").remove();
+  		d3.selectAll("#itemLegendaTexto").remove();
   		d3.selectAll("#tentativa").remove();
   		d3.selectAll("#axis").remove();
   		/*Adiciona título ao gráfico.*/
@@ -525,10 +525,10 @@ function fazGraficoEleitoresEstado(opcao){
 
   		d3.selectAll("#rectan").remove();
   		d3.selectAll("#ax").remove();
-  		//d3.selectAll("#outraL").remove();
+  		d3.selectAll("#outraL").remove();
   		d3.selectAll("#lengtxt").remove();
-  		d3.selectAll("#oi").remove();
-  		d3.selectAll("#xuxu").remove();
+  		d3.selectAll("#itemLegendaCor").remove();
+  		d3.selectAll("#itemLegendaTexto").remove();
   		d3.selectAll("#tentativa").remove();
   		d3.selectAll("#axis").remove();
   		if(tipoGrafico==1){	funcaoGerarDados("numeroEleitoresAlf.csv");}
@@ -549,9 +549,9 @@ function fazGraficoEleitoresEstado(opcao){
   		d3.selectAll("#rectan").remove();
   		d3.selectAll("#ax").remove();
   		d3.selectAll("#lengtxt").remove();
-  		//d3.selectAll("#outraL").remove();
-  		d3.selectAll("#oi").remove();
-  		d3.selectAll("#xuxu").remove();
+  		d3.selectAll("#outraL").remove();
+  		d3.selectAll("#itemLegendaCor").remove();
+  		d3.selectAll("#itemLegendaTexto").remove();
   		d3.selectAll("#tentativa").remove();
   		d3.selectAll("#axis").remove();
   		if(tipoGrafico==1){	funcaoGerarDados("numeroEleitoresCresc.csv");}
@@ -571,9 +571,9 @@ function fazGraficoEleitoresEstado(opcao){
   		d3.selectAll("#rectan").remove();
   		d3.selectAll("#ax").remove();
   		d3.selectAll("#lengtxt").remove();
-  		//d3.selectAll("#outraL").remove();
-  		d3.selectAll("#oi").remove();
-  		d3.selectAll("#xuxu").remove();
+  		d3.selectAll("#outraL").remove();
+  		d3.selectAll("#itemLegendaCor").remove();
+  		d3.selectAll("#itemLegendaTexto").remove();
   		d3.selectAll("#tentativa").remove();
   		d3.selectAll("#axis").remove();
   		if(tipoGrafico==1){	funcaoGerarDados("numeroEleitoresDecr.csv");}
