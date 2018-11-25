@@ -453,7 +453,7 @@ function fazGraficoEleitoresEstado(opcao){
   		g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   		d3.selectAll("#rectan").remove();
   		d3.selectAll("#ax").remove();
-  		d3.selectAll("#outraL").remove();
+  		//d3.selectAll("#outraL").remove();
   		d3.selectAll("#lengtxt").remove();
   		d3.selectAll("#oi").remove();
   		d3.selectAll("#xuxu").remove();
