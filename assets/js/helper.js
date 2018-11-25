@@ -29,6 +29,7 @@ function criaBotaoSairGrafico(opcao){
 	element.type = "button";
 	element.value = "Sair";
 	element.id='botao-sair';
+	element.className ="btn btn-default";
 	element.style.position = 'absolute';
 	element.style.right ='10px';
 	element.style.bottom ='10px';
