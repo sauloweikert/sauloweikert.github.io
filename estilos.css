@@ -8,6 +8,7 @@ p{
   overflow-x: auto;
   overflow-y: auto;
   position: relative;
+  padding-bottom: 25px;
 }
 
 #paineis-sobre{
