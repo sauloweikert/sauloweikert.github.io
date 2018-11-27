@@ -341,10 +341,15 @@ function rotulaCirculosEstadoOriginal(xScale,yScale){
 
 function dicaCirculosPorEstadoOriginal(){
 
+
+	//anexa novas tolltips baseadas nos dados do circulo em questao
   d3.select(".chart-estados").selectAll("#circuloEstado")
     .data(dataset)
 		.enter()
     .append("svg:title")
+			.attr("id", function(d) {
+				return "tooltip";
+			})
       .text(function(d) {
         return "Estado:" +"\t"+"\t"+"\t" + d.nome + "\n"
         + "Total:" +"\t"+"\t"+"\t" + d.total + "\n"
@@ -523,8 +528,15 @@ function rotulaCirculosEstado(xScale,yScale){
 //adiciona uma dica "tooltip" para cada circulo, visivel ao sobrepor o mouse
 //a ser usado para grafico Estados
 function dicaCirculosPorEstado(){
+
+	//remove as tooltips previas
+	d3.selectAll("#tolltip").remove();
+
   d3.select(".chart-estados").selectAll("#circuloEstado")
     .data(dataset)
+		.attr("id", function(d) {
+			return "tooltip";
+		})
       .text(function(d) {
         return "Estado:" +"\t"+"\t"+"\t" + d.nome + "\n"
         + "Total:" +"\t"+"\t"+"\t" + d.total + "\n"
