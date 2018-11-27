@@ -18,7 +18,7 @@ function sairGrafico(){
 		if ($('#legend').length){ $('#legend').remove();}
 
 	//reabilita o botao visualizar
-	document.getElementsByClass("botao-visualizar").disabled = false;
+	document.getElementsByClassName("botao-visualizar").disabled = false;
 
 	return;
 }
@@ -108,7 +108,7 @@ function configuraGrafico(w,h,opcao){
 //desabilitar botao visualizar do mesmo painel durante a visualização corrente
 function desabilitaBotaoVisualizar(opcao){
 
-	document.getElementsByClass("botao-visualizar").disabled = true;
+	document.getElementsByClassName("botao-visualizar").disabled = true;
 	return;
 }
 
