@@ -389,7 +389,7 @@ function defineEixoX(xScale){
       //formatando eixos como porcentagem
   var formatAsPercentage = d3.format(".1%");
 
-  var xAxis = d3.axisBottom(xScale).
+  var xAxis = d3.axisBottom(xScale)
   .tickFormat(formatAsPercentage);
 
   return xAxis;
