@@ -346,8 +346,7 @@ function dicaCirculosPorEstadoOriginal(){
 		.enter()
     .append("svg:title")
       .text(function(d) {
-        return "Estado:" +"\t"+"\t"+"\t" + d.nome + "\n"
-        + "Total:" +"\t"+"\t"+"\t" + d.total + "\n"
+        return "Total do Estado:" +"\t"+"\t"+"\t" + d.total + "\n"
         + "Feminino:" +"\t"+"\t"+d.fem + "\n"
         + "Curso sup.completo:" +"\t"+ d.csup;
       });
@@ -526,8 +525,7 @@ function dicaCirculosPorEstado(){
   d3.select(".chart-estados").selectAll("#circuloEstado")
     .data(dataset)
       .text(function(d) {
-        return "Estado:" +"\t"+"\t"+"\t" + d.nome + "\n"
-        + "Total:" +"\t"+"\t"+"\t" + d.total + "\n"
+        return "Total do Estado:" +"\t"+"\t"+"\t" + d.total + "\n"
         + "Feminino:" +"\t"+"\t"+d.fem + "\n"
         + "Curso sup.completo:" +"\t"+ d.csup;
       });
