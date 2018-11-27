@@ -154,6 +154,7 @@ function montaGrafico(opcao){
 
 	//verifica e fecha outras visualizações abertas
 	//fechaVisualizacoes(opcao);
+	feichaVisualizacoes();
 
 	desabilitaBotaoVisualizar(opcao);
 
