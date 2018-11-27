@@ -680,7 +680,7 @@ function rotulaCirculosCorPele(xScale,yScale){
       return d.nome;
     })
     .attr("x", function(d) {
-      return xScale((d.fem)/(d.total))+20;
+      return xScale((d.fem)/(d.total))+rScale(d.totalGrupo);
     })
     .attr("y", function(d) {
       return yScale((d.csup)/(d.total))+10;
