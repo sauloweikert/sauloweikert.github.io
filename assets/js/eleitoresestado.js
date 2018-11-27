@@ -3,6 +3,8 @@ function configuraGraficoEleitores(opcao,largura,altura){
   //verifica e fecha outras visualizações abertas
   //fechaVisualizacoes(opcao);
 
+  desabilitaBotaoVisualizar(opcao);
+
   criaBotaoSairGrafico(opcao);
 
   //--cria suporte grafico
