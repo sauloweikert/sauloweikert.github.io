@@ -14,7 +14,7 @@ function sairGrafico(opcao){
 	}*/
 
 	//verifica e fecha legendas abertas
-	if ($('#something').length){ $('#legend').remove();}
+	if ($('#legend').length){ $('#legend').remove();}
 
 	//remove botao Sair
 	$('#botao-sair').remove();
