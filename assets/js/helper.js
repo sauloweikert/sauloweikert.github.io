@@ -680,12 +680,12 @@ function rotulaCirculosCorPele(xScale,yScale){
       return d.nome;
     })
     .attr("x", function(d) {
-      return xScale((d.fem)/(d.total))+rScale(d.totalGrupo);
+      return xScale((d.fem)/(d.total));
     })
     .attr("y", function(d) {
-      return yScale((d.csup)/(d.total))+10;
+      return yScale((d.csup)/(d.total));
     })
-    .attr("text-anchor", "middle")
+    .attr("text-anchor", "end")
     .attr("font-family", "sans-serif")
     .attr("font-size", "11px")
     .attr("fill", "olive");
