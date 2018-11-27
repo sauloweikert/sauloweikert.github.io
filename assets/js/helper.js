@@ -597,10 +597,10 @@ function rotulaCirculosCorPeleOriginal(xScale,yScale){
     .attr("y", function(d) {
       return yScale((d.csup)/(d.total));
     })
-    .attr("text-anchor", "middle")
+    .attr("text-anchor", "end")
     .attr("font-family", "sans-serif")
     .attr("font-size", "11px")
-    .attr("fill", "white")
+    .attr("fill", "olive")
 		.attr("id", function(d) {
 			return "textoCorPele";
 		});
