@@ -343,7 +343,7 @@ function dicaCirculosPorEstadoOriginal(){
 
 
 	//anexa novas tolltips baseadas nos dados do circulo em questao
-  d3.select(".chart-estados").selectAll("#circuloEstado")
+  d3.selectAll("#circuloEstado")
     .data(dataset)
 		.enter()
     .append("svg:title")
@@ -532,7 +532,7 @@ function dicaCirculosPorEstado(){
 	//remove as tooltips previas
 	d3.selectAll("#tolltip").remove();
 
-  d3.select(".chart-estados").selectAll("#circuloEstado")
+  d3.selectAll("#circuloEstado")
     .data(dataset)
 		.attr("id", function(d) {
 			return "tooltip";
