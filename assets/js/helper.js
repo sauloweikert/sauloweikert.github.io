@@ -153,6 +153,8 @@ function montaGrafico(opcao){
 	//verifica e fecha outras visualizações abertas
 	//fechaVisualizacoes(opcao);
 
+	desabilitaBotaoVisualizar(opcao);
+
   //largura,altura,padding
   var h = 400;
   var padding = 90;
