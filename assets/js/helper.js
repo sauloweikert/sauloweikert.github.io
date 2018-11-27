@@ -623,8 +623,7 @@ function dicaCirculosPorCorPeleOriginal(){
 		.enter()
     .append("title")
       .text(function(d) {
-        return "Cor:" +"\t"+"\t"+"\t" + d.nome + "\n"
-        + "Total do grupo:" +"\t"+"\t"+"\t" + d.totalGrupo + "\n"
+        return "Total do grupo:" +"\t"+"\t"+"\t" + d.totalGrupo + "\n"
         + "Feminino:" +"\t"+"\t"+d.fem + "\n"
         + "Curso sup.completo:" +"\t"+ d.csup;
       });
@@ -706,8 +705,7 @@ function dicaCirculosPorCorPele(){
     .data(dataset)
     .append("title")
       .text(function(d) {
-        return "Cor:" +"\t"+"\t"+"\t" + d.nome + "\n"
-        + "Total do grupo:" +"\t"+"\t" + d.totalGrupo + "\n"
+        return "Total do grupo:" +"\t"+"\t" + d.totalGrupo + "\n"
         + "Feminino:" +"\t"+"\t"+d.fem + "\n"
         + "Curso sup.completo:" +"\t"+ d.csup;
       });
