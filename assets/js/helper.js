@@ -8,9 +8,13 @@ function sairGrafico(opcao){
 	$('.div-grafico').remove();
 
 	//remove legenda
+	/*
 	if((opcao==='estados')||(opcao==='corpele')){
 		$('#legend').remove();
-	}
+	}*/
+
+	//verifica e fecha legendas abertas
+	if ($('#something').length){ $('#legend').remove();}
 
 	//remove botao Sair
 	$('#botao-sair').remove();
@@ -385,7 +389,7 @@ function defineEixoX(xScale){
       //formatando eixos como porcentagem
   var formatAsPercentage = d3.format(".1%");
 
-  var xAxis = d3.axisBottom(xScale).ticks(7)
+  var xAxis = d3.axisBottom(xScale).
   .tickFormat(formatAsPercentage);
 
   return xAxis;
