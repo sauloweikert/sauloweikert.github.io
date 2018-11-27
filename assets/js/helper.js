@@ -154,9 +154,11 @@ function montaGrafico(opcao){
 	//fechaVisualizacoes(opcao);
 
   //largura,altura,padding
-  var w = 1500;
   var h = 400;
   var padding = 90;
+	if(opcao==='estados')	var w = 1500;
+	else if (opcao==='corpele') var w = 1000;
+
 
 	criaBotaoSairGrafico(opcao);
 
