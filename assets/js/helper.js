@@ -683,12 +683,12 @@ function rotulaCirculosCorPele(xScale,yScale){
       return xScale((d.fem)/(d.total))+20;
     })
     .attr("y", function(d) {
-      return yScale((d.csup)/(d.total))+20;
+      return yScale((d.csup)/(d.total))+10;
     })
     .attr("text-anchor", "middle")
     .attr("font-family", "sans-serif")
     .attr("font-size", "11px")
-    .attr("fill", "blue");
+    .attr("fill", "olive");
 }
 
 //adiciona uma dica "tooltip" para cada circulo, visivel ao sobrepor o mouse
