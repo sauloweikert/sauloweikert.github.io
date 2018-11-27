@@ -346,7 +346,8 @@ function dicaCirculosPorEstadoOriginal(){
 		.enter()
     .append("svg:title")
       .text(function(d) {
-        return "Total do Estado:" +"\t"+"\t"+"\t" + d.total + "\n"
+        return "Estado:" +"\t"+"\t"+"\t" + d.nome + "\n"
+        + "Total:" +"\t"+"\t"+"\t" + d.total + "\n"
         + "Feminino:" +"\t"+"\t"+d.fem + "\n"
         + "Curso sup.completo:" +"\t"+ d.csup;
       });
@@ -525,7 +526,8 @@ function dicaCirculosPorEstado(){
   d3.select(".chart-estados").selectAll("#circuloEstado")
     .data(dataset)
       .text(function(d) {
-        return "Total do Estado:" +"\t"+"\t"+"\t" + d.total + "\n"
+        return "Estado:" +"\t"+"\t"+"\t" + d.nome + "\n"
+        + "Total:" +"\t"+"\t"+"\t" + d.total + "\n"
         + "Feminino:" +"\t"+"\t"+d.fem + "\n"
         + "Curso sup.completo:" +"\t"+ d.csup;
       });
@@ -621,7 +623,8 @@ function dicaCirculosPorCorPeleOriginal(){
 		.enter()
     .append("title")
       .text(function(d) {
-        return "Total do grupo:" +"\t"+"\t"+"\t" + d.totalGrupo + "\n"
+        return "Cor:" +"\t"+"\t"+"\t" + d.cor + "\n"
+        + "Total do grupo:" +"\t"+"\t"+"\t" + d.totalGrupo + "\n"
         + "Feminino:" +"\t"+"\t"+d.fem + "\n"
         + "Curso sup.completo:" +"\t"+ d.csup;
       });
@@ -703,7 +706,8 @@ function dicaCirculosPorCorPele(){
     .data(dataset)
     .append("title")
       .text(function(d) {
-        return "Total do grupo:" +"\t"+"\t" + d.totalGrupo + "\n"
+        return "Cor:" +"\t"+"\t"+"\t" + d.cor + "\n"
+        + "Total do grupo:" +"\t"+"\t" + d.totalGrupo + "\n"
         + "Feminino:" +"\t"+"\t"+d.fem + "\n"
         + "Curso sup.completo:" +"\t"+ d.csup;
       });
