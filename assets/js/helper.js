@@ -1,23 +1,21 @@
 //------------------------------------------------------saida grafico
-//funcao saida montaGrafico
-function sairGrafico(opcao){
 
-//	d3.select("svg").remove();
+function feichaVisualizacoes(){
+	if ($('.div-grafico').length){
+		sairGrafico();
+	}
+}
 
-	//remove Suporte
-	$('.div-grafico').remove();
 
-	//remove legenda
-	/*
-	if((opcao==='estados')||(opcao==='corpele')){
-		$('#legend').remove();
-	}*/
+//funcao sair da visualizacao corrente
+function sairGrafico(){
 
-	//verifica e fecha legendas abertas
-	if ($('#legend').length){ $('#legend').remove();}
-
-	//remove botao Sair
-	$('#botao-sair').remove();
+		//remove Suporte
+		$('.div-grafico').remove();
+		//remove botao Sair
+		$('#botao-sair').remove();
+		//verifica e fecha legendas abertas
+		if ($('#legend').length){ $('#legend').remove();}
 
 	//reabilita o botao visualizar
 	document.getElementsByClass("botao-visualizar").disabled = false;
@@ -39,7 +37,7 @@ function criaBotaoSairGrafico(opcao){
 	element.style.bottom ='10px';
 	//element.style.marginTop ='10px';
 	element.onclick = function() {
-		sairGrafico(opcao);
+		sairGrafico();
 	};
 	document.getElementsByClassName("painel-grafico-"+opcao)[0].appendChild(element);
 }
