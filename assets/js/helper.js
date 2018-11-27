@@ -20,7 +20,7 @@ function sairGrafico(opcao){
 	$('#botao-sair').remove();
 
 	//reabilita o botao visualizar
-	document.getElementById("botao-visualizar-"+opcao).disabled = false;
+	document.getElementById("botao-visualizar").disabled = false;
 
 	return;
 }
@@ -110,7 +110,7 @@ function configuraGrafico(w,h,opcao){
 //desabilitar botao visualizar do mesmo painel durante a visualização corrente
 function desabilitaBotaoVisualizar(opcao){
 
-	document.getElementById("botao-visualizar-"+opcao).disabled = true;
+	document.getElementById("botao-visualizar").disabled = true;
 	return;
 }
 
