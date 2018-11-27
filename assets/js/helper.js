@@ -1,6 +1,6 @@
 //------------------------------------------------------saida grafico
 
-function feichaVisualizacoes(){
+function fechaVisualizacoes(){
 	if ($('.div-grafico').length){
 		sairGrafico();
 	}
@@ -154,7 +154,7 @@ function montaGrafico(opcao){
 
 	//verifica e fecha outras visualizações abertas
 	//fechaVisualizacoes(opcao);
-	feichaVisualizacoes();
+	fechaVisualizacoes();
 
 	desabilitaBotaoVisualizar(opcao);
 
