@@ -336,7 +336,7 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 			return "circuloEstado";
 		})
 		.on('click', function(d){
-			d3.select("#detalhe").text('You clicked on circle ');
+			d3.select("#detalhe").text('You clicked on circle '+d.fem);
 		});
 }
 
