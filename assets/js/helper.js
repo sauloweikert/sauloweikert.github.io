@@ -334,7 +334,11 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
     })
 		.attr("id", function(d) {
 			return "circuloEstado";
-		});
+		})
+		.on("click", function(d){
+			d3.select("#detalhe").innerHTML="oi";
+		}
+		;
 }
 
 
