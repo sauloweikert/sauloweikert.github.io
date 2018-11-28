@@ -51,11 +51,11 @@ function montaDetalhe(opcao){
 	//definicao dinamica do estilo da legenda
 	divDetalhe.style.borderStyle = 'double';
 	divDetalhe.style.display = 'inline-block';
-	divDetalhe.style.width = '15%';
+	divDetalhe.style.width = '100px';
 	divDetalhe.style.height = '80px';
 	divDetalhe.style.position = 'absolute';
-	divDetalhe.style.right ='15%' + '5px';
-	divDetalhe.style.top ='0px';
+	divDetalhe.style.right ='110px';
+	divDetalhe.style.top ='10px';
 	divDetalhe.style.backgroundColor = 'white';
 	divDetalhe.style.opacity = '50%';
 	divDetalhe.style.padding = '5px';
@@ -76,7 +76,7 @@ function montaLegenda(opcao){
 	//definicao dinamica do estilo da legenda
 	divLegenda.style.borderStyle = 'double';
 	divLegenda.style.display = 'inline-block';
-	divLegenda.style.width = '15%';
+	divLegenda.style.width = '100px';
 	divLegenda.style.position = 'absolute';
 	divLegenda.style.right ='10px';
 	divLegenda.style.top ='10px';
