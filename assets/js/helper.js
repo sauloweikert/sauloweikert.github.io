@@ -337,8 +337,7 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 		})
 		.on("click", function(d){
 			d3.select("#detalhe").innerHTML="oi";
-		}
-		;
+		});
 }
 
 
