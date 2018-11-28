@@ -51,10 +51,10 @@ function montaDetalhe(opcao){
 	//definicao dinamica do estilo da legenda
 	divDetalhe.style.borderStyle = 'double';
 	divDetalhe.style.display = 'inline-block';
-	divDetalhe.style.width = '100px';
-	divDetalhe.style.height = '80px';
+	divDetalhe.style.width = '130px';
+	divDetalhe.style.height = '130px';
 	divDetalhe.style.position = 'absolute';
-	divDetalhe.style.right ='110px';
+	divDetalhe.style.right ='130px';
 	divDetalhe.style.top ='10px';
 	divDetalhe.style.backgroundColor = 'white';
 	divDetalhe.style.opacity = '50%';
@@ -76,13 +76,13 @@ function montaLegenda(opcao){
 	//definicao dinamica do estilo da legenda
 	divLegenda.style.borderStyle = 'double';
 	divLegenda.style.display = 'inline-block';
-	divLegenda.style.width = '100px';
+	divLegenda.style.width = '120px';
 	divLegenda.style.position = 'absolute';
 	divLegenda.style.right ='10px';
 	divLegenda.style.top ='10px';
 	divLegenda.style.backgroundColor = 'white';
 	divLegenda.style.opacity = '50%';
-	divLegenda.style.padding = '5px';
+	divLegenda.style.padding = '10px';
 
 	//definicao do titulo da legenda
 	divLegenda.innerHTML = "Legenda";
