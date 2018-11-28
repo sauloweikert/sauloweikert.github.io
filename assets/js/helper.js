@@ -44,6 +44,30 @@ function criaBotaoSairGrafico(opcao){
 //---------------------------------------------------construcao grafico estados
 
 //funcao montagem legenda grafico
+function montaDetalhe(opcao){
+	var divDetalhe = document.createElement('div');
+	divDetalhe.id = 'detalhe';
+
+	//definicao dinamica do estilo da legenda
+	divDetalhe.style.borderStyle = 'double';
+	divDetalhe.style.display = 'inline-block';
+	divDetalhe.style.width = '15%';
+	divDetalhe.style.position = 'absolute';
+	divDetalhe.style.right ='10px';
+	divDetalhe.style.top ='50px';
+	divDetalhe.style.backgroundColor = 'white';
+	divDetalhe.style.opacity = '50%';
+	divDetalhe.style.padding = '5px';
+
+	//definicao do titulo da Detalhe
+	//divDetalhe.innerHTML = "Detalhe";
+
+	//adicao da Detalhe no painel
+	$(".painel-grafico-"+opcao).append(divDetalhe);
+
+
+
+//funcao montagem legenda grafico
 function montaLegenda(opcao){
 	var divLegenda = document.createElement('div');
 	divLegenda.id = 'legend';
@@ -173,7 +197,10 @@ function montaGrafico(opcao){
 
 	montaLegenda(opcao);
 
+	montaDetalhe(opcao);
+
 	montaGraficoOriginal(padding,w,h,opcao);
+
 
 }
 
