@@ -53,8 +53,8 @@ function montaDetalhe(opcao){
 	divDetalhe.style.display = 'inline-block';
 	divDetalhe.style.width = '15%';
 	divDetalhe.style.position = 'absolute';
-	divDetalhe.style.right ='10px';
-	divDetalhe.style.top ='50px';
+	divDetalhe.style.right ='15%';
+	divDetalhe.style.top ='0px';
 	divDetalhe.style.backgroundColor = 'white';
 	divDetalhe.style.opacity = '50%';
 	divDetalhe.style.padding = '5px';
