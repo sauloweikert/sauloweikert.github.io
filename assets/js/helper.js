@@ -64,7 +64,7 @@ function montaDetalhe(opcao){
 
 	//adicao da Detalhe no painel
 	$(".painel-grafico-"+opcao).append(divDetalhe);
-
+}
 
 
 //funcao montagem legenda grafico
