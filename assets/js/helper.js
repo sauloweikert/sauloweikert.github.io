@@ -326,15 +326,12 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 			return "circuloEstado";
 		})
 		.on("mouseover", function(d) {
-    	d3.select('divDetalhe').transition()
-      	.duration(200)
-      	.style("opacity", .9);
-    	d3.select('divDetalhe').html(d.regiao + "<br/>"  + d.total)
-    })
+			var p = document.createElement('p');
+			$(p).text(d.regiao+"<br/>");
+			$(divDetalhe).append(p);
+		})
     .on("mouseout", function(d) {
-    	d3.select('divDetalhe').transition()
-      	.duration(500)
-      	.style("opacity", 0);
+			$(divDetalhe).remove(p);
     });
 }
 
