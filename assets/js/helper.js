@@ -327,11 +327,12 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 		})
 		.on("mouseover", function(d) {
 			var p = document.createElement('p');
-			$(p).text(d.regiao+"<br/>");
+			p.id = 'dica-texto';
+			$(p).text("Estado:\t" d.nome);
 			$("#detalhe").append(p);
 		})
     .on("mouseout", function(d) {
-			$("#detalhe").remove(p);
+			$("#dica-texto").remove();
     });
 }
 
