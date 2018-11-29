@@ -328,10 +328,10 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 		.on("mouseover", function(d) {
 			var p = document.createElement('p');
 			$(p).text(d.regiao+"<br/>");
-			$(divDetalhe).append(p);
+			$("#detalhe").append(p);
 		})
     .on("mouseout", function(d) {
-			$(divDetalhe).remove(p);
+			$("#detalhe").remove(p);
     });
 }
 
