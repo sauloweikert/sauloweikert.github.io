@@ -307,7 +307,7 @@ function atualizaGrafico(padding,w,h,opcao,rScale,xScale,yScale,xAxis,yAxis){
 function constroiCirculosEstadosOriginal(xScale,yScale,rScale){
   desenhaCirculosEstadoOriginal(xScale,yScale,rScale);
   rotulaCirculosEstadoOriginal(xScale,yScale);
-	dicaCirculosPorEstadoOriginal();
+	//dicaCirculosPorEstadoOriginal();
 }
 
 //desenha os circulos - grafico estados
@@ -334,9 +334,6 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
     })
 		.attr("id", function(d) {
 			return "circuloEstado";
-		})
-		.on('click', function(d){
-			d3.select("#detalhe").text('You clicked on circle '+d.fem);
 		});
 }
 
@@ -507,7 +504,7 @@ function rotulaEixoY(padding,h,opcao){
 function constroiCirculosEstados(xScale,yScale,rScale){
   desenhaCirculosEstado(xScale,yScale,rScale);
   rotulaCirculosEstado(xScale,yScale);
-  dicaCirculosPorEstado();
+  //dicaCirculosPorEstado();
 }
 
 //desenha os circulos - grafico estados
