@@ -168,7 +168,7 @@ function criaSuporteGrafico(opcao){
 
 
 	// Define the div for the tooltip
-	var div = d3.select(".div-grafico").append("div")
+	var diva = d3.select(".div-grafico").append("div")
 	    .attr("class", "tooltip")
 	    .style("opacity", 0);
 
@@ -341,15 +341,15 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 		.attr("id", function(d) {
 			return "circuloEstado";
 		})        .on("mouseover", function(d) {
-            div.transition()
+            d3.select('.tooltip').transition()
                 .duration(200)
                 .style("opacity", .9);
-            div	.html(formatTime(d.date) + "<br/>"  + d.close)
+            d3.select('.tooltip').html(d.regiao + "<br/>"  + d.total)
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY - 28) + "px");
             })
         .on("mouseout", function(d) {
-            div.transition()
+            d3.select('.tooltip').transition()
                 .duration(500)
                 .style("opacity", 0);
         });
