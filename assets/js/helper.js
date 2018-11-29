@@ -137,24 +137,6 @@ function desabilitaBotaoVisualizar(opcao){
 	return;
 }
 
-/*
-//verifica e fecha outras visualizações abertas
-function fechaVisualizacoes(opcao){
-
-	//desabilitar botao visualizar do mesmo painel durante a visualização corrente
-	desabilitaBotaoVisualizar(opcao);
-
-	//fecha grficos de outros paineis que estejam abertos
-	if(opcao === 'estados') var contraOpcao = "eleitoresestado";
-	else if(opcao === 'corpele') var contraOpcao = "estados";
-	else if(opcao === 'eleitoresestado') var contraOpcao = "corpele";
-
-	var open =document.getElementById("botao-visualizar-"+contraOpcao).disabled;
-	if(open == true) sairGrafico(contraOpcao);
-	else return;
-}
-*/
-
 
 //------------------------------------------------------------------------------
 //funcoes montagem grafico
