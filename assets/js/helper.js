@@ -324,19 +324,18 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
     })
 		.attr("id", function(d) {
 			return "circuloEstado";
-		})        .on("mouseover", function(d) {
-            d3.select('.tooltip').transition()
-                .duration(200)
-                .style("opacity", .9);
-            d3.select('.tooltip').html(d.regiao + "<br/>"  + d.total)
-                .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY - 28) + "px");
-            })
-        .on("mouseout", function(d) {
-            d3.select('.tooltip').transition()
-                .duration(500)
-                .style("opacity", 0);
-        });
+		})
+		.on("mouseover", function(d) {
+    	d3.select('divDetalhe').transition()
+      	.duration(200)
+      	.style("opacity", .9);
+    	d3.select('divDetalhe').html(d.regiao + "<br/>"  + d.total)
+    })
+    .on("mouseout", function(d) {
+    	d3.select('divDetalhe').transition()
+      	.duration(500)
+      	.style("opacity", 0);
+    });
 }
 
 
