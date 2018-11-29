@@ -166,6 +166,12 @@ function criaSuporteGrafico(opcao){
  	divGrafico.style.overflowX ='auto';
 	document.getElementsByClassName("painel-grafico-"+opcao)[0].appendChild(divGrafico);
 
+
+	// Define the div for the tooltip
+	var div = d3.select(".div-grafico").append("div")
+	    .attr("class", "tooltip")
+	    .style("opacity", 0);
+
 	//cria dinamicamente elemento tipo svg que sera o grafico
 	var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 	element.setAttribute("class", "chart-"+opcao);
@@ -334,7 +340,19 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
     })
 		.attr("id", function(d) {
 			return "circuloEstado";
-		});
+		})        .on("mouseover", function(d) {
+            div.transition()
+                .duration(200)
+                .style("opacity", .9);
+            div	.html(formatTime(d.date) + "<br/>"  + d.close)
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY - 28) + "px");
+            })
+        .on("mouseout", function(d) {
+            div.transition()
+                .duration(500)
+                .style("opacity", 0);
+        });
 }
 
 
