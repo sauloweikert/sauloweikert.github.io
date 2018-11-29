@@ -170,7 +170,9 @@ function criaSuporteGrafico(opcao){
 	// Define the div for the tooltip
 	var diva = d3.select(".div-grafico").append("div")
 	    .attr("class", "tooltip")
-	    .style("opacity", 0);
+	    .style("opacity", 0)
+			.style("backgroundColor,"orange")
+			.style("border","double");
 
 	//cria dinamicamente elemento tipo svg que sera o grafico
 	var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
