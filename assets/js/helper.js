@@ -153,7 +153,7 @@ function criaSuporteGrafico(opcao){
 	var diva = d3.select(".div-grafico").append("div")
 	    .attr("class", "tooltip")
 	    .style("opacity", 0)
-			.style("backgroundColor,"orange")
+			.style("backgroundColor","orange")
 			.style("border","double");
 
 	//cria dinamicamente elemento tipo svg que sera o grafico
