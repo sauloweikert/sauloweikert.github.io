@@ -333,7 +333,7 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 		.attr("id", function(d) {
 			return "circuloEstado";
 		})
-		.on("mouseover", preencheTooltip(d));
+		.on("mouseover", preencheTooltip(d))
     .on("mouseout", removeTooltip());
 }
 
