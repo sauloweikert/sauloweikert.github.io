@@ -725,4 +725,5 @@ function rotulaCirculosCorPele(xScale,yScale){
     .attr("font-size", "11px")
     .attr("fill", "olive");
 }
+
 //----------------------------------------------------------------------------
