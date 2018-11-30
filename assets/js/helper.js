@@ -330,6 +330,7 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 		+"</dd><dt>Total gênero Feminino</dt><dd>" +d.fem
 		+"</dd><dt>Total curso superior</dt><dd>" +d.csup
 		+"</dd></dl>");
+		testo.id = 'dica-texto';
 		//	"Estado" + d.nome + "<br/>" + "Sigla");
 			/*
 			+ "Total:" + d.total
