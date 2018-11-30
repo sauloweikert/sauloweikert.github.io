@@ -305,8 +305,8 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
     .data(dataset)
 		.enter()
 		.append("circle")
-		.transition()
-		.duration(2000)
+//		.transition()
+//		.duration(2000)
 		//definindo propriedades dos circulos
     .attr("cx", function(d) {
       return xScale((d.fem)/(d.total));
