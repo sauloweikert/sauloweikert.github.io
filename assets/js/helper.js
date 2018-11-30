@@ -302,11 +302,10 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 	var selecao =d3.select(".chart-estados").selectAll("#circuloEstado")
     .data(dataset)
 		.enter()
-		.append("circle");
-		//		.transition()
-		//		.duration(2000)
+		.append("circle")
+
 		//definindo propriedades dos circulos
-		selecao.attr("cx", function(d) {
+		.attr("cx", function(d) {
 			return xScale((d.fem)/(d.total));
 		})
 		.attr("cy", function(d) {
@@ -333,6 +332,11 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 		.on("mouseout", function(d){
 			$("#detalhe").html("");
 		});
+
+		//define uma transicao para o grafico
+		selecao
+			.transition()
+			.duration(2000);
 }
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
@@ -505,11 +509,10 @@ function constroiCirculosEstados(xScale,yScale,rScale){
 
 //desenha os circulos - grafico estados
 function desenhaCirculosEstado(xScale,yScale,rScale){
-//  d3.select(".chart-estados").selectAll("#circuloEstado")
-	d3.select(".chart-estados").selectAll("#circuloEstado")
+
+	var selecao = d3.select(".chart-estados").selectAll("#circuloEstado")
     .data(dataset)
-    .transition()
-    .duration(2000)
+
     //definindo propriedades dos circulos
     .attr("cx", function(d) {
       return xScale((d.fem)/(d.total));
@@ -537,6 +540,11 @@ function desenhaCirculosEstado(xScale,yScale,rScale){
 		.on("mouseout", function(d){
 			$("#detalhe").html("");
 		});
+
+		//define uma transicao para o grafico
+		selecao
+			.transition()
+			.duration(2000);
 }
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
@@ -588,14 +596,11 @@ function constroiCirculosCorPeleOriginal(xScale,yScale,rScale){
 //desenha os circulos -
 function desenhaCirculosCorPeleOriginal(xScale,yScale,rScale){
 
-	d3.select(".chart-corpele").selectAll("#circuloCorPele")
+	var selecao = d3.select(".chart-corpele").selectAll("#circuloCorPele")
     .data(dataset)
 		.enter()
 		.append("circle")
 
-		//define propiedades dos circulos
-//    .transition()
-//    .duration(2000)
     //definindo propriedades dos circulos
     .attr("cx", function(d) {
       return xScale((d.fem)/(d.total));
@@ -623,6 +628,11 @@ function desenhaCirculosCorPeleOriginal(xScale,yScale,rScale){
 		.on("mouseout", function(d){
 			$("#detalhe").html("");
 		});
+		
+		//define uma transicao para o grafico
+		selecao
+			.transition()
+			.duration(2000);
 }
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
@@ -676,10 +686,10 @@ function constroiCirculosCorPele(xScale,yScale,rScale){
 
 //desenha os circulos - grafico cor pele
 function desenhaCirculosCorPele(xScale,yScale,rScale){
-d3.select(".chart-corpele").selectAll("#circuloCorPele")
+
+	var selecao = d3.select(".chart-corpele").selectAll("#circuloCorPele")
   .data(dataset)
-  .transition()
-  .duration(2000)
+
   //definindo propriedades dos circulos
   .attr("cx", function(d) {
     return xScale((d.fem)/(d.total));
@@ -705,6 +715,11 @@ d3.select(".chart-corpele").selectAll("#circuloCorPele")
 	.on("mouseout", function(d){
 		$("#detalhe").html("");
 	});
+
+	//define uma transicao para o grafico
+	selecao
+		.transition()
+		.duration(2000);
 }
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
