@@ -7,6 +7,7 @@ function configuraGraficoEleitores(opcao,largura,altura){
 
   criaBotaoSairGrafico(opcao);
 
+
   //--cria suporte grafico
   //cria dinamicamente elemento do tipo div para conter o grafico
   var divGrafico = document.createElement('div');
@@ -61,6 +62,7 @@ function fazZ(){
 }
 
 function fazGraficoEleitoresEstado(opcao){
+
 
   var largura = 1100;
   var altura = 600;
@@ -130,7 +132,7 @@ function fazGraficoEleitoresEstado(opcao){
 
     /*Cria o conjunto de barras múltiplas baseando-se no valor absoluto e agrupando as barras
     por estado.*/
-    var selecao = g.append("g")
+    g.append("g")
       .selectAll("g")
       .data(data)
       .enter().append("g")
@@ -138,9 +140,6 @@ function fazGraficoEleitoresEstado(opcao){
       .selectAll("rect")
       .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
       .enter().append("rect")
-      .transition().duration(2000);
-
-      selecao
         .attr("x", function(d) { return x1(d.key); })
         .attr("y", function(d) { return y(d.value); })
         .attr("width", x1.bandwidth()+0.4)
@@ -238,8 +237,6 @@ function fazGraficoEleitoresEstado(opcao){
         .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
     legend.append("rect")
-        .transition()
-        .duration(2000)
         .attr("x", 700)
         .attr("width", 10)
         .attr("height", 10)
@@ -248,8 +245,6 @@ function fazGraficoEleitoresEstado(opcao){
 
 
     legend.append("text")
-        .transition()
-        .duration(2000)
         .attr("x", 680)
         .attr("y", 6)
         .attr("id", "lengtxt")
@@ -401,8 +396,6 @@ function fazGraficoEleitoresEstado(opcao){
         .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
     legend.append("rect")
-        .transition()
-        .duration(2000)
         .attr("x", 700)
         .attr("width", 10)
         .attr("height", 10)
@@ -411,8 +404,6 @@ function fazGraficoEleitoresEstado(opcao){
 
 
     legend.append("text")
-        .transition()
-        .duration(2000)
         .attr("x", 680)
         .attr("y", 6)
         .attr("id", "lengtxt")
