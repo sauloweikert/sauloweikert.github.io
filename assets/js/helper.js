@@ -329,7 +329,7 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 			$("#detalhe").append(p);
 		})
     .on("mouseout", function(d) {
-			$("#dica-texto").remove();
+			$("#dica-texto").fadeOut(2000).delay(2000).remove();
     });
 }
 
