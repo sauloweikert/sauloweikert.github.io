@@ -442,7 +442,7 @@ function desenhaEixoX(xAxis,padding,h,opcao){
 
 function atualizaEixoX(xAxis){
 
-  d3.select("svg").select(".x-axis")
+  d3.select(".x-axis")
 	.transition()
 	.duration(2000)
   .call(xAxis);
