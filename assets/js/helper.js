@@ -320,13 +320,16 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 			return "circuloEstado";
 		})
 		.on("mouseover", function(d) {
-			var p = document.createElement('p');
-			p.id = 'dica-texto';
-			$(p).text("Estado:" + d.nome
+		//	var p = document.createElement('p');
+		//	p.id = 'dica-texto';
+		//	$(p).text("Estado:" + d.nome +);
+		//	$("#detalhe").append(p);
+		var testo = ("Estado" + d.nome + "<br/>" + "Sigla");
+			/*
 			+ "Total:" + d.total
 			+ "Feminino:" +d.fem
-			+ "Curso sup.completo:" + d.csup);
-			$("#detalhe").append(p);
+			+ "Curso sup.completo:" + d.csup);*/
+			$("#detalhe").append(testo);
 		})
     .on("mouseout", function(d) {
 			$("#dica-texto").fadeOut(2000).delay(2000).remove();
