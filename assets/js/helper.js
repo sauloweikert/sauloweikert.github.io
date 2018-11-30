@@ -499,7 +499,6 @@ function rotulaEixoY(padding,h,opcao){
 function constroiCirculosEstados(xScale,yScale,rScale){
   desenhaCirculosEstado(xScale,yScale,rScale);
   rotulaCirculosEstado(xScale,yScale);
-  //dicaCirculosPorEstado();
 }
 
 //desenha os circulos - grafico estados
@@ -545,29 +544,21 @@ function rotulaCirculosEstado(xScale,yScale){
     .attr("text-anchor", "middle")
     .attr("font-family", "sans-serif")
     .attr("font-size", "11px")
-    .attr("fill", "white");
-}
-
-//adiciona uma dica "tooltip" para cada circulo, visivel ao sobrepor o mouse
-//a ser usado para grafico Estados
-function dicaCirculosPorEstado(){
-
-	//remove as tooltips previas
-	d3.selectAll("#tolltip").remove();
-
-  d3.selectAll("#circuloEstado")
-    .data(dataset)
-		.attr("id", function(d) {
-			return "tooltip";
+    .attr("fill", "white")
+		.on("mouseover", function(d){
+			var texto = ("<dl><dt>Estado</dt><dd>" + d.nome
+									+"</dd><dt>Sigla</dt><dd>" +d.estado
+									+"</dd><dt>Total candidatos</dt><dd>" +d.total
+									+"</dd><dt>Total gênero Feminino</dt><dd>" +d.fem
+									+"</dd><dt>Total curso superior</dt><dd>" +d.csup
+									+"</dd></dl>");
+			$("#detalhe").append(texto);
 		})
-      .text(function(d) {
-        return "Estado:" +"\t"+"\t"+"\t" + d.nome + "\n"
-        + "Total:" +"\t"+"\t"+"\t" + d.total + "\n"
-        + "Feminino:" +"\t"+"\t"+d.fem + "\n"
-        + "Curso sup.completo:" +"\t"+ d.csup;
-      });
-    return;
+		.on("mouseout", function(d){
+			$("#detalhe").html("");
+		});
 }
+
 
 //------------------------------------------------------------
 //---------------------------FUNCOES GRAFICO COR PELE---------
