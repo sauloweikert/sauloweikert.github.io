@@ -49,9 +49,10 @@ function montaDetalhe(opcao){
 	divDetalhe.id = 'detalhe';
 
 	//definicao dinamica do estilo da legenda
-	divDetalhe.style.borderStyle = 'double';
+	divDetalhe.style.border = "10px";
+	divDetalhe.style.borderRadius ="25px";
 	divDetalhe.style.display = 'inline-block';
-	divDetalhe.style.width = '130px';
+	divDetalhe.style.width = '195x';
 	divDetalhe.style.height = '130px';
 	divDetalhe.style.position = 'absolute';
 	divDetalhe.style.right ='130px';
@@ -148,13 +149,6 @@ function criaSuporteGrafico(opcao){
  	divGrafico.style.overflowX ='auto';
 	document.getElementsByClassName("painel-grafico-"+opcao)[0].appendChild(divGrafico);
 
-
-	// Define the div for the tooltip
-	var diva = d3.select(".div-grafico").append("div")
-	    .attr("class", "tooltip")
-	    .style("opacity", 0)
-			.style("backgroundColor","orange")
-			.style("border","double");
 
 	//cria dinamicamente elemento tipo svg que sera o grafico
 	var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
