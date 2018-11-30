@@ -293,40 +293,6 @@ function constroiCirculosEstadosOriginal(xScale,yScale,rScale){
   rotulaCirculosEstadoOriginal(xScale,yScale);
 }
 
-function removeTooltip(){
-			$("#detalhe").html("");
-}
-
-
-function fillCircle(selecao){
-	//definindo propriedades dos circulos
-	selecao.attr("cx", function(d) {
-		return xScale((d.fem)/(d.total));
-	})
-	.attr("cy", function(d) {
-		return yScale((d.csup)/(d.total));
-	})
-	.attr("r", function(d) {
-		return rScale(d.total);
-	})
-	.attr("fill", function(d) {
-		return d.regiao;
-	})
-	.attr("id", function(d) {
-		return "circuloEstado";
-	})
-	.on("mouseover", function(d){
-		var texto = ("<dl><dt>Estado</dt><dd>" + d.nome
-								+"</dd><dt>Sigla</dt><dd>" +d.estado
-								+"</dd><dt>Total candidatos</dt><dd>" +d.total
-								+"</dd><dt>Total gênero Feminino</dt><dd>" +d.fem
-								+"</dd><dt>Total curso superior</dt><dd>" +d.csup
-								+"</dd></dl>");
-		$("#detalhe").append(texto);
-	})
-	.on("mouseout", removeTooltip());
-}
-
 
 //desenha os circulos - grafico estados
 function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
@@ -335,9 +301,36 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
     .data(dataset)
 		.enter()
 		.append("circle");
-//		.transition()
-//		.duration(2000)
-		fillCircle(selecao);
+		//		.transition()
+		//		.duration(2000)
+		//definindo propriedades dos circulos
+		selecao.attr("cx", function(d) {
+			return xScale((d.fem)/(d.total));
+		})
+		.attr("cy", function(d) {
+			return yScale((d.csup)/(d.total));
+		})
+		.attr("r", function(d) {
+			return rScale(d.total);
+		})
+		.attr("fill", function(d) {
+			return d.regiao;
+		})
+		.attr("id", function(d) {
+			return "circuloEstado";
+		})
+		.on("mouseover", function(d){
+			var texto = ("<dl><dt>Estado</dt><dd>" + d.nome
+									+"</dd><dt>Sigla</dt><dd>" +d.estado
+									+"</dd><dt>Total candidatos</dt><dd>" +d.total
+									+"</dd><dt>Total gênero Feminino</dt><dd>" +d.fem
+									+"</dd><dt>Total curso superior</dt><dd>" +d.csup
+									+"</dd></dl>");
+			$("#detalhe").append(texto);
+		})
+		.on("mouseout", function(d){
+			$("#detalhe").html("");
+		});
 }
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
