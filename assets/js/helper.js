@@ -75,10 +75,12 @@ function montaDetalhe(opcao){
 function montaLegenda(opcao){
 	var divLegenda = document.createElement('div');
 	divLegenda.id = 'legend';
-	vilLegenda.className ="rounded";
+	dilLegenda.className ="rounded";
 
 	//definicao dinamica do estilo da legenda
 	divLegenda.style.borderStyle = 'double';
+	divLegenda.style.borderRadius = '25px';
+
 	divLegenda.style.display = 'inline-block';
 	divLegenda.style.width = '120px';
 	divLegenda.style.position = 'absolute';
