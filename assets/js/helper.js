@@ -75,6 +75,7 @@ function montaDetalhe(opcao){
 function montaLegenda(opcao){
 	var divLegenda = document.createElement('div');
 	divLegenda.id = 'legend';
+	vilLegenda.className ="rounded";
 
 	//definicao dinamica do estilo da legenda
 	divLegenda.style.borderStyle = 'double';
@@ -628,7 +629,7 @@ function desenhaCirculosCorPeleOriginal(xScale,yScale,rScale){
 		.on("mouseout", function(d){
 			$("#detalhe").html("");
 		});
-		
+
 		//define uma transicao para o grafico
 		selecao
 			.transition()
