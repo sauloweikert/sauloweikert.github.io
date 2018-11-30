@@ -78,7 +78,7 @@ function montaLegenda(opcao){
 	divLegenda.className ="rounded";
 
 	//definicao dinamica do estilo da legenda
-	divLegenda.style.borderStyle = 'double';
+	divLegenda.style.borderStyle = 'solid';
 	divLegenda.style.borderRadius = '25px';
 
 	divLegenda.style.display = 'inline-block';
