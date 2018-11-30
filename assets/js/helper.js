@@ -676,8 +676,8 @@ function constroiCirculosCorPele(xScale,yScale,rScale){
 function desenhaCirculosCorPele(xScale,yScale,rScale){
 d3.select(".chart-corpele").selectAll("#circuloCorPele")
   .data(dataset)
-//  .transition()
-//  .duration(2000)
+  .transition()
+  .duration(2000)
   //definindo propriedades dos circulos
   .attr("cx", function(d) {
     return xScale((d.fem)/(d.total));
