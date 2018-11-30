@@ -331,8 +331,6 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 									+"</dd><dt>Total curso superior</dt><dd>" +d.csup
 									+"</dd></dl>");
 			$("#detalhe").append(texto);
-		}
-
 		})
     .on("mouseout", removeTooltip());
 }
