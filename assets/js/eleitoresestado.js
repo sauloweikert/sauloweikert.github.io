@@ -130,7 +130,7 @@ function fazGraficoEleitoresEstado(opcao){
 
     /*Cria o conjunto de barras múltiplas baseando-se no valor absoluto e agrupando as barras
     por estado.*/
-    g.append("g")
+    var selecao = g.append("g")
       .selectAll("g")
       .data(data)
       .enter().append("g")
@@ -185,6 +185,8 @@ function fazGraficoEleitoresEstado(opcao){
   	d3.select("#tool").remove();
   	d3.select("#tool1").remove();
         });
+
+        selecao.transition().duration(2000);
 
         /*Adiciona um eixo Y ao gráfico.*/
     g.append("g")
