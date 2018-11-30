@@ -522,8 +522,19 @@ function desenhaCirculosEstado(xScale,yScale,rScale){
 		esta linha por criterio de eficiencia de rendering
     .attr("fill", function(d) {
       return d.regiao;
-    })*/;
-
+    })*/
+		.on("mouseover", function(d){
+			var texto = ("<dl><dt>Estado</dt><dd>" + d.nome
+									+"</dd><dt>Sigla</dt><dd>" +d.estado
+									+"</dd><dt>Total candidatos</dt><dd>" +d.total
+									+"</dd><dt>Total gênero Feminino</dt><dd>" +d.fem
+									+"</dd><dt>Total curso superior</dt><dd>" +d.csup
+									+"</dd></dl>");
+			$("#detalhe").append(texto);
+		})
+		.on("mouseout", function(d){
+			$("#detalhe").html("");
+		});
 }
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
@@ -544,19 +555,7 @@ function rotulaCirculosEstado(xScale,yScale){
     .attr("text-anchor", "middle")
     .attr("font-family", "sans-serif")
     .attr("font-size", "11px")
-    .attr("fill", "white")
-		.on("mouseover", function(d){
-			var texto = ("<dl><dt>Estado</dt><dd>" + d.nome
-									+"</dd><dt>Sigla</dt><dd>" +d.estado
-									+"</dd><dt>Total candidatos</dt><dd>" +d.total
-									+"</dd><dt>Total gênero Feminino</dt><dd>" +d.fem
-									+"</dd><dt>Total curso superior</dt><dd>" +d.csup
-									+"</dd></dl>");
-			$("#detalhe").append(texto);
-		})
-		.on("mouseout", function(d){
-			$("#detalhe").html("");
-		});
+    .attr("fill", "white");
 }
 
 
@@ -581,7 +580,6 @@ function refrescaGraficoCorPele(data, padding,w,h,rScale,xScale,yScale,xAxis,yAx
 function constroiCirculosCorPeleOriginal(xScale,yScale,rScale){
   desenhaCirculosCorPeleOriginal(xScale,yScale,rScale);
   rotulaCirculosCorPeleOriginal(xScale,yScale);
-	dicaCirculosPorCorPeleOriginal();
 }
 
 
@@ -594,8 +592,8 @@ function desenhaCirculosCorPeleOriginal(xScale,yScale,rScale){
 		.append("circle")
 
 		//define propiedades dos circulos
-    .transition()
-    .duration(2000)
+//    .transition()
+//    .duration(2000)
     //definindo propriedades dos circulos
     .attr("cx", function(d) {
       return xScale((d.fem)/(d.total));
@@ -611,6 +609,17 @@ function desenhaCirculosCorPeleOriginal(xScale,yScale,rScale){
     })
 		.attr("id", function(d) {
 			return "circuloCorPele";
+		})
+		.on("mouseover", function(d){
+			var texto = ("<dl><dt>Grupo Cor de Pele</dt><dd>" + d.nome
+									+"</dd><dt>Total do grupo</dt><dd>" +d.totalGrupo
+									+"</dd><dt>Total grupo gênero Feminino</dt><dd>" +d.fem
+									+"</dd><dt>Total grupo curso superior</dt><dd>" +d.csup
+									+"</dd></dl>");
+			$("#detalhe").append(texto);
+		})
+		.on("mouseout", function(d){
+			$("#detalhe").html("");
 		});
 }
 
@@ -640,24 +649,6 @@ function rotulaCirculosCorPeleOriginal(xScale,yScale){
 		});
 }
 
-//adiciona uma dica "tooltip" para cada circulo, visivel ao sobrepor o mouse
-//a ser usado para grafico Pele
-
-function dicaCirculosPorCorPeleOriginal(){
-  d3.select(".chart-corpele").selectAll("#circuloCorPele")
-    .data(dataset)
-		.enter()
-    .append("title")
-      .text(function(d) {
-        return "Cor:" +"\t"+"\t"+"\t" + d.cor + "\n"
-        + "Total do grupo:" +"\t"+"\t"+"\t" + d.totalGrupo + "\n"
-        + "Feminino:" +"\t"+"\t"+d.fem + "\n"
-        + "Curso sup.completo:" +"\t"+ d.csup;
-      });
-    return;
-}
-
-
 //----------------------------------------------------------------------------
 //funcoes escalas
 
@@ -679,15 +670,14 @@ function atualizaEscalaRaioCorPele(data,rScale){
 function constroiCirculosCorPele(xScale,yScale,rScale){
   desenhaCirculosCorPele(xScale,yScale,rScale);
   rotulaCirculosCorPele(xScale,yScale);
-  dicaCirculosPorCorPele();
 }
 
 //desenha os circulos - grafico cor pele
 function desenhaCirculosCorPele(xScale,yScale,rScale){
 d3.select(".chart-corpele").selectAll("#circuloCorPele")
   .data(dataset)
-  .transition()
-  .duration(2000)
+//  .transition()
+//  .duration(2000)
   //definindo propriedades dos circulos
   .attr("cx", function(d) {
     return xScale((d.fem)/(d.total));
@@ -701,7 +691,18 @@ d3.select(".chart-corpele").selectAll("#circuloCorPele")
 		/*mantem-se inalterado
   .attr("fill", function(d){
     return d.corCirculo;
-  })*/;
+  })*/
+	.on("mouseover", function(d){
+		var texto = ("<dl><dt>Grupo Cor de Pele</dt><dd>" + d.nome
+								+"</dd><dt>Total do grupo</dt><dd>" +d.totalGrupo
+								+"</dd><dt>Total grupo gênero Feminino</dt><dd>" +d.fem
+								+"</dd><dt>Total grupo curso superior</dt><dd>" +d.csup
+								+"</dd></dl>");
+		$("#detalhe").append(texto);
+	})
+	.on("mouseout", function(d){
+		$("#detalhe").html("");
+	}
 }
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
@@ -723,20 +724,5 @@ function rotulaCirculosCorPele(xScale,yScale){
     .attr("font-family", "sans-serif")
     .attr("font-size", "11px")
     .attr("fill", "olive");
-}
-
-//adiciona uma dica "tooltip" para cada circulo, visivel ao sobrepor o mouse
-//a ser usado para grafico CorPele
-function dicaCirculosPorCorPele(){
-  d3.select(".chart-corpele").selectAll("#circuloCorPele")
-    .data(dataset)
-    .append("title")
-      .text(function(d) {
-        return "Cor:" +"\t"+"\t"+"\t" + d.cor + "\n"
-        + "Total do grupo:" +"\t"+"\t" + d.totalGrupo + "\n"
-        + "Feminino:" +"\t"+"\t"+d.fem + "\n"
-        + "Curso sup.completo:" +"\t"+ d.csup;
-      });
-      return;
 }
 //----------------------------------------------------------------------------
