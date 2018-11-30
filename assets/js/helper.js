@@ -16,6 +16,8 @@ function sairGrafico(){
 		$('#botao-sair').remove();
 		//verifica e fecha legendas abertas
 		if ($('#legend').length){ $('#legend').remove();}
+		if ($('#detalhe').length){ $('#detalhe').remove();}
+
 
 	//reabilita o botao visualizar
 	document.getElementsByClassName("botao-visualizar").disabled = false;
