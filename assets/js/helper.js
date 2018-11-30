@@ -75,7 +75,7 @@ function montaDetalhe(opcao){
 function montaLegenda(opcao){
 	var divLegenda = document.createElement('div');
 	divLegenda.id = 'legend';
-	dilLegenda.className ="rounded";
+	divLegenda.className ="rounded";
 
 	//definicao dinamica do estilo da legenda
 	divLegenda.style.borderStyle = 'double';
