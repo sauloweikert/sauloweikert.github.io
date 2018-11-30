@@ -702,7 +702,7 @@ d3.select(".chart-corpele").selectAll("#circuloCorPele")
 	})
 	.on("mouseout", function(d){
 		$("#detalhe").html("");
-	}
+	});
 }
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
