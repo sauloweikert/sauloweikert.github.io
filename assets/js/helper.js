@@ -325,21 +325,16 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 		//	$(p).text("Estado:" + d.nome +);
 		//	$("#detalhe").append(p);
 		var testo = ("<dl><dt>Estado</dt><dd>" + d.nome
-		+"</dd><dt>Sigla</dt><dd>" +d.estado
-		+"</dd><dt>Total candidatos</dt><dd>" +d.total
-		+"</dd><dt>Total gênero Feminino</dt><dd>" +d.fem
-		+"</dd><dt>Total curso superior</dt><dd>" +d.csup
-		+"</dd></dl>");
+								+"</dd><dt>Sigla</dt><dd>" +d.estado
+								+"</dd><dt>Total candidatos</dt><dd>" +d.total
+								+"</dd><dt>Total gênero Feminino</dt><dd>" +d.fem
+								+"</dd><dt>Total curso superior</dt><dd>" +d.csup
+								+"</dd></dl>");
 		testo.id = 'dica-texto';
-		//	"Estado" + d.nome + "<br/>" + "Sigla");
-			/*
-			+ "Total:" + d.total
-			+ "Feminino:" +d.fem
-			+ "Curso sup.completo:" + d.csup);*/
-			$("#detalhe").append(testo);
+		$("#detalhe").append(testo);
 		})
     .on("mouseout", function(d) {
-			$("#dica-texto").fadeOut(2000).delay(2000).remove();
+			$("#dica-texto").remove();
     });
 }
 
