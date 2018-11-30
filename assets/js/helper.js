@@ -324,7 +324,8 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 		//	p.id = 'dica-texto';
 		//	$(p).text("Estado:" + d.nome +);
 		//	$("#detalhe").append(p);
-		var testo = ("Estado" + d.nome + "<br/>" + "Sigla");
+		var testo = ("<dl><dt>Estado</dt><dd>" + d.nome "</dd></dl>");
+		//	"Estado" + d.nome + "<br/>" + "Sigla");
 			/*
 			+ "Total:" + d.total
 			+ "Feminino:" +d.fem
