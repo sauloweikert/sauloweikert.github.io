@@ -293,7 +293,7 @@ function constroiCirculosEstadosOriginal(xScale,yScale,rScale){
   rotulaCirculosEstadoOriginal(xScale,yScale);
 }
 
-function preencheTooltip(d){
+function preencheTooltip(function(d)){
 	var texto = ("<dl><dt>Estado</dt><dd>" + d.nome
 							+"</dd><dt>Sigla</dt><dd>" +d.estado
 							+"</dd><dt>Total candidatos</dt><dd>" +d.total
@@ -333,7 +333,7 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 		.attr("id", function(d) {
 			return "circuloEstado";
 		})
-		.on("mouseover", preencheTooltip(d))
+		.on("mouseover", preencheTooltip(function(d)))
     .on("mouseout", removeTooltip());
 }
 
