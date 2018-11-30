@@ -338,7 +338,7 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 //		.transition()
 //		.duration(2000)
 		fillCircle(selecao);
-
+}
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
 function rotulaCirculosEstadoOriginal(xScale,yScale){
