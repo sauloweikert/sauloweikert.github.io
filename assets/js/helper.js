@@ -322,10 +322,10 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 		.on("mouseover", function(d) {
 			var p = document.createElement('p');
 			p.id = 'dica-texto';
-			$(p).text("Estado:" +"\t"+"\t"+"\t" + d.nome + \n
-			+ "Total:" +"\t"+"\t"+"\t" + d.total + "\n"
-			+ "Feminino:" +"\t"+"\t"+d.fem + "\n"
-			+ "Curso sup.completo:" +"\t"+ d.csup);
+			$(p).text("Estado:" + d.nome
+			+ "Total:" + d.total
+			+ "Feminino:" +d.fem
+			+ "Curso sup.completo:" + d.csup);
 			$("#detalhe").append(p);
 		})
     .on("mouseout", function(d) {
