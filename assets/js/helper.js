@@ -293,16 +293,6 @@ function constroiCirculosEstadosOriginal(xScale,yScale,rScale){
   rotulaCirculosEstadoOriginal(xScale,yScale);
 }
 
-function preencheTooltip(){
-	var texto = ("<dl><dt>Estado</dt><dd>" + d.nome
-							+"</dd><dt>Sigla</dt><dd>" +d.estado
-							+"</dd><dt>Total candidatos</dt><dd>" +d.total
-							+"</dd><dt>Total gênero Feminino</dt><dd>" +d.fem
-							+"</dd><dt>Total curso superior</dt><dd>" +d.csup
-							+"</dd></dl>");
-	$("#detalhe").append(texto);
-}
-
 function removeTooltip(){
 			$("#detalhe").html("");
 }
@@ -315,8 +305,8 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
     .data(dataset)
 		.enter()
 		.append("circle")
-//		.transition()
-//		.duration(2000)
+		.transition()
+		.duration(2000)
 		//definindo propriedades dos circulos
     .attr("cx", function(d) {
       return xScale((d.fem)/(d.total));
@@ -334,7 +324,15 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 			return "circuloEstado";
 		})
 		.on("mouseover", function(d){
-			preencheTooltip();
+			var texto = ("<dl><dt>Estado</dt><dd>" + d.nome
+									+"</dd><dt>Sigla</dt><dd>" +d.estado
+									+"</dd><dt>Total candidatos</dt><dd>" +d.total
+									+"</dd><dt>Total gênero Feminino</dt><dd>" +d.fem
+									+"</dd><dt>Total curso superior</dt><dd>" +d.csup
+									+"</dd></dl>");
+			$("#detalhe").append(texto);
+		}
+
 		})
     .on("mouseout", removeTooltip());
 }
