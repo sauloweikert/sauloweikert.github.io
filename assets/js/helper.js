@@ -291,8 +291,22 @@ function atualizaGrafico(padding,w,h,opcao,rScale,xScale,yScale,xAxis,yAxis){
 function constroiCirculosEstadosOriginal(xScale,yScale,rScale){
   desenhaCirculosEstadoOriginal(xScale,yScale,rScale);
   rotulaCirculosEstadoOriginal(xScale,yScale);
-	//dicaCirculosPorEstadoOriginal();
 }
+
+function preencheTooltip(d){
+	var texto = ("<dl><dt>Estado</dt><dd>" + d.nome
+							+"</dd><dt>Sigla</dt><dd>" +d.estado
+							+"</dd><dt>Total candidatos</dt><dd>" +d.total
+							+"</dd><dt>Total gênero Feminino</dt><dd>" +d.fem
+							+"</dd><dt>Total curso superior</dt><dd>" +d.csup
+							+"</dd></dl>");
+	$("#detalhe").append(texto);
+}
+
+function removeTooltip(){
+			$("#detalhe").html("");
+}
+
 
 //desenha os circulos - grafico estados
 function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
@@ -319,23 +333,10 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 		.attr("id", function(d) {
 			return "circuloEstado";
 		})
-		.on("mouseover", function(d) {
-		//	var p = document.createElement('p');
-		//	p.id = 'dica-texto';
-		//	$(p).text("Estado:" + d.nome +);
-		//	$("#detalhe").append(p);
-		var testo = ("<dl><dt>Estado</dt><dd>" + d.nome
-								+"</dd><dt>Sigla</dt><dd>" +d.estado
-								+"</dd><dt>Total candidatos</dt><dd>" +d.total
-								+"</dd><dt>Total gênero Feminino</dt><dd>" +d.fem
-								+"</dd><dt>Total curso superior</dt><dd>" +d.csup
-								+"</dd></dl>");
-		$("#detalhe").append(testo);
-		})
-    .on("mouseout", function(d) {
-			$("#detalhe").html("");
-    });
+		.on("mouseover", preencheTooltip(d));
+    .on("mouseout", removeTooltip());
 }
+
 
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
