@@ -368,28 +368,6 @@ function rotulaCirculosEstadoOriginal(xScale,yScale){
 		});
 }
 
-//adiciona uma dica "tooltip" para cada circulo, visivel ao sobrepor o mouse
-//a ser usado para grafico Estados
-
-function dicaCirculosPorEstadoOriginal(){
-
-
-	//anexa novas tolltips baseadas nos dados do circulo em questao
-  d3.selectAll("#circuloEstado").selectAll("#tooltip")
-    .data(dataset)
-		.enter()
-    .append("svg:title")
-			.attr("id", function(d) {
-				return "tooltip";
-			})
-      .text(function(d) {
-        return "Estado:" +"\t"+"\t"+"\t" + d.nome + "\n"
-        + "Total:" +"\t"+"\t"+"\t" + d.total + "\n"
-        + "Feminino:" +"\t"+"\t"+d.fem + "\n"
-        + "Curso sup.completo:" +"\t"+ d.csup;
-      });
-}
-
 //---------------------------------------------------------------------------
 //funcoes escalas
 
@@ -514,7 +492,7 @@ function constroiCirculosEstados(xScale,yScale,rScale){
 function desenhaCirculosEstado(xScale,yScale,rScale){
 
 	var selecao = d3.select(".chart-estados").selectAll("#circuloEstado")
-    .data(dataset)
+    .data(dataset).enter().append("circle")
 
     //definindo propriedades dos circulos
     .attr("cx", function(d) {
