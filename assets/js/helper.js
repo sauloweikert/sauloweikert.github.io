@@ -542,7 +542,9 @@ function desenhaCirculosEstado(xScale,yScale,rScale){
 		})
 		.on("mouseout", function(d){
 			$("#detalhe").html("");
-		});
+		})
+		.exit()
+		.remove();
 
 		//define uma transicao para o grafico
 		selecao
