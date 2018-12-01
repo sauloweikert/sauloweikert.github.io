@@ -1,0 +1,42 @@
+[
+  {
+    "nome": "Sudeste",
+    "estado":"SE",
+    "total": 9561,
+    "fem": 2940,
+    "csup":4226,
+    "regiao": "#003366"
+  },
+  {
+    "nome": "Nordeste",
+    "estado":"NE",
+    "total": 5801,
+    "fem": 1820,
+    "csup":2615,
+    "regiao": "#ff6600"
+  },
+  {
+    "nome": "Sul",
+    "estado":"S",
+    "total": 3005,
+    "fem": 940,
+    "csup":1451,
+    "regiao": "#990033"
+  },
+  {
+    "nome": "Centroeste",
+    "estado":"CO",
+    "total": 2545,
+    "fem": 319,
+    "csup":464,
+    "regiao": "#cc00ff"
+  },
+  {
+    "nome": "Norte",
+    "estado":"N",
+    "total": 1050,
+    "fem": 320,
+    "csup":453,
+    "regiao": "#009966"
+  }
+]
