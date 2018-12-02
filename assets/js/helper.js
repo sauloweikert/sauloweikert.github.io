@@ -306,6 +306,11 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 	var selecao =d3.select(".chart-estados").selectAll("#circulo")
     .data(dataset);
 
+		console.log("dentro original");
+		if ($('.original').length){
+			console.log("orignal vale");
+		}else console.log("original nao vale");
+
 		selecao
 		.enter()
 		.append("circle")
@@ -502,10 +507,16 @@ function constroiCirculosEstados(opcao,xScale,yScale,rScale){
 function desenhaCirculosEstado(opcao,xScale,yScale,rScale){
 
 	var selecao = d3.select(".chart-"+opcao).selectAll("#circulo")
-    .data(dataset)
+    .data(dataset);
+
+		console.log("dentro atual");
+		if ($('.original').length){
+			console.log("orignal vale");
+		}else console.log("original nao vale");
+
 
     //definindo propriedades dos circulos
-    .attr("cx", function(d) {
+    selecao.attr("cx", function(d) {
       return xScale((d.fem)/(d.total));
     })
     .attr("cy", function(d) {
