@@ -335,8 +335,9 @@ function desenhaCirculosEstado(selecoes,escalas){
 			console.log("orignal vale");
 		}else console.log("original nao vale");
 */
-	if(selecoes.original===true){
-
+	if(selecoes.original==true){
+				console.log("sele originais v");
+				selecoes.original=false;
 				selecao
 				.enter()
 				.append("circle")
