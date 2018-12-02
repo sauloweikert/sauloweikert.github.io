@@ -307,7 +307,7 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
     .data(dataset);
 
 		console.log("dentro original");
-		if ($('.original').length){
+		if ($('.originals').length){
 			console.log("orignal vale");
 		}else console.log("original nao vale");
 
