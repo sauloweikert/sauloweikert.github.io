@@ -151,7 +151,6 @@ function criaSuporteGrafico(opcao){
 	//cria dinamicamente elemento do tipo div para conter o grafico
 	var divGrafico = document.createElement('div');
 	divGrafico.className = 'div-grafico';
-	divGrafico.id = 'original';
  	divGrafico.style.overflowX ='auto';
 	document.getElementsByClassName("painel-grafico-"+opcao)[0].appendChild(divGrafico);
 
@@ -190,6 +189,7 @@ function montaGrafico(opcao){
 
 	montaDetalhe(opcao);
 
+	$(".painel-grafico-"+opcao).id='original';
 	montaGraficoOriginal(padding,w,h,opcao);
 
 
@@ -307,7 +307,7 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
     .data(dataset);
 
 		console.log("dentro original");
-		if ($('.originals').length){
+		if ($('.original').length){
 			console.log("orignal vale");
 		}else console.log("original nao vale");
 
