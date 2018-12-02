@@ -173,7 +173,7 @@ else if (opcao==='corpele') return 1150;
 //-----------------------------------------------------------------------------
 
 
-function montaGrafico(opcao){
+function fazGrafico(opcao){
 
 	//verifica e fecha outras visualizações abertas
 	//fechaVisualizacoes(opcao);
@@ -200,16 +200,23 @@ function montaGrafico(opcao){
 
 	montaDetalhe(opcao);
 
+
+	var selecoes={
+		opcao: opcao,
+		original:true
+	};
 /*
 	$(".painel-grafico-"+opcao).className='original';*/
-	montaGraficoOriginal(dimensoes,opcao);
+	montaGrafico(selecoes,dimensoes);
 
 }
 
 
 //-------------------------------------funcoes grafico original
 
-function montaGraficoOriginal(dimensoes,opcao){
+function montaGrafico(selecoes,dimensoes){
+
+		var opcao=selecoes.opcao;
 
 		d3.json("dados/2014-"+opcao + ".json", function(error,data) {
 			if (error) { //If error is not null, something went wrong.
@@ -240,7 +247,7 @@ function montaGraficoOriginal(dimensoes,opcao){
 					desenhaEixoY(eixos.yAxis,dimensoes,opcao);
 					rotulaEixoY(dimensoes,opcao);
 
-					constroiCirculosEstadosOriginal(escalas);
+					constroiCirculosEstados(selecoes,escalas);
 
 				}
 
@@ -285,7 +292,7 @@ function refrescaGraficoEstado(opcao,data,dimensoes,escalas,eixos){
   atualizaEixoX(eixos.xAxis);
 	atualizaEixoY(eixos.yAxis);
 
-  constroiCirculosEstados(opcao,escalas);
+  constroiCirculosEstados(selecoes,escalas);
 }
 
 function atualizaGrafico(dimensoes,opcao,escalas,eixos){
@@ -311,14 +318,14 @@ function atualizaGrafico(dimensoes,opcao,escalas,eixos){
 //-----------------------------------funcoes circulos - estados
 
 //constroi circulos - estados
-function constroiCirculosEstadosOriginal(escalas){
-  desenhaCirculosEstadoOriginal(escalas);
-  rotulaCirculosEstadoOriginal(escalas);
+function constroiCirculosEstados(selecoes,escalas){
+  desenhaCirculosEstado(selecoes,escalas);
+  rotulaCirculosEstado(selecoes,escalas);
 }
 
 
 //desenha os circulos - grafico estados
-function desenhaCirculosEstadoOriginal(escalas){
+function desenhaCirculosEstado(selecoes,escalas){
 
 	var selecao =d3.select(".chart-estados").selectAll("#circulo")
     .data(dataset);
@@ -328,14 +335,18 @@ function desenhaCirculosEstadoOriginal(escalas){
 			console.log("orignal vale");
 		}else console.log("original nao vale");
 */
-		selecao
-		.enter()
-		.append("circle")
-		.attr("id", function(d) {
-			return "circulo";
-		})
+	if(selecoes.original===true){
+
+				selecao
+				.enter()
+				.append("circle")
+				.attr("id", function(d) {
+					return "circulo";
+				});
+	}
 
 		//definindo propriedades dos circulos
+		selecao
 		.attr("cx", function(d) {
 			return escalas.xScale((d.fem)/(d.total));
 		})
@@ -367,12 +378,23 @@ function desenhaCirculosEstadoOriginal(escalas){
 			.duration(2000);
 }
 
+
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
-function rotulaCirculosEstadoOriginal(escalas){
-  d3.select(".chart-estados").selectAll("#textoEstado")
-    .data(dataset)
-		.enter()
-		.append("text")
+function rotulaCirculosEstado(selecoes,escalas){
+  	var selecao =d3.select(".chart-estados").selectAll("#texto")
+    .data(dataset);
+
+		if(selecoes.original===true){
+
+					selecao
+					.enter()
+					.append("text")
+					.attr("id", function(d) {
+						return "texto";
+					});
+		}
+
+		selecao
     .transition()
     .duration(2000)
     .text(function(d) {
@@ -387,10 +409,7 @@ function rotulaCirculosEstadoOriginal(escalas){
     .attr("text-anchor", "middle")
     .attr("font-family", "sans-serif")
     .attr("font-size", "11px")
-    .attr("fill", "white")
-		.attr("id", function(d) {
-			return "textoEstado";
-		});
+    .attr("fill", "white");
 }
 
 //---------------------------------------------------------------------------
@@ -514,80 +533,6 @@ function rotulaEixoY(dimensoes,opcao){
 //----------------------------------------------------------------------------
 //funcoes contrucao circulos - grafico estados -
 
-//constroi circulos - estados
-function constroiCirculosEstados(opcao,escalas){
-  desenhaCirculosEstado(opcao,escalas);
-  rotulaCirculosEstado(escalas);
-}
-
-//desenha os circulos - grafico estados
-function desenhaCirculosEstado(opcao,escalas){
-
-	var selecao = d3.select(".chart-"+opcao).selectAll("#circulo")
-    .data(dataset);
-/*
-		console.log("dentro atual");
-		if ($('.original').length){
-			console.log("orignal vale");
-		}else console.log("original nao vale");
-*/
-
-    //definindo propriedades dos circulos
-    selecao.attr("cx", function(d) {
-      return escalas.xScale((d.fem)/(d.total));
-    })
-    .attr("cy", function(d) {
-      return escalas.yScale((d.csup)/(d.total));
-    })
-    .attr("r", function(d) {
-      return escalas.rScale(d.total);
-    })
-		/*----nos dados atuais a regiao mantem a ordem de aparicao. comenta-se
-		esta linha por criterio de eficiencia de rendering
-    .attr("fill", function(d) {
-      return d.regiao;
-    })*/
-		.on("mouseover", function(d){
-			var texto = ("<dl><dt>Estado</dt><dd>" + d.nome
-									+"</dd><dt>Sigla</dt><dd>" +d.estado
-									+"</dd><dt>Total candidatos</dt><dd>" +d.total
-									+"</dd><dt>Total gênero Feminino</dt><dd>" +d.fem
-									+"</dd><dt>Total curso superior</dt><dd>" +d.csup
-									+"</dd></dl>");
-			$("#detalhe").append(texto);
-		})
-		.on("mouseout", function(d){
-			$("#detalhe").html("");
-		})
-		.exit()
-		.remove();
-
-		//define uma transicao para o grafico
-		selecao
-			.transition()
-			.duration(2000);
-}
-
-//adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
-function rotulaCirculosEstado(escalas){
-  d3.select(".chart-estados").selectAll("#textoEstado")
-    .data(dataset)
-    .transition()
-    .duration(2000)
-    .text(function(d) {
-      return d.estado;
-    })
-    .attr("x", function(d) {
-      return escalas.xScale((d.fem)/(d.total))
-    })
-    .attr("y", function(d) {
-      return escalas.yScale((d.csup)/(d.total));
-    })
-    .attr("text-anchor", "middle")
-    .attr("font-family", "sans-serif")
-    .attr("font-size", "11px")
-    .attr("fill", "white");
-}
 
 
 //------------------------------------------------------------
