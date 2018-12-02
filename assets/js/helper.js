@@ -379,10 +379,10 @@ function rotulaCirculosEstadoOriginal(escalas){
       return d.estado;
     })
     .attr("x", function(d) {
-      return xScale((d.fem)/(d.total))
+      return escalas.xScale((d.fem)/(d.total))
     })
     .attr("y", function(d) {
-      return yScale((d.csup)/(d.total));
+      return escalas.yScale((d.csup)/(d.total));
     })
     .attr("text-anchor", "middle")
     .attr("font-family", "sans-serif")
