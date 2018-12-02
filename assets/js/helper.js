@@ -151,6 +151,7 @@ function criaSuporteGrafico(opcao){
 	//cria dinamicamente elemento do tipo div para conter o grafico
 	var divGrafico = document.createElement('div');
 	divGrafico.className = 'div-grafico';
+	divGrafico.id = 'original';
  	divGrafico.style.overflowX ='auto';
 	document.getElementsByClassName("painel-grafico-"+opcao)[0].appendChild(divGrafico);
 
@@ -492,7 +493,7 @@ function constroiCirculosEstados(xScale,yScale,rScale){
 function desenhaCirculosEstado(xScale,yScale,rScale){
 
 	var selecao = d3.select(".chart-estados").selectAll("#circuloEstado")
-    .data(dataset).enter().append("circle")
+    .data(dataset)
 
     //definindo propriedades dos circulos
     .attr("cx", function(d) {
