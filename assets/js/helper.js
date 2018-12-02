@@ -212,7 +212,7 @@ function montaGraficoOriginal(padding,w,h,opcao){
 				if(opcao === 'estados'){
 
 					var rScale = d3.scaleLinear();
-					atualizaEscalaRaioEstados(data,rScale);
+					atualizaEscalaRaio(opcao,data,rScale);
 
 					var xScale = d3.scaleLinear();
 					atualizaEscalaX(data,padding,w,xScale);
@@ -233,7 +233,7 @@ function montaGraficoOriginal(padding,w,h,opcao){
 				else if(opcao === 'corpele'){
 
 					var rScale = d3.scaleLinear();
-					atualizaEscalaRaioCorPele(data,rScale);
+					atualizaEscalaRaio(opcao,data,rScale);
 
 					var xScale = d3.scaleLog();
 					atualizaEscalaX(data,padding,w,xScale);
@@ -258,10 +258,10 @@ function montaGraficoOriginal(padding,w,h,opcao){
 
 //-----------------------------------------funcoes atualizacao grafico estado
 
-function refrescaGraficoEstado(data, padding,w,h,rScale,xScale,yScale,xAxis,yAxis){
+function refrescaGraficoEstado(opcao,data, padding,w,h,rScale,xScale,yScale,xAxis,yAxis){
   dataset = data;
 
-	atualizaEscalaRaioEstados(data,rScale);
+	atualizaEscalaRaio(opcao,data,rScale);
   atualizaEscalaX(data,padding,w,xScale);
   atualizaEscalaY(data,padding,h,yScale);
 
@@ -283,8 +283,8 @@ function atualizaGrafico(padding,w,h,opcao,rScale,xScale,yScale,xAxis,yAxis){
 			}
 			else {
 
-				if(opcao === 'estados')refrescaGraficoEstado(data, padding,w,h,rScale,xScale,yScale,xAxis,yAxis);
-				else if(opcao === 'corpele')refrescaGraficoCorPele(data, padding,w,h,rScale,xScale,yScale,xAxis,yAxis);
+				if(opcao === 'estados')refrescaGraficoEstado(opcao,data, padding,w,h,rScale,xScale,yScale,xAxis,yAxis);
+				else if(opcao === 'corpele')refrescaGraficoCorPele(opcao,data, padding,w,h,rScale,xScale,yScale,xAxis,yAxis);
 
 				}//fecha else
 			});
@@ -374,10 +374,17 @@ function rotulaCirculosEstadoOriginal(xScale,yScale){
 
 
 //atualiza escala do raio
-function atualizaEscalaRaioEstados(data,rScale){
-	rScale.domain([0, d3.max(data, function(d) { return d.total; })])
-	.range([10, 40]);
-	return;
+function atualizaEscalaRaio(opcao,data,rScale){
+	if(opcao === 'estados'){
+		rScale.domain([0, d3.max(data, function(d) { return d.total; })])
+		.range([10, 40]);
+		return;
+	}else if(opcao === 'corpele'){
+		rScale.domain([d3.min(data, function(d) { return d.totalGrupo; }),
+							d3.max(data, function(d) { return d.totalGrupo; })])
+		.range([10, 40]);
+		return;
+	}
 }
 
 function atualizaEscalaX(data,padding,w,xScale){
@@ -555,10 +562,10 @@ function rotulaCirculosEstado(xScale,yScale){
 
 //------------------------------------------------------------
 //---------------------------FUNCOES GRAFICO COR PELE---------
-function refrescaGraficoCorPele(data, padding,w,h,rScale,xScale,yScale,xAxis,yAxis){
+function refrescaGraficoCorPele(opcao,data, padding,w,h,rScale,xScale,yScale,xAxis,yAxis){
   dataset = data;
 
-  atualizaEscalaRaioCorPele(data,rScale);
+  atualizaEscalaRaio(opcao,data,rScale);
   atualizaEscalaX(data,padding,w,xScale);
   atualizaEscalaY(data,padding,h,yScale);
 
@@ -646,16 +653,6 @@ function rotulaCirculosCorPeleOriginal(xScale,yScale){
 }
 
 //----------------------------------------------------------------------------
-//funcoes escalas
-
-//atualiza escala do raio
-function atualizaEscalaRaioCorPele(data,rScale){
-  rScale.domain([d3.min(data, function(d) { return d.totalGrupo; }),
-            d3.max(data, function(d) { return d.totalGrupo; })])
-  .range([10, 40]);
-	return;
-}
-
 
 
 //----------------------------------------------------------------------------
