@@ -137,7 +137,7 @@ function configuraGrafico(w,h,opcao){
 }
 
 //desabilitar botao visualizar do mesmo painel durante a visualização corrente
-function desabilitaBotaoVisualizar(opcao){
+function desabilitaBotaoVisualizar(){
 
 	document.getElementsByClassName("botao-visualizar").disabled = true;
 	return;
@@ -171,7 +171,7 @@ function montaGrafico(opcao){
 	//fechaVisualizacoes(opcao);
 	fechaVisualizacoes();
 
-	desabilitaBotaoVisualizar(opcao);
+	desabilitaBotaoVisualizar();
 
   //largura,altura,padding
   var h = 400;
