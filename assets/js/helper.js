@@ -189,7 +189,7 @@ function montaGrafico(opcao){
 
 	montaDetalhe(opcao);
 
-	$(".painel-grafico-"+opcao).id='original';
+	$(".painel-grafico-"+opcao).className='original';
 	montaGraficoOriginal(padding,w,h,opcao);
 
 
