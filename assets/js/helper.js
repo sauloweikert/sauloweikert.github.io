@@ -229,7 +229,7 @@ function montaGraficoOriginal(dimensoes,opcao){
 						};
 					var eixos={
 						xAxis: defineEixoX(escalas.xScale),
-						yAxis: defineEixoY(esccalas.yScale)
+						yAxis: defineEixoY(escalas.yScale)
 					};
 
 					atualizaEscalaRaio(opcao,data,escalas.rScale);
