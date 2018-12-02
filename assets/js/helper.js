@@ -268,7 +268,7 @@ function refrescaGraficoEstado(opcao,data, padding,w,h,rScale,xScale,yScale,xAxi
   atualizaEixoX(xAxis);
 	atualizaEixoY(yAxis);
 
-  constroiCirculosEstados(xScale,yScale,rScale);
+  constroiCirculosEstados(opcao,xScale,yScale,rScale);
 }
 
 function atualizaGrafico(padding,w,h,opcao,rScale,xScale,yScale,xAxis,yAxis){
@@ -303,8 +303,10 @@ function constroiCirculosEstadosOriginal(xScale,yScale,rScale){
 //desenha os circulos - grafico estados
 function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 
-	var selecao =d3.select(".chart-estados").selectAll("#circuloEstado")
-    .data(dataset)
+	var selecao =d3.select(".chart-estados").selectAll("#circulo")
+    .data(dataset);
+
+		selecao
 		.enter()
 		.append("circle")
 
@@ -322,7 +324,7 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 			return d.regiao;
 		})
 		.attr("id", function(d) {
-			return "circuloEstado";
+			return "circulo";
 		})
 		.on("mouseover", function(d){
 			var texto = ("<dl><dt>Estado</dt><dd>" + d.nome
@@ -491,15 +493,15 @@ function rotulaEixoY(padding,h,opcao){
 //funcoes contrucao circulos - grafico estados -
 
 //constroi circulos - estados
-function constroiCirculosEstados(xScale,yScale,rScale){
-  desenhaCirculosEstado(xScale,yScale,rScale);
+function constroiCirculosEstados(opcao,xScale,yScale,rScale){
+  desenhaCirculosEstado(opcao,xScale,yScale,rScale);
   rotulaCirculosEstado(xScale,yScale);
 }
 
 //desenha os circulos - grafico estados
-function desenhaCirculosEstado(xScale,yScale,rScale){
+function desenhaCirculosEstado(opcao,xScale,yScale,rScale){
 
-	var selecao = d3.select(".chart-estados").selectAll("#circuloEstado")
+	var selecao = d3.select(".chart-"+opcao).selectAll("#circulo")
     .data(dataset)
 
     //definindo propriedades dos circulos
