@@ -184,8 +184,8 @@ function montaGrafico(opcao){
 	var dimensoes={
 		h:400,
 		padding: 90,
-		w: devolveLargura(opcao);
-	}
+		w: devolveLargura(opcao)
+	};
   //largura,altura,padding
 //  var h = 400;
 //  var padding = 90;
