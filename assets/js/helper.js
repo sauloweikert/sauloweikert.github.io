@@ -377,6 +377,8 @@ function desenhaCirculosEstado(selecoes,escalas){
 		selecao
 			.transition()
 			.duration(2000);
+
+		console.log("finalizei");
 }
 
 
