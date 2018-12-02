@@ -222,46 +222,52 @@ function montaGraficoOriginal(dimensoes,opcao){
 
 				if(opcao === 'estados'){
 
-					var rScale = d3.scaleLinear();
-					atualizaEscalaRaio(opcao,data,rScale);
+					var escalas={
+							rScale: d3.scaleLinear(),
+							xScale: d3.scaleLinear(),
+							yScale: d3.scaleLinear()
+						};
+					var eixos={
+						xAxis: defineEixoX(escalas.xScale),
+						yAxis: defineEixoY(esccalas.yScale)
+					};
 
-					var xScale = d3.scaleLinear();
-					atualizaEscalaX(data,dimensoes,xScale);
-					var xAxis = defineEixoX(xScale);
-					desenhaEixoX(xAxis,dimensoes,opcao);
+					atualizaEscalaRaio(opcao,data,escalas.rScale);
+					atualizaEscalaX(data,dimensoes,escalas.xScale);
+					desenhaEixoX(eixos.xAxis,dimensoes,opcao);
 					rotulaEixoX(dimensoes,opcao);
-
-					var yScale = d3.scaleLinear();
-					atualizaEscalaY(data,dimensoes,yScale);
-					var yAxis = defineEixoY(yScale);
-					desenhaEixoY(yAxis,dimensoes,opcao);
+					atualizaEscalaY(data,dimensoes,escalas.yScale);
+					desenhaEixoY(eixos.yAxis,dimensoes,opcao);
 					rotulaEixoY(dimensoes,opcao);
 
-					constroiCirculosEstadosOriginal(xScale,yScale,rScale);
+					constroiCirculosEstadosOriginal(escalas);
 
 				}
 
 				else if(opcao === 'corpele'){
 
-					var rScale = d3.scaleLinear();
-					atualizaEscalaRaio(opcao,data,rScale);
+					var escalas={
+						rScale: d3.scaleLinear(),
+						xScale: d3.scaleLog(),
+						yScale: d3.scaleLinear()
+					};
+					var eixos={
+						xAxis: defineEixoX(escalas.xScale),
+						yAxis: defineEixoY(escalas.yScale)
+					};
 
-					var xScale = d3.scaleLog();
-					atualizaEscalaX(data,dimensoes,xScale);
-					var xAxis = defineEixoX(xScale);
-					desenhaEixoX(xAxis,dimensoes,opcao);
+					atualizaEscalaRaio(opcao,data,escalas.rScale);
+					atualizaEscalaX(data,dimensoes,escalas.xScale);
+					desenhaEixoX(eixos.xAxis,dimensoes,opcao);
 					rotulaEixoX(dimensoes,opcao);
-
-					var yScale = d3.scaleLinear();
-					atualizaEscalaY(data,dimensoes,yScale);
-					var yAxis = defineEixoY(yScale);
-					desenhaEixoY(yAxis,dimensoes,opcao);
+					atualizaEscalaY(data,dimensoes,escalas.yScale);
+					desenhaEixoY(eixos.yAxis,dimensoes,opcao);
 					rotulaEixoY(dimensoes,opcao);
 
-					constroiCirculosCorPeleOriginal(xScale,yScale,rScale);
+					constroiCirculosCorPeleOriginal(escalas);
 				}
 				//verifica acoes do usuario para carregar novos graficos
-				atualizaGrafico(dimensoes,opcao,rScale,xScale,yScale,xAxis,yAxis);
+				atualizaGrafico(dimensoes,opcao,escalas,eixos);
 			}//fecha else
 
 		});
@@ -269,20 +275,20 @@ function montaGraficoOriginal(dimensoes,opcao){
 
 //-----------------------------------------funcoes atualizacao grafico estado
 
-function refrescaGraficoEstado(opcao,data,dimensoes,rScale,xScale,yScale,xAxis,yAxis){
+function refrescaGraficoEstado(opcao,data,dimensoes,escalas,eixos){
   dataset = data;
 
-	atualizaEscalaRaio(opcao,data,rScale);
-  atualizaEscalaX(data,dimensoes,xScale);
-  atualizaEscalaY(data,dimensoes,yScale);
+	atualizaEscalaRaio(opcao,data,escalas.rScale);
+  atualizaEscalaX(data,dimensoes,escalas.xScale);
+  atualizaEscalaY(data,dimensoes,escalas.yScale);
 
-  atualizaEixoX(xAxis);
-	atualizaEixoY(yAxis);
+  atualizaEixoX(eixos.xAxis);
+	atualizaEixoY(eixos.yAxis);
 
-  constroiCirculosEstados(opcao,xScale,yScale,rScale);
+  constroiCirculosEstados(opcao,escalas);
 }
 
-function atualizaGrafico(dimensoes,opcao,rScale,xScale,yScale,xAxis,yAxis){
+function atualizaGrafico(dimensoes,opcao,escalas,eixos){
 
 	//seleciona o ano e gera os circulos
 	d3.selectAll("#year-"+opcao)
@@ -294,8 +300,8 @@ function atualizaGrafico(dimensoes,opcao,rScale,xScale,yScale,xAxis,yAxis){
 			}
 			else {
 
-				if(opcao === 'estados')refrescaGraficoEstado(opcao,data,dimensoes,rScale,xScale,yScale,xAxis,yAxis);
-				else if(opcao === 'corpele')refrescaGraficoCorPele(opcao,data,dimensoes,rScale,xScale,yScale,xAxis,yAxis);
+				if(opcao === 'estados')refrescaGraficoEstado(opcao,data,dimensoes,escalas,eixos);
+				else if(opcao === 'corpele')refrescaGraficoCorPele(opcao,data,dimensoes,escalas,eixos);
 
 				}//fecha else
 			});
@@ -305,14 +311,14 @@ function atualizaGrafico(dimensoes,opcao,rScale,xScale,yScale,xAxis,yAxis){
 //-----------------------------------funcoes circulos - estados
 
 //constroi circulos - estados
-function constroiCirculosEstadosOriginal(xScale,yScale,rScale){
-  desenhaCirculosEstadoOriginal(xScale,yScale,rScale);
-  rotulaCirculosEstadoOriginal(xScale,yScale);
+function constroiCirculosEstadosOriginal(escalas){
+  desenhaCirculosEstadoOriginal(escalas);
+  rotulaCirculosEstadoOriginal(escalas);
 }
 
 
 //desenha os circulos - grafico estados
-function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
+function desenhaCirculosEstadoOriginal(escalas){
 
 	var selecao =d3.select(".chart-estados").selectAll("#circulo")
     .data(dataset);
@@ -331,13 +337,13 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 
 		//definindo propriedades dos circulos
 		.attr("cx", function(d) {
-			return xScale((d.fem)/(d.total));
+			return escalas.xScale((d.fem)/(d.total));
 		})
 		.attr("cy", function(d) {
-			return yScale((d.csup)/(d.total));
+			return escalas.yScale((d.csup)/(d.total));
 		})
 		.attr("r", function(d) {
-			return rScale(d.total);
+			return escalas.rScale(d.total);
 		})
 		.attr("fill", function(d) {
 			return d.regiao;
@@ -362,7 +368,7 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 }
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
-function rotulaCirculosEstadoOriginal(xScale,yScale){
+function rotulaCirculosEstadoOriginal(escalas){
   d3.select(".chart-estados").selectAll("#textoEstado")
     .data(dataset)
 		.enter()
@@ -509,13 +515,13 @@ function rotulaEixoY(dimensoes,opcao){
 //funcoes contrucao circulos - grafico estados -
 
 //constroi circulos - estados
-function constroiCirculosEstados(opcao,xScale,yScale,rScale){
-  desenhaCirculosEstado(opcao,xScale,yScale,rScale);
-  rotulaCirculosEstado(xScale,yScale);
+function constroiCirculosEstados(opcao,escalas){
+  desenhaCirculosEstado(opcao,escalas);
+  rotulaCirculosEstado(escalas);
 }
 
 //desenha os circulos - grafico estados
-function desenhaCirculosEstado(opcao,xScale,yScale,rScale){
+function desenhaCirculosEstado(opcao,escalas){
 
 	var selecao = d3.select(".chart-"+opcao).selectAll("#circulo")
     .data(dataset);
@@ -528,13 +534,13 @@ function desenhaCirculosEstado(opcao,xScale,yScale,rScale){
 
     //definindo propriedades dos circulos
     selecao.attr("cx", function(d) {
-      return xScale((d.fem)/(d.total));
+      return escalas.xScale((d.fem)/(d.total));
     })
     .attr("cy", function(d) {
-      return yScale((d.csup)/(d.total));
+      return escalas.yScale((d.csup)/(d.total));
     })
     .attr("r", function(d) {
-      return rScale(d.total);
+      return escalas.rScale(d.total);
     })
 		/*----nos dados atuais a regiao mantem a ordem de aparicao. comenta-se
 		esta linha por criterio de eficiencia de rendering
@@ -563,7 +569,7 @@ function desenhaCirculosEstado(opcao,xScale,yScale,rScale){
 }
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
-function rotulaCirculosEstado(xScale,yScale){
+function rotulaCirculosEstado(escalas){
   d3.select(".chart-estados").selectAll("#textoEstado")
     .data(dataset)
     .transition()
@@ -572,10 +578,10 @@ function rotulaCirculosEstado(xScale,yScale){
       return d.estado;
     })
     .attr("x", function(d) {
-      return xScale((d.fem)/(d.total))
+      return escalas.xScale((d.fem)/(d.total))
     })
     .attr("y", function(d) {
-      return yScale((d.csup)/(d.total));
+      return escalas.yScale((d.csup)/(d.total));
     })
     .attr("text-anchor", "middle")
     .attr("font-family", "sans-serif")
@@ -586,30 +592,30 @@ function rotulaCirculosEstado(xScale,yScale){
 
 //------------------------------------------------------------
 //---------------------------FUNCOES GRAFICO COR PELE---------
-function refrescaGraficoCorPele(opcao,data,dimensoes,rScale,xScale,yScale,xAxis,yAxis){
+function refrescaGraficoCorPele(opcao,data,dimensoes,escalas,eixos){
   dataset = data;
 
-  atualizaEscalaRaio(opcao,data,rScale);
-  atualizaEscalaX(data,dimensoes,xScale);
-  atualizaEscalaY(data,dimensoes,yScale);
+  atualizaEscalaRaio(opcao,data,escalas.rScale);
+  atualizaEscalaX(data,dimensoes,escalas.xScale);
+  atualizaEscalaY(data,dimensoes,escalas.yScale);
 
-  atualizaEixoX(xAxis);
-	atualizaEixoY(yAxis);
+  atualizaEixoX(eixos.xAxis);
+	atualizaEixoY(eixos.yAxis);
 
-  constroiCirculosCorPele(xScale,yScale,rScale);
+  constroiCirculosCorPele(escalas);
 }
 
 //-----------------------------------funcoes circulos - estados
 
 //constroi circulos -
-function constroiCirculosCorPeleOriginal(xScale,yScale,rScale){
-  desenhaCirculosCorPeleOriginal(xScale,yScale,rScale);
-  rotulaCirculosCorPeleOriginal(xScale,yScale);
+function constroiCirculosCorPeleOriginal(escalas){
+  desenhaCirculosCorPeleOriginal(escalas);
+  rotulaCirculosCorPeleOriginal(escalas);
 }
 
 
 //desenha os circulos -
-function desenhaCirculosCorPeleOriginal(xScale,yScale,rScale){
+function desenhaCirculosCorPeleOriginal(escalas){
 
 	var selecao = d3.select(".chart-corpele").selectAll("#circuloCorPele")
     .data(dataset)
@@ -618,13 +624,13 @@ function desenhaCirculosCorPeleOriginal(xScale,yScale,rScale){
 
     //definindo propriedades dos circulos
     .attr("cx", function(d) {
-      return xScale((d.fem)/(d.total));
+      return escalas.xScale((d.fem)/(d.total));
     })
     .attr("cy", function(d) {
-      return yScale((d.csup)/(d.total));
+      return escalas.yScale((d.csup)/(d.total));
     })
     .attr("r", function(d) {
-      return rScale(d.totalGrupo);
+      return escalas.rScale(d.totalGrupo);
     })
     .attr("fill", function(d) {
       return d.corCirculo;
@@ -651,7 +657,7 @@ function desenhaCirculosCorPeleOriginal(xScale,yScale,rScale){
 }
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
-function rotulaCirculosCorPeleOriginal(xScale,yScale){
+function rotulaCirculosCorPeleOriginal(escalas){
   d3.select(".chart-corpele").selectAll("#textoCorPele")
     .data(dataset)
 		.enter()
@@ -662,10 +668,10 @@ function rotulaCirculosCorPeleOriginal(xScale,yScale){
       return d.nome;
     })
     .attr("x", function(d) {
-      return xScale((d.fem)/(d.total))
+      return escalas.xScale((d.fem)/(d.total))
     })
     .attr("y", function(d) {
-      return yScale((d.csup)/(d.total));
+      return escalas.yScale((d.csup)/(d.total));
     })
     .attr("text-anchor", "end")
     .attr("font-family", "sans-serif")
@@ -684,26 +690,26 @@ function rotulaCirculosCorPeleOriginal(xScale,yScale){
 
 
 //constroi circulos - cor de pele
-function constroiCirculosCorPele(xScale,yScale,rScale){
-  desenhaCirculosCorPele(xScale,yScale,rScale);
-  rotulaCirculosCorPele(xScale,yScale);
+function constroiCirculosCorPele(escalas){
+  desenhaCirculosCorPele(escalas);
+  rotulaCirculosCorPele(escalas);
 }
 
 //desenha os circulos - grafico cor pele
-function desenhaCirculosCorPele(xScale,yScale,rScale){
+function desenhaCirculosCorPele(escalas){
 
 	var selecao = d3.select(".chart-corpele").selectAll("#circuloCorPele")
   .data(dataset)
 
   //definindo propriedades dos circulos
   .attr("cx", function(d) {
-    return xScale((d.fem)/(d.total));
+    return escalas.xScale((d.fem)/(d.total));
   })
   .attr("cy", function(d) {
-    return yScale((d.csup)/(d.total));
+    return escalas.yScale((d.csup)/(d.total));
   })
   .attr("r", function(d) {
-    return rScale(d.totalGrupo);
+    return escalas.rScale(d.totalGrupo);
   })
 		/*mantem-se inalterado
   .attr("fill", function(d){
@@ -728,7 +734,7 @@ function desenhaCirculosCorPele(xScale,yScale,rScale){
 }
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
-function rotulaCirculosCorPele(xScale,yScale){
+function rotulaCirculosCorPele(escalas){
   d3.select(".chart-corpele").selectAll("#textoCorPele")
     .data(dataset)
     .transition()
@@ -737,10 +743,10 @@ function rotulaCirculosCorPele(xScale,yScale){
       return d.nome;
     })
     .attr("x", function(d) {
-      return xScale((d.fem)/(d.total));
+      return escalas.xScale((d.fem)/(d.total));
     })
     .attr("y", function(d) {
-      return yScale((d.csup)/(d.total));
+      return escalas.yScale((d.csup)/(d.total));
     })
     .attr("text-anchor", "end")
     .attr("font-family", "sans-serif")
