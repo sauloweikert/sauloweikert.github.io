@@ -314,6 +314,9 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 		selecao
 		.enter()
 		.append("circle")
+		.attr("id", function(d) {
+			return "circulo";
+		})
 
 		//definindo propriedades dos circulos
 		.attr("cx", function(d) {
@@ -327,9 +330,6 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 		})
 		.attr("fill", function(d) {
 			return d.regiao;
-		})
-		.attr("id", function(d) {
-			return "circulo";
 		})
 		.on("mouseover", function(d){
 			var texto = ("<dl><dt>Estado</dt><dd>" + d.nome
