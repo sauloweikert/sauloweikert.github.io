@@ -344,7 +344,7 @@ function desenhaCirculosEstado(selecoes,escalas){
 				.attr("id", function(d) {
 					return "circulo";
 				});
-	}
+	};
 
 		//definindo propriedades dos circulos
 		selecao
