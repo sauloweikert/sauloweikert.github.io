@@ -124,12 +124,12 @@ function montaLegenda(opcao){
 //--------------------------------------------------------------------------
 
 //funcao construcao inicial grafico
-function configuraGrafico(w,h,opcao){
+function configuraGrafico(dimensoes,opcao){
 
 	//criando o elemento svg
 	d3.select(".chart-"+opcao)
-		.attr("width", w)
-		.attr("height", h)
+		.attr("width", dimensoes.w)
+		.attr("height", dimensoes.h)
 		.attr("font-family", "sans-serif")
 		.attr("font-size", "11px");
 
@@ -163,6 +163,15 @@ function criaSuporteGrafico(opcao){
 
 	return;
 }
+//-----------------------------------------------------------------------------
+
+function devolveLargura(opcao){
+if(opcao==='estados')	return 1500;
+else if (opcao==='corpele') return 1150;
+}
+
+//-----------------------------------------------------------------------------
+
 
 function montaGrafico(opcao){
 
@@ -172,33 +181,35 @@ function montaGrafico(opcao){
 
 	desabilitaBotaoVisualizar();
 
+	var dimensoes={
+		h:400,
+		padding: 90,
+		w: devolveLargura(opcao);
+	}
   //largura,altura,padding
-  var h = 400;
-  var padding = 90;
-	if(opcao==='estados')	var w = 1500;
-	else if (opcao==='corpele') var w = 1150;
-
+//  var h = 400;
+//  var padding = 90;
 
 	criaBotaoSairGrafico(opcao);
 
 	//cria suporte grafico
 	criaSuporteGrafico(opcao);
-  configuraGrafico(w,h,opcao);
+  configuraGrafico(dimensoes,opcao);
 
 	montaLegenda(opcao);
 
 	montaDetalhe(opcao);
 
-	$(".painel-grafico-"+opcao).className='original';
-	montaGraficoOriginal(padding,w,h,opcao);
-
+/*
+	$(".painel-grafico-"+opcao).className='original';*/
+	montaGraficoOriginal(dimensoes,opcao);
 
 }
 
 
 //-------------------------------------funcoes grafico original
 
-function montaGraficoOriginal(padding,w,h,opcao){
+function montaGraficoOriginal(dimensoes,opcao){
 
 		d3.json("dados/2014-"+opcao + ".json", function(error,data) {
 			if (error) { //If error is not null, something went wrong.
@@ -215,16 +226,16 @@ function montaGraficoOriginal(padding,w,h,opcao){
 					atualizaEscalaRaio(opcao,data,rScale);
 
 					var xScale = d3.scaleLinear();
-					atualizaEscalaX(data,padding,w,xScale);
+					atualizaEscalaX(data,dimensoes,xScale);
 					var xAxis = defineEixoX(xScale);
-					desenhaEixoX(xAxis,padding,h,opcao);
-					rotulaEixoX(padding,h,w,opcao);
+					desenhaEixoX(xAxis,dimensoes,opcao);
+					rotulaEixoX(dimensoes,opcao);
 
 					var yScale = d3.scaleLinear();
-					atualizaEscalaY(data,padding,h,yScale);
+					atualizaEscalaY(data,dimensoes,yScale);
 					var yAxis = defineEixoY(yScale);
-					desenhaEixoY(yAxis,padding,opcao);
-					rotulaEixoY(padding,h,opcao);
+					desenhaEixoY(yAxis,dimensoes,opcao);
+					rotulaEixoY(dimensoes,opcao);
 
 					constroiCirculosEstadosOriginal(xScale,yScale,rScale);
 
@@ -236,21 +247,21 @@ function montaGraficoOriginal(padding,w,h,opcao){
 					atualizaEscalaRaio(opcao,data,rScale);
 
 					var xScale = d3.scaleLog();
-					atualizaEscalaX(data,padding,w,xScale);
+					atualizaEscalaX(data,dimensoes,xScale);
 					var xAxis = defineEixoX(xScale);
-					desenhaEixoX(xAxis,padding,h,opcao);
-					rotulaEixoX(padding,h,w,opcao);
+					desenhaEixoX(xAxis,dimensoes,opcao);
+					rotulaEixoX(dimensoes,opcao);
 
 					var yScale = d3.scaleLinear();
-					atualizaEscalaY(data,padding,h,yScale);
+					atualizaEscalaY(data,dimensoes,yScale);
 					var yAxis = defineEixoY(yScale);
-					desenhaEixoY(yAxis,padding,opcao);
-					rotulaEixoY(padding,h,opcao);
+					desenhaEixoY(yAxis,dimensoes,opcao);
+					rotulaEixoY(dimensoes,opcao);
 
 					constroiCirculosCorPeleOriginal(xScale,yScale,rScale);
 				}
 				//verifica acoes do usuario para carregar novos graficos
-				atualizaGrafico(padding,w,h,opcao,rScale,xScale,yScale,xAxis,yAxis);
+				atualizaGrafico(dimensoes,opcao,rScale,xScale,yScale,xAxis,yAxis);
 			}//fecha else
 
 		});
@@ -258,12 +269,12 @@ function montaGraficoOriginal(padding,w,h,opcao){
 
 //-----------------------------------------funcoes atualizacao grafico estado
 
-function refrescaGraficoEstado(opcao,data, padding,w,h,rScale,xScale,yScale,xAxis,yAxis){
+function refrescaGraficoEstado(opcao,data,dimensoes,rScale,xScale,yScale,xAxis,yAxis){
   dataset = data;
 
 	atualizaEscalaRaio(opcao,data,rScale);
-  atualizaEscalaX(data,padding,w,xScale);
-  atualizaEscalaY(data,padding,h,yScale);
+  atualizaEscalaX(data,dimensoes,xScale);
+  atualizaEscalaY(data,dimensoes,yScale);
 
   atualizaEixoX(xAxis);
 	atualizaEixoY(yAxis);
@@ -271,7 +282,7 @@ function refrescaGraficoEstado(opcao,data, padding,w,h,rScale,xScale,yScale,xAxi
   constroiCirculosEstados(opcao,xScale,yScale,rScale);
 }
 
-function atualizaGrafico(padding,w,h,opcao,rScale,xScale,yScale,xAxis,yAxis){
+function atualizaGrafico(dimensoes,opcao,rScale,xScale,yScale,xAxis,yAxis){
 
 	//seleciona o ano e gera os circulos
 	d3.selectAll("#year-"+opcao)
@@ -283,8 +294,8 @@ function atualizaGrafico(padding,w,h,opcao,rScale,xScale,yScale,xAxis,yAxis){
 			}
 			else {
 
-				if(opcao === 'estados')refrescaGraficoEstado(opcao,data, padding,w,h,rScale,xScale,yScale,xAxis,yAxis);
-				else if(opcao === 'corpele')refrescaGraficoCorPele(opcao,data, padding,w,h,rScale,xScale,yScale,xAxis,yAxis);
+				if(opcao === 'estados')refrescaGraficoEstado(opcao,data,dimensoes,rScale,xScale,yScale,xAxis,yAxis);
+				else if(opcao === 'corpele')refrescaGraficoCorPele(opcao,data,dimensoes,rScale,xScale,yScale,xAxis,yAxis);
 
 				}//fecha else
 			});
@@ -305,12 +316,12 @@ function desenhaCirculosEstadoOriginal(xScale,yScale,rScale){
 
 	var selecao =d3.select(".chart-estados").selectAll("#circulo")
     .data(dataset);
-
+/*
 		console.log("dentro original");
 		if ($('.original').length){
 			console.log("orignal vale");
 		}else console.log("original nao vale");
-
+*/
 		selecao
 		.enter()
 		.append("circle")
@@ -394,18 +405,18 @@ function atualizaEscalaRaio(opcao,data,rScale){
 	}
 }
 
-function atualizaEscalaX(data,padding,w,xScale){
+function atualizaEscalaX(data,dimensoes,xScale){
 		 xScale.domain([d3.min(data, function(d) { return (d.fem)/(d.total); })-0.001,
               d3.max(data, function(d) { return (d.fem)/(d.total); })])
-		 .range([padding, w-padding]);
+		 .range([dimensoes.padding, dimensoes.w-dimensoes.padding]);
 		return;
 }
 
-function atualizaEscalaY(data,padding,h,yScale){
+function atualizaEscalaY(data,dimensoes,yScale){
 
 		yScale.domain([d3.min(data, function(d) { return (d.csup)/(d.total); })-0.02,
               d3.max(data, function(d) { return (d.csup)/(d.total); })])
-		.range([h-padding, padding]);
+		.range([dimensoes.h-dimensoes.padding, dimensoes.padding]);
 		return;
 }
 
@@ -425,11 +436,11 @@ function defineEixoX(xScale){
 }
 
 
-function desenhaEixoX(xAxis,padding,h,opcao){
+function desenhaEixoX(xAxis,dimensoes,opcao){
 
   d3.select(".chart-"+opcao).append("g")
   .attr("class", "x-axis") //Assign "axis" class
-  .attr("transform", "translate(0," + (h - padding) + ")")
+  .attr("transform", "translate(0," + (dimensoes.h - dimensoes.padding) + ")")
   .call(xAxis);
 }
 
@@ -443,9 +454,9 @@ function atualizaEixoX(xAxis){
 
 
 // adiciona o rotulo do eixo
-function rotulaEixoX(padding,h,w,opcao){
+function rotulaEixoX(dimensoes,opcao){
 d3.select(".chart-"+opcao).append("text")
-    .attr("transform", "translate(" + (w/ 2) + "," + (h) + ")")
+    .attr("transform", "translate(" + (dimensoes.w/ 2) + "," + (dimensoes.h) + ")")
     .style("text-anchor", "middle")
     .text("candidatos do Gênero Feminino/Total candidatos (%)");
 }
@@ -464,12 +475,12 @@ function defineEixoY(yScale){
   return yAxis;
 }
 
-function desenhaEixoY(yAxis,padding,opcao){
+function desenhaEixoY(yAxis,dimensoes,opcao){
 
   //Cria eixo y
   d3.select(".chart-"+opcao).append("g")
   .attr("class", "y-axis")
-  .attr("transform", "translate(" + padding + ",0)")
+  .attr("transform", "translate(" + dimensoes.padding + ",0)")
   .call(yAxis);
 }
 
@@ -483,11 +494,11 @@ function atualizaEixoY(yAxis){
 }
 
 //desenha rotulo eixo y
-function rotulaEixoY(padding,h,opcao){
+function rotulaEixoY(dimensoes,opcao){
   d3.select(".chart-"+opcao).append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y", 120 - padding)
-      .attr("x",0 - (h / 2))
+      .attr("y", 120 - dimensoes.padding)
+      .attr("x",0 - (dimensoes.h / 2))
       .attr("dy", "1em")
       .style("text-anchor", "middle")
       .text("candidatos com curso superior completo/Total de candidatos (%)");
@@ -508,12 +519,12 @@ function desenhaCirculosEstado(opcao,xScale,yScale,rScale){
 
 	var selecao = d3.select(".chart-"+opcao).selectAll("#circulo")
     .data(dataset);
-
+/*
 		console.log("dentro atual");
 		if ($('.original').length){
 			console.log("orignal vale");
 		}else console.log("original nao vale");
-
+*/
 
     //definindo propriedades dos circulos
     selecao.attr("cx", function(d) {
@@ -575,12 +586,12 @@ function rotulaCirculosEstado(xScale,yScale){
 
 //------------------------------------------------------------
 //---------------------------FUNCOES GRAFICO COR PELE---------
-function refrescaGraficoCorPele(opcao,data, padding,w,h,rScale,xScale,yScale,xAxis,yAxis){
+function refrescaGraficoCorPele(opcao,data,dimensoes,rScale,xScale,yScale,xAxis,yAxis){
   dataset = data;
 
   atualizaEscalaRaio(opcao,data,rScale);
-  atualizaEscalaX(data,padding,w,xScale);
-  atualizaEscalaY(data,padding,h,yScale);
+  atualizaEscalaX(data,dimensoes,xScale);
+  atualizaEscalaY(data,dimensoes,yScale);
 
   atualizaEixoX(xAxis);
 	atualizaEixoY(yAxis);
@@ -738,3 +749,4 @@ function rotulaCirculosCorPele(xScale,yScale){
 }
 
 //----------------------------------------------------------------------------
+test extracting chartsets to object
