@@ -749,4 +749,3 @@ function rotulaCirculosCorPele(xScale,yScale){
 }
 
 //----------------------------------------------------------------------------
-test extracting chartsets to object
