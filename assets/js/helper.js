@@ -218,7 +218,7 @@ function fazGrafico(opcao){
 function devolveEscalaX(opcao){
 
 	if(opcao==='estados') return d3.scaleLinear();
-	else if(opcao==='corpele') return d3.ScaleLog();
+	else if(opcao==='corpele') return d3.scaleLog();
 }
 //----------------------------------------------------------
 
