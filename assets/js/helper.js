@@ -336,15 +336,15 @@ function desenhaCirculosEstado(selecoes,escalas){
 		}else console.log("original nao vale");
 */
 	if(selecoes.original==true){
-				console.log("sele originais v");
-				selecoes.original=false;
+//				console.log("sele originais v");
+	//			selecoes.original=false;
 				selecao
 				.enter()
 				.append("circle")
 				.attr("id", function(d) {
 					return "circulo";
 				});
-	};
+	}
 
 		//definindo propriedades dos circulos
 		selecao
