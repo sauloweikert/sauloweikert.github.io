@@ -246,9 +246,6 @@ function montaGrafico(selecoes,dimensoes){
 
 		var opcao=selecoes.opcao;
 
-		//caso 1: o grafico eh do tipo original (1 ocorrencia)
-		if(selecoes.original==true){
-
 			d3.json("dados/2014-"+opcao + ".json", function(error,data) {
 				if (error) {
 					console.log(error);
@@ -268,30 +265,37 @@ function montaGrafico(selecoes,dimensoes){
 						yAxis: defineEixoY(escalas.yScale)
 					};
 					refrescaGrafico(selecoes,data,dimensoes,escalas,eixos);
-				}
-			});//fecha leitura de dados caso1
-	}//fim caso 1
 
-		//caso 2: o grafico ja existe, deve ser atualizado
-		else if(selecoes.original==false){
-			//seleciona o ano e gera os circulos
-			d3.selectAll("#year-"+opcao)
-			.on("click", function() {
-				//d3.select(".chart-"+opcao).selectAll(".axis").remove();
-				d3.json("dados/" + $(this).html() + ".json", function(error,data) {
-					if (error) {
-						console.log(error);
-						return;
-					}else{
-						selecoes.original=false;
-						refrescaGrafico(selecoes,data,dimensoes,escalas,eixos);
-					}//fim else 2
-				});//fim leitura dados caso 2
-		});
-	};//fim caso 2
+					selecoes.original=false;
+					atualizaGrafico(dimensoes,selecoes,escalas,eixos);
+				}
+			});//fecha leitura de dados
 }
 
+
 //-----------------------------------------funcoes atualizacao grafico estado
+
+function atualizaGrafico(dimensoes,selecoes,escalas,eixos){
+
+	opcao=selecoes.opcao;
+	//seleciona o ano e gera os circulos
+	d3.selectAll("#year-"+opcao)
+	.on("click", function() {
+    //d3.select(".chart-"+opcao).selectAll(".axis").remove();
+		d3.json("dados/" + $(this).html() + ".json", function(error,data) {
+			if (error) {
+				console.log(error); //Log the error.
+			}
+			else {
+
+				refrescaGrafico(selecoes,data,dimensoes,escalas,eixos);
+			}//fecha else
+		});
+	});
+}
+
+
+
 
 function refrescaGrafico(selecoes,data,dimensoes,escalas,eixos){
   dataset = data;
