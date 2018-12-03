@@ -347,7 +347,8 @@ function desenhaCirculosEstado(selecoes,escalas){
 	}
 
 		//definindo propriedades dos circulos
-		selecao
+		var selecao =d3.select(".chart-estados").selectAll("#circulo")
+		.data(dataset)
 		.attr("cx", function(d) {
 			return escalas.xScale((d.fem)/(d.total));
 		})
