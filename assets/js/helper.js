@@ -269,7 +269,7 @@ function montaGrafico(selecoes,dimensoes){
 					};
 					refrescaGrafico(selecoes,data,dimensoes,escalas,eixos);
 				}
-			};//fecha leitura de dados caso1
+			});//fecha leitura de dados caso1
 	}//fim caso 1
 
 		//caso 2: o grafico ja existe, deve ser atualizado
@@ -286,7 +286,7 @@ function montaGrafico(selecoes,dimensoes){
 						selecoes.original=false;
 						refrescaGrafico(selecoes,data,dimensoes,escalas,eixos);
 					}//fim else 2
-				};//fim leitura dados caso 2
+				});//fim leitura dados caso 2
 		});
 	};//fim caso 2
 }
