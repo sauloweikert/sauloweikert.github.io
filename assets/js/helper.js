@@ -1,5 +1,20 @@
 //-----------PARTE 1 - FUNCOES DOS ELEMENTOS DO PAINEL
 
+//funcao para ajustar o painel removendo/adicionando elementos da visualizacao,
+//perifericos ao grafico (legenda, tooltips, botoes,etc)
+function ajustaPainel(opcao){
+
+		//verifica e fecha outras visualizações abertas
+		fechaVisualizacoes();
+
+		criaBotaoSairGrafico(opcao);
+
+		montaLegenda(opcao);
+
+		montaDetalhe(opcao);
+
+}
+
 //funcao para fechar uma visualizacao de grafico em aberto, quando da chamada
 //para outra visualizacao de grafico
 //a verificacao de visualizacoes abertas eh feita atraves do comprimento do
@@ -9,15 +24,6 @@ function fechaVisualizacoes(){
 		sairGrafico();
 	}
 }
-
-
-//desabilitar botao visualizar do mesmo painel durante a visualização corrente
-function desabilitaBotaoVisualizar(){
-
-	document.getElementsByClassName("botao-visualizar").disabled = true;
-	return;
-}
-
 
 //funcao sair da visualizacao corrente
 function sairGrafico(){
@@ -29,10 +35,6 @@ function sairGrafico(){
 		//verifica se o grafico eh do tipo que possui legenda/tooltip e remove
 		if ($('#legend').length){ $('#legend').remove();}
 		if ($('#detalhe').length){ $('#detalhe').remove();}
-
-
-	//reabilita o botao visualizar
-	document.getElementsByClassName("botao-visualizar").disabled = false;
 
 	return;
 }
@@ -139,7 +141,13 @@ function montaLegenda(opcao){
 //----------PARTE 2 - FUNCOES DOS GRAFICOS--------------------------------------
 
 //funcao construcao inicial grafico
-function configuraGrafico(dimensoes,opcao){
+function configuraGrafico(altura,padding,opcao){
+
+	var dimensoes={
+		h:altura,
+		padding: padding,
+		w: devolveLargura(opcao)
+	};
 
 	//criando o elemento svg
 	d3.select(".chart-"+opcao)
@@ -148,7 +156,7 @@ function configuraGrafico(dimensoes,opcao){
 		.attr("font-family", "sans-serif")
 		.attr("font-size", "11px");
 
-  return;
+  return dimensoes;
 }
 
 
@@ -180,41 +188,35 @@ else if (opcao==='corpele') return 1150;
 
 //-----------------------------------------------------------------------------
 
-
+//funcao chamada ao clicar no botao visualizar, no index.html
 function fazGrafico(opcao){
 
-	//verifica e fecha outras visualizações abertas
-	fechaVisualizacoes();
+	//ajusta elementos do painel, perifericos ao grafico
+	ajustaPainel(opcao);
 
-	desabilitaBotaoVisualizar();
+	//origina o grafico
+	originaGrafico(opcao);
 
-	var dimensoes={
-		h:400,
-		padding: 90,
-		w: devolveLargura(opcao)
-	};
+}
 
-	criaBotaoSairGrafico(opcao);
-
+//--------------------------funcao para criacao do grafico original
+function originaGrafico(opcao){
 	//cria suporte grafico
 	criaSuporteGrafico(opcao);
-  configuraGrafico(dimensoes,opcao);
 
-	montaLegenda(opcao);
+	//configura as dimensoes do grafico
+  var dimensoes = configuraGrafico(400,90,opcao);
 
-	montaDetalhe(opcao);
-
-
+//configura as seleoes do grafico (opcao, se grafico original ou se apenas
+//atualizacao do grafico existente )
 	var selecoes={
 		opcao: opcao,
 		original:true
 	};
 
+	//funcao para preencher o grafico com os dados
 	montaGrafico(selecoes,dimensoes);
-
 }
-
-//-------------------------------------funcoes grafico original
 
 
 function devolveEscalaX(opcao){
