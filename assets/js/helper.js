@@ -267,7 +267,7 @@ function montaGrafico(selecoes,dimensoes){
 
 //-----------------------------------------funcoes atualizacao grafico estado
 
-function refrescaGraficoEstado(selecoes,data,dimensoes,escalas,eixos){
+function refrescaGrafico(selecoes,data,dimensoes,escalas,eixos){
   dataset = data;
 	opcao=selecoes.opcao;
 
@@ -285,7 +285,7 @@ function refrescaGraficoEstado(selecoes,data,dimensoes,escalas,eixos){
 		rotulaEixoY(dimensoes,opcao);
 	}
 
-  constroiCirculosEstados(selecoes,escalas);
+  constroiCirculos(selecoes,escalas);
 }
 
 function atualizaGrafico(dimensoes,selecoes,escalas,eixos){
@@ -301,20 +301,18 @@ function atualizaGrafico(dimensoes,selecoes,escalas,eixos){
 			}
 			else {
 
-				if(opcao === 'estados')refrescaGraficoEstado(selecoes,data,dimensoes,escalas,eixos);
-				else if(opcao === 'corpele')refrescaGraficoCorPele(selecoes,data,dimensoes,escalas,eixos);
-
-				}//fecha else
-			});
+				refrescaGrafico(selecoes,data,dimensoes,escalas,eixos);
+			}//fecha else
 		});
+	});
 }
 
 //-----------------------------------funcoes circulos - estados
 
 //constroi circulos - estados
-function constroiCirculosEstados(selecoes,escalas){
+function constroiCirculos(selecoes,escalas){
   desenhaCirculos(selecoes,escalas);
-  rotulaCirculosEstado(selecoes,escalas);
+  rotulaCirculos(selecoes,escalas);
 }
 
 
@@ -413,7 +411,7 @@ function desenhaCirculos(selecoes,escalas){
 
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
-function rotulaCirculosEstado(selecoes,escalas){
+function rotulaCirculos(selecoes,escalas){
 
 		opcao =selecoes.opcao;
 
@@ -432,9 +430,7 @@ function rotulaCirculosEstado(selecoes,escalas){
 					.attr("font-family", "sans-serif")
 					.attr("font-size", "11px")
 					.attr("fill", "white");
-
 		}
-
 
 		if(opcao==='estados'){
 
@@ -451,6 +447,22 @@ function rotulaCirculosEstado(selecoes,escalas){
 			    .attr("y", function(d) {
 			      return escalas.yScale((d.csup)/(d.total));
 			    });
+
+		}else if(opcao==='corpele'){
+
+			selecao =d3.select(".chart-"+opcao).selectAll("#texto")
+			.data(dataset)
+			.transition()
+			.duration(2000)
+			.text(function(d) {
+				return d.nome;
+			})
+			.attr("x", function(d) {
+				return escalas.xScale((d.fem)/(d.total))
+			})
+			.attr("y", function(d) {
+				return escalas.yScale((d.csup)/(d.total));
+			});
 
 		}
 }
@@ -578,56 +590,9 @@ function rotulaEixoY(dimensoes,opcao){
 
 
 
-//------------------------------------------------------------
-//---------------------------FUNCOES GRAFICO COR PELE---------
-function refrescaGraficoCorPele(opcao,data,dimensoes,escalas,eixos){
-  dataset = data;
-
-  atualizaEscalaRaio(opcao,data,escalas.rScale);
-  atualizaEscalaX(data,dimensoes,escalas.xScale);
-  atualizaEscalaY(data,dimensoes,escalas.yScale);
-
-  atualizaEixoX(eixos.xAxis);
-	atualizaEixoY(eixos.yAxis);
-
-  constroiCirculosCorPele(escalas);
-}
-
 //-----------------------------------funcoes circulos - estados
 
-//constroi circulos -
-function constroiCirculosCorPeleOriginal(escalas){
-  desenhaCirculosCorPeleOriginal(escalas);
-  rotulaCirculosCorPeleOriginal(escalas);
-}
 
-
-
-//adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
-function rotulaCirculosCorPeleOriginal(escalas){
-  d3.select(".chart-corpele").selectAll("#textoCorPele")
-    .data(dataset)
-		.enter()
-		.append("text")
-    .transition()
-    .duration(2000)
-    .text(function(d) {
-      return d.nome;
-    })
-    .attr("x", function(d) {
-      return escalas.xScale((d.fem)/(d.total))
-    })
-    .attr("y", function(d) {
-      return escalas.yScale((d.csup)/(d.total));
-    })
-    .attr("text-anchor", "end")
-    .attr("font-family", "sans-serif")
-    .attr("font-size", "11px")
-    .attr("fill", "olive")
-		.attr("id", function(d) {
-			return "textoCorPele";
-		});
-}
 
 //----------------------------------------------------------------------------
 
@@ -635,70 +600,5 @@ function rotulaCirculosCorPeleOriginal(escalas){
 //----------------------------------------------------------------------------
 //funcoes contrucao circulos - grafico cor pele
 
-
-//constroi circulos - cor de pele
-function constroiCirculosCorPele(escalas){
-  desenhaCirculosCorPele(escalas);
-  rotulaCirculosCorPele(escalas);
-}
-
-//desenha os circulos - grafico cor pele
-function desenhaCirculosCorPele(escalas){
-
-	var selecao = d3.select(".chart-corpele").selectAll("#circuloCorPele")
-  .data(dataset)
-
-  //definindo propriedades dos circulos
-  .attr("cx", function(d) {
-    return escalas.xScale((d.fem)/(d.total));
-  })
-  .attr("cy", function(d) {
-    return escalas.yScale((d.csup)/(d.total));
-  })
-  .attr("r", function(d) {
-    return escalas.rScale(d.totalGrupo);
-  })
-		/*mantem-se inalterado
-  .attr("fill", function(d){
-    return d.corCirculo;
-  })*/
-	.on("mouseover", function(d){
-		var texto = ("<dl><dt>Grupo Cor de Pele</dt><dd>" + d.nome
-								+"</dd><dt>Total do grupo</dt><dd>" +d.totalGrupo
-								+"</dd><dt>Total grupo gênero Feminino</dt><dd>" +d.fem
-								+"</dd><dt>Total grupo curso superior</dt><dd>" +d.csup
-								+"</dd></dl>");
-		$("#detalhe").append(texto);
-	})
-	.on("mouseout", function(d){
-		$("#detalhe").html("");
-	});
-
-	//define uma transicao para o grafico
-	selecao
-		.transition()
-		.duration(2000);
-}
-
-//adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
-function rotulaCirculosCorPele(escalas){
-  d3.select(".chart-corpele").selectAll("#textoCorPele")
-    .data(dataset)
-    .transition()
-    .duration(2000)
-    .text(function(d) {
-      return d.nome;
-    })
-    .attr("x", function(d) {
-      return escalas.xScale((d.fem)/(d.total));
-    })
-    .attr("y", function(d) {
-      return escalas.yScale((d.csup)/(d.total));
-    })
-    .attr("text-anchor", "end")
-    .attr("font-family", "sans-serif")
-    .attr("font-size", "11px")
-    .attr("fill", "olive");
-}
 
 //----------------------------------------------------------------------------
