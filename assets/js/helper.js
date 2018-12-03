@@ -427,7 +427,17 @@ function rotulaCirculosEstado(selecoes,escalas){
 					.append("text")
 					.attr("id", function(d) {
 						return "texto";
-					});
+					})
+					.attr("text-anchor", "middle")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "11px")
+					.attr("fill", "white");
+
+		}
+
+
+		if(opcao==='estados'){
+
 		}
 
 		selecao =d3.select(".chart-"+opcao).selectAll("#texto")
@@ -443,10 +453,6 @@ function rotulaCirculosEstado(selecoes,escalas){
     .attr("y", function(d) {
       return escalas.yScale((d.csup)/(d.total));
     })
-    .attr("text-anchor", "middle")
-    .attr("font-family", "sans-serif")
-    .attr("font-size", "11px")
-    .attr("fill", "white");
 }
 
 //---------------------------------------------------------------------------
