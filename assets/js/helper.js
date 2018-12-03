@@ -275,11 +275,10 @@ function refrescaGrafico(selecoes,data,dimensoes,escalas,eixos){
 		rotulaEixoY(dimensoes,opcao);
 
 	//caso o grafico ja existe, apenas atualiza os eixos
-	}else{
-		atualizaEixoX(eixos.xAxis);
-		atualizaEixoY(eixos.yAxis);
-
 	}
+
+	atualizaEixoX(eixos.xAxis);
+	atualizaEixoY(eixos.yAxis);
 
   constroiCirculos(selecoes,escalas);
 }
@@ -516,8 +515,7 @@ function desenhaEixoX(xAxis,dimensoes,opcao){
 
   d3.select(".chart-"+opcao).append("g")
   .attr("class", "x-axis") //Assign "axis" class
-  .attr("transform", "translate(0," + (dimensoes.h - dimensoes.padding) + ")")
-  .call(xAxis);
+  .attr("transform", "translate(0," + (dimensoes.h - dimensoes.padding) + ")");
 }
 
 function atualizaEixoX(xAxis){
@@ -556,8 +554,7 @@ function desenhaEixoY(yAxis,dimensoes,opcao){
   //Cria eixo y
   d3.select(".chart-"+opcao).append("g")
   .attr("class", "y-axis")
-  .attr("transform", "translate(" + dimensoes.padding + ",0)")
-  .call(yAxis);
+  .attr("transform", "translate(" + dimensoes.padding + ",0)");
 }
 
 function atualizaEixoY(yAxis){
@@ -579,22 +576,3 @@ function rotulaEixoY(dimensoes,opcao){
       .style("text-anchor", "middle")
       .text("candidatos com curso superior completo/Total de candidatos (%)");
 }
-
-
-//----------------------------------------------------------------------------
-//funcoes contrucao circulos - grafico estados -
-
-
-
-//-----------------------------------funcoes circulos - estados
-
-
-
-//----------------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------------
-//funcoes contrucao circulos - grafico cor pele
-
-
-//----------------------------------------------------------------------------
