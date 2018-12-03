@@ -398,7 +398,8 @@ function rotulaCirculosEstado(selecoes,escalas){
 					});
 		}
 
-		selecao
+		selecao =d3.select(".chart-estados").selectAll("#texto")
+    .data(dataset)
     .transition()
     .duration(2000)
     .text(function(d) {
