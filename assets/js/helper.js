@@ -438,21 +438,21 @@ function rotulaCirculosEstado(selecoes,escalas){
 
 		if(opcao==='estados'){
 
-		}
+					selecao =d3.select(".chart-"+opcao).selectAll("#texto")
+			    .data(dataset)
+			    .transition()
+			    .duration(2000)
+			    .text(function(d) {
+			      return d.estado;
+			    })
+			    .attr("x", function(d) {
+			      return escalas.xScale((d.fem)/(d.total))
+			    })
+			    .attr("y", function(d) {
+			      return escalas.yScale((d.csup)/(d.total));
+			    });
 
-		selecao =d3.select(".chart-"+opcao).selectAll("#texto")
-    .data(dataset)
-    .transition()
-    .duration(2000)
-    .text(function(d) {
-      return d.estado;
-    })
-    .attr("x", function(d) {
-      return escalas.xScale((d.fem)/(d.total))
-    })
-    .attr("y", function(d) {
-      return escalas.yScale((d.csup)/(d.total));
-    })
+		}
 }
 
 //---------------------------------------------------------------------------
