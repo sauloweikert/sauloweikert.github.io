@@ -205,8 +205,8 @@ function fazGrafico(opcao){
 		opcao: opcao,
 		original:true
 	};
-/*
-	$(".painel-grafico-"+opcao).className='original';*/
+
+
 	montaGrafico(selecoes,dimensoes);
 
 }
@@ -239,13 +239,14 @@ function montaGrafico(selecoes,dimensoes){
 						yAxis: defineEixoY(escalas.yScale)
 					};
 
-					atualizaEscalaRaio(opcao,data,escalas.rScale);
-					atualizaEscalaX(data,dimensoes,escalas.xScale);
 					desenhaEixoX(eixos.xAxis,dimensoes,opcao);
 					rotulaEixoX(dimensoes,opcao);
-					atualizaEscalaY(data,dimensoes,escalas.yScale);
 					desenhaEixoY(eixos.yAxis,dimensoes,opcao);
 					rotulaEixoY(dimensoes,opcao);
+
+					atualizaEscalaRaio(opcao,data,escalas.rScale);
+					atualizaEscalaX(data,dimensoes,escalas.xScale);
+					atualizaEscalaY(data,dimensoes,escalas.yScale);
 
 					constroiCirculosEstados(selecoes,escalas);
 
@@ -274,7 +275,9 @@ function montaGrafico(selecoes,dimensoes){
 					constroiCirculosCorPeleOriginal(escalas);
 				}
 				//verifica acoes do usuario para carregar novos graficos
-				atualizaGrafico(dimensoes,opcao,escalas,eixos);
+
+				selecoes.original=false;
+				atualizaGrafico(dimensoes,selecoes,escalas,eixos);
 			}//fecha else
 
 		});
@@ -295,8 +298,9 @@ function refrescaGraficoEstado(opcao,data,dimensoes,escalas,eixos){
   constroiCirculosEstados(selecoes,escalas);
 }
 
-function atualizaGrafico(dimensoes,opcao,escalas,eixos){
+function atualizaGrafico(dimensoes,selecoes,escalas,eixos){
 
+	opcao=selecoes.opcao;
 	//seleciona o ano e gera os circulos
 	d3.selectAll("#year-"+opcao)
 	.on("click", function() {
@@ -307,8 +311,8 @@ function atualizaGrafico(dimensoes,opcao,escalas,eixos){
 			}
 			else {
 
-				if(opcao === 'estados')refrescaGraficoEstado(opcao,data,dimensoes,escalas,eixos);
-				else if(opcao === 'corpele')refrescaGraficoCorPele(opcao,data,dimensoes,escalas,eixos);
+				if(opcao === 'estados')refrescaGraficoEstado(selecoes,data,dimensoes,escalas,eixos);
+				else if(opcao === 'corpele')refrescaGraficoCorPele(selecoes,data,dimensoes,escalas,eixos);
 
 				}//fecha else
 			});
@@ -327,7 +331,9 @@ function constroiCirculosEstados(selecoes,escalas){
 //desenha os circulos - grafico estados
 function desenhaCirculosEstado(selecoes,escalas){
 
-	var selecao =d3.select(".chart-estados").selectAll("#circulo")
+	opcao=selecoes.opcao;
+
+	var selecao =d3.select(".chart-"+opcao).selectAll("#circulo")
     .data(dataset);
 /*
 		console.log("dentro original");
@@ -347,7 +353,7 @@ function desenhaCirculosEstado(selecoes,escalas){
 	}
 
 		//definindo propriedades dos circulos
-		selecao =d3.select(".chart-estados").selectAll("#circulo")
+		selecao =d3.select(".chart-"+opcao).selectAll("#circulo")
 		.data(dataset)
 		.attr("cx", function(d) {
 			return escalas.xScale((d.fem)/(d.total));
@@ -385,7 +391,10 @@ function desenhaCirculosEstado(selecoes,escalas){
 
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
 function rotulaCirculosEstado(selecoes,escalas){
-  	var selecao =d3.select(".chart-estados").selectAll("#texto")
+
+		opcao =selecoes.opcao;
+
+  	var selecao =d3.select(".chart-"+opcao).selectAll("#texto")
     .data(dataset);
 
 		if(selecoes.original===true){
@@ -398,7 +407,7 @@ function rotulaCirculosEstado(selecoes,escalas){
 					});
 		}
 
-		selecao =d3.select(".chart-estados").selectAll("#texto")
+		selecao =d3.select(".chart-"+opcao).selectAll("#texto")
     .data(dataset)
     .transition()
     .duration(2000)
