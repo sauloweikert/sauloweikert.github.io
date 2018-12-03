@@ -245,17 +245,8 @@ function montaGrafico(selecoes,dimensoes){
 					yAxis: defineEixoY(escalas.yScale)
 				};
 
+				refrescaGrafico(selecoes,data,dimensoes,escalas,eixos);
 
-				if(opcao === 'estados'){
-
-
-					refrescaGraficoEstado(selecoes,data,dimensoes,escalas,eixos);
-				}
-
-				else if(opcao === 'corpele'){
-
-					refrescaGraficoCorPele(selecoes,data,dimensoes,escalas,eixos);
-				}
 				//verifica acoes do usuario para carregar novos graficos
 
 				selecoes.original=false;
@@ -275,14 +266,19 @@ function refrescaGrafico(selecoes,data,dimensoes,escalas,eixos){
   atualizaEscalaX(data,dimensoes,escalas.xScale);
   atualizaEscalaY(data,dimensoes,escalas.yScale);
 
-	if(selecoes.original==false){
-		atualizaEixoX(eixos.xAxis);
-		atualizaEixoY(eixos.yAxis);
-	}else{
+	//analisa se o grafico eh original(1 ocorrencia), e desenha/rotula
+	//eixos em caso afirmativo
+	if(selecoes.original==true){
 		desenhaEixoX(eixos.xAxis,dimensoes,opcao);
 		rotulaEixoX(dimensoes,opcao);
 		desenhaEixoY(eixos.yAxis,dimensoes,opcao);
 		rotulaEixoY(dimensoes,opcao);
+
+	//caso o grafico ja existe, apenas atualiza os eixos
+	}else{
+		atualizaEixoX(eixos.xAxis);
+		atualizaEixoY(eixos.yAxis);
+
 	}
 
   constroiCirculos(selecoes,escalas);
