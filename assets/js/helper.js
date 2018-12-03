@@ -239,18 +239,20 @@ function montaGrafico(selecoes,dimensoes){
 						yAxis: defineEixoY(escalas.yScale)
 					};
 
-
+/*
 					atualizaEscalaRaio(opcao,data,escalas.rScale);
 					atualizaEscalaX(data,dimensoes,escalas.xScale);
 					atualizaEscalaY(data,dimensoes,escalas.yScale);
 
 					constroiCirculosEstados(selecoes,escalas);
-
+*/
+					refrescaGraficoEstado(selecoes,data,dimensoes,escalas,eixos);
+/*
 					desenhaEixoX(eixos.xAxis,dimensoes,opcao);
 					rotulaEixoX(dimensoes,opcao);
 					desenhaEixoY(eixos.yAxis,dimensoes,opcao);
 					rotulaEixoY(dimensoes,opcao);
-
+*/
 
 				}
 
@@ -298,6 +300,11 @@ function refrescaGraficoEstado(selecoes,data,dimensoes,escalas,eixos){
 	if(selecoes.original==false){
 		atualizaEixoX(eixos.xAxis);
 		atualizaEixoY(eixos.yAxis);
+	}else{
+		desenhaEixoX(eixos.xAxis,dimensoes,opcao);
+		rotulaEixoX(dimensoes,opcao);
+		desenhaEixoY(eixos.yAxis,dimensoes,opcao);
+		rotulaEixoY(dimensoes,opcao);
 	}
 
   constroiCirculosEstados(selecoes,escalas);
