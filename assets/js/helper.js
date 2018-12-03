@@ -285,15 +285,18 @@ function montaGrafico(selecoes,dimensoes){
 
 //-----------------------------------------funcoes atualizacao grafico estado
 
-function refrescaGraficoEstado(opcao,data,dimensoes,escalas,eixos){
+function refrescaGraficoEstado(selecoes,data,dimensoes,escalas,eixos){
   dataset = data;
+	opcao=selecoes.opcao;
 
 	atualizaEscalaRaio(opcao,data,escalas.rScale);
   atualizaEscalaX(data,dimensoes,escalas.xScale);
   atualizaEscalaY(data,dimensoes,escalas.yScale);
 
-  atualizaEixoX(eixos.xAxis);
-	atualizaEixoY(eixos.yAxis);
+	if(selecoes.original==false){
+		atualizaEixoX(eixos.xAxis);
+		atualizaEixoY(eixos.yAxis);
+	}
 
   constroiCirculosEstados(selecoes,escalas);
 }
