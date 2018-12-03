@@ -186,6 +186,20 @@ if(opcao==='estados')	return 1500;
 else if (opcao==='corpele') return 1150;
 }
 
+function setaTextoCirculo(opcao){
+	if(opcao==='estados'){
+		var textoCirculo={
+			cor: 'white',
+			ancora: 'middle'
+		};
+	}else if(opcao==='corpele'){
+		var textoCirculo={
+			cor: 'olive',
+			ancora: 'end'
+		};
+	}
+	return textoCirculo;
+}
 //-----------------------------------------------------------------------------
 
 //funcao chamada ao clicar no botao visualizar, no index.html
@@ -408,10 +422,12 @@ function desenhaCirculos(selecoes,escalas){
 }
 
 
+
 //adicionando rotulo a cada circulo, legivel no interior de cada um, no grafico
 function rotulaCirculos(selecoes,escalas){
 
 		opcao =selecoes.opcao;
+		textoCirculo = setaTextoCirculo(opcao);
 
   	var selecao =d3.select(".chart-"+opcao).selectAll("#texto")
     .data(dataset);
@@ -424,10 +440,10 @@ function rotulaCirculos(selecoes,escalas){
 					.attr("id", function(d) {
 						return "texto";
 					})
-					.attr("text-anchor", "middle")
+					.attr("text-anchor", textoCirculo.ancora)
 					.attr("font-family", "sans-serif")
 					.attr("font-size", "11px")
-					.attr("fill", "white");
+					.attr("fill", textoCirculo.cor);
 		}
 
 		if(opcao==='estados'){
