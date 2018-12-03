@@ -1,5 +1,9 @@
-//------------------------------------------------------saida grafico
+//-----------PARTE 1 - FUNCOES DOS ELEMENTOS DO PAINEL
 
+//funcao para fechar uma visualizacao de grafico em aberto, quando da chamada
+//para outra visualizacao de grafico
+//a verificacao de visualizacoes abertas eh feita atraves do comprimento do
+//suporte de grafico (o elemento div-grafico)
 function fechaVisualizacoes(){
 	if ($('.div-grafico').length){
 		sairGrafico();
@@ -7,14 +11,22 @@ function fechaVisualizacoes(){
 }
 
 
+//desabilitar botao visualizar do mesmo painel durante a visualização corrente
+function desabilitaBotaoVisualizar(){
+
+	document.getElementsByClassName("botao-visualizar").disabled = true;
+	return;
+}
+
+
 //funcao sair da visualizacao corrente
 function sairGrafico(){
 
-		//remove Suporte
+		//remove Suporte do grafico
 		$('.div-grafico').remove();
 		//remove botao Sair
 		$('#botao-sair').remove();
-		//verifica e fecha legendas abertas
+		//verifica se o grafico eh do tipo que possui legenda/tooltip e remove
 		if ($('#legend').length){ $('#legend').remove();}
 		if ($('#detalhe').length){ $('#detalhe').remove();}
 
@@ -41,11 +53,12 @@ function criaBotaoSairGrafico(opcao){
 	element.onclick = function() {
 		sairGrafico();
 	};
+	//anexa o botao no painel
 	document.getElementsByClassName("painel-grafico-"+opcao)[0].appendChild(element);
 }
-//---------------------------------------------------construcao grafico estados
+//---------------------------------------------------funcao tooltip
 
-//funcao montagem legenda grafico
+//funcao montagem tooltip grafico
 function montaDetalhe(opcao){
 	var divDetalhe = document.createElement('div');
 	divDetalhe.id = 'detalhe';
@@ -63,14 +76,14 @@ function montaDetalhe(opcao){
 	divDetalhe.style.opacity = '50%';
 	divDetalhe.style.padding = '5px';
 
-	//definicao do titulo da Detalhe
+	//definicao do titulo da Detalhe(opcional)
 	//divDetalhe.innerHTML = "Detalhe";
 
 	//adicao da Detalhe no painel
 	$(".painel-grafico-"+opcao).append(divDetalhe);
 }
 
-
+//-----------------------------------------------------------funcao legenda
 //funcao montagem legenda grafico
 function montaLegenda(opcao){
 	var divLegenda = document.createElement('div');
@@ -96,6 +109,8 @@ function montaLegenda(opcao){
 	//adicao da legenda no painel
 	$(".painel-grafico-"+opcao).append(divLegenda);
 
+
+	//lista de elementos para as legendas respectivas de acordo com o tipo de grafico
 	if(opcao === 'estados'){
 		var myObjects = [{"nome": "Sul"},{"nome": "Sudeste"},{"nome": "Centroeste"},
 			{"nome": "Nordeste"},{"nome": "Norte"}];
@@ -121,7 +136,7 @@ function montaLegenda(opcao){
 	});
 }
 
-//--------------------------------------------------------------------------
+//----------PARTE 2 - FUNCOES DOS GRAFICOS--------------------------------------
 
 //funcao construcao inicial grafico
 function configuraGrafico(dimensoes,opcao){
@@ -136,16 +151,10 @@ function configuraGrafico(dimensoes,opcao){
   return;
 }
 
-//desabilitar botao visualizar do mesmo painel durante a visualização corrente
-function desabilitaBotaoVisualizar(){
 
-	document.getElementsByClassName("botao-visualizar").disabled = true;
-	return;
-}
+//-----------------------------------------------------------------------------
 
-
-//------------------------------------------------------------------------------
-//funcoes montagem grafico
+//criacao do suporte que emoldura o grafico
 function criaSuporteGrafico(opcao){
 
 	//cria dinamicamente elemento do tipo div para conter o grafico
@@ -154,16 +163,15 @@ function criaSuporteGrafico(opcao){
  	divGrafico.style.overflowX ='auto';
 	document.getElementsByClassName("painel-grafico-"+opcao)[0].appendChild(divGrafico);
 
-
 	//cria dinamicamente elemento tipo svg que sera o grafico
 	var element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 	element.setAttribute("class", "chart-"+opcao);
 	document.getElementsByClassName("div-grafico")[0].appendChild(element);
 
-
 	return;
 }
-//-----------------------------------------------------------------------------
+
+//--------------------------------------------funcoes auxiliares
 
 function devolveLargura(opcao){
 if(opcao==='estados')	return 1500;
@@ -176,7 +184,6 @@ else if (opcao==='corpele') return 1150;
 function fazGrafico(opcao){
 
 	//verifica e fecha outras visualizações abertas
-	//fechaVisualizacoes(opcao);
 	fechaVisualizacoes();
 
 	desabilitaBotaoVisualizar();
@@ -186,9 +193,6 @@ function fazGrafico(opcao){
 		padding: 90,
 		w: devolveLargura(opcao)
 	};
-  //largura,altura,padding
-//  var h = 400;
-//  var padding = 90;
 
 	criaBotaoSairGrafico(opcao);
 
@@ -206,11 +210,9 @@ function fazGrafico(opcao){
 		original:true
 	};
 
-
 	montaGrafico(selecoes,dimensoes);
 
 }
-
 
 //-------------------------------------funcoes grafico original
 
@@ -230,8 +232,7 @@ function montaGrafico(selecoes,dimensoes){
 			if (error) { //If error is not null, something went wrong.
 				console.log(error); //Log the error.
 			}
-			else { //If no error, the file loaded correctly. Yay!
-				//console.log(data); //Log the data.
+			else {
 
 				dataset = data;
 
