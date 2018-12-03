@@ -239,16 +239,18 @@ function montaGrafico(selecoes,dimensoes){
 						yAxis: defineEixoY(escalas.yScale)
 					};
 
-					desenhaEixoX(eixos.xAxis,dimensoes,opcao);
-					rotulaEixoX(dimensoes,opcao);
-					desenhaEixoY(eixos.yAxis,dimensoes,opcao);
-					rotulaEixoY(dimensoes,opcao);
 
 					atualizaEscalaRaio(opcao,data,escalas.rScale);
 					atualizaEscalaX(data,dimensoes,escalas.xScale);
 					atualizaEscalaY(data,dimensoes,escalas.yScale);
 
 					constroiCirculosEstados(selecoes,escalas);
+
+					desenhaEixoX(eixos.xAxis,dimensoes,opcao);
+					rotulaEixoX(dimensoes,opcao);
+					desenhaEixoY(eixos.yAxis,dimensoes,opcao);
+					rotulaEixoY(dimensoes,opcao);
+
 
 				}
 
