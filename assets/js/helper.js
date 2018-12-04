@@ -294,9 +294,6 @@ function atualizaGrafico(dimensoes,selecoes,escalas,eixos){
 	});
 }
 
-
-
-
 function refrescaGrafico(selecoes,data,dimensoes,escalas,eixos){
   dataset = data;
 	opcao=selecoes.opcao;
@@ -308,9 +305,9 @@ function refrescaGrafico(selecoes,data,dimensoes,escalas,eixos){
 	//analisa se o grafico eh original(1 ocorrencia), e desenha/rotula
 	//eixos em caso afirmativo
 	if(selecoes.original==true){
-		desenhaEixo(eixos.xAxis,dimensoes,opcao,'x');
+		desenhaEixo(dimensoes,opcao,'x');
 		rotulaEixo(dimensoes,opcao,'x');
-		desenhaEixo(eixos.yAxis,dimensoes,opcao,'y');
+		desenhaEixo(dimensoes,opcao,'y');
 		rotulaEixo(dimensoes,opcao,'y');
 
 	//caso o grafico ja existe, apenas atualiza os eixos
@@ -524,7 +521,7 @@ function defineEixo(escala,tipo){
 }
 
 
-function desenhaEixo(eixo,dimensoes,opcao,tipo){
+function desenhaEixo(dimensoes,opcao,tipo){
 
   var selecao =d3.select(".chart-"+opcao).append("g")
   .attr("class", tipo+"-axis"); //Assign "axis" class
@@ -570,12 +567,3 @@ function rotulaEixo(dimensoes,opcao,tipo){
 
 
 //-----------------------------------------------------------------------------
-
-
-function desenhaEixoY(yAxis,dimensoes,opcao){
-
-  //Cria eixo y
-  d3.select(".chart-"+opcao).append("g")
-  .attr("class", "y-axis")
-  .attr("transform", "translate(" + dimensoes.padding + ",0)");
-}
