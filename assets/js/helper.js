@@ -261,8 +261,8 @@ function montaGrafico(selecoes,dimensoes){
 							yScale: d3.scaleLinear()
 						};
 					var eixos={
-						xAxis: defineEixoX(escalas.xScale),
-						yAxis: defineEixoY(escalas.yScale)
+						xAxis: defineEixo(escalas.xScale),
+						yAxis: defineEixo(escalas.yScale)
 					};
 					refrescaGrafico(selecoes,data,dimensoes,escalas,eixos);
 
@@ -524,6 +524,25 @@ function defineEixoX(xScale){
   return xAxis;
 }
 
+//define eixo x
+function defineEixo(parametro){
+
+
+	if(parametro===xScale)		var eixo = d3.axisBottom(parametro);
+	else if(parametro===yScale)	var eixo = d3.axisLeft(parametro);
+
+	//formatando eixos como porcentagem
+	var formatAsPercentage = d3.format(".1%");
+ 	eixo.tickFormat(formatAsPercentage);
+
+  return eixo;
+}
+
+
+
+
+
+
 
 function desenhaEixoX(xAxis,dimensoes,opcao){
 
@@ -539,7 +558,6 @@ function atualizaEixoX(xAxis){
 	.duration(2000)
   .call(xAxis);
 }
-
 
 // adiciona o rotulo do eixo
 function rotulaEixoX(dimensoes,opcao){
