@@ -529,7 +529,7 @@ function defineEixo(parametro){
 
 
 	if(parametro==='xScale')		var eixo = d3.axisBottom(parametro);
-	else if(parametro===yScale)	var eixo = d3.axisLeft(parametro);
+	else if(parametro==='yScale')	var eixo = d3.axisLeft(parametro);
 
 	//formatando eixos como porcentagem
 	var formatAsPercentage = d3.format(".1%");
