@@ -261,8 +261,8 @@ function montaGrafico(selecoes,dimensoes){
 							yScale: d3.scaleLinear()
 						};
 					var eixos={
-						xAxis: defineEixo(escalas.xScale,x),
-						yAxis: defineEixo(escalas.yScale,y)
+						xAxis: defineEixo(escalas.xScale,'x'),
+						yAxis: defineEixo(escalas.yScale,'y')
 					};
 					refrescaGrafico(selecoes,data,dimensoes,escalas,eixos);
 
