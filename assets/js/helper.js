@@ -316,8 +316,8 @@ function refrescaGrafico(selecoes,data,dimensoes,escalas,eixos){
 	//caso o grafico ja existe, apenas atualiza os eixos
 	}
 
-	atualizaEixoX(eixos.xAxis);
-	atualizaEixoY(eixos.yAxis);
+	atualizaEixo(eixos.xAxis);
+	atualizaEixo(eixos.yAxis);
 
   constroiCirculos(selecoes,escalas);
 }
@@ -510,23 +510,8 @@ function atualizaEscalaY(data,dimensoes,yScale){
 }
 
 //---------------------------------------------------------------------------
-//funcoes eixos
-
-//define eixo x
-function defineEixoX(xScale){
-
-      //formatando eixos como porcentagem
-  var formatAsPercentage = d3.format(".1%");
-
-  var xAxis = d3.axisBottom(xScale)
-  .tickFormat(formatAsPercentage);
-
-  return xAxis;
-}
-
-//define eixo x
+//funcao para definicao dos eixos
 function defineEixo(escala,tipo){
-
 
 	if(tipo==='x')		var eixo = d3.axisBottom(escala);
 	else if(tipo==='y')	var eixo = d3.axisLeft(escala);
@@ -539,11 +524,6 @@ function defineEixo(escala,tipo){
 }
 
 
-
-
-
-
-
 function desenhaEixoX(xAxis,dimensoes,opcao){
 
   d3.select(".chart-"+opcao).append("g")
@@ -551,12 +531,15 @@ function desenhaEixoX(xAxis,dimensoes,opcao){
   .attr("transform", "translate(0," + (dimensoes.h - dimensoes.padding) + ")");
 }
 
-function atualizaEixoX(xAxis){
+function atualizaEixo(eixo){
 
-  d3.select(".x-axis")
+	if(eixo==='xAxis') selecao =d3.select(".x-axis");
+	else if(eixo==='yAxis')selecao =d3.select(".y-axis");
+
+	selecao
 	.transition()
 	.duration(2000)
-  .call(xAxis);
+  .call(eixo);
 }
 
 // adiciona o rotulo do eixo
@@ -570,16 +553,6 @@ d3.select(".chart-"+opcao).append("text")
 
 //-----------------------------------------------------------------------------
 
-//define eixo y
-function defineEixoY(yScale){
-
-      //formatando eixos como porcentagem
-  var formatAsPercentage = d3.format(".1%");
-
-  var yAxis = d3.axisLeft(yScale)
-  .tickFormat(formatAsPercentage);
-  return yAxis;
-}
 
 function desenhaEixoY(yAxis,dimensoes,opcao){
 
