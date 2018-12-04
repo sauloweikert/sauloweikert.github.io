@@ -261,8 +261,8 @@ function montaGrafico(selecoes,dimensoes){
 							yScale: d3.scaleLinear()
 						};
 					var eixos={
-						xAxis: defineEixo(escalas.xScale,'x'),
-						yAxis: defineEixo(escalas.yScale,'y')
+						xAxis: defineEixo(dimensoes,opcao,escalas.xScale,'x'),
+						yAxis: defineEixo(dimensoes,opcao,escalas.yScale,'y')
 					};
 					refrescaGrafico(selecoes,data,dimensoes,escalas,eixos);
 
@@ -301,17 +301,6 @@ function refrescaGrafico(selecoes,data,dimensoes,escalas,eixos){
 	atualizaEscalaRaio(opcao,data,escalas.rScale);
   atualizaEscalaX(data,dimensoes,escalas.xScale);
   atualizaEscalaY(data,dimensoes,escalas.yScale);
-
-	//analisa se o grafico eh original(1 ocorrencia), e desenha/rotula
-	//eixos em caso afirmativo
-	if(selecoes.original==true){
-		desenhaEixo(dimensoes,opcao,'x');
-		rotulaEixo(dimensoes,opcao,'x');
-		desenhaEixo(dimensoes,opcao,'y');
-		rotulaEixo(dimensoes,opcao,'y');
-
-	//caso o grafico ja existe, apenas atualiza os eixos
-	}
 
 	atualizaEixo(eixos.xAxis,'x');
 	atualizaEixo(eixos.yAxis,'y');
@@ -508,7 +497,7 @@ function atualizaEscalaY(data,dimensoes,yScale){
 
 //---------------------------------------------------------------------------
 //funcao para definicao dos eixos
-function defineEixo(escala,tipo){
+function defineEixo(dimensoes,opcao,escala,tipo){
 
 	if(tipo==='x')		var eixo = d3.axisBottom(escala);
 	else if(tipo==='y')	var eixo = d3.axisLeft(escala);
@@ -516,6 +505,9 @@ function defineEixo(escala,tipo){
 	//formatando eixos como porcentagem
 	var formatAsPercentage = d3.format(".1%");
  	eixo.tickFormat(formatAsPercentage);
+
+	desenhaEixo(dimensoes,opcao,tipo);
+	rotulaEixo(dimensoes,opcao,tipo;
 
   return eixo;
 }
