@@ -309,9 +309,9 @@ function refrescaGrafico(selecoes,data,dimensoes,escalas,eixos){
 	//eixos em caso afirmativo
 	if(selecoes.original==true){
 		desenhaEixoX(eixos.xAxis,dimensoes,opcao);
-		rotulaEixoX(dimensoes,opcao);
+		rotulaEixo(dimensoes,opcao,'x');
 		desenhaEixoY(eixos.yAxis,dimensoes,opcao);
-		rotulaEixoY(dimensoes,opcao);
+		rotulaEixo(dimensoes,opcao,'y');
 
 	//caso o grafico ja existe, apenas atualiza os eixos
 	}
@@ -540,11 +540,24 @@ function atualizaEixo(eixo,tipo){
 }
 
 // adiciona o rotulo do eixo
-function rotulaEixoX(dimensoes,opcao){
-d3.select(".chart-"+opcao).append("text")
-    .attr("transform", "translate(" + (dimensoes.w/ 2) + "," + (dimensoes.h) + ")")
-    .style("text-anchor", "middle")
-    .text("candidatos do Gênero Feminino/Total candidatos (%)");
+function rotulaEixo(dimensoes,opcao,tipo){
+
+	var selecao =d3.select(".chart-"+opcao).append("text")
+	.style("text-anchor", "middle");
+
+	if(tipo==='x'){
+		selecao
+		.attr("transform", "translate(" + (dimensoes.w/ 2) + "," + (dimensoes.h) + ")")
+		.text("candidatos do Gênero Feminino/Total candidatos (%)");
+
+	}else if(tipo==='y'){
+		selecao
+		.attr("transform", "rotate(-90)")
+	  .attr("y", 120 - dimensoes.padding)
+	  .attr("x",0 - (dimensoes.h / 2))
+	  .attr("dy", "1em")
+	  .text("candidatos com curso superior completo/Total de candidatos (%)");
+	}
 }
 
 
@@ -559,14 +572,6 @@ function desenhaEixoY(yAxis,dimensoes,opcao){
   .attr("transform", "translate(" + dimensoes.padding + ",0)");
 }
 
-function atualizaEixoY(yAxis){
-
-  //atualiza Y axis
-  d3.select(".y-axis")
-	.transition()
-  .duration(2000)
-  .call(yAxis);
-}
 
 //desenha rotulo eixo y
 function rotulaEixoY(dimensoes,opcao){
