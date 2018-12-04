@@ -308,9 +308,9 @@ function refrescaGrafico(selecoes,data,dimensoes,escalas,eixos){
 	//analisa se o grafico eh original(1 ocorrencia), e desenha/rotula
 	//eixos em caso afirmativo
 	if(selecoes.original==true){
-		desenhaEixoX(eixos.xAxis,dimensoes,opcao);
+		desenhaEixo(eixos.xAxis,dimensoes,opcao,'x');
 		rotulaEixo(dimensoes,opcao,'x');
-		desenhaEixoY(eixos.yAxis,dimensoes,opcao);
+		desenhaEixo(eixos.yAxis,dimensoes,opcao,'y');
 		rotulaEixo(dimensoes,opcao,'y');
 
 	//caso o grafico ja existe, apenas atualiza os eixos
@@ -524,11 +524,19 @@ function defineEixo(escala,tipo){
 }
 
 
-function desenhaEixoX(xAxis,dimensoes,opcao){
+function desenhaEixo(eixo,dimensoes,opcao,tipo){
 
-  d3.select(".chart-"+opcao).append("g")
-  .attr("class", "x-axis") //Assign "axis" class
-  .attr("transform", "translate(0," + (dimensoes.h - dimensoes.padding) + ")");
+  var selecao =d3.select(".chart-"+opcao).append("g")
+  .attr("class", tipo+"-axis"); //Assign "axis" class
+
+	if(tipo==='x'){
+
+	selecao.attr("transform", "translate(0," + (dimensoes.h - dimensoes.padding) + ")");
+
+	}else if(tipo==='y'){
+
+	selecao.attr("transform", "translate(" + dimensoes.padding + ",0)");
+	}
 }
 
 function atualizaEixo(eixo,tipo){
@@ -570,16 +578,4 @@ function desenhaEixoY(yAxis,dimensoes,opcao){
   d3.select(".chart-"+opcao).append("g")
   .attr("class", "y-axis")
   .attr("transform", "translate(" + dimensoes.padding + ",0)");
-}
-
-
-//desenha rotulo eixo y
-function rotulaEixoY(dimensoes,opcao){
-  d3.select(".chart-"+opcao).append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 120 - dimensoes.padding)
-      .attr("x",0 - (dimensoes.h / 2))
-      .attr("dy", "1em")
-      .style("text-anchor", "middle")
-      .text("candidatos com curso superior completo/Total de candidatos (%)");
 }
