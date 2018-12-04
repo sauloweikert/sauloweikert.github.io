@@ -316,8 +316,8 @@ function refrescaGrafico(selecoes,data,dimensoes,escalas,eixos){
 	//caso o grafico ja existe, apenas atualiza os eixos
 	}
 
-	atualizaEixo(eixos.xAxis);
-	atualizaEixo(eixos.yAxis);
+	atualizaEixo(eixos.xAxis,'x');
+	atualizaEixo(eixos.yAxis,'y');
 
   constroiCirculos(selecoes,escalas);
 }
@@ -531,12 +531,9 @@ function desenhaEixoX(xAxis,dimensoes,opcao){
   .attr("transform", "translate(0," + (dimensoes.h - dimensoes.padding) + ")");
 }
 
-function atualizaEixo(eixo){
+function atualizaEixo(eixo,tipo){
 
-	if(eixo==='xAxis') selecao =d3.select(".x-axis");
-	else if(eixo==='yAxis')selecao =d3.select(".y-axis");
-
-	selecao
+	d3.select("."+tipo+"-axis")
 	.transition()
 	.duration(2000)
   .call(eixo);
