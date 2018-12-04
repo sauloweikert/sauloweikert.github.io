@@ -261,8 +261,8 @@ function montaGrafico(selecoes,dimensoes){
 							yScale: d3.scaleLinear()
 						};
 					var eixos={
-						xAxis: defineEixo(escalas.xScale),
-						yAxis: defineEixo(escalas.yScale)
+						xAxis: defineEixo(escalas.xScale,x),
+						yAxis: defineEixo(escalas.yScale,y)
 					};
 					refrescaGrafico(selecoes,data,dimensoes,escalas,eixos);
 
@@ -525,11 +525,11 @@ function defineEixoX(xScale){
 }
 
 //define eixo x
-function defineEixo(parametro){
+function defineEixo(escala,tipo){
 
 
-	if(parametro==='escalas.xScale')		var eixo = d3.axisBottom(parametro);
-	else if(parametro==='escalas.yScale')	var eixo = d3.axisLeft(parametro);
+	if(tipo==='x')		var eixo = d3.axisBottom(escala);
+	else if(tipo==='y')	var eixo = d3.axisLeft(escala);
 
 	//formatando eixos como porcentagem
 	var formatAsPercentage = d3.format(".1%");
