@@ -299,8 +299,8 @@ function refrescaGrafico(selecoes,data,dimensoes,escalas,eixos){
 	opcao=selecoes.opcao;
 
 	atualizaEscalaRaio(opcao,data,escalas.rScale);
-  atualizaEscalaX(data,dimensoes,escalas.xScale);
-  atualizaEscalaY(data,dimensoes,escalas.yScale);
+  atualizaEscala(data,dimensoes,escalas,'x');
+  atualizaEscala(data,dimensoes,escalas,'y');
 
 	atualizaEixo(eixos.xAxis,'x');
 	atualizaEixo(eixos.yAxis,'y');
@@ -480,19 +480,21 @@ function atualizaEscalaRaio(opcao,data,rScale){
 	}
 }
 
-function atualizaEscalaX(data,dimensoes,xScale){
-		 xScale.domain([d3.min(data, function(d) { return (d.fem)/(d.total); })-0.001,
-              d3.max(data, function(d) { return (d.fem)/(d.total); })])
-		 .range([dimensoes.padding, dimensoes.w-dimensoes.padding]);
-		return;
-}
+function atualizaEscala(data,dimensoes,escalas,tipo){
 
-function atualizaEscalaY(data,dimensoes,yScale){
+	if(tipo==='x'){
+		escalas.xScale
+			.domain([d3.min(data, function(d) { return (d.fem)/(d.total); })-0.001,
+				d3.max(data, function(d) { return (d.fem)/(d.total); })])
+			.range([dimensoes.padding, dimensoes.w-dimensoes.padding]);
 
-		yScale.domain([d3.min(data, function(d) { return (d.csup)/(d.total); })-0.02,
-              d3.max(data, function(d) { return (d.csup)/(d.total); })])
+	}else if(tipo==='y'){
+		escalas.yScale
+		.domain([d3.min(data, function(d) { return (d.csup)/(d.total); })-0.02,
+      d3.max(data, function(d) { return (d.csup)/(d.total); })])
 		.range([dimensoes.h-dimensoes.padding, dimensoes.padding]);
-		return;
+	}
+	return;
 }
 
 //---------------------------------------------------------------------------
