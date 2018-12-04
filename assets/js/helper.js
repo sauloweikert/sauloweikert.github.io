@@ -507,7 +507,7 @@ function defineEixo(dimensoes,opcao,escala,tipo){
  	eixo.tickFormat(formatAsPercentage);
 
 	desenhaEixo(dimensoes,opcao,tipo);
-	rotulaEixo(dimensoes,opcao,tipo;
+	rotulaEixo(dimensoes,opcao,tipo);
 
   return eixo;
 }
