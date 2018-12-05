@@ -88,6 +88,7 @@ function montaDetalhe(opcao){
 //-----------------------------------------------------------funcao legenda
 //funcao montagem legenda grafico
 function montaLegenda(opcao){
+
 	var divLegenda = document.createElement('div');
 	divLegenda.id = 'legend';
 	divLegenda.className ="rounded";
@@ -195,6 +196,7 @@ function devolveEscalaX(opcao){
 
 
 function setaTextoCirculo(opcao){
+
 	if(opcao==='estados'){
 		var textoCirculo={
 			cor: 'white',
@@ -264,8 +266,12 @@ function montaGrafico(selecoes,dimensoes){
 						xAxis: defineEixo(dimensoes,opcao,escalas.xScale,'x'),
 						yAxis: defineEixo(dimensoes,opcao,escalas.yScale,'y')
 					};
+
+					//realiza um primeiro preenchimento do grafico(original)
 					refrescaGrafico(selecoes,data,dimensoes,escalas,eixos);
 
+					//realiza um preenchimento do tipo atualizacao de um grafico ja
+					//existente. Seta original para false
 					selecoes.original=false;
 					atualizaGrafico(dimensoes,selecoes,escalas,eixos);
 				}
@@ -298,6 +304,7 @@ function refrescaGrafico(selecoes,data,dimensoes,escalas,eixos){
   dataset = data;
 	opcao=selecoes.opcao;
 
+	//realiza atualizacao de escalas, eixos e constroi os circulos
 	atualizaEscalaRaio(opcao,data,escalas.rScale);
   atualizaEscala(data,dimensoes,escalas,'x');
   atualizaEscala(data,dimensoes,escalas,'y');
@@ -326,6 +333,7 @@ function desenhaCirculos(selecoes,escalas){
 	var selecao =d3.select(".chart-"+opcao).selectAll("#circulo")
     .data(dataset);
 
+	//caso primeira chamada da funcao, cria e insere os circulos
 	if(selecoes.original==true){
 
 				selecao
@@ -336,6 +344,7 @@ function desenhaCirculos(selecoes,escalas){
 				});
 	}
 
+	//preenche os circulos conforme a visualizacao de estados
 	if(opcao==='estados'){
 
 		//definindo propriedades dos circulos
@@ -366,6 +375,7 @@ function desenhaCirculos(selecoes,escalas){
 			$("#detalhe").html("");
 		});
 
+	//preenche os circulos conforme visualizacao de cor de pele
 	}else if(opcao==='corpele'){
 
 		//definindo propriedades dos circulos
@@ -413,6 +423,7 @@ function rotulaCirculos(selecoes,escalas){
   	var selecao =d3.select(".chart-"+opcao).selectAll("#texto")
     .data(dataset);
 
+		//se primeira ocorrencia da funcao, constroi os elementos de texto
 		if(selecoes.original===true){
 
 					selecao
@@ -427,6 +438,7 @@ function rotulaCirculos(selecoes,escalas){
 					.attr("fill", textoCirculo.cor);
 		}
 
+		//chamada para o grafico de estados
 		if(opcao==='estados'){
 
 					selecao =d3.select(".chart-"+opcao).selectAll("#texto")
@@ -443,6 +455,7 @@ function rotulaCirculos(selecoes,escalas){
 			      return escalas.yScale((d.csup)/(d.total));
 			    });
 
+		//chamada para o grafico de cor de pele
 		}else if(opcao==='corpele'){
 
 			selecao =d3.select(".chart-"+opcao).selectAll("#texto")
@@ -558,6 +571,5 @@ function rotulaEixo(dimensoes,opcao,tipo){
 	  .text("candidatos com curso superior completo/Total de candidatos (%)");
 	}
 }
-
 
 //-----------------------------------------------------------------------------
