@@ -305,9 +305,9 @@ function refrescaGrafico(selecoes,data,dimensoes,escalas,eixos){
 	opcao=selecoes.opcao;
 
 	//realiza atualizacao de escalas, eixos e constroi os circulos
-	atualizaEscalaRaio(opcao,data,escalas.rScale);
-  atualizaEscala(data,dimensoes,escalas,'x');
-  atualizaEscala(data,dimensoes,escalas,'y');
+	atualizaEscala(opcao,data,dimensoes,escalas,'r');
+  atualizaEscala(opcao,data,dimensoes,escalas,'x');
+  atualizaEscala(opcao,data,dimensoes,escalas,'y');
 
 	atualizaEixo(eixos.xAxis,'x');
 	atualizaEixo(eixos.yAxis,'y');
@@ -479,21 +479,7 @@ function rotulaCirculos(selecoes,escalas){
 //funcoes escalas
 
 
-//atualiza escala do raio
-function atualizaEscalaRaio(opcao,data,rScale){
-	if(opcao === 'estados'){
-		rScale.domain([0, d3.max(data, function(d) { return d.total; })])
-		.range([10, 40]);
-		return;
-	}else if(opcao === 'corpele'){
-		rScale.domain([d3.min(data, function(d) { return d.totalGrupo; }),
-							d3.max(data, function(d) { return d.totalGrupo; })])
-		.range([10, 40]);
-		return;
-	}
-}
-
-function atualizaEscala(data,dimensoes,escalas,tipo){
+function atualizaEscala(opcao,data,dimensoes,escalas,tipo){
 
 	if(tipo==='x'){
 		escalas.xScale
@@ -506,8 +492,21 @@ function atualizaEscala(data,dimensoes,escalas,tipo){
 		.domain([d3.min(data, function(d) { return (d.csup)/(d.total); })-0.02,
       d3.max(data, function(d) { return (d.csup)/(d.total); })])
 		.range([dimensoes.h-dimensoes.padding, dimensoes.padding]);
+
+	}else if (tipo==='r'){
+
+		if(opcao === 'estados'){
+			escalas.rScale
+			.domain([0, d3.max(data, function(d) { return d.total; })])
+			.range([10, 40]);
+
+		}else if(opcao === 'corpele'){
+			escalas.rScale
+			.domain([d3.min(data, function(d) { return d.totalGrupo; }),
+				d3.max(data, function(d) { return d.totalGrupo; })])
+			.range([10, 40]);
+		}
 	}
-	return;
 }
 
 //---------------------------------------------------------------------------
